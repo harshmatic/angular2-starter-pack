@@ -17,7 +17,7 @@ export class TitleComponent {
   constructor(private store: Store<fromRoot.RootState>) { }
 
   ngOnInit() {
-    this.user$ = this.store.select(fromRoot.getUserState);
+  //  this.user$ = this.store.select(fromRoot.getUserState);
   }
 }
 

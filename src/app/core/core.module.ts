@@ -35,7 +35,7 @@ import { routing } from './core.routing';
 import { PlatformDirective } from './platform/platform.directive';
 import { CORE_PROVIDERS } from './services/index';
 import { Config } from './utils/index';
-import { AuthModule } from './auth/auth.module';
+//import { AuthModule } from './auth/auth.module';
 
 interface ICoreModuleOptions {
   window?: any;
@@ -87,7 +87,7 @@ const store = StoreModule.provideStore(reducer);
     DBModule.provideDB(schema),
     NavigatorModule,
     SharedModule,
-    AuthModule,
+    //AuthModule,
     routing
   ],
   declarations: [

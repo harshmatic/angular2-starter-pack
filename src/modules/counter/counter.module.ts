@@ -7,7 +7,7 @@ import { CounterRouting } from './counter.routing';
 import { SharedModule } from '../../app/shared/shared.module';
 import { RioCounterComponent } from './counter.component';
 import { RioCounterPage } from './counter.page';
-import { CounterEffects } from '../../app/core/store/counter/counter.effects';
+import { CounterEffects } from './store/counter.effects';
 
 @NgModule({
   imports: [

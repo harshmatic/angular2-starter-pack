@@ -8,8 +8,8 @@ import 'hammerjs';
 
 /* App Root */
 import { AppPage } from './app.page';
-import { RioLoginModalComponent } from './core/auth/login/login-modal/login-modal.component';
-import { LoginModule } from './core/auth/login/login.module';
+//import { RioLoginModalComponent } from './core/auth/login/login-modal/login-modal.component';
+//import { LoginModule } from './core/auth/login/login.module';
 import { SharedModule } from './shared/shared.module';
 import { AppRouting } from './app.routing';
 
@@ -21,7 +21,7 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     CoreModule,
     AppRouting,
-    LoginModule,
+    //LoginModule,
     MaterialModule.forRoot(),
     SharedModule
   ],
