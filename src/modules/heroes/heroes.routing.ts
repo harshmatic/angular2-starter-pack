@@ -14,24 +14,24 @@ const routes: Routes = [
     children: [
       {
         path: 'admin',
-        loadChildren: 'app/heroes/admin/admin.module#AdminModule',
+        loadChildren: 'modules/heroes/admin/admin.module#AdminModule',
         canLoad: [AuthGuard]
       },
       {
         path: 'crisis-center',
-        loadChildren: 'app/heroes/crisis-center/crisis-center.module#CrisisCenterModule',
+        loadChildren: 'modules/heroes/crisis-center/crisis-center.module#CrisisCenterModule',
         data: { preload: true },
         canLoad: [AuthGuard]
       },
       {
         path: 'dashboard',
-        loadChildren: 'app/heroes/dashboard/dashboard.module#DashboardModule'
+        loadChildren: 'modules/heroes/dashboard/dashboard.module#DashboardModule'
       },
       {
         path: 'hero/:id', component: HeroDetailComponent,
         canLoad: [AuthGuard]
       },
-      { path: 'list', loadChildren: 'app/heroes/hero/hero.module#HeroModule' },
+      { path: 'list', loadChildren: 'modules/heroes/hero/hero.module#HeroModule' },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ]
   }

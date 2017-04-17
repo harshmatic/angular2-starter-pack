@@ -5,7 +5,7 @@ import { AdminPage } from './admin.page';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CrisisCenterPage } from '../crisis-center/crisis-center.page';
 import { HeroListComponent } from '../hero/hero-list/hero-list.component';
-import { AuthGuard } from '../../core/auth/auth.guard';
+import { AuthGuard } from '../../../app/core/auth/auth.guard';
 
 const adminRoutes: Routes = [
   {
