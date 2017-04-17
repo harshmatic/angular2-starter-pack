@@ -20,7 +20,7 @@ export class Config {
     LEVEL_1: false, // .info only
     LEVEL_2: false, // .warn only
     LEVEL_3: false, // .error only
-    LEVEL_4: false  // .log + all the above
+    LEVEL_4: true  // .log + all the above
   };
 
   // supported platforms
@@ -32,7 +32,7 @@ export class Config {
   };
 
   // current target (defaults to web)
-  public static PLATFORM_TARGET: string = Config.PLATFORMS.WEB;
+  public static PLATFORM_TARGET: string = Config.PLATFORMS.MOBILE_NATIVE;
 
   // convenient platform checks
   public static IS_WEB(): boolean {
