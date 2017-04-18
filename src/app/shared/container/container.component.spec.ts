@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RioContainerComponent } from '../container/container.component';
+import { EsplContainerComponent } from '../container/container.component';
 import { CoreModule } from '../../core/core.module';
 import { SharedModule } from '../shared.module';
 
@@ -16,7 +16,7 @@ describe('Component: Container', () => {
         SharedModule
       ]
     });
-    fixture = TestBed.createComponent(RioContainerComponent);
+    fixture = TestBed.createComponent(EsplContainerComponent);
     fixture.detectChanges();
   });
 

@@ -18,15 +18,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 
-import { Hero } from '../store/hero/hero.model';
 import { DataService } from './data.service';
 
-const makeHeroData = () => [
-  { id: '1', name: 'Windstorm' },
-  { id: '2', name: 'Bombasto' },
-  { id: '3', name: 'Magneta' },
-  { id: '4', name: 'Tornado' }
-] as Hero[];
 
 ////////  Tests  /////////////
 describe('Http-DataService (mockBackend)', () => {
@@ -64,15 +57,11 @@ describe('Http-DataService (mockBackend)', () => {
   describe('when getHeroes', () => {
     let backend: MockBackend;
     let service: DataService;
-    let fakeHeroes: Hero[];
     let response: Response;
 
     beforeEach(inject([Http, XHRBackend], (http: Http, be: MockBackend) => {
       backend = be;
       service = new DataService(http);
-      fakeHeroes = makeHeroData();
-      let options = new ResponseOptions({ status: 200, body: { data: fakeHeroes } });
-      response = new Response(options);
     }));
 
     // it('should have expected fake heroes (then)', async(inject([], () => {

@@ -2,15 +2,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 
 @Component({
-  selector: 'rio-counter',
+  selector: 'espl-counter',
   template: `
     <div class="flex">
-      <rio-button
+      <espl-button
         className="bg-black col-2"
         (onClick)="decrement.emit()"
         testid="counter-decrementButton">
         -
-      </rio-button>
+      </espl-button>
 
       <div 
         data-testid="counter-result"
@@ -18,15 +18,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
         {{ value }}
       </div>
 
-      <rio-button className="col-2"
+      <espl-button className="col-2"
         (onClick)="increment.emit()"
         testid="counter-incrementButton">
         +
-      </rio-button>
+      </espl-button>
     </div>
   `
 })
-export class RioCounterComponent {
+export class EsplCounterComponent {
   /**
    * Presentational components receieve data through @Input() and communicate events
    * through @Output() but generally maintain no internal state of their
