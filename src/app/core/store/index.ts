@@ -6,19 +6,9 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 let uuid = require('uuid');
 import 'rxjs/add/operator/filter';
 
-import { Book } from './book/book.model';
-import { Note } from './note/note.model';
+
 import { environment } from '../../../environments/environment.prod';
-import { Claim } from './claim/claim.model';
-import { Rebuttal, initialRebuttal } from './rebuttal/rebuttal.model';
-import { ClaimRebuttal } from './claim-rebuttal/claim-rebuttal.model';
-import { Layout } from './layout/layout.model';
-import { Counter } from './counter/counter.model';
-import { Session } from './session/session.model';
-import { User } from './session/session.model';
-import { Crisis } from './crisis/crisis.model';
-import { Contact } from './contact/contact.model';
-import { Hero } from './hero/hero.model';
+
 
 /**
  * The createSelector function is one of our most handy tools. In basic terms, you give
@@ -54,40 +44,14 @@ import { combineReducers } from '@ngrx/store';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
-import * as fromBooks from './book/book.reducer';
-import * as fromClaims from './claim/claim.reducer';
-import * as fromCollection from './collection/collection.reducer';
-import * as fromCounter from './counter/counter.reducer';
-import * as fromLayout from './layout/layout.reducer';
-import * as fromNotes from './note/note.reducer';
-import * as fromRebuttals from './rebuttal/rebuttal.reducer';
-import * as fromClaimRebuttals from './claim-rebuttal/claim-rebuttal.reducer';
-import * as fromSearch from './search/search.reducer';
-import * as fromSession from './session/session.reducer';
-import * as fromCrises from './crisis/crisis.reducer';
-import * as fromContacts from './contact/contact.reducer';
-import * as fromHeroes from './hero/hero.reducer';
-import { Entities, IDs } from './entity/entity.model';
+
 import {moduleReducers,RootState} from '../../../modules/config';
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface RootState {
-  book: Entities<Book>;
-  claimRebuttal: Entities<ClaimRebuttal>;
-  claim: Entities<Claim>;
-  collection: IDs;
-  contact: Entities<Contact>;
-  counter: Counter;
-  crisis: Entities<Crisis>;
-  hero: Entities<Hero>
-  layout: Layout;
-  note: Entities<Note>;
-  rebuttal: Entities<Rebuttal>;
-  router: fromRouter.RouterState;
-  search: IDs;
-  session: Session;
+
 }
 
 
