@@ -17,6 +17,3 @@ export function reducer(state: Counter = initialCounter, action: Action): Counte
             return state;
   }
 }
-
-
-//export const getValue = (state: Counter) => state.value;

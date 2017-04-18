@@ -17,6 +17,6 @@ export interface RootState {
 }
 
 
-export const reducerss = {
+export const moduleReducers = {
   counter: fromCounter.reducer,
 }

@@ -68,7 +68,7 @@ import * as fromCrises from './crisis/crisis.reducer';
 import * as fromContacts from './contact/contact.reducer';
 import * as fromHeroes from './hero/hero.reducer';
 import { Entities, IDs } from './entity/entity.model';
-import {reducerss} from '../../../modules/config';
+import {moduleReducers,RootState} from '../../../modules/config';
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
@@ -99,7 +99,7 @@ export interface RootState {
  * the result from right to left.
  */
 
-const reducers = reducerss;
+const reducers = moduleReducers;
 
 const developmentReducer = compose(
   storeFreeze,

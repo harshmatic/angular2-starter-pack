@@ -24,11 +24,11 @@ import {
   bcNavComponents
 } from './navigator/navigator.module';
 import { reducer } from './store';
-import { schema } from './store/db';
+//import { schema } from './store/db';
 import { SharedModule } from '../shared/shared.module';
 import { NotFoundPage } from './not-found/not-found.page';
 import { RioAboutPage } from './about/about.page';
-import { TitleComponent } from './title/title.component';
+//import { TitleComponent } from './title/title.component';
 import { routing } from './core.routing';
 
 // module
@@ -84,7 +84,7 @@ const store = StoreModule.provideStore(reducer);
      * `provideDB` sets up @ngrx/db with the provided schema and makes the Database
      * service available.
      */
-    DBModule.provideDB(schema),
+    //DBModule.provideDB(schema),
     NavigatorModule,
     SharedModule,
     //AuthModule,
@@ -94,11 +94,11 @@ const store = StoreModule.provideStore(reducer);
     PlatformDirective,
     NotFoundPage,
     RioAboutPage,
-    TitleComponent
+   // TitleComponent
   ],
   exports: [
     ...bcNavComponents,
-    TitleComponent,
+   // TitleComponent,
     NotFoundPage,
     RioAboutPage,
     CommonModule,
