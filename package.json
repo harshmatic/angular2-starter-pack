@@ -1,5 +1,5 @@
 {
-  "name": "great-big-angular2-example",
+  "name": "my-demo-pkg",
   "version": "0.0.0",
   "engines": {
     "node": "7.5.0"
@@ -31,10 +31,9 @@
     "pretest": "rimraf coverage/ & npm run lint",
     "posttest": "npm run cover",
     "test:watch": "karma start --singleRun false",
-    "debug-server": "cross-env NODE_ENV=development PORT=3100 nodemon --nolazy --debug-brk=5858 server/node-server.js",
-    "postinstall": "ng build --prod"
+    "debug-server": "cross-env NODE_ENV=development PORT=3100 nodemon --nolazy --debug-brk=5858 server/node-server.js"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/common": "~2.4.5",
     "@angular/compiler": "~2.4.5",
@@ -137,5 +136,18 @@
     "webpack-dev-server": "^2.2.0",
     "webpack-hot-middleware": "^2.12.2",
     "webpack-split-by-path": "^0.1.0-beta.1"
-  }
+  },
+  "main": "main.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahesh-kedari/angular2-starter-pack.git"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "chetan badgujar",
+  "bugs": {
+    "url": "https://github.com/mahesh-kedari/angular2-starter-pack/issues"
+  },
+  "homepage": "https://github.com/mahesh-kedari/angular2-starter-pack#readme"
 }

@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 //import { AuthGuard } from './core/auth/auth.guard';
 import { CanDeactivateGuard } from './shared/can-deactivate/can-deactivate.guard';
 import { SelectivePreloadingStrategy } from './shared/selective-preloading-strategy';
-import {routing} from '../modules/config'
+// import {routing} from '../modules/config'
+import {routing} from '../../../../src/modules/config';
 
 const routes: Routes = routing;
 
