@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RioLogoComponent } from './index';
+import { EsplLogoComponent } from './index';
 import { SharedModule } from '../shared.module';
 
 describe('Component: Logo', () => {
@@ -14,7 +14,7 @@ describe('Component: Logo', () => {
         SharedModule
       ]
     });
-    fixture = TestBed.createComponent(RioLogoComponent);
+    fixture = TestBed.createComponent(EsplLogoComponent);
     fixture.detectChanges();
   });
 

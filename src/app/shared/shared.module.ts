@@ -8,17 +8,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 
 import { Draggable } from './draggable/draggable.directive';
-import { RioAlertComponent } from './alert/alert.component';
-import { RioButtonComponent } from './button/button.component';
-import { RioContainerComponent } from './container/container.component';
-import { RioInputComponent } from './input/input.component';
-import { RioLogoComponent } from './logo/logo.component';
-import { RioFormComponent } from './form/form.component';
-import { RioFormErrorComponent } from './form-error/form-error.component';
-import { RioFormGroupComponent } from './form-group/form-group.component';
-import { RioLabelComponent } from './label/label.component';
-import { RioModalComponent } from './modal/modal.component';
-import { RioModalContentComponent } from './modal-content/modal-content.component';
+import { EsplAlertComponent } from './alert/alert.component';
+import { EsplButtonComponent } from './button/button.component';
+import { EsplContainerComponent } from './container/container.component';
+import { EsplInputComponent } from './input/input.component';
+import { EsplLogoComponent } from './logo/logo.component';
+import { EsplFormComponent } from './form/form.component';
+import { EsplFormErrorComponent } from './form-error/form-error.component';
+import { EsplFormGroupComponent } from './form-group/form-group.component';
+import { EsplLabelComponent } from './label/label.component';
+import { EsplModalComponent } from './modal/modal.component';
+import { EsplModalContentComponent } from './modal-content/modal-content.component';
 import { AwesomePipe } from './awesome/awesome.pipe';
 import { HighlightDirective } from './highlight/highlight.directive';
 import { TitleCasePipe } from './title-case/title-case.pipe';
@@ -29,17 +29,17 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 export const components = [
   Draggable,
-  RioAlertComponent,
-  RioButtonComponent,
-  RioContainerComponent,
-  RioInputComponent,
-  RioLogoComponent,
-  RioFormComponent,
-  RioFormErrorComponent,
-  RioFormGroupComponent,
-  RioLabelComponent,
-  RioModalComponent,
-  RioModalContentComponent,
+  EsplAlertComponent,
+  EsplButtonComponent,
+  EsplContainerComponent,
+  EsplInputComponent,
+  EsplLogoComponent,
+  EsplFormComponent,
+  EsplFormErrorComponent,
+  EsplFormGroupComponent,
+  EsplLabelComponent,
+  EsplModalComponent,
+  EsplModalContentComponent,
   AwesomePipe,
   HighlightDirective,
   TitleCasePipe,

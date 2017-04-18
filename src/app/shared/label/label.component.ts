@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'rio-label',
+  selector: 'espl-label',
   template: `
     <label [id]="qaid">
       <ng-content></ng-content>
     </label>
   `
 })
-export class RioLabelComponent {
+export class EsplLabelComponent {
   @Input() qaid: string;
 };

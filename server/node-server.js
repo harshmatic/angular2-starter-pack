@@ -34,7 +34,7 @@ authPassport.readUsers()
     throw err;
   });
 
-// Enable various security helpers.
+// Enable vaesplus security helpers.
 app.use(helmet());
 
 app.use(bodyParser.urlencoded({ extended: false }));

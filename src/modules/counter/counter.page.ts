@@ -11,22 +11,22 @@ import { COUNTER_ACTIONS } from './store/counter.actions';
   selector: 'counter-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <rio-container testid="counter" [size]=2 [center]=true>
+    <espl-container testid="counter" [size]=2 [center]=true>
       <h2 data-testid="counter-heading" id="qa-counter-heading"
         class="center caps">
         Counter
       </h2>
 
-      <rio-counter
+      <espl-counter
         [value]="value$"
         (increment)="increment()"
         (decrement)="decrement()">
-      </rio-counter>
-    </rio-container>
+      </espl-counter>
+    </espl-container>
   `,
   styleUrls: ['./counter.component.css']
 })
-export class RioCounterPage {
+export class EsplCounterPage {
   value$: number;
   constructor(private store: Store<fromRoot.RootState>) {
      store.select('counter').subscribe((res:any) => this.value$ = res.value );

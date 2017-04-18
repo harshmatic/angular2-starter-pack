@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RioCounterPage } from './counter.page';
+import { EsplCounterPage } from './counter.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: RioCounterPage
+    component: EsplCounterPage
   }
 ];
 
-export const routedComponents = [RioCounterPage];
+export const routedComponents = [EsplCounterPage];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

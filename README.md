@@ -44,7 +44,7 @@ to have them together but the point is just to demonstrate how things should wor
 A huge thanks to those who created the example demos from which I put together this amalgam. 
 
 To make this big app from the small ones, I took these projects and integrated/restructured/restyled their code
-according to the following prioritization. Disagreements in approach between two influences are resolved by the
+according to the following pesplritization. Disagreements in approach between two influences are resolved by the
 lower authority yielding to the higher one:
 
 1. [Angular Style Guide](https://angular.io/docs/ts/latest/guide/style-guide.html) by Google
