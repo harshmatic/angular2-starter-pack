@@ -52,7 +52,7 @@ const store = StoreModule.provideStore(reducer);
 @NgModule({
   imports: [
     CommonModule,
-    //    MaterialModule.forRoot(),
+        MaterialModule.forRoot(),
     /**
      * StoreModule.provideStore is imported once in the root module, accepting a reducer
      * function or object map of reducer functions. If passed an object of

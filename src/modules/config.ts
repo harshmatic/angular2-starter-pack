@@ -1,10 +1,12 @@
 import { RouterModule, Routes } from '@angular/router';
-import * as fromCounter from './counter/store/counter.reducer';
+import * as CounterReducer from './counter/store/counter.reducer';
+import {EmployeeReducer} from './employee/store/employee.reducer';
 import { Counter } from './counter/store/counter.model';
 
 export const routing = [
 
   { path: 'counter', loadChildren: 'modules/counter/counter.module#CounterModule' },
+  { path: 'employee', loadChildren: 'modules/employee/employee.module' },
   { path: '', redirectTo: 'core', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' }
 
@@ -18,5 +20,6 @@ export interface RootState {
 
 
 export const moduleReducers = {
-  counter: fromCounter.reducer,
+  counter: CounterReducer.reducer,
+  employee: EmployeeReducer,
 }
