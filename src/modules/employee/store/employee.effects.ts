@@ -14,8 +14,7 @@ export class EmployeeEffects {
    .switchMap(action => 
        this.employeeService.getEmployeeList()
         .map(res =>{
-          debugger
-         return ({ type: EMPLOYEE_ACTIONS.GET_EMPLOYEE_SUCCESS, payload: res })
+          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_EMPLOYEE_SUCCESS, payload: res })
         })
         .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
       );
