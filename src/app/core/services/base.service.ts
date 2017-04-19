@@ -17,7 +17,7 @@ interface HttpServices {
 
 /** Base Service Definition */
 export class BaseService implements HttpServices {
-    public baseUrl: string = '/api/';
+    public baseUrl: string = 'http://localhost:3100/api/';
     public options: RequestOptions;
 
     private httpService: Http;
@@ -42,15 +42,11 @@ export class BaseService implements HttpServices {
      */
     get$(id: string, isSecured?: boolean): Observable<Response> {
         this.getHeaders(isSecured);
-        let windowRef = this._window();
-        windowRef['App'].blockUI();
         return this.httpService.get(this.requestUrl + '/' + id, this.options)
         .map(data => {
-            windowRef['App'].unblockUI();
             return data;
         })
         .catch(err => {
-            windowRef['App'].unblockUI();
             return this.handleError(err);
         });
     }
@@ -62,15 +58,11 @@ export class BaseService implements HttpServices {
      */
     getList$(pageNum?: number, pageSize?: number, isSecured?: boolean): Observable<Response> {
         this.getHeaders(isSecured);
-        let windowRef = this._window();
-        windowRef['App'].blockUI();
         return this.httpService.get(this.requestUrl, this.options)
         .map(data => {
-            windowRef['App'].unblockUI();
             return data;
         })
         .catch(err => {
-            windowRef['App'].unblockUI();
             return this.handleError(err);
         });
     }
@@ -83,15 +75,11 @@ export class BaseService implements HttpServices {
      */
     getChildList$(childName: string, pageNum?: number, pageSize?: number, isSecured?: boolean) {
         this.getHeaders(isSecured);
-        let windowRef = this._window();
-        windowRef['App'].blockUI();
         return this.httpService.get(this.requestUrl + '/' + childName, this.options)
         .map(data => {
-            windowRef['App'].unblockUI();
             return data;
         })
         .catch(err => {
-            windowRef['App'].unblockUI();
             return this.handleError(err);
         });
 

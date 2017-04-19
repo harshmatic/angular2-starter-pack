@@ -7,31 +7,22 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
 import { Employee } from '../store/employee.model';
+import { BaseService } from '../../../app/core/services/index';
 
 /** Context for service calls */
-const CONTEXT = 'Employee';
+const CONTEXT = 'employee';
 
 /** Service Definition */
 @Injectable()
-export class EmployeeService {
+export class EmployeeService extends BaseService {
 
     constructor(public http: Http) {
+        super(http,CONTEXT);
     }
 
 
     getEmployeeList() {
-        let headers = new Headers();
-        // headers.append('Authorization', 'Bearer ' + localStorage.getItem('accessToken'));
-        headers.append('Content-Type', 'application/json');
-        let options = new RequestOptions({ headers: headers });
-        return this.http.get('http://localhost:3100/api/employee', options)
-            .map(res => {
-                return res.json();
-            })
-            .catch((err:any) => {
-               console.log(err);
-               return err
-            });
+     return this.getList$().map(res => res.json());
     }
 
 }
