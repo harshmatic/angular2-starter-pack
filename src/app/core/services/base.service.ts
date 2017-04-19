@@ -17,7 +17,7 @@ interface HttpServices {
 
 /** Base Service Definition */
 export class BaseService implements HttpServices {
-    public baseUrl: string = 'http://localhost:3100/api/';
+    public baseUrl: string = 'http://192.168.100.103:6060/api/';
     public options: RequestOptions;
 
     private httpService: Http;
@@ -92,15 +92,11 @@ export class BaseService implements HttpServices {
      */
     post$(payload: string, isSecured?: boolean): Observable<Response> {
         this.getHeaders(isSecured);
-        let windowRef = this._window();
-        windowRef['App'].blockUI();
         return this.httpService.post(this.requestUrl, payload, this.options)
         .map(data => {
-            windowRef['App'].unblockUI();
             return data;
         })
         .catch(err => {
-            windowRef['App'].unblockUI();
             return this.handleError(err);
         });
     }
@@ -112,15 +108,11 @@ export class BaseService implements HttpServices {
     */
     put$(id: string, payload: any, isSecured?: boolean) {
         this.getHeaders(isSecured);
-        let windowRef = this._window();
-        windowRef['App'].blockUI();
         return this.httpService.put(this.requestUrl, payload, this.options)
         .map(data => {
-            windowRef['App'].unblockUI();
             return data;
         })
         .catch(err => {
-            windowRef['App'].unblockUI();
             return this.handleError(err);
         });
     }
@@ -131,15 +123,11 @@ export class BaseService implements HttpServices {
      */
     delete$(id: string, isSecured?: boolean) {
         this.getHeaders(isSecured);
-        let windowRef = this._window();
-        windowRef['App'].blockUI();
         return this.httpService.delete(this.requestUrl + '/' + id, this.options)
         .map(data => {
-            windowRef['App'].unblockUI();
             return data;
         })
         .catch(err => {
-            windowRef['App'].unblockUI();
             return this.handleError(err);
         });
     }
@@ -153,9 +141,9 @@ export class BaseService implements HttpServices {
         if (error instanceof Response) {
             const body = error.json() || '';
             const err = body.error_description ||  body.error || body.Message || JSON.stringify(body);
-            //errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-            errMsg=err;
-            this.messageService.addMessage({ severity: 'error', summary: 'Failed', detail: errMsg  });
+            errMsg = err;
+            console.error(err)
+            //this.messageService.addMessage({ severity: 'error', summary: 'Failed', detail: errMsg  });
         } else {
             errMsg = error.message ? error.message : error.toString();
         }
@@ -170,6 +158,8 @@ export class BaseService implements HttpServices {
         if (isSecured) {
             headers.append('Authorization', 'Bearer ' + localStorage.getItem('accessToken'));
         }
+        headers.append('Content-Type', 'application/json');
+        headers.append('Accept', 'application/json');
         this.options = new RequestOptions({ headers: headers });
     }
 }

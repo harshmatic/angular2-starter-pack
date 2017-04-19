@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth.guard';
 import { AuthService } from '../auth.service';
-import { LoginComponent } from './login.component';
+import { EsplLoginFormComponent } from './login-form/login-form.component';
 
 const loginRoutes: Routes = [
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: EsplLoginFormComponent }
 ];
 
 @NgModule({
@@ -16,7 +16,7 @@ const loginRoutes: Routes = [
     RouterModule
   ],
   providers: [
-    AuthGuard,
+   // AuthGuard,
     AuthService
   ]
 })

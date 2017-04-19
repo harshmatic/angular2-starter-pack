@@ -5,32 +5,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 
 import { EsplLoginFormComponent } from './login-form/login-form.component';
-import { EsplLoginModalComponent } from './login-modal/login-modal.component';
-import { LoginComponent } from './login.component';
 import { SharedModule } from '../../../shared/shared.module';
-import { SessionEffects } from '../../../core/store/session/session.effects';
-import { DataService } from '../../../core/services/data.service';
 import { LoginRouting } from './login.routing';
+import { AuthService } from '../auth.service';
+import {EmployeeService} from '../../../../modules/employee/services/employee.service';
 
 @NgModule({
   imports: [
+    HttpModule,
     SharedModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpModule,
-    EffectsModule.run(SessionEffects),
     LoginRouting
   ],
   declarations: [
-    EsplLoginModalComponent,
-    EsplLoginFormComponent,
-    LoginComponent
+    EsplLoginFormComponent
   ],
   exports: [
-    EsplLoginModalComponent
   ],
-  providers: [
-    DataService
-  ]
+  providers:[EmployeeService]
 })
 export class LoginModule { }
