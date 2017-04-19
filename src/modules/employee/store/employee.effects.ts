@@ -14,7 +14,7 @@ const CONTEXT = 'employee';
 
 @Injectable()
 export class EmployeeEffects extends BaseService {
-  
+
   @Effect({ dispatch: false })
   private getListEmp$ = this.actions$
     .ofType(EMPLOYEE_ACTIONS.GET_EMPLOYEE_LIST)
