@@ -17,13 +17,9 @@ interface HttpServices {
 
 /** Base Service Definition */
 export class BaseService implements HttpServices {
-<<<<<<< Updated upstream
-    public baseUrl: string = 'http://192.168.100.103:6060/api/';
-    public options: RequestOptions;
-=======
+
     private baseUrl: string = ApiBase;
     private options: RequestOptions;
->>>>>>> Stashed changes
 
     private httpService: Http;
     private requestUrl: string;
