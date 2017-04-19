@@ -12,10 +12,14 @@ export class EmployeeComponent  implements OnInit {
   employee:Employee[];
   constructor(private store: Store<Employee>){}
   ngOnInit() {
+     console.log("asdkh");
     this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_EMPLOYEE_LIST });
+     this.store.dispatch({ type: EMPLOYEE_ACTIONS.ADD_EMPLOYEE });
+     
      this.store.select('employee').subscribe((res:any) => {
-       console.log(res)
+      
        this.employee = res;
      });
+     
   }
 }

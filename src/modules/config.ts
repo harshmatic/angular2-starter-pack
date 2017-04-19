@@ -12,7 +12,7 @@ export const routing = [
 
 ];
 
-export const apiBase = "/api";
+export const ApiBase = "http://localhost:3100/api/";
 
 export interface RootState {
   counter: Counter;

@@ -87,6 +87,7 @@ app.get('/api/note', getRecords('note'));
 app.get('/api/users', getRecords('user'));
 app.post('/api/note', saveARecord('note'));
 app.post('/api/hero', saveARecord('hero'));
+app.post('/api/employee', saveARecord('note'));
 app.get('/api/employee', function(req,res) {
   res.json([{name:'Emp1'},{name:'Emp2'},{name:'Emp3'},{name:'Emp4'},{name:'Emp5'}])
 });

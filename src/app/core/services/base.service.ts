@@ -4,10 +4,10 @@ import { MessageService } from './message.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import {ApiBase} from '../../../modules/config'
 
 /** HttpService interface Definition*/
 interface HttpServices {
-    baseUrl: string;
     get$(id: string, isSecured?: boolean): Observable<Response>;
     getList$(pageNum?: number, pageSize?: number, isSecured?: boolean): Observable<Response>;
     post$(payload: any, isSecured?: boolean): Observable<Response>;
@@ -17,8 +17,13 @@ interface HttpServices {
 
 /** Base Service Definition */
 export class BaseService implements HttpServices {
+<<<<<<< Updated upstream
     public baseUrl: string = 'http://192.168.100.103:6060/api/';
     public options: RequestOptions;
+=======
+    private baseUrl: string = ApiBase;
+    private options: RequestOptions;
+>>>>>>> Stashed changes
 
     private httpService: Http;
     private requestUrl: string;

@@ -20,9 +20,4 @@ export class EmployeeService extends BaseService {
         super(http,CONTEXT);
     }
 
-
-    getEmployeeList() {
-     return this.getList$().map(res => res.json());
-    }
-
 }
