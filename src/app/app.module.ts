@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MaterialModule } from '@angular/material';
 import { Router } from '@angular/router';
 import { LoginModule } from './core/auth/login/login.module';
 /** TODO: remove when work-around is not needed*/
@@ -22,7 +21,6 @@ import { CoreModule } from './core/core.module';
     CoreModule,
     AppRouting,
     LoginModule,
-    MaterialModule.forRoot(),
     SharedModule
   ],
   declarations: [

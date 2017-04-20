@@ -15,6 +15,7 @@ import { EsplContainerComponent } from '../../shared/container/container.compone
       </p>
       <p><a href="https://github.com/dancancro/great-big-angular2-example">Source Code</a></p>
     </espl-container>
+    <button class="btn btn-warning btn-lg">Go Back</button>
     <twain-quote></twain-quote>
   `
 })

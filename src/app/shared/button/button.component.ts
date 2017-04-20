@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       [id]="qaid"
       (click)="handleClick($event)"
       type="{{type || 'button'}}"
-      class="btn btn-primary {{className}}">
+      class="btn {{className}}">
 
       <ng-content></ng-content>
     </button>

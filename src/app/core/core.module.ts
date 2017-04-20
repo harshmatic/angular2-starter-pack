@@ -14,7 +14,6 @@ import { StoreModule } from '@ngrx/store';
 import { DBModule } from '@ngrx/db';
 import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { MaterialModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
@@ -52,7 +51,6 @@ const store = StoreModule.provideStore(reducer);
 @NgModule({
   imports: [
     CommonModule,
-        MaterialModule.forRoot(),
     /**
      * StoreModule.provideStore is imported once in the root module, accepting a reducer
      * function or object map of reducer functions. If passed an object of
