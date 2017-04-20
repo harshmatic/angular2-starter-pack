@@ -6,9 +6,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ButtonComponent} from '../shared/buttonComponent/button.component';
-
+import {EsplLabelComponent} from '../shared/label/label.component';
+import {EsplAlertComponent} from '../shared/alert/alert.component';
+import {EsplFormGroupComponent} from '../shared/form-group/form-group.component';
 export const components = [
-    ButtonComponent
+    ButtonComponent,
+    EsplLabelComponent,
+    EsplAlertComponent,
+    EsplFormGroupComponent
    
 ];
 
