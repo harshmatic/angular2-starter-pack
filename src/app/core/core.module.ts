@@ -24,7 +24,7 @@ import {
 } from './navigator/navigator.module';
 import { reducer } from './store';
 //import { schema } from './store/db';
-import { SharedModule } from '../shared/shared.module';
+//import { SharedModule } from '../shared/shared.module';
 import { NotFoundPage } from './not-found/not-found.page';
 import { EsplAboutPage } from './about/about.page';
 //import { TitleComponent } from './title/title.component';
@@ -34,7 +34,7 @@ import { routing } from './core.routing';
 import { PlatformDirective } from './platform/platform.directive';
 import { CORE_PROVIDERS } from './services/index';
 import { Config } from './utils/index';
-import { AuthModule } from './auth/auth.module';
+//import { AuthModule } from './auth/auth.module';
 
 interface ICoreModuleOptions {
   window?: any;
@@ -84,8 +84,8 @@ const store = StoreModule.provideStore(reducer);
      */
     //DBModule.provideDB(schema),
     NavigatorModule,
-    SharedModule,
-    AuthModule,
+    //SharedModule,
+//AuthModule,
     routing
   ],
   declarations: [

@@ -14,7 +14,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     </button>
   `
 })
-export class EsplButtonComponent {
+export class ButtonComponent {
   @Input() className: string;
   @Input() type: string;
   @Input() qaid: string;

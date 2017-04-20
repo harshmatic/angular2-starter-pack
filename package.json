@@ -137,5 +137,15 @@
     "webpack-dev-server": "^2.2.0",
     "webpack-hot-middleware": "^2.12.2",
     "webpack-split-by-path": "^0.1.0-beta.1"
-  }
+  },
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahesh-kedari/angular2-starter-pack.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/mahesh-kedari/angular2-starter-pack/issues"
+  },
+  "homepage": "https://github.com/mahesh-kedari/angular2-starter-pack#readme"
 }

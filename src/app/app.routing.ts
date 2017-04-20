@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //import { AuthGuard } from './core/auth/auth.guard';
-import { CanDeactivateGuard } from './shared/can-deactivate/can-deactivate.guard';
-import { SelectivePreloadingStrategy } from './shared/selective-preloading-strategy';
+//import { CanDeactivateGuard } from './shared/can-deactivate/can-deactivate.guard';
+//import { SelectivePreloadingStrategy } from './shared/selective-preloading-strategy';
 import {routing} from '../modules/config'
 // var appRoot = require('app-root-path');
 // var path = require('path');
@@ -15,15 +15,15 @@ const routes: Routes = routing;
   imports: [
     RouterModule.forRoot(
       routes,
-      { preloadingStrategy: SelectivePreloadingStrategy }
+     // { preloadingStrategy: SelectivePreloadingStrategy }
     )
   ],
   exports: [
     RouterModule
   ],
   providers: [
-    CanDeactivateGuard,
-    SelectivePreloadingStrategy
+   // CanDeactivateGuard,
+   // SelectivePreloadingStrategy
   ]
 })
 export class AppRouting { };

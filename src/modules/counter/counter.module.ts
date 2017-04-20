@@ -4,14 +4,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CounterRouting } from './counter.routing';
-import { SharedModule } from '../../app/shared/shared.module';
+//import { SharedModule } from '../../app/shared/shared.module';
 import { EsplCounterComponent } from './counter.component';
 import { EsplCounterPage } from './counter.page';
 import { CounterEffects } from './store/counter.effects';
 
 @NgModule({
   imports: [
-    SharedModule,
+   // SharedModule,
     ReactiveFormsModule,
     CounterRouting,
     EffectsModule.run(CounterEffects)
