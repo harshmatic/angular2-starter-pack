@@ -15,23 +15,23 @@ export class AuthGuard implements CanActivate{
 
   canActivate(route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot) {
-        // if (!this.authService.isLoggedIn) {
-        //     this.router.navigate(['/login']);
-        //     return false;
-        // };
-        // if (route.data['permissions']) {
-        //     if (localStorage.getItem('loggedInUserPermission') !== null) {
-        //         var logggedInUserPermission = JSON.parse(localStorage.getItem('loggedInUserPermission'));
-        //         for (var i = 0; i < route.data['permissions'].length; i++) {
-        //             if (logggedInUserPermission.indexOf(route.data['permissions'][i]) === -1) {
-        //                 this.router.navigate(['/forbidden']);
-        //                 return false;
-        //             }
-        //         }
-        //     } else {
-        //         return false;
-        //     }
-        // }
+        if (!this.authService.isLoggedIn) {
+            this.router.navigate(['/login']);
+            return false;
+        };
+        if (route.data['permissions']) {
+            if (localStorage.getItem('loggedInUserPermission') !== null) {
+                var logggedInUserPermission = JSON.parse(localStorage.getItem('loggedInUserPermission'));
+                for (var i = 0; i < route.data['permissions'].length; i++) {
+                    if (logggedInUserPermission.indexOf(route.data['permissions'][i]) === -1) {
+                        this.router.navigate(['/forbidden']);
+                        return false;
+                    }
+                }
+            } else {
+                return false;
+            }
+        }
         return true;
     }
 }
