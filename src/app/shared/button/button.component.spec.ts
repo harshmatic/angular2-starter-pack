@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RioButtonComponent } from './button.component';
+import { EsplButtonComponent } from './button.component';
 import { SharedModule } from '../shared.module';
 
 let fixture;
@@ -14,7 +14,7 @@ describe('Component: Button', () => {
         SharedModule
       ]
     });
-    fixture = TestBed.createComponent(RioButtonComponent);
+    fixture = TestBed.createComponent(EsplButtonComponent);
     fixture.detectChanges();
   });
 

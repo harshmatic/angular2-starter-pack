@@ -5,7 +5,7 @@ import {
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'rio-input',
+  selector: 'espl-input',
   template: `
     <input
       [id]="qaid"
@@ -16,7 +16,7 @@ import { FormControl } from '@angular/forms';
     />
   `
 })
-export class RioInputComponent {
+export class EsplInputComponent {
   @Input() inputType = 'text';
   @Input() placeholder = '';
   @Input() control: FormControl = new FormControl();

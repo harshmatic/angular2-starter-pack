@@ -25,7 +25,7 @@ export { ClaimRebuttalEffects } from './store/claim-rebuttal/claim-rebuttal.effe
 
 export { Claim, initialClaim } from './store/claim/claim.model';
 
-export { getRebuttalEntities } from './store';
+//export { getRebuttalEntities } from './store';
 
 export { BerniePageLayout } from './store/layout/layout.model';
 export { Entities } from './store/entity/entity.model';
@@ -34,7 +34,7 @@ export { Entities } from './store/entity/entity.model';
 export { slices } from '../core/store/util';
 
 export { NoteEffects } from './store/note/note.effects';
-export { AuthGuard } from './auth/auth.guard';
+//export { AuthGuard } from './auth/auth.guard';
 
 export { NotFoundPage } from './not-found/not-found.page';
 

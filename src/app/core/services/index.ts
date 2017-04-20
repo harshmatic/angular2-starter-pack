@@ -5,14 +5,15 @@ import { RouterExtensions } from './router-extensions.service';
 import { WindowService } from './window.service';
 import { AppService } from './app.service';
 import { UserService } from './user.service';
-
+import {MessageService} from './message.service';
 export const CORE_PROVIDERS: any[] = [
   AppService,
   ConsoleService,
   LogService,
   RouterExtensions,
   WindowService,
-  UserService
+  UserService,
+  MessageService
 ];
 
 export * from './app.service';
@@ -20,3 +21,5 @@ export * from './console.service';
 export * from './log.service';
 export * from './router-extensions.service';
 export * from './window.service';
+export * from './base.service';
+export * from './message.service';

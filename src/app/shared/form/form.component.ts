@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'rio-form',
+  selector: 'espl-form',
   template: `
     <form [formGroup]="group"
       (ngSubmit)="onSubmit.emit($event)">
@@ -10,7 +10,7 @@ import { FormGroup } from '@angular/forms';
     </form>
   `
 })
-export class RioFormComponent {
+export class EsplFormComponent {
   @Input() group: FormGroup;
   @Output() onSubmit = new EventEmitter<Event>();
 };

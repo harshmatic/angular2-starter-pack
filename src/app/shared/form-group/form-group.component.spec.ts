@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RioFormGroupComponent } from './form-group.component';
+import { EsplFormGroupComponent } from './form-group.component';
 import { SharedModule } from '../shared.module';
 
 describe('Component: Form Group', () => {
@@ -14,18 +14,18 @@ describe('Component: Form Group', () => {
         SharedModule
       ],
       declarations: [
-        RioFormGroupTestController
+        EsplFormGroupTestController
       ],
       providers: [
-        RioFormGroupComponent
+        EsplFormGroupComponent
       ]
     });
-    fixture = TestBed.createComponent(RioFormGroupTestController);
+    fixture = TestBed.createComponent(EsplFormGroupTestController);
     fixture.detectChanges();
   });
 
-  it('should inject the component', inject([RioFormGroupComponent],
-    (component: RioFormGroupComponent) => {
+  it('should inject the component', inject([EsplFormGroupComponent],
+    (component: EsplFormGroupComponent) => {
       expect(component).toBeTruthy();
     }));
 
@@ -33,7 +33,7 @@ describe('Component: Form Group', () => {
     fixture.whenStable().then(() => {
       fixture.autoDetectChanges();
       let query = fixture.debugElement
-        .query(By.directive(RioFormGroupComponent));
+        .query(By.directive(EsplFormGroupComponent));
       expect(query).toBeTruthy();
       expect(query.componentInstance).toBeTruthy();
     });
@@ -44,10 +44,10 @@ describe('Component: Form Group', () => {
 @Component({
   selector: 'test',
   template: `
-    <rio-form-group
+    <espl-form-group
       qaid="test-1">
-    </rio-form-group>
+    </espl-form-group>
   `
 })
-class RioFormGroupTestController { }
+class EsplFormGroupTestController { }
 

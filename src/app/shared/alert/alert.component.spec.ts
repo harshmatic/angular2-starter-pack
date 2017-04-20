@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RioAlertComponent } from './alert.component';
+import { EsplAlertComponent } from './alert.component';
 import { SharedModule } from '../shared.module';
 
 describe('Component: Alert', () => {
-  let fixture: ComponentFixture<RioAlertComponent>;
+  let fixture: ComponentFixture<EsplAlertComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -14,7 +14,7 @@ describe('Component: Alert', () => {
         SharedModule
       ]
     });
-    fixture = TestBed.createComponent(RioAlertComponent);
+    fixture = TestBed.createComponent(EsplAlertComponent);
     fixture.detectChanges();
   });
 

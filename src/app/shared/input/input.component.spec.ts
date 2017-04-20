@@ -4,7 +4,7 @@ import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing'
 import { FormControl } from '@angular/forms';
 
 import { SharedModule } from '../shared.module';
-import { RioInputComponent } from './input.component';
+import { EsplInputComponent } from './input.component';
 
 describe('Component: Form Input', () => {
   let fixture;
@@ -15,7 +15,7 @@ describe('Component: Form Input', () => {
         SharedModule
       ]
     });
-    fixture = TestBed.createComponent(RioInputComponent);
+    fixture = TestBed.createComponent(EsplInputComponent);
     fixture.detectChanges();
   });
 

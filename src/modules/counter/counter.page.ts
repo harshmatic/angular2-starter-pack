@@ -3,42 +3,40 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import * as fromRoot from '../../app/core/store';
-import { Counter } from '../../app/core/store/counter/counter.model';
-import { slices } from '../../app/core/store/util';
-import * as SliceActions from '../../app/core/store/slice/slice.actions';
+import { Counter } from './store/counter.model';
+import { COUNTER_ACTIONS } from './store/counter.actions';
 
 
 @Component({
   selector: 'counter-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <rio-container testid="counter" [size]=2 [center]=true>
+    <espl-container testid="counter" [size]=2 [center]=true>
       <h2 data-testid="counter-heading" id="qa-counter-heading"
         class="center caps">
         Counter
       </h2>
 
-      <rio-counter
-        [value]="value$ | async"
+      <espl-counter
+        [value]="value$"
         (increment)="increment()"
         (decrement)="decrement()">
-      </rio-counter>
-    </rio-container>
+      </espl-counter>
+    </espl-container>
   `,
   styleUrls: ['./counter.component.css']
 })
-export class RioCounterPage {
-  value$: Observable<number>;
-
+export class EsplCounterPage {
+  value$: number;
   constructor(private store: Store<fromRoot.RootState>) {
-    this.value$ = store.select(fromRoot.getCounterValue);
+     store.select('counter').subscribe((res:any) => this.value$ = res.value );
   }
 
   increment() {
-    this.store.dispatch(new SliceActions.Update(slices.COUNTER, ['value'], (state) => state.value + 1));
+    this.store.dispatch({ type: COUNTER_ACTIONS.INCREMENT })
   }
 
   decrement() {
-    this.store.dispatch(new SliceActions.Update(slices.COUNTER, ['value'], (state) => state.value - 1));
+    this.store.dispatch({ type: COUNTER_ACTIONS.DECREMENT })
   }
 }

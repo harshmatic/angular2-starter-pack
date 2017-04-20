@@ -5,9 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { CounterRouting } from './counter.routing';
 import { SharedModule } from '../../app/shared/shared.module';
-import { RioCounterComponent } from './counter.component';
-import { RioCounterPage } from './counter.page';
-import { CounterEffects } from '../../app/core/store/counter/counter.effects';
+import { EsplCounterComponent } from './counter.component';
+import { EsplCounterPage } from './counter.page';
+import { CounterEffects } from './store/counter.effects';
 
 @NgModule({
   imports: [
@@ -17,8 +17,8 @@ import { CounterEffects } from '../../app/core/store/counter/counter.effects';
     EffectsModule.run(CounterEffects)
   ],
   declarations: [
-    RioCounterPage,
-    RioCounterComponent,
+    EsplCounterPage,
+    EsplCounterComponent,
   ]
 })
 export class CounterModule { }
