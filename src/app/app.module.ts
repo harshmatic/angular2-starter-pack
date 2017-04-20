@@ -9,19 +9,21 @@ import 'hammerjs';
 import { AppPage } from './app.page';
 //import { EsplLoginModalComponent } from './core/auth/login/login-modal/login-modal.component';
 //import { LoginModule } from './core/auth/login/login.module';
-//import { SharedModule } from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { AppRouting } from './app.routing';
 
 /* Feature Modules */
 import { CoreModule } from './core/core.module';
+
 
 @NgModule({
   imports: [
     BrowserModule,
     CoreModule,
     AppRouting,
+   //TestComponent,
     //LoginModule,
-   // SharedModule
+    SharedModule
   ],
   declarations: [
     AppPage

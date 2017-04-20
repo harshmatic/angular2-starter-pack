@@ -24,9 +24,10 @@ import {
 } from './navigator/navigator.module';
 import { reducer } from './store';
 //import { schema } from './store/db';
-//import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { NotFoundPage } from './not-found/not-found.page';
 import { EsplAboutPage } from './about/about.page';
+import { TestComponent } from './TestComponents/test.page';
 //import { TitleComponent } from './title/title.component';
 import { routing } from './core.routing';
 
@@ -84,7 +85,7 @@ const store = StoreModule.provideStore(reducer);
      */
     //DBModule.provideDB(schema),
     NavigatorModule,
-    //SharedModule,
+    SharedModule,
 //AuthModule,
     routing
   ],
@@ -92,6 +93,7 @@ const store = StoreModule.provideStore(reducer);
     PlatformDirective,
     NotFoundPage,
     EsplAboutPage,
+    TestComponent
    // TitleComponent
   ],
   exports: [
@@ -99,6 +101,7 @@ const store = StoreModule.provideStore(reducer);
    // TitleComponent,
     NotFoundPage,
     EsplAboutPage,
+    TestComponent,
     CommonModule,
     FormsModule,
     RouterModule,

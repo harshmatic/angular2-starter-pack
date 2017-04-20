@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TestComponent } from '../TestComponents/test.component'
 //import { EsplContainerComponent } from '../../shared/container/container.component';
 
 @Component({
@@ -18,6 +19,6 @@ import { Component } from '@angular/core';
   //   <button class="btn btn-warning btn-lg">Go Back</button>
   //   <twain-quote></twain-quote>
   // `
-  template: `hello world`
+  template:`<espl-test></espl-test>`
 })
 export class EsplAboutPage { }
