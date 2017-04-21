@@ -6,7 +6,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import { BaseService } from '../services/index';
 
-const CONTEXT='token/auth'
+const CONTEXT='auth/token'
 @Injectable()
 export class AuthService extends BaseService {
   isLoggedIn: boolean = false;
