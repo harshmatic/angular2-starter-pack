@@ -14,7 +14,7 @@ import {Component, Input} from '@angular/core';
   `,
   
 })
-export class InputComponent {
+export class EsplInputComponent {
   @Input() inputType = 'text';
   @Input() qaid: string;
   @Input() placeholder = 'Enter Name';
