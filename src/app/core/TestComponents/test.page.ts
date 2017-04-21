@@ -8,7 +8,12 @@ import {EsplInputComponent} from '../../shared/input/input.component';
 import {EsplLogoComponent} from '../../shared/logo/logo.component';
 import {EsplModalComponent} from '../../shared/modal/modal.component';
 import {EsplContainerComponent} from '../../shared/container/container.component';
-
+import {EsplPanelComponent} from '../../shared/panel/panel.component';
+import {EsplFormComponent} from '../../shared/form/form.component';
+import {EsplFormErrorComponent} from '../../shared/form-error/form-error.component';
+import {EsplJumbotronComponent} from '../../shared/jumbotron/jumbotron.component';
+import {EsplWellComponent} from '../../shared/well/well.component';
+import {EsplBadgesComponent } from '../../shared/badges/badges.component';
 @Component({
     selector: 'espl-test',
     templateUrl: 'test.component.html'
