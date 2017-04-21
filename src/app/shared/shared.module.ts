@@ -21,6 +21,20 @@ import {EsplJumbotronComponent} from '../shared/jumbotron/jumbotron.component';
 import {EsplWellComponent} from '../shared/well/well.component';
 import {EsplBadgesComponent } from '../shared/badges/badges.component';
 
+
+
+//import {EsplInputComponent} from '../shared/input/input.component';
+//import {EsplLogoComponent} from '../shared/logo/logo.component';
+//import {EsplModalComponent} from '../shared/modal/modal.component';
+import {ModalComponent} from '../shared/modal/modalRender.component';
+//import {EsplContainerComponent} from '../shared/container/container.component';
+import {EsplDropdownComponent} from '../shared/dropdown/dropdown.component';
+
+import { EsplPageheaderComponent} from '../shared/pageheader/pageheader.component';
+
+
+
+
 export const components = [
     ButtonComponent,
     EsplLabelComponent,
@@ -35,10 +49,17 @@ export const components = [
     EsplFormErrorComponent,
     EsplJumbotronComponent,
     EsplWellComponent,
-    EsplBadgesComponent 
+    EsplBadgesComponent ,
+    EsplDropdownComponent,
+    ModalComponent,
+    EsplPageheaderComponent
 ];
 
 
+
+
+
+ 
 
 @NgModule({
   imports: [
