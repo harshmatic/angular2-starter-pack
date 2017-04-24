@@ -3,9 +3,9 @@ import { HttpModule } from '@angular/http';
 import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { EmployeeRouting } from './occurenceBook.routing';
+import { OccurenceBookRouting } from './occurenceBook.routing';
 import { SharedModule } from '../../app/shared/shared.module';
-import { EmployeeComponent } from './components/employee.component';
+import { OccurenceBookComponent } from './components/ob.component';
 import { OccurenceBookEffects } from './store/occurenceBook.effects';
 import { OccurenceBookService } from './services/occurenceBook.service';
 
@@ -13,12 +13,12 @@ import { OccurenceBookService } from './services/occurenceBook.service';
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    EmployeeRouting,
+    OccurenceBookRouting,
     EffectsModule.run(OccurenceBookEffects)
   ],
   declarations: [
-    EmployeeComponent
+    OccurenceBookComponent
   ],
   providers:[OccurenceBookService]
 })
-export default class EmployeeModule { }
+export default class OccurenceBookModule { }

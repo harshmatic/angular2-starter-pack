@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { EmployeeComponent } from './components/employee.component';
+import { OccurenceBookComponent } from './components/ob.component';
 import { AuthGuard } from '../../app/core/index'
 
 const routes: Routes = [
   {
     path: '',
-    component: EmployeeComponent,
+    component: OccurenceBookComponent,
     data: {
       //permissions: ['EMPLOYEE_READ']
     },
@@ -15,10 +15,10 @@ const routes: Routes = [
   }
 ];
 
-export const routedComponents = [EmployeeComponent];
+export const routedComponents = [OccurenceBookComponent];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class EmployeeRouting { }
+export class OccurenceBookRouting { }

@@ -110,7 +110,18 @@ export class BaseService implements HttpServices {
     */
     put$(id: string, payload: any, isSecured?: boolean) {
         this.getHeaders(isSecured);
-        return this.httpService.put(this.requestUrl, payload, this.options)
+        return this.httpService.put(this.requestUrl+"/"+id, payload, this.options)
+        .map(data => {
+            return data;
+        })
+        .catch(err => {
+            return this.handleError(err);
+        });
+    }
+
+    patch$(id: string, payload: any, isSecured?: boolean) {
+        this.getHeaders(isSecured);
+        return this.httpService.patch(this.requestUrl+"/"+id, payload, this.options)
         .map(data => {
             return data;
         })
