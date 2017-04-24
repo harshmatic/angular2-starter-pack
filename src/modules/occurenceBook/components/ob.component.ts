@@ -27,20 +27,20 @@ export class OccurenceBookComponent  implements OnInit {
     "obTime": "2017-04-22T17:23:14.9100866",
     "caseFileNumber": "55",
     "natureOfOccurrence": "test after put1",
-    "remark": "Test Remark 55"
+    "remark": "Test Remark 123"
   }
   this.patchReq.push({
     "op":"replace",
     "path":"/natureOfOccurrence",
-    "value":"test after patch"
+    "value":"test after patch 123"
   });
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST });
     // //Create
-    // this.store.dispatch({ type: OB_ACTIONS.ADD,payload:this.occurenceBookObj });
+    //this.store.dispatch({ type: OB_ACTIONS.ADD,payload:this.occurenceBookObj });
     // //Delete
-    // this.store.dispatch({ type: OB_ACTIONS.DELETE,payload:"a7c15c4c-e83c-4d8c-a010-53a41d2a88e9" });
+    this.store.dispatch({ type: OB_ACTIONS.DELETE,payload:"411bfab2-0d44-4fb9-8835-184db90f5678" });
     // //Update (PUT)
-    // this.store.dispatch({ type: OB_ACTIONS.UPDATE,payload:{id:"88f50d32-bb51-4835-90e9-1b02c8109ab2",updates:this.occurenceBookObj}});
+    //this.store.dispatch({ type: OB_ACTIONS.UPDATE,payload:{id:"4bb21f24-046e-48da-83cb-91d05213f0f3",updates:this.occurenceBookObj}});
     // //Update (PATCH)
     // this.store.dispatch({ type: OB_ACTIONS.UPDATE,payload:{id:"88f50d32-bb51-4835-90e9-1b02c8109ab2",updates:this.patchReq}});
     this.store.select('occurenceBook').subscribe((res:any) => {

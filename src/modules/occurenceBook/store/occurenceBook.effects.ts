@@ -20,7 +20,7 @@ export class OccurenceBookEffects extends BaseService {
   private getListOb$ = this.actions$
     .ofType(OB_ACTIONS.GET_LIST)
    .switchMap(action => 
-       this.getList$()
+       this.occurenceBookService.getObs()
         .map(res =>{
           this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
         })
@@ -30,8 +30,7 @@ export class OccurenceBookEffects extends BaseService {
   private addOb$ = this.actions$
     .ofType(OB_ACTIONS.ADD)
    .switchMap(action => {
-    return this.post$(action.payload)
-
+    return this.occurenceBookService.addOb(action.payload)
         .map(res =>{
           this.store.dispatch({ type: OB_ACTIONS.ADD_SUCCESS, payload: res.json() })
         })
@@ -43,7 +42,7 @@ export class OccurenceBookEffects extends BaseService {
   private updateOb$ = this.actions$
     .ofType(OB_ACTIONS.UPDATE)
    .switchMap(action => 
-       this.put$(action.payload.id,action.payload.updates)
+        this.occurenceBookService.saveOb(action.payload.id,action.payload.updates)
         .map(res =>{
           this.store.dispatch({ type: OB_ACTIONS.UPDATE_SUCCESS, payload: res.json() })
         })
@@ -53,7 +52,7 @@ export class OccurenceBookEffects extends BaseService {
   private deleteOb$ = this.actions$
     .ofType(OB_ACTIONS.DELETE)
    .switchMap(action => 
-       this.delete$(action.payload)
+       this.occurenceBookService.deleteOb(action.payload)
         .map(res =>{
           this.store.dispatch({ type: OB_ACTIONS.DELETE_SUCCESS, payload: res.json() })
         })

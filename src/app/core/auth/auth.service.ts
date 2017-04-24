@@ -20,7 +20,7 @@ export class AuthService extends BaseService {
   redirectUrl: string;
 
   login(credentials) {
-    return this.post$(JSON.stringify(credentials)).map(res => {
+    return this.post$(ApiBaseAuthUrl,JSON.stringify(credentials)).map(res => {
        this.setToken(res);
        this.isLoggedIn = true;
     });

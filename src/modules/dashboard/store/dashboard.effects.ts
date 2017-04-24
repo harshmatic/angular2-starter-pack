@@ -19,22 +19,22 @@ export class DashboardEffects extends BaseService {
   private getListEmp$ = this.actions$
     .ofType(DASHBOARD_ACTIONS.GET_DASHBOARD_LIST)
    .switchMap(action => 
-       this.getList$()
+       this.getList$(CONTEXT)
         .map(res =>{
           this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_SUCCESS, payload: res })
         })
         .catch(() => Observable.of({ type: DASHBOARD_ACTIONS.ON_FAILED  }))
       );
-  @Effect({ dispatch: false })
-  private add$ = this.actions$
-    .ofType(DASHBOARD_ACTIONS.ADD_DASHBOARD)
-   .switchMap(action => 
-       this.post$('{"name":"harry"}',false)
-        .map(res =>{
-          this.store.dispatch({ type: DASHBOARD_ACTIONS.ADD_DASHBOARD_SUCCESS, payload: res })
-        })
-        .catch(() => Observable.of({ type: DASHBOARD_ACTIONS.ON_FAILED  }))
-      );
+  // @Effect({ dispatch: false })
+  // private add$ = this.actions$
+  //   .ofType(DASHBOARD_ACTIONS.ADD_DASHBOARD)
+  //  .switchMap(action => 
+  //      this.post$('{"name":"harry"}',false)
+  //       .map(res =>{
+  //         this.store.dispatch({ type: DASHBOARD_ACTIONS.ADD_DASHBOARD_SUCCESS, payload: res })
+  //       })
+  //       .catch(() => Observable.of({ type: DASHBOARD_ACTIONS.ON_FAILED  }))
+  //     );
 
   constructor(
     private store: Store<Dashboard>,
