@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'rio-form-error',
+  selector: 'espl-form-error',
   template: `
     <div
       [id]="qaid"
@@ -12,7 +12,7 @@ import { Component, Input } from '@angular/core';
     </div>
   `
 })
-export class RioFormErrorComponent {
+export class EsplFormErrorComponent {
   @Input() visible: boolean;
   @Input() qaid: string;
   @Input() testid: string = 'form-error';

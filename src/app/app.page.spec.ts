@@ -39,8 +39,8 @@ const config: Route[] = [
 
 
 // Stubs
-@Component({ selector: 'rio-login-modal', template: '' })
-class RioLoginModalStubComponent {
+@Component({ selector: 'espl-login-modal', template: '' })
+class EsplLoginModalStubComponent {
   @Input() isPending: boolean = false;
   @Input() hasError: boolean = false;
 }
@@ -57,7 +57,7 @@ const testModuleConfig = () => {
     declarations: [
       TestComponent, AppPage,
       TitleComponent,
-      RioLoginModalStubComponent,
+      EsplLoginModalStubComponent,
       RouterLinkStubDirective,
       RouterOutletStubComponent
     ],
@@ -124,22 +124,22 @@ import { LayoutComponent } from './core/navigator/layout.component';
 import { ToolbarComponent } from './core/navigator/toolbar.component';
 import { SidenavComponent } from './core/navigator/sidenav.component';
 import { NavItemComponent } from './core/navigator/nav-item.component';
-import { RioButtonComponent } from './shared/button/button.component';
-import { RioLoginFormComponent } from './login/login-form/login-form.component';
-import { RioModalComponent } from './shared/modal/modal.component';
-import { RioModalContentComponent } from './shared/modal-content/modal-content.component';
-import { RioFormGroupComponent } from './shared/form-group/form-group.component';
-import { RioInputComponent } from './shared/input/input.component';
-import { RioLabelComponent } from './shared/label/label.component';
-import { RioFormErrorComponent } from './shared/form-error/form-error.component';
-import { RioAlertComponent } from './shared/alert/alert.component';
+import { EsplButtonComponent } from './shared/button/button.component';
+import { EsplLoginFormComponent } from './login/login-form/login-form.component';
+import { EsplModalComponent } from './shared/modal/modal.component';
+import { EsplModalContentComponent } from './shared/modal-content/modal-content.component';
+import { EsplFormGroupComponent } from './shared/form-group/form-group.component';
+import { EsplInputComponent } from './shared/input/input.component';
+import { EsplLabelComponent } from './shared/label/label.component';
+import { EsplFormErrorComponent } from './shared/form-error/form-error.component';
+import { EsplAlertComponent } from './shared/alert/alert.component';
 
-import { RioFormComponent } from './shared/form/form.component';
+import { EsplFormComponent } from './shared/form/form.component';
 import { TitleComponent } from './core/title/title.component';
 
 // Stubs
-@Component({ selector: 'rio-login-modal', template: '' })
-class RioLoginModalStubComponent {
+@Component({ selector: 'espl-login-modal', template: '' })
+class EsplLoginModalStubComponent {
   @Input() isPending: boolean = false;
   @Input() hasError: boolean = false;
 }
@@ -153,7 +153,7 @@ describe('AppPage & TestModule', () => {
       declarations: [
         AppPage,
         TitleComponent,
-        RioLoginModalStubComponent,
+        EsplLoginModalStubComponent,
         RouterLinkStubDirective,
         RouterOutletStubComponent
       ],
@@ -162,7 +162,7 @@ describe('AppPage & TestModule', () => {
         NavigatorModule
       ],
       providers: [
-        RioFormComponent,
+        EsplFormComponent,
         RouterStub
       ]
     })
@@ -183,7 +183,7 @@ describe('AppPage & NO_ERRORS_SCHEMA', () => {
       declarations: [
         AppPage,
         TitleComponent,
-        RioLoginModalStubComponent,
+        EsplLoginModalStubComponent,
         RouterLinkStubDirective,
         RouterOutletStubComponent,
       ],
@@ -191,7 +191,7 @@ describe('AppPage & NO_ERRORS_SCHEMA', () => {
         SharedModule
       ],
       providers: [
-        RioFormComponent,
+        EsplFormComponent,
         RouterStub
       ],
       schemas: [NO_ERRORS_SCHEMA]
@@ -221,7 +221,7 @@ describe('AppPage & AppModule', () => {
         AppModule
       ],
       providers: [
-        RioFormComponent,
+        EsplFormComponent,
         RouterStub
       ]
     })
@@ -300,17 +300,17 @@ import { LayoutComponent } from './core/navigator/layout.component';
 import { ToolbarComponent } from './core/navigator/toolbar.component';
 import { SidenavComponent } from './core/navigator/sidenav.component';
 import { NavItemComponent } from './core/navigator/nav-item.component';
-import { RioLoginModalComponent } from './login/login-modal/login-modal.component';
-import { RioButtonComponent } from './shared/button/button.component';
-import { RioLoginFormComponent } from './login/login-form/login-form.component';
-import { RioModalComponent } from './shared/modal/modal.component';
-import { RioModalContentComponent } from './shared/modal-content/modal-content.component'
-import { RioFormComponent } from './shared/form/form.component';
-import { RioFormGroupComponent } from './shared/form-group/form-group.component';
-import { RioInputComponent } from './shared/input/input.component';
-import { RioLabelComponent } from './shared/label/label.component';
-import { RioFormErrorComponent } from './shared/form-error/form-error.component';
-import { RioAlertComponent } from './shared/alert/alert.component';
+import { EsplLoginModalComponent } from './login/login-modal/login-modal.component';
+import { EsplButtonComponent } from './shared/button/button.component';
+import { EsplLoginFormComponent } from './login/login-form/login-form.component';
+import { EsplModalComponent } from './shared/modal/modal.component';
+import { EsplModalContentComponent } from './shared/modal-content/modal-content.component'
+import { EsplFormComponent } from './shared/form/form.component';
+import { EsplFormGroupComponent } from './shared/form-group/form-group.component';
+import { EsplInputComponent } from './shared/input/input.component';
+import { EsplLabelComponent } from './shared/label/label.component';
+import { EsplFormErrorComponent } from './shared/form-error/form-error.component';
+import { EsplAlertComponent } from './shared/alert/alert.component';
 import { TitleComponent } from './core/title/title.component';
 import { RouterLinkStubDirective } from '../testing';
 import { RouterOutletStubComponent } from '../testing';
@@ -324,17 +324,17 @@ describe('AppPage', () => {
         ToolbarComponent,
         SidenavComponent,
         NavItemComponent,
-        RioLoginModalComponent,
-        RioLoginFormComponent,
-        RioModalContentComponent,
-        RioModalComponent,
-        RioButtonComponent,
-        RioFormComponent,
-        RioFormGroupComponent,
-        RioInputComponent,
-        RioLabelComponent,
-        RioFormErrorComponent,
-        RioAlertComponent,
+        EsplLoginModalComponent,
+        EsplLoginFormComponent,
+        EsplModalContentComponent,
+        EsplModalComponent,
+        EsplButtonComponent,
+        EsplFormComponent,
+        EsplFormGroupComponent,
+        EsplInputComponent,
+        EsplLabelComponent,
+        EsplFormErrorComponent,
+        EsplAlertComponent,
         TitleComponent,
         RouterLinkStubDirective,
         RouterOutletStubComponent,

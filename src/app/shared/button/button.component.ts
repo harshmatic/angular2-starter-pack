@@ -1,20 +1,20 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'rio-button',
+  selector: 'espl-button',
   template: `
     <button
       [attr.data-testid]="testid"
       [id]="qaid"
       (click)="handleClick($event)"
       type="{{type || 'button'}}"
-      class="btn btn-primary {{className}}">
+      class="btn {{className}}">
 
       <ng-content></ng-content>
     </button>
   `
 })
-export class RioButtonComponent {
+export class EsplButtonComponent {
   @Input() className: string;
   @Input() type: string;
   @Input() qaid: string;

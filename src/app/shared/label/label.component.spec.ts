@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RioLabelComponent } from './label.component';
+import { EsplLabelComponent } from './label.component';
 import { SharedModule } from '../shared.module';
 
 describe('Component: Label', () => {
@@ -14,18 +14,18 @@ describe('Component: Label', () => {
         SharedModule
       ],
       declarations: [
-        RioLabelComponentTestController
+        EsplLabelComponentTestController
       ],
       providers: [
-        RioLabelComponent
+        EsplLabelComponent
       ]
     });
-    fixture = TestBed.createComponent(RioLabelComponentTestController);
+    fixture = TestBed.createComponent(EsplLabelComponentTestController);
     fixture.detectChanges();
   });
 
-  it('should inject the component', inject([RioLabelComponent],
-    (component: RioLabelComponent) => {
+  it('should inject the component', inject([EsplLabelComponent],
+    (component: EsplLabelComponent) => {
       expect(component).toBeTruthy();
     }));
 
@@ -33,7 +33,7 @@ describe('Component: Label', () => {
     fixture.whenStable().then(() => {
       fixture.autoDetectChanges();
       let query = fixture.debugElement
-        .query(By.directive(RioLabelComponent));
+        .query(By.directive(EsplLabelComponent));
       expect(query).toBeTruthy();
       expect(query.componentInstance).toBeTruthy();
     });
@@ -43,7 +43,7 @@ describe('Component: Label', () => {
     fixture.whenStable().then(() => {
       fixture.autoDetectChanges();
       let query = fixture.debugElement
-        .query(By.directive(RioLabelComponent));
+        .query(By.directive(EsplLabelComponent));
       expect(query.nativeElement.querySelector('label')
         .getAttribute('id')).toBe('test-1');
     });
@@ -53,10 +53,10 @@ describe('Component: Label', () => {
 @Component({
   selector: 'test',
   template: `
-    <rio-label
+    <espl-label
       qaid="test-1">
-    </rio-label>
+    </espl-label>
   `
 })
-class RioLabelComponentTestController { }
+class EsplLabelComponentTestController { }
 

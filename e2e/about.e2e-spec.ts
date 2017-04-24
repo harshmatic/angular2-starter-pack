@@ -7,7 +7,7 @@ describe('About', () => {
   });
 
   it('should have correct feature heading', () => {
-    expect(element(by.css('rio-about-page h2')).getText()).toEqual('ABOUT US');
+    expect(element(by.css('espl-about-page h2')).getText()).toEqual('ABOUT US');
   });
 
 });

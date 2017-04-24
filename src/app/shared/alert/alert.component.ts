@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'rio-alert',
+  selector: 'espl-alert',
   template: `
     <div
       [id]="qaid"
@@ -18,7 +18,7 @@ import { Component, Input } from '@angular/core';
     </div>
   `
 })
-export class RioAlertComponent {
+export class EsplAlertComponent {
   @Input() status = 'info';
   @Input() qaid: string;
   @Input() testid: string;

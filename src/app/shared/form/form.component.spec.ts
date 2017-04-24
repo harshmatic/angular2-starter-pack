@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 
 import { SharedModule } from '../shared.module';
-import { RioFormComponent } from './form.component';
+import { EsplFormComponent } from './form.component';
 
 describe('Component: Form', () => {
   let fixture;
@@ -21,18 +21,18 @@ describe('Component: Form', () => {
         ReactiveFormsModule
       ],
       declarations: [
-        RioFormComponentTestController
+        EsplFormComponentTestController
       ],
       providers: [
-        RioFormComponent
+        EsplFormComponent
       ]
     });
-    fixture = TestBed.createComponent(RioFormComponentTestController);
+    fixture = TestBed.createComponent(EsplFormComponentTestController);
     fixture.detectChanges();
   });
 
-  it('should inject the component', inject([RioFormComponent],
-    (component: RioFormComponent) => {
+  it('should inject the component', inject([EsplFormComponent],
+    (component: EsplFormComponent) => {
       expect(component).toBeTruthy();
     }));
 
@@ -40,7 +40,7 @@ describe('Component: Form', () => {
     fixture.whenStable().then(() => {
       fixture.autoDetectChanges();
       let query = fixture.debugElement
-        .query(By.directive(RioFormComponent));
+        .query(By.directive(EsplFormComponent));
       expect(query).toBeTruthy();
       expect(query.componentInstance).toBeTruthy();
       expect(query.componentInstance.onSubmit).toBeTruthy();
@@ -52,7 +52,7 @@ describe('Component: Form', () => {
     fixture.whenStable().then(() => {
       fixture.autoDetectChanges();
       let query = fixture.debugElement
-        .query(By.directive(RioFormComponent));
+        .query(By.directive(EsplFormComponent));
       query.componentInstance.onSubmit.subscribe(c => {
         expect(c).toBeDefined();
       });
@@ -65,15 +65,15 @@ describe('Component: Form', () => {
 @Component({
   selector: 'test',
   template: `
-    <rio-form
+    <espl-form
       [group]="group">
       <input
         [formControl]="field1">
       <button type="submit">submit</button>
-    </rio-form>
+    </espl-form>
   `
 })
-class RioFormComponentTestController {
+class EsplFormComponentTestController {
   private group: FormGroup;
   private field1: FormControl;
   constructor(private builder: FormBuilder) {
