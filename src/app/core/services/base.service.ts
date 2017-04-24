@@ -9,11 +9,11 @@ import {ApiBase} from '../../../modules/config'
 
 /** HttpService interface Definition*/
 interface HttpServices {
-    get$(id: string, isSecured?: boolean): Observable<Response>;
-    getList$(pageNum?: number, pageSize?: number, isSecured?: boolean): Observable<Response>;
-    post$(payload: any, isSecured?: boolean): Observable<Response>;
-    put$(id: string, payload: any, isSecured?: boolean): Observable<Response>;
-    delete$(id: string, isSecured?: boolean): Observable<Response>;
+    get$(url:string, isSecured?: boolean): Observable<Response>;
+    getList$(url:string,pageNum?: number, pageSize?: number, isSecured?: boolean): Observable<Response>;
+    post$(url:string,payload: any, isSecured?: boolean): Observable<Response>;
+    put$(url:string, payload: any, isSecured?: boolean): Observable<Response>;
+    delete$(url:string, isSecured?: boolean): Observable<Response>;
 }
 
 /** Base Service Definition */
@@ -29,7 +29,7 @@ export class BaseService implements HttpServices {
     /** Base Service constructor : Accepts Analytics Service, Http Service, Context path, Log service */
     constructor(_httpService: Http, _context: string, messageService?: MessageService) {
         this.httpService = _httpService;
-        this.requestUrl = this.baseUrl.concat(_context);
+        //this.requestUrl = this.baseUrl.concat(_context);
         this.messageService = messageService;
     }
 
@@ -42,9 +42,9 @@ export class BaseService implements HttpServices {
      * @input id :  of the object for which you need a data
      * @input isSecured : Optional Parameter : Parameter to tell base service if security headers needs to be included
      */
-    get$(id: string, isSecured?: boolean): Observable<Response> {
+    get$(url:string, isSecured?: boolean): Observable<Response> {
         this.getHeaders(isSecured);
-        return this.httpService.get(this.requestUrl + '/' + id, this.options)
+        return this.httpService.get(this.baseUrl + url, this.options)
         .map(data => {
             return data;
         })
@@ -53,14 +53,14 @@ export class BaseService implements HttpServices {
         });
     }
     /**
-     * Get List of Objects using getList$ method.
+     * Get List of Objects using getList$ method.rl:string,
      * @input pageNum : Optional parameter,
      * @input pageSize : Optional Parameter,
      * @isSecured : Optional Parameter : Parameter to tell base service if security headers nedds to be included
      */
-    getList$(pageNum?: number, pageSize?: number, isSecured?: boolean): Observable<Response> {
+    getList$(url:string,pageNum?: number, pageSize?: number, isSecured?: boolean): Observable<Response> {
         this.getHeaders(isSecured);
-        return this.httpService.get(this.requestUrl, this.options)
+        return this.httpService.get(this.baseUrl+url, this.options)
         .map(data => {
             return data;
         })
@@ -75,9 +75,9 @@ export class BaseService implements HttpServices {
      * @input pageSize : Optional Parameter,
      * @isSecured : Optional Parameter : Parameter to tell base service if security headers nedds to be included
      */
-    getChildList$(childName: string, pageNum?: number, pageSize?: number, isSecured?: boolean) {
+    getChildList$(url:string,childName: string, pageNum?: number, pageSize?: number, isSecured?: boolean) {
         this.getHeaders(isSecured);
-        return this.httpService.get(this.requestUrl + '/' + childName, this.options)
+        return this.httpService.get(this.baseUrl + '/' + childName, this.options)
         .map(data => {
             return data;
         })
@@ -92,9 +92,9 @@ export class BaseService implements HttpServices {
      * @input payload : data to be sent,
      * @isSecured : Optional Parameter : Parameter to tell base service if security headers nedds to be included
      */
-    post$(payload: string, isSecured?: boolean): Observable<Response> {
+    post$(url:string,payload: string, isSecured?: boolean): Observable<Response> {
         this.getHeaders(isSecured);
-        return this.httpService.post(this.requestUrl, payload, this.options)
+        return this.httpService.post(this.baseUrl+url, payload, this.options)
         .map(data => {
             return data;
         })
@@ -108,9 +108,9 @@ export class BaseService implements HttpServices {
     * @input payload : data to be sent,
     * @isSecured : Optional Parameter : Parameter to tell base service if security headers nedds to be included
     */
-    put$(id: string, payload: any, isSecured?: boolean) {
+    put$(url:string, payload: any, isSecured?: boolean) {
         this.getHeaders(isSecured);
-        return this.httpService.put(this.requestUrl+"/"+id, payload, this.options)
+        return this.httpService.put(this.baseUrl+url, payload, this.options)
         .map(data => {
             return data;
         })
@@ -119,9 +119,9 @@ export class BaseService implements HttpServices {
         });
     }
 
-    patch$(id: string, payload: any, isSecured?: boolean) {
+    patch$(url:string, payload: any, isSecured?: boolean) {
         this.getHeaders(isSecured);
-        return this.httpService.patch(this.requestUrl+"/"+id, payload, this.options)
+        return this.httpService.patch(this.baseUrl+url, payload, this.options)
         .map(data => {
             return data;
         })
@@ -134,9 +134,9 @@ export class BaseService implements HttpServices {
      * @input id : ID of the object to be deleted
      * @isSecured : Optional Parameter : Parameter to tell base service if security headers nedds to be included
      */
-    delete$(id: string, isSecured?: boolean) {
+    delete$(url:string, isSecured?: boolean) {
         this.getHeaders(isSecured);
-        return this.httpService.delete(this.requestUrl + '/' + id, this.options)
+        return this.httpService.delete(this.baseUrl + url, this.options)
         .map(data => {
             return data;
         })
