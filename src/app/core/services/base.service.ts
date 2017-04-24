@@ -4,6 +4,7 @@ import { MessageService } from './message.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+//CONFIGESPL
 import {ApiBase} from '../../../modules/config'
 
 /** HttpService interface Definition*/

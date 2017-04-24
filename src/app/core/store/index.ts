@@ -44,7 +44,7 @@ import { combineReducers } from '@ngrx/store';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
-
+//CONFIGESPL
 import {moduleReducers,RootState} from '../../../modules/config';
 /**
  * As mentioned, we treat each reducer like a table in a database. This means

@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { EmployeeComponent } from './components/employee.component';
+import { DashboardComponent } from './components/dashboard.component';
 import { AuthGuard } from '../../app/core/index'
 
 const routes: Routes = [
   {
     path: '',
-    component: EmployeeComponent,
+    component: DashboardComponent,
     data: {
     },
      canActivate: [AuthGuard],
   }
 ];
 
-export const routedComponents = [EmployeeComponent];
+export const routedComponents = [DashboardComponent];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class EmployeeRouting { }
+export class DashboardRouting { }
