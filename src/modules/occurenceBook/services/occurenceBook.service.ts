@@ -6,15 +6,15 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
-import { Employee } from '../store/employee.model';
+import { OccurenceBook } from '../store/occurenceBook.model';
 import { BaseService } from '../../../app/core/services/index';
 
 /** Context for service calls */
-const CONTEXT = 'employee';
+const CONTEXT = 'occurrencebook';
 
 /** Service Definition */
 @Injectable()
-export class EmployeeService extends BaseService {
+export class OccurenceBookService extends BaseService {
 
     constructor(public http: Http) {
         super(http,CONTEXT);

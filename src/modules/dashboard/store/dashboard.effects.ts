@@ -3,43 +3,43 @@ import { Store, Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
-import { Employee, initialCounter } from './employee.model';
-import { EMPLOYEE_ACTIONS } from './employee.actions';
-import { EmployeeService } from '../services/employee.service';
+import { Dashboard, initialCounter } from './dashboard.model';
+import { DASHBOARD_ACTIONS } from './dashboard.actions';
+import { DashboardService } from '../services/dashboard.service';
 import { BaseService } from '../../../app/core/services/index';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 /// Define the appi endpoint here
-const CONTEXT = 'employee';
+const CONTEXT = 'dashboard';
 
 @Injectable()
-export class EmployeeEffects extends BaseService {
+export class DashboardEffects extends BaseService {
 
   @Effect({ dispatch: false })
   private getListEmp$ = this.actions$
-    .ofType(EMPLOYEE_ACTIONS.GET_EMPLOYEE_LIST)
+    .ofType(DASHBOARD_ACTIONS.GET_DASHBOARD_LIST)
    .switchMap(action => 
        this.getList$()
         .map(res =>{
-          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_EMPLOYEE_SUCCESS, payload: res })
+          this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_SUCCESS, payload: res })
         })
-        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
+        .catch(() => Observable.of({ type: DASHBOARD_ACTIONS.ON_FAILED  }))
       );
   @Effect({ dispatch: false })
   private add$ = this.actions$
-    .ofType(EMPLOYEE_ACTIONS.ADD_EMPLOYEE)
+    .ofType(DASHBOARD_ACTIONS.ADD_DASHBOARD)
    .switchMap(action => 
        this.post$('{"name":"harry"}',false)
         .map(res =>{
-          this.store.dispatch({ type: EMPLOYEE_ACTIONS.ADD_EMPLOYEE_SUCCESS, payload: res })
+          this.store.dispatch({ type: DASHBOARD_ACTIONS.ADD_DASHBOARD_SUCCESS, payload: res })
         })
-        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
+        .catch(() => Observable.of({ type: DASHBOARD_ACTIONS.ON_FAILED  }))
       );
 
   constructor(
-    private store: Store<Employee>,
+    private store: Store<Dashboard>,
     private actions$: Actions,
-    private employeeService: EmployeeService,
+    private dashboardService: DashboardService,
     public http: Http
   ) {super(http,CONTEXT); }
 }

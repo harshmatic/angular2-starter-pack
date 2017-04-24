@@ -5,8 +5,10 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import { BaseService } from '../services/index';
+//CONFIGESPL
+import {ApiBaseAuthUrl} from '../../../modules/config'
 
-const CONTEXT='token/auth'
+const CONTEXT=ApiBaseAuthUrl;
 @Injectable()
 export class AuthService extends BaseService {
   isLoggedIn: boolean = false;

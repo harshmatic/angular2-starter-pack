@@ -8,7 +8,6 @@ import { EsplLoginFormComponent } from './login-form/login-form.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { LoginRouting } from './login.routing';
 import { AuthService } from '../auth.service';
-import {EmployeeService} from '../../../../modules/employee/services/employee.service';
 
 @NgModule({
   imports: [
@@ -23,6 +22,6 @@ import {EmployeeService} from '../../../../modules/employee/services/employee.se
   ],
   exports: [
   ],
-  providers:[EmployeeService]
+  providers:[]
 })
 export class LoginModule { }

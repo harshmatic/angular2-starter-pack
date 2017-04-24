@@ -25,6 +25,7 @@ import { TwainComponent } from './twain/twain.component';
 import { TwainService } from './twain/twain.service';
 import { BannerComponent } from './banner/banner.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { IfAuthorizeDirective } from './directives/ifAuthorize.directive';
 
 export const components = [
   Draggable,
@@ -44,6 +45,7 @@ export const components = [
   TitleCasePipe,
   TwainComponent,
   BannerComponent,
+  IfAuthorizeDirective,
   WelcomeComponent
 ];
 
