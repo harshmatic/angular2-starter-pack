@@ -5,7 +5,9 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 //CONFIGESPL
-import {ApiBase} from '../../../modules/config'
+//import {ApiBase} from '../../../modules/config'
+import {ApiBaseAuthUrl} from '../../../../../../src/modules/config';
+
 
 /** HttpService interface Definition*/
 interface HttpServices {

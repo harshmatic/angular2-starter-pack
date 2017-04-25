@@ -6,7 +6,8 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import { BaseService } from '../services/index';
 //CONFIGESPL
-import {ApiBaseAuthUrl} from '../../../modules/config'
+//import {ApiBaseAuthUrl} from '../../../modules/config'
+import {ApiBaseAuthUrl} from '../../../../../../src/modules/config'
 
 const CONTEXT=ApiBaseAuthUrl;
 @Injectable()

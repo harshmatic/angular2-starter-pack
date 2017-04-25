@@ -45,7 +45,9 @@ import { combineReducers } from '@ngrx/store';
  * notation packages up all of the exports into a single object.
  */
 //CONFIGESPL
-import {moduleReducers,RootState} from '../../../modules/config';
+//import {moduleReducers,RootState} from '../../../modules/config';
+import {ApiBaseAuthUrl} from '../../../../../../src/modules/config';
+
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
