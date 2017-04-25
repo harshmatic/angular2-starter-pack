@@ -28,13 +28,13 @@ export class DesignationComponent  implements OnInit {
   });
     this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST });
     // //Create
-    // this.store.dispatch({ type: OB_ACTIONS.ADD,payload:this.occurenceBookObj });
+//this.store.dispatch({ type: DESIGNATION_ACTIONS.ADD,payload:this.designationObj });
     // //Delete
-    // this.store.dispatch({ type: OB_ACTIONS.DELETE,payload:"a7c15c4c-e83c-4d8c-a010-53a41d2a88e9" });
+//this.store.dispatch({ type: DESIGNATION_ACTIONS.DELETE,payload:"6aac273a-ab24-4959-8c93-6f52cfee56ff" });
     // //Update (PUT)
-    // this.store.dispatch({ type: OB_ACTIONS.UPDATE,payload:{id:"88f50d32-bb51-4835-90e9-1b02c8109ab2",updates:this.occurenceBookObj}});
+     //this.store.dispatch({ type: DESIGNATION_ACTIONS.UPDATE,payload:{id:"6aac273a-ab24-4959-8c93-6f52cfee56ff",updates:this.designationObj}});
     // //Update (PATCH)
-    // this.store.dispatch({ type: OB_ACTIONS.UPDATE,payload:{id:"88f50d32-bb51-4835-90e9-1b02c8109ab2",updates:this.patchReq}});
+    // this.store.dispatch({ type: DESIGNATION_ACTIONS.UPDATE,payload:{id:"88f50d32-bb51-4835-90e9-1b02c8109ab2",updates:this.patchReq}});
     this.store.select('designation').subscribe((res:any) => {
        this.designation = res;
      });
