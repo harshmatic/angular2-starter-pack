@@ -1,6 +1,6 @@
 {
-  "name": "great-big-angular2-example",
-  "version": "0.0.0",
+  "name": "angular2-common-pkg",
+  "version": "1.0.0",
   "engines": {
     "node": "7.5.0"
   },
@@ -35,7 +35,6 @@
     "debug-server": "cross-env NODE_ENV=development PORT=3100 nodemon --nolazy --debug-brk=5858 server/node-server.js",
     "postinstall": "ng build --prod"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "~2.4.5",
     "@angular/compiler": "~2.4.5",
@@ -143,13 +142,5 @@
     "webpack-split-by-path": "^0.1.0-beta.1"
   },
   "main": "karma.conf.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mahesh-kedari/angular2-starter-pack.git"
-  },
-  "author": "",
-  "bugs": {
-    "url": "https://github.com/mahesh-kedari/angular2-starter-pack/issues"
-  },
-  "homepage": "https://github.com/mahesh-kedari/angular2-starter-pack#readme"
-}
+  "author": "salauddin"
+ }
