@@ -15,7 +15,7 @@
       "main": "../node_modules/kenya-project-pkg/src/main.ts",
       "polyfills": "../node_modules/kenya-project-pkg/src/polyfills.ts",
       "test": "../node_modules/kenya-project-pkg/src/test.ts",
-      "tsconfig": "tsconfig.app.json",
+      "tsconfig": "../node_modules/kenya-project-pkg/src/tsconfig.app.json",
       "testTsconfig": "../node_modules/kenya-project-pkg/src/tsconfig.spec.json",
       "prefix": "app",
       "styles": [
