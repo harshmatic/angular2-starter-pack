@@ -1,0 +1,392 @@
+@font-face {
+ font-family: 'Conv_AVENIRLTSTD-BLACK';
+ src: url('../fonts/AVENIRLTSTD-BLACK.eot');
+ src: local('?'), url('../fonts/AVENIRLTSTD-BLACK.woff') format('woff'), url('../fonts/AVENIRLTSTD-BLACK.ttf') format('truetype'), url('../fonts/AVENIRLTSTD-BLACK.svg') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'Conv_AVENIRLTSTD-BLACKOBLIQUE';
+ src: url('../fonts/AVENIRLTSTD-BLACKOBLIQUE.eot');
+ src: local('?'), url('../fonts/AVENIRLTSTD-BLACKOBLIQUE.woff') format('woff'), url('../fonts/AVENIRLTSTD-BLACKOBLIQUE.ttf') format('truetype'), url('../fonts/AVENIRLTSTD-BLACKOBLIQUE.svg') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'Conv_AVENIRLTSTD-BOOK';
+ src: url('../fonts/AVENIRLTSTD-BOOK.eot');
+ src: local('?'), url('../fonts/AVENIRLTSTD-BOOK.woff') format('woff'), url('../fonts/AVENIRLTSTD-BOOK.ttf') format('truetype'), url('../fonts/AVENIRLTSTD-BOOK.svg') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'Conv_AVENIRLTSTD-BOOKOBLIQUE';
+ src: url('../fonts/AVENIRLTSTD-BOOKOBLIQUE.eot');
+ src: local('?'), url('../fonts/AVENIRLTSTD-BOOKOBLIQUE.woff') format('woff'), url('../fonts/AVENIRLTSTD-BOOKOBLIQUE.ttf') format('truetype'), url('../fonts/AVENIRLTSTD-BOOKOBLIQUE.svg') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'Conv_AVENIRLTSTD-HEAVY';
+ src: url('../fonts/AVENIRLTSTD-HEAVY.eot');
+ src: local('?'), url('../fonts/AVENIRLTSTD-HEAVY.woff') format('woff'), url('../fonts/AVENIRLTSTD-HEAVY.ttf') format('truetype'), url('../fonts/AVENIRLTSTD-HEAVY.svg') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'Conv_AVENIRLTSTD-HEAVYOBLIQUE';
+ src: url('../fonts/AVENIRLTSTD-HEAVYOBLIQUE.eot');
+ src: local('?'), url('../fonts/AVENIRLTSTD-HEAVYOBLIQUE.woff') format('woff'), url('../fonts/AVENIRLTSTD-HEAVYOBLIQUE.ttf') format('truetype'), url('../fonts/AVENIRLTSTD-HEAVYOBLIQUE.svg') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'Conv_AVENIRLTSTD-LIGHT';
+ src: url('../fonts/AVENIRLTSTD-LIGHT.eot');
+ src: local('?'), url('../fonts/AVENIRLTSTD-LIGHT.woff') format('woff'), url('../fonts/AVENIRLTSTD-LIGHT.ttf') format('truetype'), url('../fonts/AVENIRLTSTD-LIGHT.svg') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'Conv_AVENIRLTSTD-LIGHTOBLIQUE';
+ src: url('../fonts/AVENIRLTSTD-LIGHTOBLIQUE.eot');
+ src: local('?'), url('../fonts/AVENIRLTSTD-LIGHTOBLIQUE.woff') format('woff'), url('../fonts/AVENIRLTSTD-LIGHTOBLIQUE.ttf') format('truetype'), url('../fonts/AVENIRLTSTD-LIGHTOBLIQUE.svg') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+
+/****************Reset CSS****************/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    font-family: "Conv_AVENIRLTSTD-BOOK", Georgia, serif;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+h4{
+    font-weight: bold !important;
+}
+.noDisplay{
+    display: none;
+}
+/************NavBar Style**************/
+.navbar {
+    border-radius: 0px !important;
+    margin-bottom: 0px !important;
+}
+.settingIcon{
+    font-size: 20px;
+}
+.profileParent{
+    display: table;
+    padding: 10px 7px 7px 7px !important;
+}
+.profileImg{
+    display: table-cell;
+    border-radius: 50%;
+    width:30px;
+    height:auto;
+    margin-right: 3px;
+}
+.profileText{
+    display: table-cell;
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+.profileImg > img{
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+/************ Main-Container **************/
+.main-container{
+    background-color: #f1f2f2;
+    height: auto;
+    padding-bottom: 2rem;
+}
+
+
+/************ Media Query **************/
+@media only screen  and (max-width : 768px) {
+    span{
+        font-size: 1.7rem !important;
+    }
+    h3{
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+        font-size: 3rem !important;
+    }
+    .pageName{
+        text-align: center;
+    }
+    /************ Scroll Stats **************/
+    .carousel-indicators{
+        position: absolute;
+        margin-bottom: 10px !important;
+        bottom: -45px !important;
+    }
+    .carousel-indicators li{
+        background-color: #c1c2c2 !important;
+        border: none !important;
+    }
+    .carousel-indicators .active{
+        background-color: #000000 !important;
+    }
+    .statCard{
+        height: 246px !important
+    }
+    /************ Job Stats **************/
+    .jobStats{
+        background-color: #fff;
+        padding: 2% 2% 0% 2%;
+        overflow: hidden;
+        height: 83%;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+    .jobStats > .row{
+        margin-top: 2rem;
+        padding: 0 2rem;
+        padding-bottom: 1rem;
+    }
+    .jobStats > .row:first-child{
+         border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .statInnerBox{
+        margin-left: ;
+    }
+    .statInnerBox > h3{
+        margin-top: 4%;
+    }
+    .statInnerBox > span{
+        display: block;
+    }
+    .jobStats .row div:nth-child(2){
+        padding-left: 3rem;
+    }
+    .jobStats .row:nth-child(2){
+        margin-top: 0rem;
+        padding-bottom: 0rem;
+    }
+    .jobStats .row:nth-child(2) div:first-child{
+        border-right: 1px solid rgba(0,0,0,0.05);
+    }
+    .jobStats .row:nth-child(2) .statInnerBox span{
+        margin-top: 2rem;
+    }
+    .jobStats .row:nth-child(2) .statInnerBox h3{
+        margin-bottom: 2rem;
+    }
+    /************ Office Stats **************/
+    .offcStats{
+        padding: 0% 2% 0% 2%;
+        background-color: #282828 !important;
+        color: #fff !important;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+    .offcStats > .row{
+        margin-top: 0rem;
+        padding: 0 2rem;
+        padding-bottom: 0rem;
+    }
+    .offcStats > .row:first-child{
+         border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .offcStats .row div:nth-child(2){
+        padding-left: 3rem;
+    }
+    .offcStats .row:nth-child(2){
+        margin-top: 0rem;
+        padding-bottom: 0rem;
+    }
+    .offcStats .row:nth-child(2) div:first-child{
+        border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .offcStats .row:nth-child(1) .statInnerBox span{
+        margin-top: 3rem;
+    }
+    .offcStats .row:nth-child(2) .statInnerBox h3{
+        margin-bottom: 2rem;
+    }
+    .offcStats .row div:first-child{
+        border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    /************ Map card **************/
+    .jobContentCard{
+        display: none;
+    }
+    .mapCard{
+        margin-top: 5rem;
+    }
+    .mapJobs{
+        position: relative;
+        height: 350px;
+        background: url(../images/map.png) no-repeat center center;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        border:6px solid #fff;
+    }
+    .mapJobs > .row{
+        position: absolute;
+        bottom: 1rem;
+        left: 2rem;
+        right: 3rem;
+        margin-top: 1rem;
+        background-color: #fff;
+        width: 97%;
+        height: 50% !important;
+    }
+    .mapJobs > .row > .col-xs-8, .mapJobs > .row > .col-xs-4{
+        padding: 0 !important;
+        height: 100%;
+        padding: 1rem !important;
+    }
+    .mapJobs > .row > .col-xs-4{
+        padding-left: 1rem !important;
+        background-color: #F3F3F3;
+        text-align: left;
+    }
+    .mapJobs > .row > .col-xs-8 > h3{
+        font-size: 1.8rem !important;
+        margin-bottom: 0 !important;
+    }
+    .mapJobs > .row > .col-xs-8 > span{
+        font-size: 1.4rem !important;
+    }
+    .mapJobs > .row > .col-xs-4 > h3{
+        font-size: 2.6rem !important;
+    }
+    .mapJobs > .row > .col-xs-4 > span{
+        font-size: 1.4rem !important;
+        font-weight: bold
+    }
+    .mapJobs > .row > .col-xs-8 > div{
+        margin-top: 6% !important;
+        font-weight: bold;
+        color: #153994;
+        font-size: 1.6rem;
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+    }
+    .mapJobs > .row > .col-xs-8 > div > img{
+        display: inline-block !important;
+        margin-right: 1rem !important;
+    }
+    .closeBtn{
+        position: absolute;
+        right: 3%;
+        bottom: 55%;
+        border-radius: 50% !important;
+        background-color: black;
+        width: 10%;
+        height: 10%;
+        color: #fff;
+        text-align: center;
+        padding-top: 1%;
+    }
+    .criticalJob, .majorJob, .minorJob{
+        position: absolute;
+        display: block;
+        width: 5%;
+        height: 5%;
+        border-radius: 50%;
+    }
+    .criticalJob{
+        background-color: #BE1A21;
+        top: 3%;
+        left: 5%;
+    }
+    .criticalJob:nth-child(2){
+        top: 23%;
+        left: 25%;
+    }
+    .criticalJob:nth-child(3){
+        top: 13%;
+        left: 45%;
+    }
+    .majorJob{
+        background-color: #FA7D19;
+        left: 40%;
+        top: 35%;
+    }
+    .majorJob:nth-child(5){
+        top: 13%;
+        left: 60%;
+    }
+    .minorJob{
+        background-color: #2D8CEE;
+        top: 15%;
+        right: 13%;
+    }
+    .minorJob:nth-child(8){
+        top: 63%;
+        left: 30%;
+    }
+    .minorJob:nth-child(9){
+        top: 74%;
+        left: 64%;
+    }
+    .majorJob:nth-child(10){
+        top: 94%;
+        left: 84%;
+    }
+    .jobMarkers > .criticalJob.active {
+        -webkit-box-shadow: 0px 0px 33px 6px rgba(190,26,33,1);
+        -moz-box-shadow: 0px 0px 33px 6px rgba(190,26,33,1);
+        box-shadow: 0px 0px 33px 6px rgba(190,26,33,1);
+    }
+    .jobMarkers > .majorJob.active {
+        -webkit-box-shadow: 0px 0px 33px 6px rgba(250,125,25,1);
+        -moz-box-shadow: 0px 0px 33px 6px rgba(250,125,25,1);
+        box-shadow: 0px 0px 33px 6px rgba(250,125,25,1);
+    }
+    .jobMarkers > .minorJob.active {
+        -webkit-box-shadow: 0px 0px 33px 6px rgba(45,140,238,1);
+        -moz-box-shadow: 0px 0px 33px 6px rgba(45,140,238,1);
+        box-shadow: 0px 0px 33px 6px rgba(45,140,238,1);
+    }
+    
+    /************ Active Jobs **************/
+}

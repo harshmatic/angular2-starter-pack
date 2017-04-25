@@ -23,12 +23,11 @@ import {
   bcNavComponents
 } from './navigator/navigator.module';
 import { reducer } from './store';
-//import { schema } from './store/db';
 import { SharedModule } from '../shared/shared.module';
 import { NotFoundPage } from './not-found/not-found.page';
 import { EsplAboutPage } from './about/about.page';
-//import { TitleComponent } from './title/title.component';
 import { routing } from './core.routing';
+import { NavComponent } from './nav/nav.component';
 
 // module
 import { PlatformDirective } from './platform/platform.directive';
@@ -92,9 +91,11 @@ const store = StoreModule.provideStore(reducer);
     PlatformDirective,
     NotFoundPage,
     EsplAboutPage,
+    NavComponent
    // TitleComponent
   ],
   exports: [
+     NavComponent,
     ...bcNavComponents,
    // TitleComponent,
     NotFoundPage,

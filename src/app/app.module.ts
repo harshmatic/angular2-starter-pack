@@ -7,8 +7,6 @@ import 'hammerjs';
 
 /* App Root */
 import { AppPage } from './app.page';
-//import { EsplLoginModalComponent } from './core/auth/login/login-modal/login-modal.component';
-//import { LoginModule } from './core/auth/login/login.module';
 import { APP_BASE_HREF, HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { AppRouting } from './app.routing';
