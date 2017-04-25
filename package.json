@@ -32,13 +32,11 @@
     "pretest": "rimraf coverage/ & npm run lint",
     "posttest": "npm run cover",
     "test:watch": "karma start --singleRun false",
-    "debug-server": "cross-env NODE_ENV=development PORT=3100 nodemon --nolazy --debug-brk=5858 server/node-server.js",
-    "postinstall": "ng build --prod"
+    "debug-server": "cross-env NODE_ENV=development PORT=3100 nodemon --nolazy --debug-brk=5858 server/node-server.js"
   },
   "dependencies": {
     "@angular/common": "~2.4.5",
     "@angular/compiler": "~2.4.5",
-    "@angular/core": "~2.4.5",
     "@angular/forms": "~2.4.5",
     "@angular/http": "~2.4.5",
     "@angular/platform-browser": "~2.4.5",
@@ -111,8 +109,6 @@
     "zone.js": "^0.8.5"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0-rc.1",
-    "@angular/compiler-cli": "^2.4.0",
     "bootstrap": "3.3.7",
     "jquery": "3.2.1",
     "codelyzer": "~2.0.0",
