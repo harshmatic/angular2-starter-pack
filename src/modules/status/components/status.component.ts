@@ -31,9 +31,14 @@ export class StatusComponent  implements OnInit {
 	"value":"statusName after patch"
   });
     this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST });
-  
-    this.store.dispatch({ type: STATUS_ACTIONS.DELETE,payload:"411bfab2-0d44-4fb9-8835-184db90f5678" });
-   
+     // //Create
+   // this.store.dispatch({ type: STATUS_ACTIONS.ADD,payload:this.statusObj });
+    // //Delete
+   // this.store.dispatch({ type: STATUS_ACTIONS.DELETE,payload:"ebeed096-ea34-43e2-948e-32bb98f31401" });
+    // //Update (PUT)
+    //this.store.dispatch({ type: STATUS_ACTIONS.UPDATE,payload:{id:"ebeed096-ea34-43e2-948e-32bb98f31401",updates:this.statusObj}});
+    // //Update (PATCH)
+    // this.store.dispatch({ type: STATUS_ACTIONS.UPDATE,payload:{id:"88f50d32-bb51-4835-90e9-1b02c8109ab2",updates:this.patchReq}});
     this.store.select('status').subscribe((res:any) => {
        this.status = res;
      });

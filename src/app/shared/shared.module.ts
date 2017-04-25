@@ -24,7 +24,7 @@ import { TitleCasePipe } from './title-case/title-case.pipe';
 import { TwainComponent } from './twain/twain.component';
 import { TwainService } from './twain/twain.service';
 import { BannerComponent } from './banner/banner.component';
-import { WelcomeComponent } from './welcome/welcome.component';
+//import { WelcomeComponent } from './welcome/welcome.component';
 import { IfAuthorizeDirective } from './directives/ifAuthorize.directive';
 
 export const components = [
@@ -46,7 +46,7 @@ export const components = [
   TwainComponent,
   BannerComponent,
   IfAuthorizeDirective,
-  WelcomeComponent
+ // WelcomeComponent
 ];
 
 @NgModule({

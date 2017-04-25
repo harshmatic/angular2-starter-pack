@@ -31,6 +31,15 @@ export class OccurenceTypeComponent  implements OnInit {
 	    "value":"test after patch"
   });
     this.store.dispatch({ type: OT_ACTIONS.GET_LIST });
+    // //Create
+   // this.store.dispatch({ type: OT_ACTIONS.ADD,payload:this.occurenceTypeObj });
+    // //Delete
+    this.store.dispatch({ type: OT_ACTIONS.DELETE,payload:"758b1995-7f92-4d87-9588-b90800abf111" });
+    // //Update (PUT)
+    //this.store.dispatch({ type: OT_ACTIONS.UPDATE,payload:{id:"758b1995-7f92-4d87-9588-b90800abf111",updates:this.occurenceTypeObj}});
+    // //Update (PATCH)
+    
+    // this.store.dispatch({ type: OT_ACTIONS.UPDATE,payload:{id:"758b1995-7f92-4d87-9588-b90800abf111",updates:this.patchReq}});
     this.store.select('occurenceType').subscribe((res:any) => {
        this.occurenceType = res;
      });
