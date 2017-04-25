@@ -389,4 +389,331 @@ h4{
     }
     
     /************ Active Jobs **************/
+    .activeJobs{
+        background-color: #fff !important;
+        height: auto;
+        padding: 1rem !important;
+        overflow-x: hidden;
+    }
+    .activeJobs >  h4{
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+        font-size: 1rem !important;
+        color: #737373;
+        border-bottom: 1px solid #e4e4e4;
+        padding: 0rem 0rem 1rem 1rem;
+    }
+    .activeJobs > .row{
+        border-bottom: 1px dotted #b7b7b7;
+        padding: 0rem 1rem 1rem 1rem;
+        margin-bottom: 2rem;
+    }
+    .activeJobs > .row:last-child{
+        margin-bottom: 0rem;
+        border-bottom: 0px;
+    }
+    .activeJobs > .row > h5{
+        color: #454545;
+    }
+    .priorityIcon{
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background-color: #BE1A21;
+        transform: rotate(45deg);
+         -ms-transform: rotate(45deg); /* IE 9 */
+         -webkit-transform: rotate(45deg);
+        margin-right: 1rem;
+    }
+    .jobDetail > div.col-xs-8 > h4{
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;    
+        font-size: 2rem !important;
+    }
+    .statusOpen > span{
+        border: 1px solid #000;
+    }
+    .statusCourt > span{
+        background-color: #b7b7b7;
+        color: #fff;
+    }
+    .jobDetail > .statusOpen > span, .jobDetail > .statusCourt > span{
+        font-size: 1.4rem !important;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        padding: 2% 6% 2% 6%;
+        margin-top: 10px;
+        display: block;
+        text-align: center;
+    }
+    .jobOfcDetail > div.col-xs-8{
+        font-weight: bold;
+        color: #153994;
+        font-size: 1.5rem;
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+    }
+    .jobOfcDetail > div.col-xs-8 > img{
+        width: 7%;
+        height: auto;
+        display: inline-block !important;
+        margin-right: 1rem !important;
+    }
+    .jobOfcDetail > div.col-xs-4{
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+        font-size: 1.7rem;
+        font-weight: bold;
+    }
+    
+    /************ Avialable Officer **************/
+    .availableOfficer{
+        background-color: #fff !important;
+        height: auto;
+        padding: 2rem 2rem 2rem 2rem !important;
+        overflow-x: hidden;
+    }
+    .availableOfficer img{
+        display: inline-block;
+        width: 3rem;
+        height: auto;
+    }
+    .availableOfficer > .col-xs-8 > h5{
+        color: #454545;
+    }
+    .availableOfficer > .row{
+        border-bottom: 1px dotted #b7b7b7;
+    }
+    .availableOfficer:last-child > .row{
+        border-bottom: 0px;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /***** Officer's List *****/
+    .officerListMainBox{
+        margin-top:20px;
+    }
+    .officer-tabs{
+        text-align:center;
+        border:none!important;
+        padding: 6px!important;
+        background: #E6E4E4;
+        border-radius:5px!important;
+    }
+    .officer-tabs li{
+        text-align:center;
+        width:50%;
+    }
+    .officer-tabs>li >a{
+        color: #000!important;
+        padding: 8px 15px!important;
+        font-size: 1.3rem!important;
+    }
+    .officer-tabs>li.active>a, .officer-tabs>li.active>a:focus, .officer-tabs>li.active>a:hover {
+        color: #fff!important;
+        cursor: pointer;
+        background-color: #082E8E!important;
+        border: none!important;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .separatorLine{
+        border-top: 1px solid #e6e5e5!important;
+    }
+    .searchBox{
+        background:#C9C9C9!important;
+        color:#000!important;
+        height: 40px!important;
+        box-shadow:none!important;
+        padding-left: 38px!important;
+        font-size: 1.3rem!important;
+    }
+    .searchBox:focus{
+        border-color:#C9C9C9!important;
+    }
+    .searchBox::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: #000!important;
+    }
+    .searchBox::-moz-placeholder { /* Firefox 19+ */
+     color: #000!important;
+    }
+    .searchBox:-ms-input-placeholder { /* IE 10+ */
+      color: #000!important;
+    }
+    .searchBox:-moz-placeholder { /* Firefox 18- */
+      color: #000!important;
+    }
+    .searchIcon{
+        position: absolute;
+        margin-top: -31px;
+        margin-left: 10px;	
+    }
+    .filterBox h5{
+        color: #000!important;
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+    }
+    .filterToggle{
+        background:#818181!important;
+        border-color:#818181!important;
+        font-size: 1.2rem!important;
+        padding: 4px 15px!important;
+    }
+    .filterToggle i{
+        vertical-align:middle!important;
+        font-size: 15px!important;
+    }
+    .filterDropdown{
+        float:right;
+        margin-top: -30px;
+    }
+    .filterDropdownMenu{
+        margin-left: -52px!important;
+        min-width: 130px!important;
+    }
+    .filterDropdownMenu a:hover{
+        background:#f5f5f5;
+    }
+    .mainListBox{
+        background:#fff;
+        border-radius:5px;
+        padding:10px;
+        margin-top:22px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .badgeImg{
+        width: 26px;
+    }
+    .noLeftPadding{
+        padding-left:0!important;
+    }
+    .noRightPadding{
+        padding-right:0!important;
+    }
+    .listcontentBox{
+        margin-left:5px;
+        margin-top: -3px;
+    }
+    .listcontentBox .officerId{
+        font-size:1.4rem!important;
+        color:#000;
+    }
+    .listcontentBox .officerName{
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+        font-size: 1.8rem;
+        margin-top: 2px;
+        color:#000;
+        margin-bottom: 5px;
+    }
+    .officerPostContact{
+        margin-top:1px!important;
+    }
+    .officerPostContact .post{
+        font-size: 1.4rem!important;
+        color:#48a1ec;
+    }
+    .officerPostContact .contact{
+       float: right;
+        font-size: 1.4rem!important;
+    }
+    .officerPostContact .contact i{
+        font-size: 1.3rem!important;
+        vertical-align: middle;
+        margin-top: -4px;	
+    }
+    .caseRow .assignedLabel{
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+        font-size: 1.3rem!important;
+        color:#082E8E!important;
+    }
+    .caseRow .caseDescr{
+        font-size: 1.2rem!important;
+    }
+    .caseRow .caseStatus{
+        color: #fff!important;
+        padding: 2px 10px;
+        font-size: 1.1rem!important;
+        border-radius: 3px;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+    }
+    .caseRow .caseStatus.open{
+        background:#48D29F;
+    }
+    .caseRow .caseStatus.closed{
+        background:#BE1A21;
+    }
+    .caseRow .caseStatus.incourt{
+        background:#082E8E;
+    }
+    .priorityIconOfficer{
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        /*background-color: #BE1A21;*/
+        transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        margin-right: 1rem;
+        margin-top: 7px;
+        margin-left: 6px;
+        position: absolute;
+    }
+    .priorityIconOfficer.red{
+        background-color: #BE1A21;
+    }
+    .priorityIconOfficer.orange{
+        background-color: #FA7D19;
+    }
+    .priorityIconOfficer.blue{
+        background-color: #2D8CEE;
+    }
+    .dashedSeparator{
+        margin-top: 15px!important;
+        margin-bottom: 15px!important;
+        border: 0!important;
+        border-top: 1px dashed #d6d4d4!important;
+    }
+    .bottomContainer{
+        background:#C1C1C1;
+        padding:15px;
+    }
+    .bottomContainer button{
+        background: #BE1A21;
+        border: none!important;
+        border-radius: 5px;
+        color: #fff;
+        font-family: "Conv_AVENIRLTSTD-Light", Georgia, serif !important;
+        padding: 10px;
+        width: 100%;
+    }
+    .headerBox h5 {
+        color: #000!important;
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+    }
+    .updateCount {
+        background: #818181!important;
+        border-color: #818181!important;
+        font-size: 1.1rem!important;
+        padding: 4px 15px!important;
+        float: right;
+        margin-top: -28px;
+        color: #fff;
+        border-radius: 5px;
+        font-weight: 500!important;
+    }
+    .headerBox{
+        margin-top: 35px;
+    }
+    /***** Officer's List*****/
 }
