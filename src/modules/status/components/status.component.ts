@@ -32,9 +32,9 @@ export class StatusComponent  implements OnInit {
   });
     this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST });
      // //Create
-   // this.store.dispatch({ type: STATUS_ACTIONS.ADD,payload:this.statusObj });
+    //this.store.dispatch({ type: STATUS_ACTIONS.ADD,payload:this.statusObj });
     // //Delete
-   // this.store.dispatch({ type: STATUS_ACTIONS.DELETE,payload:"ebeed096-ea34-43e2-948e-32bb98f31401" });
+   this.store.dispatch({ type: STATUS_ACTIONS.DELETE,payload:"ebeed096-ea34-43e2-948e-32bb98f31401" });
     // //Update (PUT)
     //this.store.dispatch({ type: STATUS_ACTIONS.UPDATE,payload:{id:"ebeed096-ea34-43e2-948e-32bb98f31401",updates:this.statusObj}});
     // //Update (PATCH)

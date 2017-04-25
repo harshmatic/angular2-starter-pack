@@ -17,7 +17,7 @@ export class OccurenceBookComponent  implements OnInit {
 
   ngOnInit() {
     this.occurenceBookObj = {
-    "obid": "411bfab2-0d44-4fb9-8835-184db90a9999",
+    "obid": "411bfab2-0d44-4fb9-8835-184db90f8878",
     "areaID": "411bfab2-0d44-4fb9-8835-184db90f44fa",
     "obTypeID": "758b1995-7f92-4d87-9588-b90800abf222",
     "departmentID": "a1da1d8e-1111-4634-b538-a01709473333",
@@ -36,9 +36,9 @@ export class OccurenceBookComponent  implements OnInit {
   });
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST });
     // //Create
-    this.store.dispatch({ type: OB_ACTIONS.ADD,payload:this.occurenceBookObj });
+    //this.store.dispatch({ type: OB_ACTIONS.ADD,payload:this.occurenceBookObj });
     // //Delete
-   // this.store.dispatch({ type: OB_ACTIONS.DELETE,payload:"411bfab2-0d44-4fb9-8835-184db90f5678" });
+   this.store.dispatch({ type: OB_ACTIONS.DELETE,payload:"411bfab2-0d44-4fb9-8835-184db90f8878" });
     // //Update (PUT)
    //this.store.dispatch({ type: OB_ACTIONS.UPDATE,payload:{id:"411bfab2-0d44-4fb9-8835-184db90a9999",updates:this.occurenceBookObj}});
     // //Update (PATCH)

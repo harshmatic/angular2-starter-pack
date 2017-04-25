@@ -1,4 +1,5 @@
 export interface Area {
+  "areaID":string,
   "areaName": string,
   "areaCode": string,
   "pinCode": string,
