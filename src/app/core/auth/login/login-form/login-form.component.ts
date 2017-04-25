@@ -26,9 +26,11 @@ export class EsplLoginFormComponent {
   }
 
   handleSubmit() {
-   this.authService.login({userName:this.username.value,password:this.password.value}).subscribe(
+    debugger;
+this.authService.login({userName:this.username.value,password:this.password.value}).subscribe(
           results => {
-                console.log('LoggedIN')
+                console.log('LoggedIN');
+                // var b = JSON.parse('LoggedIN');
           });
   }
 

@@ -9,7 +9,6 @@ import {  OccurenceBookService } from '../services/occurenceBook.service';
 import { BaseService } from '../../../app/core/services/index';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
-
 /// Define the appi endpoint here
 const CONTEXT = 'occurrencebook';
 

@@ -20,11 +20,13 @@ export class OccurenceBookService extends BaseService {
         super(http,CONTEXT);
     }
     // Get All
-    getObs() {        
+    getObs() { 
+               
         return this.getList$(CONTEXT).map(res => res.json());    
     }
     // Add One
-    addOb(ob:any) {        
+    addOb(ob:any) {   
+        //debugger;     
         return this.post$(CONTEXT,ob).map(res => res.json());    
     }
     //Update One
