@@ -14,7 +14,6 @@ import { StoreModule } from '@ngrx/store';
 import { DBModule } from '@ngrx/db';
 import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { MaterialModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
@@ -27,7 +26,7 @@ import { reducer } from './store';
 //import { schema } from './store/db';
 import { SharedModule } from '../shared/shared.module';
 import { NotFoundPage } from './not-found/not-found.page';
-import { RioAboutPage } from './about/about.page';
+import { EsplAboutPage } from './about/about.page';
 //import { TitleComponent } from './title/title.component';
 import { routing } from './core.routing';
 
@@ -35,7 +34,7 @@ import { routing } from './core.routing';
 import { PlatformDirective } from './platform/platform.directive';
 import { CORE_PROVIDERS } from './services/index';
 import { Config } from './utils/index';
-//import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './auth/auth.module';
 
 interface ICoreModuleOptions {
   window?: any;
@@ -52,7 +51,6 @@ const store = StoreModule.provideStore(reducer);
 @NgModule({
   imports: [
     CommonModule,
-    //    MaterialModule.forRoot(),
     /**
      * StoreModule.provideStore is imported once in the root module, accepting a reducer
      * function or object map of reducer functions. If passed an object of
@@ -87,20 +85,20 @@ const store = StoreModule.provideStore(reducer);
     //DBModule.provideDB(schema),
     NavigatorModule,
     SharedModule,
-    //AuthModule,
+    AuthModule,
     routing
   ],
   declarations: [
     PlatformDirective,
     NotFoundPage,
-    RioAboutPage,
+    EsplAboutPage,
    // TitleComponent
   ],
   exports: [
     ...bcNavComponents,
    // TitleComponent,
     NotFoundPage,
-    RioAboutPage,
+    EsplAboutPage,
     CommonModule,
     FormsModule,
     RouterModule,

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RioModalComponent } from './modal.component';
+import { EsplModalComponent } from './modal.component';
 import { SharedModule } from '../shared.module';
 
 describe('Component: Modal', () => {
@@ -14,18 +14,18 @@ describe('Component: Modal', () => {
         SharedModule
       ],
       declarations: [
-        RioModalTestController
+        EsplModalTestController
       ],
       providers: [
-        RioModalComponent
+        EsplModalComponent
       ]
     });
-    fixture = TestBed.createComponent(RioModalTestController);
+    fixture = TestBed.createComponent(EsplModalTestController);
     fixture.detectChanges();
   });
 
-  it('should inject the component', inject([RioModalComponent],
-    (component: RioModalComponent) => {
+  it('should inject the component', inject([EsplModalComponent],
+    (component: EsplModalComponent) => {
       expect(component).toBeTruthy();
     }));
 
@@ -33,7 +33,7 @@ describe('Component: Modal', () => {
     fixture.whenStable().then(() => {
       fixture.autoDetectChanges();
       let query = fixture.debugElement
-        .query(By.directive(RioModalComponent));
+        .query(By.directive(EsplModalComponent));
       expect(query).toBeTruthy();
       expect(query.componentInstance).toBeTruthy();
     });
@@ -43,8 +43,8 @@ describe('Component: Modal', () => {
 @Component({
   selector: 'test',
   template: `
-    <rio-modal></rio-modal>
+    <espl-modal></espl-modal>
   `
 })
-class RioModalTestController { }
+class EsplModalTestController { }
 

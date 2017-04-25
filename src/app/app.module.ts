@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MaterialModule } from '@angular/material';
 import { Router } from '@angular/router';
-
+import { LoginModule } from './core/auth/login/login.module';
 /** TODO: remove when work-around is not needed*/
 import 'hammerjs';
 
 /* App Root */
 import { AppPage } from './app.page';
-//import { RioLoginModalComponent } from './core/auth/login/login-modal/login-modal.component';
+//import { EsplLoginModalComponent } from './core/auth/login/login-modal/login-modal.component';
 //import { LoginModule } from './core/auth/login/login.module';
+import { APP_BASE_HREF, HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { AppRouting } from './app.routing';
 
@@ -21,8 +21,7 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     CoreModule,
     AppRouting,
-    //LoginModule,
-    MaterialModule.forRoot(),
+    LoginModule,
     SharedModule
   ],
   declarations: [
@@ -30,6 +29,10 @@ import { CoreModule } from './core/core.module';
   ],
   bootstrap: [
     AppPage
+  ],
+  providers:[
+     Location, {provide: LocationStrategy, useClass: HashLocationStrategy}
+   
   ]
 })
 export class AppModule { }

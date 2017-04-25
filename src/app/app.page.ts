@@ -3,10 +3,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import * as fromRoot from './core/store/';
-import { slices } from './core/store/util';
-import { initialSession } from './core/store/session/session.model';
-import * as SliceActions from './core/store/slice/slice.actions';
-
 
 @Component({
   selector: 'app-root',

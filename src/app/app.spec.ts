@@ -20,7 +20,7 @@ import { Location } from '@angular/common';
 
 import { AppModule } from './app.module';
 import { AppPage } from './app.page';
-import { RioAboutPage } from './core/about/about.page';
+import { EsplAboutPage } from './core/about/about.page';
 import { DashboardHeroComponent } from './heroes/dashboard/dashboard-hero/dashboard-hero.component';
 import { TwainService } from './shared/twain/twain.service';
 
@@ -42,7 +42,7 @@ describe('AppPage & RouterTestingModule', () => {
   it('should navigate to "About" immediately', fakeAsync(() => {
     createComponent();
     expect(location.path()).toEqual('/about', 'after initialNavigation()');
-    expectElementOf(RioAboutPage);
+    expectElementOf(EsplAboutPage);
   }));
 
   it('should navigate to "About" on click', fakeAsync(() => {
@@ -54,7 +54,7 @@ describe('AppPage & RouterTestingModule', () => {
 
     advance();
     expectPathToBe('/about');
-    expectElementOf(RioAboutPage);
+    expectElementOf(EsplAboutPage);
 
     // TODO: Figure this one out
     // page.expectEvents([
@@ -69,7 +69,7 @@ describe('AppPage & RouterTestingModule', () => {
     // location.go('/about'); // also works ... except in plunker
     advance();
     expectPathToBe('/about');
-    expectElementOf(RioAboutPage);
+    expectElementOf(EsplAboutPage);
   }));
 
   // Can't navigate to lazy loaded modules with this technique
