@@ -11,21 +11,21 @@
         "assets",
         "favicon.ico"
       ],
-      "index": "index.html",
-      "main": "main.ts",
-      "polyfills": "polyfills.ts",
-      "test": "test.ts",
+      "index": "../node_modules/kenya-project-pkg/src/index.html",
+      "main": "../node_modules/kenya-project-pkg/src/main.ts",
+      "polyfills": "../node_modules/kenya-project-pkg/src/polyfills.ts",
+      "test": "../node_modules/kenya-project-pkg/src/test.ts",
       "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
+      "testTsconfig": "../node_modules/kenya-project-pkg/src/tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "assets/styles/index.scss"
+        "../node_modules/kenya-project-pkg/src/assets/styles/index.scss"
       ],
       "scripts": [],
-      "environmentSource": "environments/environment.ts",
+      "environmentSource": "../node_modules/kenya-project-pkg/src/environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "dev": "../node_modules/kenya-project-pkg/src/environments/environment.ts",
+        "prod": "../node_modules/kenya-project-pkg/src/environments/environment.prod.ts"
       }
     }
   ],

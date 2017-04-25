@@ -87,6 +87,7 @@
     "http-proxy": "^1.13.2",
     "istanbul": "^1.0.0-alpha.2",
     "istanbul-instrumenter-loader": "^2.0.0",
+    "kenya-project-pkg": "0.0.0",
     "lodash": "4.17.4",
     "ngrx-store-localstorage": "0.1.5",
     "nodemon": "^1.9.2",
