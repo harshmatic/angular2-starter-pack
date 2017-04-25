@@ -6,15 +6,18 @@ import {DepartmentReducer} from './department/store/department.reducer';
 import {DesignationReducer} from './designation/store/designation.reducer';
 import {ShiftReducer} from './shift/store/shift.reducer';
 import {AreaReducer} from './area/store/area.reducer';
-import {OccurenceTypeReducer} from './occurenceType/store/occurenceType.reducer';
+import {OccurenceTypeReducer} from './occurrenceType/store/occurenceType.reducer';
 import {StatusReducer} from './status/store/status.reducer';
-
+import {OccurenceAssignmentReducer} from './occurrenceAssignment/store/occurenceAssignment.reducer';
+import {OccurenceReviewHistoryReducer} from './occurrenceReviewHistory/store/occurenceReviewHistory.reducer';
 export const routing = [
 
 
   { path: 'ob', loadChildren: 'modules/occurenceBook/occurenceBook.module' },
   { path: 'area' , loadChildren:'modules/area/area.module' },
-  { path: 'ot' , loadChildren:'modules/occurenceType/occurenceType.module' },
+  { path: 'ot' , loadChildren:'modules/occurrenceType/occurenceType.module' },
+  {path: 'oa' , loadChildren:'modules/occurrenceAssignment/occurenceAssignment.module'},
+  {path:'orh' , loadChildren:'modules/occurrenceReviewHistory/occurenceReviewHistory.module'},
   {path: 'status' , loadChildren:'modules/status/status.module'},
   { path: 'dashboard', loadChildren: 'modules/dashboard/dashboard.module' },
   { path: 'department', loadChildren: 'modules/department/department.module' },
@@ -41,5 +44,7 @@ export const moduleReducers = {
   shift:ShiftReducer,
   area: AreaReducer,
   occurenceType:OccurenceTypeReducer,
-  status:StatusReducer
+  status:StatusReducer,
+  occurrenceAssign:OccurenceAssignmentReducer,
+  occurrenceRH:OccurenceReviewHistoryReducer,
 }
