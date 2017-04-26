@@ -14,7 +14,7 @@ const CONTEXT = ApiBaseAuthUrl;
 @Injectable()
 export class AuthService extends BaseService {
   isLoggedIn: boolean = false;
-  authStatusChangeSource = new Subject<string>();
+  authStatusChangeSource = new Subject<any>();
   onAuthStatusChanged$ = this.authStatusChangeSource.asObservable();
   constructor(public http: Http) {
         super(http,CONTEXT);
@@ -30,11 +30,11 @@ export class AuthService extends BaseService {
   isAuthenticated() {
     if (localStorage.getItem('accessToken')) {
         this.isLoggedIn = true;
-        this.authStatusChangeSource.next('true');
+        this.authStatusChangeSource.next(true);
         return true;
     } else {
         this.isLoggedIn = false;
-        this.authStatusChangeSource.next('false');
+        this.authStatusChangeSource.next(false);
         return false;
     }
   }
