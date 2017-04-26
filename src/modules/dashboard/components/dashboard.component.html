@@ -152,7 +152,7 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mapCard">
             <h4>Jobs in Progress</h4>
             <!--Map Card-->
-            <div class="mapJobs">
+            <!--<div class="mapJobs">
                 <div class="jobMarkers">
                     <span class="criticalJob marker"></span>
                     <span class="criticalJob marker"></span>
@@ -165,26 +165,39 @@
                     <span class="minorJob marker"></span>
                     <span class="majorJob marker"></span>
                 </div>
-                <!--jobmarker end here-->
-                <!--Content Card-->
                 <div class="row jobContentCard">
                     <div class="col-xs-8">
                         <h3>Armed Robbery In Progress</h3>
                         <span>Nanyuki-Rumuruti Rd, Nanyuki, Kenya</span>
                         <div><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Robert Downey
-                            Jr</div>
+                            Jr
+                        </div>
                     </div>
                     <div class="col-xs-4">
                         <h3>03:12</h3>
                         <span>Duty Hours</span>
                     </div>
                 </div>
-                <!--content Card end here-->
-                <!--Card Close icon-->
                 <div class="closeBtn jobContentCard"><i class="material-icons">&#xE5CD;</i></div>
-            </div>
-            <agm-map [latitude]="lat" [longitude]="lng">
-                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </div>-->
+            <agm-map [latitude]="locations[0].lat" [longitude]="locations[0].lng" [zoom]="16">
+                <agm-marker *ngFor="let location of locations" [latitude]="location.lat" [longitude]="location.lng" [iconUrl]="location.content" >
+                    <agm-info-window [disableAutoPan]="true">
+                        <div class="row jobContentCard" style="display:block">
+                            <div class="col-xs-8">
+                                <h3>Armed Robbery In Progress</h3>
+                                <span>Nanyuki-Rumuruti Rd, Nanyuki, Kenya</span>
+                                <div><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Robert
+                                    Downey Jr
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <h3>03:12</h3>
+                                <span>Duty Hours</span>
+                            </div>
+                        </div>
+                    </agm-info-window>
+                </agm-marker>
             </agm-map>
         </div>
     </div>
@@ -209,7 +222,8 @@
                     </div>
                     <div class="jobOfcDetail">
                         <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Robert Downey
-                            Jr</div>
+                            Jr
+                        </div>
                         <div class="col-xs-4">03:12:56</div>
                     </div>
                 </div>
@@ -244,7 +258,8 @@
                     </div>
                     <div class="jobOfcDetail">
                         <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Robert De
-                            Niro</div>
+                            Niro
+                        </div>
                         <div class="col-xs-4">03:12:56</div>
                     </div>
                 </div>
