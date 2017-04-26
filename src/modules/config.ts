@@ -8,7 +8,6 @@ import {ShiftReducer} from './shift/store/shift.reducer';
 import {AreaReducer} from './area/store/area.reducer';
 import {OccurenceTypeReducer} from './occurenceType/store/occurenceType.reducer';
 import {StatusReducer} from './status/store/status.reducer';
-
 import {EmployeeReducer} from './employee/store/employee.reducer';
 
 
@@ -24,6 +23,7 @@ export const routing = [
   { path: 'shift', loadChildren: 'modules/shift/shift.module' },
   { path: 'designation', loadChildren: 'modules/designation/designation.module' },
   { path: 'employee', loadChildren: 'modules/employee/employee.module' },
+  { path: 'officers', loadChildren: 'modules/officerList/officerList.module' },
   { path: '', redirectTo: 'core', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' }
 
