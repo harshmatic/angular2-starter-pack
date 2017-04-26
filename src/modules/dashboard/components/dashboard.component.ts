@@ -13,6 +13,8 @@ import { EMPLOYEE_ACTIONS } from '../../employee/store/employee.actions';
 })
 export class DashboardComponent  implements OnInit {
   dashboard:Dashboard[];
+  officers:any[]=[];
+  asyncOfficer:Observable<any>
   lat: number = 51.678418;
   lng: number = 7.809007;
     locations = [
@@ -30,14 +32,10 @@ export class DashboardComponent  implements OnInit {
   ];
   constructor(private store: Store<Dashboard>){}
   ngOnInit() {
-
-
-    //this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_LIST });
     this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
-     //this.store.dispatch({ type: DASHBOARD_ACTIONS.ADD_DASHBOARD });
-     
-     this.store.select('dashboard').subscribe((res:any) => {
-       this.dashboard = res;
+    this.asyncOfficer= this.store.select('employee')
+    this.asyncOfficer.subscribe((res:any) => {
+       this.officers = res;
     });
      
   }
