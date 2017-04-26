@@ -10,20 +10,17 @@ declare var $:any;
   templateUrl: 'officerList.component.html',
 })
 export class OfficerListComponent  implements OnInit {
-  employee:Employee[];
+  officers:any[]=[];
+  asyncOfficer:Observable<any>
   showTab:boolean=true;
   constructor(private store: Store<Employee>){}
 
   ngOnInit() {
     this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
-    // this.store.dispatch({ type: EMPLOYEE_ACTIONS.ADD });
-     $(".nav-tabs a").click(function () {
-            $(this).tab('show');
-        });
-     this.store.select('employee').subscribe((res:any) => {
-      
-       this.employee = res;
-     });
+    this.asyncOfficer= this.store.select('employee')
+    this.asyncOfficer.subscribe((res:any) => {
+       this.officers = res;
+    });
      
   }
   setTab(value,e) {

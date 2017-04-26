@@ -10,11 +10,8 @@ import { BaseService } from '../../../app/core/services/index';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 
-/// Define the appi endpoint here
-const CONTEXT = 'employee';
-
 @Injectable()
-export class EmployeeEffects extends BaseService {
+export class EmployeeEffects  {
 
   @Effect({ dispatch: false })
   private getListEmployee$ = this.actions$
@@ -22,7 +19,7 @@ export class EmployeeEffects extends BaseService {
    .switchMap(action => 
        this.EmployeeService.getEmployees()
         .map(res =>{
-          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_SUCCESS, payload: res })
         })
         .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
       );
@@ -63,5 +60,5 @@ export class EmployeeEffects extends BaseService {
     private actions$: Actions,
     private EmployeeService: EmployeeService,
     public http: Http
-  ) {super(http,CONTEXT); }
+  ) { }
 }

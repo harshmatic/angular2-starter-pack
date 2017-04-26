@@ -20,4 +20,4 @@ export const routedComponents = [OfficerListComponent];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class OfficerListRouting { }
+export class OfficerRouting { }

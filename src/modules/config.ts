@@ -23,7 +23,7 @@ export const routing = [
   { path: 'shift', loadChildren: 'modules/shift/shift.module' },
   { path: 'designation', loadChildren: 'modules/designation/designation.module' },
   { path: 'employee', loadChildren: 'modules/employee/employee.module' },
-  { path: 'officers', loadChildren: 'modules/officerList/officerList.module' },
+  { path: 'officers', loadChildren: 'modules/officers/officer.module' },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' }
 

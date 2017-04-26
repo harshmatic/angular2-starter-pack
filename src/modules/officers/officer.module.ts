@@ -3,7 +3,7 @@ import { HttpModule } from '@angular/http';
 import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { OfficerListRouting } from './officerList.routing';
+import { OfficerRouting } from './officer.routing';
 import { SharedModule } from '../../app/shared/shared.module';
 import { OfficerListComponent } from './components/officerList.component';
 import { EmployeeEffects } from '../employee/store/employee.effects';
@@ -13,7 +13,7 @@ import { EmployeeService } from '../employee/services/employee.service';
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    OfficerListRouting,
+    OfficerRouting,
     EffectsModule.run(EmployeeEffects)
   ],
   declarations: [
