@@ -169,7 +169,7 @@ h4{
         background-color: transparent !important;
     }
     .navbar-inverse .navbar-toggle .icon-bar{
-        background-color: #000 !important;
+        background-color: #000;
     }
     .cards{
         margin-top: 3rem !important;
