@@ -15,7 +15,7 @@ const CONTEXT = 'dashboard';
 /** Service Definition */
 @Injectable()
 export class DashboardService extends BaseService {
-
+    
     constructor(public http: Http) {
         super(http,CONTEXT);
     }

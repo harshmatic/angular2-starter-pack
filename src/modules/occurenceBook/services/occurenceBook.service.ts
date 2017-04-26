@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
 import { OccurenceBook } from '../store/occurenceBook.model';
+import { Ob } from './ob';
+
 import { BaseService } from '../../../app/core/services/index';
 
 /** Context for service calls */
@@ -21,8 +23,13 @@ export class OccurenceBookService extends BaseService {
     }
     // Get All
     getObs() { 
-               
-        return this.getList$(CONTEXT).map(res => res.json());    
+           //debugger;    
+        //return this.getList$(CONTEXT).map(res => res.json()); 
+        console.log("hi");
+        return new Observable<any>((observer:any) => {
+            observer.next(Ob);
+        });;
+          
     }
     // Add One
     addOb(ob:any) {   

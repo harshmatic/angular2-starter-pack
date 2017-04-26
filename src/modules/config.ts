@@ -10,6 +10,7 @@ import {OccurenceTypeReducer} from './occurrenceType/store/occurenceType.reducer
 import {StatusReducer} from './status/store/status.reducer';
 import {OccurenceAssignmentReducer} from './occurrenceAssignment/store/occurenceAssignment.reducer';
 import {OccurenceReviewHistoryReducer} from './occurrenceReviewHistory/store/occurenceReviewHistory.reducer';
+import {EmployeeReducer} from './employee/store/employee.reducer';
 export const routing = [
 
 
@@ -23,6 +24,8 @@ export const routing = [
   { path: 'department', loadChildren: 'modules/department/department.module' },
   { path: 'shift', loadChildren: 'modules/shift/shift.module' },
   { path: 'designation', loadChildren: 'modules/designation/designation.module' },
+  { path: 'employee', loadChildren: 'modules/employee/employee.module' },
+  { path: 'officers', loadChildren: 'modules/officerList/officerList.module' },
   { path: '', redirectTo: 'core', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' }
 
@@ -47,4 +50,5 @@ export const moduleReducers = {
   status:StatusReducer,
   occurrenceAssign:OccurenceAssignmentReducer,
   occurrenceRH:OccurenceReviewHistoryReducer,
+  employee:EmployeeReducer
 }

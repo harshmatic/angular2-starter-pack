@@ -1,4 +1,324 @@
-<div>
-  <h1>Dashboard</h1>
-</div>
-<div [ifAuthorize]="['DASHBOARD']">You have permission to see this</div>
+ <!-------------------- Main Container ------------------------>
+        <div class="main-container container">
+            <div class="pageName"><h1>Dashboard</h1></div>
+            
+             <!-------------------- Stat Cards ------------------------>
+            <div class="row">
+               <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                  </ol>
+
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner" role="listbox">
+                   <!--Job Stat Card-->
+                    <div class="item active">
+                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 statCard">
+                            <h4>Jobs Statistics</h4>
+                            <div class="jobStats">
+                                <div class="row">
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>Total Jobs</span>
+                                        <h3>3,460</h3>
+                                    </div>
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span><strong>576</strong>&nbsp;Critical</span>
+                                        <span><strong>989</strong>&nbsp;Major</span>
+                                        <span><strong>1895</strong>&nbsp;Minor</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>Active Jobs</span>
+                                        <h3>123</h3>
+                                    </div>
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>In Courts</span>
+                                        <h3>123</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--End here-->
+                    
+                    <!--Officer Stat Card-->
+                    <div class="item">
+                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 statCard">
+                            <h4>Officer Statistics</h4>
+                            <div class="jobStats offcStats">
+                                <div class="row">
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>All Officers</span>
+                                        <h3>339</h3>
+                                    </div>
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>On Scene</span>
+                                        <h3>123</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>On Critical</span>
+                                        <h3>123</h3>
+                                    </div>
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>On Major</span>
+                                        <h3>123</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--End here-->
+                    
+                    <!--Inventory Stat Card-->
+                    <div class="item">
+                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 statCard">
+                            <h4>Inventory Statistics</h4>
+                            <div class="jobStats">
+                                <div class="row">
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>Total Jobs</span>
+                                        <h3>3,460</h3>
+                                    </div>
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span><strong>576</strong>&nbsp;Critical</span>
+                                        <span><strong>989</strong>&nbsp;Major</span>
+                                        <span><strong>1895</strong>&nbsp;Minor</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>Active Jobs</span>
+                                        <h3>123</h3>
+                                    </div>
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>In Courts</span>
+                                        <h3>123</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--End here-->
+                    
+                    <!--Criminals Stat Card-->
+                    <div class="item">
+                      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 statCard">
+                            <h4>Criminals Statistics</h4>
+                            <div class="jobStats offcStats">
+                                <div class="row">
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>All Officers</span>
+                                        <h3>339</h3>
+                                    </div>
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>On Scene</span>
+                                        <h3>123</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>On Critical</span>
+                                        <h3>123</h3>
+                                    </div>
+                                    <div class="col-xs-6 statInnerBox">
+                                        <span>On Major</span>
+                                        <h3>123</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--End here-->
+                    
+                  </div><!-- Wrapper End here -->
+                </div><!-- Carousel End here -->
+            </div><!--Stat cards ends here-->
+            
+            
+            <!-------------------- Jobs in Progress ------------------------>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mapCard">
+                    <h4>Jobs in Progress</h4>
+                    <!--Map Card-->
+                    <div class="mapJobs">
+                        <div class="jobMarkers">
+                            <span class="criticalJob marker"></span>
+                            <span class="criticalJob marker"></span>
+                            <span class="criticalJob marker"></span>
+                            <span class="majorJob marker"></span>
+                            <span class="majorJob marker"></span>
+                            <span class="majorJob marker"></span>
+                            <span class="minorJob marker"></span>
+                            <span class="minorJob marker"></span>
+                            <span class="minorJob marker"></span>
+                            <span class="majorJob marker"></span>
+                        </div><!--jobmarker end here-->
+                        <!--Content Card-->
+                        <div class="row jobContentCard" >
+                           <div class="col-xs-8">
+                               <h3>Armed Robbery In Progress</h3>
+                               <span>Nanyuki-Rumuruti Rd, Nanyuki, Kenya</span>
+                               <div><img class="img-responsive imgBadge" src="images/badge.png" alt="badge">Robert Downey Jr</div>
+                           </div>
+                           <div class="col-xs-4">
+                               <h3>03:12</h3>
+                               <span>Duty Hours</span>
+                           </div>
+                        </div><!--content Card end here-->
+                        <!--Card Close icon-->
+                        <div class="closeBtn jobContentCard"><i class="material-icons">&#xE5CD;</i></div>
+                    </div>
+                </div>
+            </div><!--jobs in progress ends here-->
+            
+            <!-------------------- Active Jobs ------------------------>
+          <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <h4>Active Jobs</h4>
+                    <!--Active Jobs-->
+                  <div class="activeJobs ">
+                        <h4>TODAY</h4>
+                        <!--Job Row 1-->
+                        <div *ngFor="let Object of dashboard">
+                       <div class="row">
+                    <h5 class="col-xs-12"><span class="priorityIcon"></span>
+                         {{Object.obType.obNumber}} | {{Object.departmentType.departmentName}}   
+                    </h5>
+                            <div class="jobDetail">
+                                <div class="col-xs-8">
+                                    <h4>{{Object.obType.natureOfOccurrence}}</h4>
+                                    <p>{{Object.area.areaName}}</p>
+                                </div>
+                                <div class="col-xs-4 statusOpen"><span>{{Object.statusType.statusName}}</span></div>
+                            </div>
+                            <div class="jobOfcDetail">
+                                <div class="col-xs-8"><img class="img-responsive imgBadge" src="images/badge.png" alt="badge">
+                             {{Object.employeeType.firstName}}{{Object.employeeType.lastName}}
+                                </div>
+                                <div class="col-xs-4">03:12:56</div>
+                            </div>
+                        </div>
+                   </div><!--Active Jobs end here-->                    
+               </div>
+            </div> <!--active jobs ends here-->
+           <!--  -->
+           </div>
+            
+             <!-------------------- Available Officer ------------------------>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <h4>Top Rated Available Officers</h4>
+                    
+                    <!--Officer Row 1-->
+                    <div class="listSubBox availableOfficer">
+                        <div class="row">
+                            <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <img src="images/BadgeNew.png" class="badgeImg" />
+                            </div>
+                            <div class="col-xs-10 noLeftPadding">
+                                <div class="listcontentBox">
+                                    <span class="officerId">JC123564 | Crime Branch</span>
+
+                                    <h5 class="officerName">Harrison Ford</h5>
+
+                                    <h5 class="officerPostContact">
+                                        <span class="post">Encounter Specialist</span>
+                                        <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>	
+                    </div><!--Officer row 1 end here-->
+                    
+                    <!--Officer Row 2-->
+                    <div class="listSubBox availableOfficer">
+                        <div class="row">
+                            <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <img src="images/BadgeNew.png" class="badgeImg" />
+                            </div>
+                            <div class="col-xs-10 noLeftPadding">
+                                <div class="listcontentBox">
+                                    <span class="officerId">JC123564 | Crime Branch</span>
+
+                                    <h5 class="officerName">Mark Douglas</h5>
+
+                                    <h5 class="officerPostContact">
+                                        <span class="post">Investigation Officer</span>
+                                        <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>	
+                    </div><!--Officer row 2 end here-->
+                    
+                    <!--Officer Row 3-->
+                    <div class="listSubBox availableOfficer">
+                        <div class="row">
+                            <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <img src="images/BadgeNew.png" class="badgeImg" />
+                            </div>
+                            <div class="col-xs-10 noLeftPadding">
+                                <div class="listcontentBox">
+                                    <span class="officerId">JC123564 | Crime Branch</span>
+
+                                    <h5 class="officerName">Tom Hanks</h5>
+
+                                    <h5 class="officerPostContact">
+                                        <span class="post">Criminal Case Specialist</span>
+                                        <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>	
+                    </div><!--Officer row 3 end here-->
+                    
+                    <!--Officer Row 4-->
+                    <div class="listSubBox availableOfficer">
+                        <div class="row">
+                            <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <img src="images/BadgeNew.png" class="badgeImg" />
+                            </div>
+                            <div class="col-xs-10 noLeftPadding">
+                                <div class="listcontentBox">
+                                    <span class="officerId">JC123564 | Crime Branch</span>
+
+                                    <h5 class="officerName">Eddie Murphy</h5>
+
+                                    <h5 class="officerPostContact">
+                                        <span class="post">Encounter Specialist</span>
+                                        <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>	
+                    </div><!--Officer row 4 end here-->
+                    
+                    <!--Officer Row 5-->
+                    <div class="listSubBox availableOfficer">
+                        <div class="row">
+                            <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <img src="images/BadgeNew.png" class="badgeImg" />
+                            </div>
+                            <div class="col-xs-10 noLeftPadding">
+                                <div class="listcontentBox">
+                                    <span class="officerId">JC123564 | Crime Branch</span>
+
+                                    <h5 class="officerName">Tom Cruise</h5>
+
+                                    <h5 class="officerPostContact">
+                                        <span class="post">Investigation Officer</span>
+                                        <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>	
+                    </div><!--Officer row 5 end here-->
+                    
+                </div>
+            </div><!-- Available Office ends here-->
+            
+            
+        </div><!-- Main Container End here -->
