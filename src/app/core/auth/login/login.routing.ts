@@ -5,6 +5,7 @@ import { AuthService } from '../auth.service';
 import { EsplLoginFormComponent } from './login-form/login-form.component';
 
 const loginRoutes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: EsplLoginFormComponent }
 ];
 

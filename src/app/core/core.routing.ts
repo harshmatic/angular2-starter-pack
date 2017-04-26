@@ -7,7 +7,6 @@ import { NotFoundPage } from './not-found/not-found.page';
 import {LoginRouting} from './auth/login/login.routing';
 
 const routes: Routes = [
-      { path: '', redirectTo: 'about', pathMatch: 'full'},
       { path: 'about', component: EsplAboutPage },
       { path: 'not-found', component: NotFoundPage },
       { path: 'login' , component: LoginRouting}

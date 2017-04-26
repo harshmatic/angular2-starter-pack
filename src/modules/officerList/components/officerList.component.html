@@ -1,0 +1,308 @@
+<div class="main-container container">
+
+    <div class="officerListMainBox">
+        <ul class="nav nav-tabs officer-tabs">
+            <li [ngClass]="{active:showTab}">
+                <a (click)='setTab(1,$event)'>Officer Detail</a>
+            </li>
+            <li [ngClass]="{active:!showTab}">
+                <a (click)='setTab(2,$event)'>Activity Feed</a>
+            </li>
+        </ul>
+
+        <!-- Tab content -->
+        <div class="tab-content profile-tab-content">
+
+
+            <!---------------------- Officer Details tab content -------------------------->
+            <div id="officer-details-tab" [ngClass]="{active:showTab}" class="tab-pane fade in">
+
+                <hr class="separatorLine" />
+
+                <!--  Search Box -->
+
+                <input type="text" class="form-control searchBox" placeholder="Search Officer by name,location and ID" />
+                <i class="material-icons searchIcon">search</i>
+
+                <!--  Search Box Ends -->
+
+                <hr class="separatorLine" />
+
+                <div class="filterBox">
+                    <h5>Officers List</h5>
+                    <div class="dropdown filterDropdown">
+                        <button class="btn btn-primary dropdown-toggle filterToggle" type="button" data-toggle="dropdown">Filter
+								  <i class="material-icons">keyboard_arrow_down</i></button>
+                        <ul class="dropdown-menu filterDropdownMenu">
+                            <li><a href="#">Filter 1</a></li>
+                            <li><a href="#">Filter 2</a></li>
+                            <li><a href="#">Filter 3</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Main List Box -->
+                <div class="mainListBox">
+
+                    <!-- Box 1 -->
+                    <div class="listSubBox">
+                        <div class="row">
+                            <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
+                            </div>
+                            <div class="col-xs-10 noLeftPadding">
+                                <div class="listcontentBox">
+                                    <span class="officerId">JC123564 | Crime Branch</span>
+
+                                    <h5 class="officerName">Harrison Ford</h5>
+
+                                    <h5 class="officerPostContact">
+                                        <span class="post">Encounter Specialist</span>
+                                        <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
+                                    </h5>
+
+                                    <div class="row caseRow">
+                                        <div class="col-xs-12">
+                                            <span class="assignedLabel">
+															Case Assigned
+															<label class="priorityIconOfficer red"></label>
+														</span>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <span class="caseDescr">RC001052 : Noise Complaint By Neighbours</span>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <label class="caseStatus open">Open</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="dashedSeparator" />
+
+                    <!-- Box 2 -->
+                    <div class="listSubBox">
+                        <div class="row">
+                            <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
+                            </div>
+                            <div class="col-xs-10 noLeftPadding">
+                                <div class="listcontentBox">
+                                    <span class="officerId">JC123564 | Crime Branch</span>
+
+                                    <h5 class="officerName">Mark Douglas</h5>
+
+                                    <h5 class="officerPostContact">
+                                        <span class="post">Encounter Specialist</span>
+                                        <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
+                                    </h5>
+
+                                    <div class="row caseRow">
+                                        <div class="col-xs-12">
+                                            <span class="assignedLabel">
+															Case Assigned
+															<label class="priorityIconOfficer blue"></label>
+														</span>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <span class="caseDescr">RC001058 : 2 Car accidents at highway</span>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <label class="caseStatus open">Open</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="dashedSeparator" />
+
+
+                    <!-- Box 3 -->
+                    <div class="listSubBox">
+                        <div class="row">
+                            <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
+                            </div>
+                            <div class="col-xs-10 noLeftPadding">
+                                <div class="listcontentBox">
+                                    <span class="officerId">JC123564 | Crime Branch</span>
+
+                                    <h5 class="officerName">Tom Hanks</h5>
+
+                                    <h5 class="officerPostContact">
+                                        <span class="post">Encounter Specialist</span>
+                                        <span class="contact"><i class="material-icons">phone</i> +254-632541</span>
+                                    </h5>
+
+                                    <div class="row caseRow">
+                                        <div class="col-xs-12">
+                                            <span class="assignedLabel">
+															Case Assigned
+															<label class="priorityIconOfficer orange"></label>
+														</span>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <span class="caseDescr">RC001058 : 2 Car accidents at highway</span>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <label class="caseStatus closed">Closed</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="dashedSeparator" />
+
+                    <!-- Box 4 -->
+                    <div class="listSubBox">
+                        <div class="row">
+                            <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
+                            </div>
+                            <div class="col-xs-10 noLeftPadding">
+                                <div class="listcontentBox">
+                                    <span class="officerId">JC123564 | Crime Branch</span>
+
+                                    <h5 class="officerName">Tom Cruise</h5>
+
+                                    <h5 class="officerPostContact">
+                                        <span class="post">Encounter Specialist</span>
+                                        <span class="contact"><i class="material-icons">phone</i> +254-126548</span>
+                                    </h5>
+
+                                    <div class="row caseRow">
+                                        <div class="col-xs-12">
+                                            <span class="assignedLabel">
+															Case Assigned
+															<label class="priorityIconOfficer orange"></label>
+														</span>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <span class="caseDescr">RC001058 : Tree blocking road access</span>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <label class="caseStatus incourt">In Court</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="dashedSeparator" />
+
+
+                    <!-- Box 5 -->
+                    <div class="listSubBox">
+                        <div class="row">
+                            <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
+                            </div>
+                            <div class="col-xs-10 noLeftPadding">
+                                <div class="listcontentBox">
+                                    <span class="officerId">JC123564 | Crime Branch</span>
+
+                                    <h5 class="officerName">Brock Lesnar</h5>
+
+                                    <h5 class="officerPostContact">
+                                        <span class="post">Encounter Specialist</span>
+                                        <span class="contact"><i class="material-icons">phone</i> +254-126548</span>
+                                    </h5>
+
+                                    <div class="row caseRow">
+                                        <div class="col-xs-12">
+                                            <span class="assignedLabel">
+															Case Assigned
+															<label class="priorityIconOfficer red"></label>
+														</span>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <span class="caseDescr">RC001058 : Murder by underage kid</span>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <label class="caseStatus open">Open</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- Main List Box Ends -->
+
+
+            </div>
+            <!---------------------- Officer Details tab content Ends -------------------------->
+
+            <!---------------------- Activity Feed tab content -------------------------->
+            <div id="activity-feed-tab" [ngClass]="{active:!showTab}" class="tab-pane fade in">
+
+                <div class="headerBox">
+                    <h5>Recent Activity</h5>
+                    <label class="updateCount">22 New Updates</label>
+                </div>
+
+                <!-- Main List Box -->
+                <div class="mainListBox">
+
+                    <!-- Box 1 -->
+                    <div class="listSubBox">
+                        <div class="">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Firstname</th>
+                                        <th>Lastname</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John</td>
+                                        <td>Doe</td>
+                                        <td>john@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mary</td>
+                                        <td>Moe</td>
+                                        <td>mary@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>July</td>
+                                        <td>Dooley</td>
+                                        <td>july@example.com</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <hr class="dashedSeparator" />
+
+
+                </div>
+                <!-- Main List Box Ends -->
+
+            </div>
+            <!---------------------- Activity Feed tab content -------------------------->
+        </div>
+
+        <!-- Tab content Ends -->
+
+    </div>
+
+</div>
+<!-- Main Container End here -->
+
+<!-- Add new officer -->
+<div class="bottomContainer">
+    <button>Add New Officer</button>
+</div>
