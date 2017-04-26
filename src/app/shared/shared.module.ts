@@ -11,6 +11,7 @@ import { EsplAlertComponent } from './alert/alert.component';
 import { EsplButtonComponent } from './button/button.component';
 import { EsplContainerComponent } from './container/container.component';
 import { EsplInputComponent } from './input/input.component';
+import { EsplLogoComponent } from './logo/logo.component';
 import { EsplFormComponent } from './form/form.component';
 import { EsplFormErrorComponent } from './form-error/form-error.component';
 import { EsplFormGroupComponent } from './form-group/form-group.component';
@@ -32,6 +33,7 @@ export const components = [
   EsplButtonComponent,
   EsplContainerComponent,
   EsplInputComponent,
+  EsplLogoComponent,
   EsplFormComponent,
   EsplFormErrorComponent,
   EsplFormGroupComponent,

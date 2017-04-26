@@ -5,7 +5,6 @@ import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
 import { OccurenceBook, initialOccurenceBook } from './occurenceBook.model';
 import { OB_ACTIONS } from './occurenceBook.actions';
-import {DASHBOARD_ACTIONS} from '../../dashboard/store/dashboard.actions';
 import {  OccurenceBookService } from '../services/occurenceBook.service';
 import { BaseService } from '../../../app/core/services/index';
 import { Http, Headers, RequestOptions } from '@angular/http';
@@ -22,10 +21,9 @@ export class OccurenceBookEffects extends BaseService {
    .switchMap(action => 
        this.occurenceBookService.getObs()
         .map(res =>{
-         // this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
-         this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_SUCCESS, payload: res })
+          this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
         })
-        //.catch(() => Observable.of({ type: OB_ACTIONS.ON_FAILED  }))
+        .catch(() => Observable.of({ type: OB_ACTIONS.ON_FAILED  }))
       );
  @Effect({ dispatch: false })
   private addOb$ = this.actions$

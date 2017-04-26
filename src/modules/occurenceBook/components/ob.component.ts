@@ -13,26 +13,21 @@ export class OccurenceBookComponent  implements OnInit {
   occurenceBook:OccurenceBook[];
   occurenceBookObj:any = {};
   patchReq:Patch[]=[];
- // DynamicData:any={};
   constructor(private store: Store<any>){}
 
   ngOnInit() {
     this.occurenceBookObj = {
     "obid": "411bfab2-0d44-4fb9-8835-184db90f8878",
-    //objects start
     "areaID": "411bfab2-0d44-4fb9-8835-184db90f44fa",
     "obTypeID": "758b1995-7f92-4d87-9588-b90800abf222",
     "departmentID": "a1da1d8e-1111-4634-b538-a01709473333",
-    "assignedTo":"f12c0c13-28c7-46bb-17cf-08d48b9d1344",
-    "statusID": "EBEED096-EA34-43E2-948E-32BB98F31401",
-    //objects end
     "mstStatus": null,
+    "statusID": "EBEED096-EA34-43E2-948E-32BB98F31401",
     "obNumber": "987",
     "obTime": "2017-04-22T17:23:14.9100866",
     "caseFileNumber": "55",
     "natureOfOccurrence": "test after put1",
-    "remark": "Test Remark 123",
-    "assignedComments":"tets"
+    "remark": "Test Remark 123"
   }
   this.patchReq.push({
     "op":"replace",
@@ -50,8 +45,6 @@ export class OccurenceBookComponent  implements OnInit {
     // this.store.dispatch({ type: OB_ACTIONS.UPDATE,payload:{id:"88f50d32-bb51-4835-90e9-1b02c8109ab2",updates:this.patchReq}});
     this.store.select('occurenceBook').subscribe((res:any) => {
        this.occurenceBook = res;
-       debugger;
-      // this.DynamicData = this.occurenceBookObj;
      });
   }
 }

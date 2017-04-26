@@ -5,8 +5,6 @@ import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
 import { Dashboard, initialCounter } from './dashboard.model';
 import { DASHBOARD_ACTIONS } from './dashboard.actions';
-import {OB_ACTIONS} from '../../occurenceBook/store/occurenceBook.actions';
-import {OccurenceBookService} from '../../occurenceBook/services/occurenceBook.service';
 import { DashboardService } from '../services/dashboard.service';
 import { BaseService } from '../../../app/core/services/index';
 import { Http, Headers, RequestOptions } from '@angular/http';
@@ -15,19 +13,17 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 const CONTEXT = 'dashboard';
 
 @Injectable()
-export class DashboardEffects {
-  occurenceBookService:OccurenceBookService;
+export class DashboardEffects extends BaseService {
+
   @Effect({ dispatch: false })
   private getListEmp$ = this.actions$
     .ofType(DASHBOARD_ACTIONS.GET_DASHBOARD_LIST)
    .switchMap(action => 
-       this.occurenceBookService.getObs()
+       this.getList$(CONTEXT)
         .map(res =>{
-         // this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_SUCCESS, payload: res })
-        //  debugger;
-         this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload: res })
-      })
-        //.catch(() => Observable.of({ type: DASHBOARD_ACTIONS.ON_FAILED  }))
+          this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_SUCCESS, payload: res })
+        })
+        .catch(() => Observable.of({ type: DASHBOARD_ACTIONS.ON_FAILED  }))
       );
   // @Effect({ dispatch: false })
   // private add$ = this.actions$
@@ -45,5 +41,5 @@ export class DashboardEffects {
     private actions$: Actions,
     private dashboardService: DashboardService,
     public http: Http
-  ) { }
+  ) {super(http,CONTEXT); }
 }

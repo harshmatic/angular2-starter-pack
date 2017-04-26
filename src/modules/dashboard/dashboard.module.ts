@@ -8,21 +8,17 @@ import { SharedModule } from '../../app/shared/shared.module';
 import { DashboardComponent } from './components/dashboard.component';
 import { DashboardEffects } from './store/dashboard.effects';
 import { DashboardService } from './services/dashboard.service';
-import { OccurenceBookEffects } from '../occurenceBook/store/occurenceBook.effects';
-import { OccurenceBookService } from '../occurenceBook/services/occurenceBook.service';
-
 
 @NgModule({
   imports: [
     SharedModule,
     ReactiveFormsModule,
     DashboardRouting,
-    EffectsModule.run(DashboardEffects),
-     EffectsModule.run(OccurenceBookEffects)
+    EffectsModule.run(DashboardEffects)
   ],
   declarations: [
     DashboardComponent
   ],
-  providers:[DashboardService,OccurenceBookService]
+  providers:[DashboardService]
 })
 export default class DashboardModule { }

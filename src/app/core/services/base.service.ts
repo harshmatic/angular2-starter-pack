@@ -18,7 +18,7 @@ interface HttpServices {
 
 /** Base Service Definition */
 export class BaseService implements HttpServices {
-    
+
     private baseUrl: string = ApiBase;
     private options: RequestOptions;
 
