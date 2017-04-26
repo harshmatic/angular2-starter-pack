@@ -8,6 +8,8 @@ import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
 import { Employee } from '../store/employee.model';
 import { BaseService } from '../../../app/core/services/index';
+import {EmployeeComponent} from '../components/employee.component';
+import { emp } from '../services/emp.model';
 
 /** Context for service calls */
 const CONTEXT = 'employees/';
@@ -15,13 +17,20 @@ const CONTEXT = 'employees/';
 /** Service Definition */
 @Injectable()
 export class EmployeeService extends BaseService {
-
+employeeObj:any = {};
     constructor(public http: Http) {
         super(http,CONTEXT);
     }
     // Get All
-    getEmployees() {        
-        return this.getList$(CONTEXT).map(res => res.json());    
+    getEmployees() {    
+        debugger;
+       
+       // return this.getList$(CONTEXT).map(res => res.json());    
+        console.log("hi");
+        return new Observable<any>((observer:any) => {
+        observer.next(emp);});
+      // return this.getList$(CONTEXT).map(res => this.employeeObj.json());    
+    
     }
     // Add One
     addEmployee(employee:any) {        

@@ -5,6 +5,7 @@ import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
 import { Employee, initialEmployee } from './employee.model';
 import { EMPLOYEE_ACTIONS } from './employee.actions';
+import { DASHBOARD_ACTIONS } from '../../dashboard/store/dashboard.actions';
 import {  EmployeeService } from '../services/employee.service';
 import { BaseService } from '../../../app/core/services/index';
 import { Http, Headers, RequestOptions } from '@angular/http';
@@ -22,9 +23,11 @@ export class EmployeeEffects extends BaseService {
    .switchMap(action => 
        this.EmployeeService.getEmployees()
         .map(res =>{
-          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+          debugger;
+        //this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+         this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_SUCCESS, payload: res })
         })
-        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
+       // .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
       );
  @Effect({ dispatch: false })
   private addEmployee$ = this.actions$
