@@ -9,19 +9,20 @@ import 'rxjs/add/operator/map';
 import { Employee } from '../store/employee.model';
 import { BaseService } from '../../../app/core/services/index';
 
+
 /** Context for service calls */
 const CONTEXT = 'employees/';
 
 /** Service Definition */
 @Injectable()
 export class EmployeeService extends BaseService {
-
     constructor(public http: Http) {
         super(http,CONTEXT);
     }
     // Get All
-    getEmployees() {        
+    getEmployees() {      
         return this.getList$(CONTEXT).map(res => res.json());    
+   
     }
     // Add One
     addEmployee(employee:any) {        

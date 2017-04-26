@@ -5,7 +5,7 @@ import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
 import { Employee, initialEmployee } from './employee.model';
 import { EMPLOYEE_ACTIONS } from './employee.actions';
-import {  EmployeeService } from '../services/employee.service';
+import { EmployeeService } from '../services/employee.service';
 import { BaseService } from '../../../app/core/services/index';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
