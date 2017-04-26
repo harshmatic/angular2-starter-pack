@@ -1,6 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
+declare var $:any;
 
 @Component({
   moduleId: module.id,
@@ -27,4 +29,12 @@ export class NavComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.loggedInSubscription.unsubscribe();
   }
+  ngAfterViewInit(){
+           $(document).ready(function(){
+              $(".navbar-toggle").on("click", function() {
+                $(".navbar-header").toggleClass('toggleNavColor');
+                $(".icon-bar").toggleClass('whiteIconBar');
+            });
+           });
+     }
 }
