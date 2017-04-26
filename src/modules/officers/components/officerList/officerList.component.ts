@@ -1,8 +1,8 @@
 import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Employee } from '../../employee/store/employee.model';
-import { EMPLOYEE_ACTIONS } from '../../employee/store/employee.actions';
+import { Employee } from '../../../employee/store/employee.model';
+import { EMPLOYEE_ACTIONS } from '../../../employee/store/employee.actions';
 declare var $:any;
 @Component({
   moduleId: module.id,

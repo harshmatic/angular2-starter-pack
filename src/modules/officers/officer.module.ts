@@ -5,7 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { OfficerRouting } from './officer.routing';
 import { SharedModule } from '../../app/shared/shared.module';
-import { OfficerListComponent } from './components/officerList.component';
+import { OfficerListComponent } from './components/officerList/officerList.component';
+import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
 import { EmployeeEffects } from '../employee/store/employee.effects';
 import { EmployeeService } from '../employee/services/employee.service';
 
@@ -17,8 +18,9 @@ import { EmployeeService } from '../employee/services/employee.service';
     EffectsModule.run(EmployeeEffects)
   ],
   declarations: [
-    OfficerListComponent
+    OfficerListComponent,
+    ActivityFeedComponent
   ],
   providers:[EmployeeService]
 })
-export default class DashboardModule { }
+export default class OfficerModule { }

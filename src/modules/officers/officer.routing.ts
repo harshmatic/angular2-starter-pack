@@ -1,20 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { OfficerListComponent } from './components/officerList.component';
+import { OfficerListComponent } from './components/officerList/officerList.component';
 import { AuthGuard } from '../../app/core/index'
+import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
 
 const routes: Routes = [
-  {
+   {
     path: '',
+    redirectTo: 'officerList',
+  },
+  {
+    path: 'officerList',
     component: OfficerListComponent,
     data: {
     },
-     canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
+  },
+   {
+    path: 'activityFeed',
+    component: ActivityFeedComponent,
+    data: {
+    },
+    canActivate: [AuthGuard],
   }
 ];
-
-export const routedComponents = [OfficerListComponent];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
