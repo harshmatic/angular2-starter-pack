@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RioModalContentComponent } from './modal-content.component';
+import { EsplModalContentComponent } from './modal-content.component';
 import { SharedModule } from '../shared.module';
 
 describe('Component: Modal Content', () => {
@@ -14,18 +14,18 @@ describe('Component: Modal Content', () => {
         SharedModule
       ],
       declarations: [
-        RioModalContentComponentTestController
+        EsplModalContentComponentTestController
       ],
       providers: [
-        RioModalContentComponent
+        EsplModalContentComponent
       ]
     });
-    fixture = TestBed.createComponent(RioModalContentComponentTestController);
+    fixture = TestBed.createComponent(EsplModalContentComponentTestController);
     fixture.detectChanges();
   });
 
-  it('should inject the component', inject([RioModalContentComponent],
-    (component: RioModalContentComponent) => {
+  it('should inject the component', inject([EsplModalContentComponent],
+    (component: EsplModalContentComponent) => {
       expect(component).toBeTruthy();
     }));
 
@@ -33,7 +33,7 @@ describe('Component: Modal Content', () => {
     fixture.whenStable().then(() => {
       fixture.autoDetectChanges();
       let query = fixture.debugElement
-        .query(By.directive(RioModalContentComponent));
+        .query(By.directive(EsplModalContentComponent));
       expect(query).toBeTruthy();
       expect(query.componentInstance).toBeTruthy();
     });
@@ -43,8 +43,8 @@ describe('Component: Modal Content', () => {
 @Component({
   selector: 'test',
   template: `
-    <rio-modal-content></rio-modal-content>
+    <espl-modal-content></espl-modal-content>
   `
 })
-class RioModalContentComponentTestController { }
+class EsplModalContentComponentTestController { }
 

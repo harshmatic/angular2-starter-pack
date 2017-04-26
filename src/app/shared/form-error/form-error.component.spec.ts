@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RioFormErrorComponent } from './form-error.component';
+import { EsplFormErrorComponent } from './form-error.component';
 import { SharedModule } from '../shared.module';
 
 describe('Component: Form Error', () => {
@@ -14,7 +14,7 @@ describe('Component: Form Error', () => {
         SharedModule
       ]
     });
-    fixture = TestBed.createComponent(RioFormErrorComponent);
+    fixture = TestBed.createComponent(EsplFormErrorComponent);
     fixture.detectChanges();
   });
 

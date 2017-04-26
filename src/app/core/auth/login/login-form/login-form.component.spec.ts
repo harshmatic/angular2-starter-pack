@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CoreModule } from '../../../../core/core.module';
-import { RioLoginFormComponent } from './login-form.component';
+import { EsplLoginFormComponent } from './login-form.component';
 import { LoginModule } from '../login.module';
 
 describe('Component: Login Form', () => {
@@ -16,7 +16,7 @@ describe('Component: Login Form', () => {
         CoreModule
       ]
     });
-    fixture = TestBed.createComponent(RioLoginFormComponent);
+    fixture = TestBed.createComponent(EsplLoginFormComponent);
     fixture.detectChanges();
   });
 

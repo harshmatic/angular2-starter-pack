@@ -34,7 +34,7 @@ authPassport.readUsers()
     throw err;
   });
 
-// Enable various security helpers.
+// Enable vaesplus security helpers.
 app.use(helmet());
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -87,7 +87,10 @@ app.get('/api/note', getRecords('note'));
 app.get('/api/users', getRecords('user'));
 app.post('/api/note', saveARecord('note'));
 app.post('/api/hero', saveARecord('hero'));
-
+app.post('/api/employee', saveARecord('note'));
+app.get('/api/employee', function(req,res) {
+  res.json([{name:'Emp1'},{name:'Emp2'},{name:'Emp3'},{name:'Emp4'},{name:'Emp5'}])
+});
 app.get('/api/deps/:package', getDependencies());
 
 function getRecords(table) {

@@ -1,4 +1,3 @@
-
 [![Build Status](https://travis-ci.org/dancancro/great-big-angular2-example.svg?branch=master)](https://travis-ci.org/dancancro/great-big-angular2-example)
 [![Dependency Status](https://david-dm.org/dancancro/great-big-angular2-example.svg)](https://david-dm.org/dancancro/great-big-angular2-example)
 
@@ -188,6 +187,7 @@ That's a pretty big benefit. What could be seen as costs of doing that?
 > Given that most Redux apps are done with React and React doesn't have any static type checking at all, I decided that was a small 
 price to pay. You can also mix this approach and the other one if you really want to. Use the general, un-type-checked, CRUD stuff for
 ordinary parts of your app (most of it), and use hard-coded, specialty action types when you really need TypeScript's compiler to help you.
+
 
 Here's some code from the ngrx example app that gives you type checking for the action types. You won't get these checks using my approach.
 ```

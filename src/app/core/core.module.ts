@@ -14,7 +14,6 @@ import { StoreModule } from '@ngrx/store';
 import { DBModule } from '@ngrx/db';
 import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { MaterialModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
@@ -24,11 +23,11 @@ import {
   bcNavComponents
 } from './navigator/navigator.module';
 import { reducer } from './store';
-import { schema } from './store/db';
+//import { schema } from './store/db';
 import { SharedModule } from '../shared/shared.module';
 import { NotFoundPage } from './not-found/not-found.page';
-import { RioAboutPage } from './about/about.page';
-import { TitleComponent } from './title/title.component';
+import { EsplAboutPage } from './about/about.page';
+//import { TitleComponent } from './title/title.component';
 import { routing } from './core.routing';
 
 // module
@@ -52,7 +51,6 @@ const store = StoreModule.provideStore(reducer);
 @NgModule({
   imports: [
     CommonModule,
-    //    MaterialModule.forRoot(),
     /**
      * StoreModule.provideStore is imported once in the root module, accepting a reducer
      * function or object map of reducer functions. If passed an object of
@@ -84,7 +82,7 @@ const store = StoreModule.provideStore(reducer);
      * `provideDB` sets up @ngrx/db with the provided schema and makes the Database
      * service available.
      */
-    DBModule.provideDB(schema),
+    //DBModule.provideDB(schema),
     NavigatorModule,
     SharedModule,
     AuthModule,
@@ -93,14 +91,14 @@ const store = StoreModule.provideStore(reducer);
   declarations: [
     PlatformDirective,
     NotFoundPage,
-    RioAboutPage,
-    TitleComponent
+    EsplAboutPage,
+   // TitleComponent
   ],
   exports: [
     ...bcNavComponents,
-    TitleComponent,
+   // TitleComponent,
     NotFoundPage,
-    RioAboutPage,
+    EsplAboutPage,
     CommonModule,
     FormsModule,
     RouterModule,
