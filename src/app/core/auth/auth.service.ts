@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import { BaseService } from '../services/index';
-import { Subject } from 'rxjs/Subject';
 
 //CONFIGESPL
 import {ApiBaseAuthUrl} from '../../../modules/config';
@@ -14,8 +13,8 @@ const CONTEXT = ApiBaseAuthUrl;
 @Injectable()
 export class AuthService extends BaseService {
   isLoggedIn: boolean = false;
-  authStatusChangeSource = new Subject<any>();
-  onAuthStatusChanged$ = this.authStatusChangeSource.asObservable();
+  onLoggedInChange: EventEmitter<any> = new EventEmitter<any>();
+   
   constructor(public http: Http) {
         super(http,CONTEXT);
   }
@@ -26,15 +25,17 @@ export class AuthService extends BaseService {
        this.isLoggedIn = true;
     });
   }
-
+  onAuthStatusChanged$ () {
+    return this.onLoggedInChange;
+  }
   isAuthenticated() {
     if (localStorage.getItem('accessToken')) {
         this.isLoggedIn = true;
-        this.authStatusChangeSource.next(true);
+         this.onLoggedInChange.emit(true)
         return true;
     } else {
         this.isLoggedIn = false;
-        this.authStatusChangeSource.next(false);
+         this.onLoggedInChange.emit(false)
         return false;
     }
   }
@@ -42,7 +43,8 @@ export class AuthService extends BaseService {
   logout() {
         localStorage.clear();
         this.isLoggedIn = false;
-        this.authStatusChangeSource.next('false');
+        this.onLoggedInChange.emit(false)
+        
   }
 
   private setToken(res) {
