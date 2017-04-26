@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Dashboard } from '../store/dashboard.model';
 import { DASHBOARD_ACTIONS } from '../store/dashboard.actions';
+import { EMPLOYEE_ACTIONS } from '../../employee/store/employee.actions';
+
 @Component({
   moduleId: module.id,
   selector: 'app-dashboard',
@@ -28,9 +30,13 @@ export class DashboardComponent  implements OnInit {
   ];
   constructor(private store: Store<Dashboard>){}
   ngOnInit() {
-    this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_LIST });
-    this.store.dispatch({ type: DASHBOARD_ACTIONS.ADD_DASHBOARD });
-    this.store.select('dashboard').subscribe((res:any) => {
+
+
+    //this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_LIST });
+    this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
+     //this.store.dispatch({ type: DASHBOARD_ACTIONS.ADD_DASHBOARD });
+     
+     this.store.select('dashboard').subscribe((res:any) => {
        this.dashboard = res;
     });
      

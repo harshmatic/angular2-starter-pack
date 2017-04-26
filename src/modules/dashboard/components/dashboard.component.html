@@ -1,3 +1,5 @@
+
+
 <!-------------------- Main Container ------------------------>
 <div class="main-container container">
     <div class="pageName">
@@ -306,121 +308,30 @@
 
     <!-------------------- Available Officer ------------------------>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-            <h4>Top Rated Available Officers</h4>
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <h4>Top Rated Available Officers</h4>
+                    
+                    <!--Officer Row 1-->
+                    <div class="listSubBox availableOfficer" *ngFor="let Object of dashboard">
+                        <div class="row">
+                            <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <img src="images/BadgeNew.png" class="badgeImg" />
+                            </div>
+                            <div class="col-xs-10 noLeftPadding">
+                                <div class="listcontentBox">
+                                    
+                                    <span class="officerId">{{Object.employeeCode}} | {{Object.department.departmentName}}</span>
 
-            <!--Officer Row 1-->
-            <div class="listSubBox availableOfficer">
-                <div class="row">
-                    <div class="col-xs-2 noRightPadding badgeImgBox">
-                        <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
+                                    <h5 class="officerName">{{Object.firstName}} {{Object.lastName}}</h5>
+
+                                    <h5 class="officerPostContact">
+                                        <span class="post">{{Object.designation.designationName}}</span>
+                                        <span class="contact"><i class="material-icons">phone</i> {{Object.mobile}}</span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>	
                     </div>
-                    <div class="col-xs-10 noLeftPadding">
-                        <div class="listcontentBox">
-                            <span class="officerId">JC123564 | Crime Branch</span>
-
-                            <h5 class="officerName">Harrison Ford</h5>
-
-                            <h5 class="officerPostContact">
-                                <span class="post">Encounter Specialist</span>
-                                <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Officer row 1 end here-->
-
-            <!--Officer Row 2-->
-            <div class="listSubBox availableOfficer">
-                <div class="row">
-                    <div class="col-xs-2 noRightPadding badgeImgBox">
-                        <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
-                    </div>
-                    <div class="col-xs-10 noLeftPadding">
-                        <div class="listcontentBox">
-                            <span class="officerId">JC123564 | Crime Branch</span>
-
-                            <h5 class="officerName">Mark Douglas</h5>
-
-                            <h5 class="officerPostContact">
-                                <span class="post">Investigation Officer</span>
-                                <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Officer row 2 end here-->
-
-            <!--Officer Row 3-->
-            <div class="listSubBox availableOfficer">
-                <div class="row">
-                    <div class="col-xs-2 noRightPadding badgeImgBox">
-                        <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
-                    </div>
-                    <div class="col-xs-10 noLeftPadding">
-                        <div class="listcontentBox">
-                            <span class="officerId">JC123564 | Crime Branch</span>
-
-                            <h5 class="officerName">Tom Hanks</h5>
-
-                            <h5 class="officerPostContact">
-                                <span class="post">Criminal Case Specialist</span>
-                                <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Officer row 3 end here-->
-
-            <!--Officer Row 4-->
-            <div class="listSubBox availableOfficer">
-                <div class="row">
-                    <div class="col-xs-2 noRightPadding badgeImgBox">
-                        <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
-                    </div>
-                    <div class="col-xs-10 noLeftPadding">
-                        <div class="listcontentBox">
-                            <span class="officerId">JC123564 | Crime Branch</span>
-
-                            <h5 class="officerName">Eddie Murphy</h5>
-
-                            <h5 class="officerPostContact">
-                                <span class="post">Encounter Specialist</span>
-                                <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Officer row 4 end here-->
-
-            <!--Officer Row 5-->
-            <div class="listSubBox availableOfficer">
-                <div class="row">
-                    <div class="col-xs-2 noRightPadding badgeImgBox">
-                        <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
-                    </div>
-                    <div class="col-xs-10 noLeftPadding">
-                        <div class="listcontentBox">
-                            <span class="officerId">JC123564 | Crime Branch</span>
-
-                            <h5 class="officerName">Tom Cruise</h5>
-
-                            <h5 class="officerPostContact">
-                                <span class="post">Investigation Officer</span>
-                                <span class="contact"><i class="material-icons">phone</i> +254-990144</span>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Officer row 5 end here-->
-
-        </div>
-    </div>
     <!-- Available Office ends here-->
 
 
