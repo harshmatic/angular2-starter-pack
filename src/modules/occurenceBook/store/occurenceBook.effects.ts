@@ -16,11 +16,11 @@ const CONTEXT = 'occurrencebook';
 @Injectable()
 export class OccurenceBookEffects extends BaseService {
 
-  @Effect({ dispatch: false })
+  @Effect({ dispatch: true })
   private getListOb$ = this.actions$
     .ofType(OB_ACTIONS.GET_LIST)
    .switchMap(action => 
-       this.occurenceBookService.getObs()
+       this.occurenceBookService.getObs(action.payload.search)
         .map(res =>{
           this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload: res })
         })

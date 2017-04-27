@@ -1,26 +1,42 @@
-import { Component, OnInit,AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Employee } from '../../../employee/store/employee.model';
-import { EMPLOYEE_ACTIONS } from '../../../employee/store/employee.actions';
-declare var $:any;
+import { OccurenceBook } from '../../../occurenceBook/store/occurenceBook.model';
+import { OB_ACTIONS } from '../../../occurenceBook/store/occurenceBook.actions';
+import { Subscription } from 'rxjs/Subscription';
+declare var $: any;
 @Component({
   moduleId: module.id,
   selector: 'app-job-detail',
   templateUrl: 'jobDetail.component.html',
 })
-export class JobDetailComponent  implements OnInit {
-  officers:any[]=[];
-  asyncOfficer:Observable<any>
-  showTab:boolean=true;
-  constructor(private store: Store<Employee>){}
+export class JobDetailComponent implements OnInit, OnDestroy {
+  obs: any[] = [];
+  asyncOb: Observable<any>
+  showTab: boolean = true;
+  private subscriptions: Subscription = new Subscription();
+  queryString = '';
+  constructor(private store: Store<OccurenceBook>) { }
 
   ngOnInit() {
-    this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
-    this.asyncOfficer= this.store.select('employee')
-    this.asyncOfficer.subscribe((res:any) => {
-       this.officers = res;
-    });
-     
+
+    this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "" } });
+    this.asyncOb = this.store.select('occurenceBook');
+    // this.subscriptions.add(this.asyncOb.subscribe((res: any) => {
+    //   this.obs = res;
+    // })
+    //);
+
   }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
+
+  onKey(event: any) {
+       this.queryString = event.target.value;
+       this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: this.queryString } });
+
+  }
+
 }

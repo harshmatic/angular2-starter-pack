@@ -1,38 +1,28 @@
 <div class="main-container container">
-
     <div class="officerListMainBox">
         <ul class="nav nav-tabs officer-tabs">
             <li class="active">
-                <a >Officer Detail</a>
+                <a>Jobs Detail</a>
             </li>
-            <li >
-                <a [routerLink]="['/officers/activityFeed']">Activity Feed</a>
+            <li>
+                <a [routerLink]="['/jobs/activityFeed']">Activity Feed</a>
             </li>
         </ul>
-
         <!-- Tab content -->
         <div class="tab-content profile-tab-content">
-
-
             <!---------------------- Officer Details tab content -------------------------->
-            <div id="officer-details-tab" class="active tab-pane fade in">
-
+            <div id="officer-details-tab" class="tab-pane fade in active">
                 <hr class="separatorLine" />
-
                 <!--  Search Box -->
-
-                <input type="text" class="form-control searchBox" placeholder="Search Officer by name,location and ID" />
+                <input (keyup)="onKey($event)" type="text" class="form-control searchBox" placeholder="Search Occurence Book" />
                 <i class="material-icons searchIcon">search</i>
-
                 <!--  Search Box Ends -->
-
                 <hr class="separatorLine" />
-
-                <div class="filterBox">
-                    <h5>Officers List</h5>
+                <div class="filterBox jobActivityFilterBox">
+                    <h5>Jobs in Progress</h5>
                     <div class="dropdown filterDropdown">
                         <button class="btn btn-primary dropdown-toggle filterToggle" type="button" data-toggle="dropdown">Filter
-								  <i class="material-icons">keyboard_arrow_down</i></button>
+            <i class="material-icons">keyboard_arrow_down</i></button>
                         <ul class="dropdown-menu filterDropdownMenu">
                             <li><a href="#">Filter 1</a></li>
                             <li><a href="#">Filter 2</a></li>
@@ -40,63 +30,291 @@
                         </ul>
                     </div>
                 </div>
-
-                <!-- Main List Box -->
-                <div class="mainListBox">
-                    <div *ngFor="let item of asyncOfficer|async">
-                        <div class="listSubBox">
-                            <div class="row">
-                                <div class="col-xs-2 noRightPadding badgeImgBox">
-                                    <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
-                                </div>
-                                <div class="col-xs-10 noLeftPadding">
-                                    <div class="listcontentBox">
-                                        <span class="officerId">{{item.employeeCode}} | {{item.department.departmentName}} </span>
-
-                                        <h5 class="officerName">{{item.firstName+''+item.lastName}}</h5>
-
-                                        <h5 class="officerPostContact">
-                                            <span class="post">{{item.designation.designationName}}</span>
-                                            <span class="contact"><i class="material-icons">phone</i> {{item.mobile}}</span>
-                                        </h5>
-
-                                        <div class="row caseRow">
-                                            <div class="col-xs-12">
-                                                <span class="assignedLabel">
-															Case Assigned
-															<label class="priorityIconOfficer red"></label>
-														</span>
-                                            </div>
-                                            <div class="col-xs-7">
-                                                <span class="caseDescr">{{item.occurrenceBooks[0].obNumber}} : {{item.occurrenceBooks[0].assignedComments}} </span>
-                                            </div>
-                                            <div class="col-xs-5">
-                                                <label class="caseStatus open">Open</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="dashedSeparator" />
+                <!--Map Card-->
+                <div class="mapJobs jobActivityMapBox">
+                    <div class="jobMarkers">
+                        <span class="criticalJob marker"></span>
+                        <span class="criticalJob marker"></span>
+                        <span class="criticalJob marker"></span>
+                        <span class="majorJob marker"></span>
+                        <span class="majorJob marker"></span>
+                        <span class="majorJob marker"></span>
+                        <span class="minorJob marker"></span>
+                        <span class="minorJob marker"></span>
+                        <span class="minorJob marker"></span>
+                        <span class="majorJob marker"></span>
                     </div>
-
+                    <!--jobmarker end here-->
+                    <!--Content Card-->
+                    <div class="row jobContentCard">
+                        <div class="col-xs-8">
+                            <h3>Armed Robbery In Progress</h3>
+                            <span>Nanyuki-Rumuruti Rd, Nanyuki, Kenya</span>
+                            <div><img class="img-responsive imgBadge" src="assets/styles/images/badge.png" alt="badge">Robert
+                                Downey Jr</div>
+                        </div>
+                        <div class="col-xs-4">
+                            <h3>03:12</h3>
+                            <span>Duty Hours</span>
+                        </div>
+                    </div>
+                    <!--content Card end here-->
+                    <!--Card Close icon-->
+                    <div class="closeBtn jobContentCard"><i class="material-icons">&#xE5CD;</i></div>
                 </div>
-                <!-- Main List Box Ends -->
-
-
+                <div class="filterBox">
+                    <h5>Job List</h5>
+                    <div class="dropdown filterDropdown">
+                        <button class="btn btn-primary dropdown-toggle filterToggle" type="button" data-toggle="dropdown">Filter
+            <i class="material-icons">keyboard_arrow_down</i></button>
+                        <ul class="dropdown-menu filterDropdownMenu">
+                            <li><a href="#">Filter 1</a></li>
+                            <li><a href="#">Filter 2</a></li>
+                            <li><a href="#">Filter 3</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row cards">
+                    <div class="col-xs-12">
+                        <!--Active Jobs-->
+                        <div class="activeJobs">
+                            <h4>TODAY</h4>
+                            <!--Job Row 1-->
+                        <div class="row"  *ngFor="let ob of asyncOb|async">
+                            <h5 class="col-xs-12">
+                                <span class="priorityIcon"></span>{{ob.obNumber}} | {{ob.mstDepartment.departmentName}} 
+                                </h5>
+                            <div class="jobDetail">
+                                <div class="col-xs-8">
+                                    <h4>{{ob.natureOfOccurrence}}</h4>
+                                    <p>{{ob.mstArea.areaName}}</p>
+                                </div>
+                                <div class="col-xs-4 statusOpen"><span>{{ob.mstStatus.statusName}}</span></div>
+                            </div>
+                        
+                        <div class="jobOfcDetail">
+                            <div class="col-xs-8"><img class="img-responsive imgBadge" src="assets/styles/images/badge.png" alt="badge">
+                             {{ob.mstEmployee.firstName}}{{ob.mstEmployee.lastName}}
+                            </div>
+                            <div class="col-xs-4">03:12:56</div>
+                        </div>
+                        </div>
+                    <!--Job row 1 end here-->
+                    
+                </div>
+                <!--Active Jobs end here-->
             </div>
-            <!---------------------- Officer Details tab content Ends -------------------------->
-            </div>
-
-        <!-- Tab content Ends -->
-
+        </div>
+        <!--active jobs ends here-->
     </div>
-
+    <!---------------------- Officer Details tab content Ends -------------------------->
+    <!---------------------- Activity Feed tab content -------------------------->
+    <div id="activity-feed-tab" class="tab-pane fade in">
+        <div class="headerBox">
+            <h5>Recent Activity</h5>
+            <label class="updateCount">22 New Updates</label>
+        </div>
+        <!-- Main List Box -->
+        <div class="mainListBox">
+            <!-- Box 1 -->
+            <div class="listSubBox">
+                <div class="">
+                    <table class="table activityTable">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="assets/styles/images/added.png" class="activityImg img-responsive" />
+                                </td>
+                                <td>
+                                    <span class="activityTime">14:00 | Today</span>
+                                    <p class="activityDescr">
+                                        Johny Depp <b>added</b> job <b>RC-001253</b> <i class="italicFont">reported robbery at churchton park</i>
+                                    </p>
+                                    <div class="activityAction">
+                                        <a href="">View Job Details</a>
+                                        <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr class="activitySeparator" />
+            <!-- Box 2 -->
+            <div class="listSubBox">
+                <div class="">
+                    <table class="table activityTable">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="assets/styles/images/assigned.png" class="activityImg img-responsive" />
+                                </td>
+                                <td>
+                                    <span class="activityTime">07:00 | Yesterday</span>
+                                    <p class="activityDescr">
+                                        Harrison Ford <b>assigned</b> to <b>RC-005624 :</b> <i class="italicFont">Out of control house party</i>
+                                    </p>
+                                    <div class="activityAction">
+                                        <a href="">View Job Details</a>
+                                        <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr class="activitySeparator" />
+            <!-- Box 3 -->
+            <div class="listSubBox">
+                <div class="">
+                    <table class="table activityTable">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="assets/styles/images/changed.png" class="activityImg img-responsive" />
+                                </td>
+                                <td>
+                                    <span class="activityTime">07:00 | Yesterday</span>
+                                    <p class="activityDescr">
+                                        Matthew Mcconaughey <b>commented</b> on <b>RC-005624 :</b> <i class="italicFont">domestic violence.</i>
+                                    </p>
+                                    <div class="reportSubDiv">
+                                        <span class="activityTime">03:56 | 26 April 2017</span>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+                                    </div>
+                                    <div class="activityAction">
+                                        <a href="">View Job Details</a>
+                                        <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr class="activitySeparator" />
+            <!-- Box 4 -->
+            <div class="listSubBox">
+                <div class="">
+                    <table class="table activityTable">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="assets/styles/images/submitted.png" class="activityImg img-responsive" />
+                                </td>
+                                <td>
+                                    <span class="activityTime">07:00 | Today</span>
+                                    <p class="activityDescr">
+                                        Mark Douglas <b>changed</b> to <b>RC-005624 :</b> <i class="italicFont">reported robbery at churchton park</i>                                        <b>status</b> to <b>Closed</b>.
+                                    </p>
+                                    <div class="activityAction">
+                                        <a href="">View Job Details</a>
+                                        <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr class="activitySeparator" />
+            <!-- Box 5 -->
+            <div class="listSubBox">
+                <div class="">
+                    <table class="table activityTable">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="assets/styles/images/assigned.png" class="activityImg img-responsive" />
+                                </td>
+                                <td>
+                                    <span class="activityTime">07:00 | Yesterday</span>
+                                    <p class="activityDescr">
+                                        Tom Hanks, Jim Carry, Brad Pitt & Bradley Cooper <b>assigned</b> to <b>RC-005624 :</b>                                        <i class="italicFont">Robbery in Progress.</i>
+                                    </p>
+                                    <div class="activityAction">
+                                        <a href="">View Job Details</a>
+                                        <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr class="activitySeparator" />
+            <!-- Box 6 -->
+            <div class="listSubBox">
+                <div class="">
+                    <table class="table activityTable">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="assets/styles/images/reported.png" class="activityImg img-responsive" />
+                                </td>
+                                <td>
+                                    <span class="activityTime">01:00 | Yesterday</span>
+                                    <p class="activityDescr">
+                                        Brad Pitt <b>reported</b> on <b>RC-005624 :</b> <i class="italicFont">domestic violense.</i>
+                                    </p>
+                                    <!-- Read More Box -->
+                                    <div class="reportSubDiv">
+                                        <span class="activityTime">03:34 | 25 April 2017</span>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+                                        <a href="">Read More</a>
+                                    </div>
+                                    <div class="activityAction">
+                                        <a href="">View Job Details</a>
+                                        <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr class="activitySeparator" />
+            <!-- Box 7 -->
+            <div class="listSubBox">
+                <div class="">
+                    <table class="table activityTable">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="assets/styles/images/added.png" class="activityImg img-responsive" />
+                                </td>
+                                <td>
+                                    <span class="activityTime">14:00 | Today</span>
+                                    <p class="activityDescr">
+                                        Robert De Niro <b>added</b> job <b>RC-001253 :</b> <i class="italicFont">Curfew in Nairobi Upper hill.</i>
+                                    </p>
+                                    <div class="activityAction">
+                                        <a href="">View Job Details</a>
+                                        <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Main List Box Ends -->
+    </div>
+    <!---------------------- Activity Feed tab content -------------------------->
+</div>
+<!-- Tab content Ends -->
+</div>
 </div>
 <!-- Main Container End here -->
-
 <!-- Add new officer -->
 <div class="bottomContainer">
-    <button>Add New Officer</button>
+    <button>Create New Job</button>
 </div>
+<!-- Add new officer Ends -->

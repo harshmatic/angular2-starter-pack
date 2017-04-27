@@ -9,10 +9,10 @@ import { AddJobComponent } from './components/addJob/addJob.component';
 const routes: Routes = [
    {
     path: '',
-    redirectTo: 'job-details',
+    redirectTo: 'jobDetails',
   },
   {
-    path: 'job-details',
+    path: 'jobDetails',
     component: JobDetailComponent,
     data: {
     },

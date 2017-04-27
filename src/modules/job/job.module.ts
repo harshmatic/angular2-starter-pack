@@ -16,6 +16,7 @@ import { DepartmentService } from '../department/services/department.service';
 import { OccurenceTypeService } from '../occurenceType/services/occurenceType.service';
 import { JobService } from './services/job.service';
 
+
 @NgModule({
   imports: [
     SharedModule,
@@ -31,5 +32,6 @@ import { JobService } from './services/job.service';
     AddJobComponent
   ],
   providers:[EmployeeService,DepartmentService,OccurenceTypeService,JobService]
+
 })
 export default class JobModule { }
