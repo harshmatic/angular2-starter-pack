@@ -16,7 +16,7 @@ const CONTEXT = 'occurrencebook';
 @Injectable()
 export class OccurenceBookEffects extends BaseService {
 
-  @Effect({ dispatch: true })
+  @Effect({ dispatch: false })
   private getListOb$ = this.actions$
     .ofType(OB_ACTIONS.GET_LIST)
    .switchMap(action => 

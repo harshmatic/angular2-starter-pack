@@ -10,10 +10,12 @@ import { ActivityFeedComponent } from './components/activityFeed/activityFeed.co
 import { AddJobComponent } from './components/addJob/addJob.component';
 import { EmployeeEffects } from '../employee/store/employee.effects';
 import { OccurenceTypeEffects } from '../occurenceType/store/occurenceType.effects';
+import { OccurenceBookEffects } from '../occurenceBook/store/occurenceBook.effects';
 import { DepartmentEffects } from '../department/store/department.effects';
 import { EmployeeService } from '../employee/services/employee.service';
 import { DepartmentService } from '../department/services/department.service';
 import { OccurenceTypeService } from '../occurenceType/services/occurenceType.service';
+import { OccurenceBookService } from '../occurenceBook/services/occurenceBook.service';
 import { JobService } from './services/job.service';
 
 
@@ -24,14 +26,16 @@ import { JobService } from './services/job.service';
     JobRouting,
     EffectsModule.run(EmployeeEffects),
     EffectsModule.run(OccurenceTypeEffects),
-    EffectsModule.run(DepartmentEffects)
+    EffectsModule.run(DepartmentEffects),
+    EffectsModule.run(OccurenceBookEffects)
+    
   ],
   declarations: [
     JobDetailComponent,
     ActivityFeedComponent,
     AddJobComponent
   ],
-  providers:[EmployeeService,DepartmentService,OccurenceTypeService,JobService]
+  providers:[EmployeeService,DepartmentService,OccurenceTypeService,JobService,OccurenceBookService]
 
 })
 export default class JobModule { }
