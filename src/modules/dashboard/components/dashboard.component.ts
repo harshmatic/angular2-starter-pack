@@ -35,7 +35,7 @@ export class DashboardComponent  implements OnInit {
   ];
   constructor(private store: Store<Dashboard>){}
   ngOnInit() {
-    this.store.dispatch({ type: OB_ACTIONS.GET_LIST });
+    this.store.dispatch({ type: OB_ACTIONS.GET_LIST,payload:{search:""} });
     this.asyncOb= this.store.select('occurenceBook')
     this.asyncOb.subscribe((res:any) => {
        console.log(res)
