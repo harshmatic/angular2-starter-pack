@@ -1,0 +1,298 @@
+<div class="main-container container">
+
+    <div class="officerListMainBox">
+        <ul class="nav nav-tabs officer-tabs">
+            <li>
+                <a [routerLink]="['/officers/officerList']">Officer Detail</a>
+            </li>
+            <li class="active">
+                <a>Activity Feed</a>
+            </li>
+        </ul>
+
+        <!-- Tab content -->
+        <div class="tab-content profile-tab-content">
+            <!---------------------- Activity Feed tab content -------------------------->
+            <div id="activity-feed-tab" class="active tab-pane fade in">
+
+                <div class="headerBox">
+                    <h5>Recent Activity</h5>
+                    <label class="updateCount">22 New Updates</label>
+                </div>
+
+                <!-- Main List Box -->
+                <div class="mainListBox">
+
+                    <!-- Box 1 -->
+                    <div class="listSubBox">
+                        <div class="">
+                            <table class="table activityTable">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="images/added.png" class="activityImg" />
+                                        </td>
+                                        <td>
+                                            <span class="activityTime">14:00 | Today</span>
+                                            <p class="activityDescr">
+                                                Johny Depp <b>added</b> Mark Henry as a <b>Senior Cheif Inspector</b> in
+                                                charge at Nairobi Police Station
+                                            </p>
+
+                                            <div class="activityAction">
+                                                <a href="">Officer Details</a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <hr class="activitySeparator" />
+
+                    <!-- Box 2 -->
+                    <div class="listSubBox">
+                        <div class="">
+                            <table class="table activityTable">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="images/assigned.png" class="activityImg" />
+                                        </td>
+                                        <td>
+                                            <span class="activityTime">07:00 | Yesterday</span>
+                                            <p class="activityDescr">
+                                                Brad Pitt was <b>assigned</b> to <b>RC-005624 :</b> <i class="italicFont">Out of control house party</i>
+                                            </p>
+
+                                            <div class="activityAction">
+                                                <a href="">Job Details</a>
+                                                <a href="">Officer Details</a>
+                                                <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <hr class="activitySeparator" />
+
+                    <!-- Box 3 -->
+                    <div class="listSubBox">
+                        <div class="">
+                            <table class="table activityTable">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="images/changed.png" class="activityImg" />
+                                        </td>
+                                        <td>
+                                            <span class="activityTime">07:00 | Yesterday</span>
+                                            <p class="activityDescr">
+                                                Brad Pitt was <b>changed</b> to <b>RC-005624 :</b> <i class="italicFont">Out of control house party</i>
+                                            </p>
+
+                                            <div class="activityAction">
+                                                <a href="">Job Details</a>
+                                                <a href="">Officer Details</a>
+                                                <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <hr class="activitySeparator" />
+
+                    <!-- Box 4 -->
+                    <div class="listSubBox">
+                        <div class="">
+                            <table class="table activityTable">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="images/alloted_vehicle.png" class="activityImg" />
+                                        </td>
+                                        <td>
+                                            <span class="activityTime">07:00 | Yesterday</span>
+                                            <p class="activityDescr">
+                                                Brad Pitt was <b>alloted</b> to <b>RC-005624 :</b> <i class="italicFont">Out of control house party</i>
+                                            </p>
+
+                                            <div class="activityAction">
+                                                <a href="">Job Details</a>
+                                                <a href="">Officer Details</a>
+                                                <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <hr class="activitySeparator" />
+
+                    <!-- Box 5 -->
+                    <div class="listSubBox">
+                        <div class="">
+                            <table class="table activityTable">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="images/submitted.png" class="activityImg" />
+                                        </td>
+                                        <td>
+                                            <span class="activityTime">07:00 | Today</span>
+                                            <p class="activityDescr">
+                                                Brad Pitt was <b>submitted</b> to <b>RC-005624 :</b> <i class="italicFont">Out of control house party</i>
+                                            </p>
+
+                                            <div class="activityAction">
+                                                <a href="">Officer Details</a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <hr class="activitySeparator" />
+
+                    <!-- Box 6 -->
+                    <div class="listSubBox">
+                        <div class="">
+                            <table class="table activityTable">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="images/new_entry.png" class="activityImg" />
+                                        </td>
+                                        <td>
+                                            <span class="activityTime">01:00 | Today</span>
+                                            <p class="activityDescr">
+                                                Brad Pitt was <b>new entry</b> to <b>RC-005624 :</b> <i class="italicFont">Out of control house party</i>
+                                            </p>
+
+                                            <div class="activityAction">
+                                                <a href="">Job Details</a>
+                                                <a href="">Officer Details</a>
+                                                <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <hr class="activitySeparator" />
+
+                    <!-- Box 7 -->
+                    <div class="listSubBox">
+                        <div class="">
+                            <table class="table activityTable">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="images/added_officer.png" class="activityImg" />
+                                        </td>
+                                        <td>
+                                            <span class="activityTime">01:00 | Yesterday</span>
+                                            <p class="activityDescr">
+                                                Brad Pitt was <b>new entry</b> to <b>RC-005624 :</b> <i class="italicFont">Out of control house party</i>
+                                            </p>
+
+                                            <div class="activityAction">
+                                                <a href="">Officer Details</a>
+                                                <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <hr class="activitySeparator" />
+
+                    <!-- Box 8 -->
+                    <div class="listSubBox">
+                        <div class="">
+                            <table class="table activityTable">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="images/reported.png" class="activityImg" />
+                                        </td>
+                                        <td>
+                                            <span class="activityTime">01:00 | Yesterday</span>
+                                            <p class="activityDescr">
+                                                Brad Pitt was <b>reported</b> to <b>RC-005624 :</b> <i class="italicFont">Out of control house party</i>
+                                            </p>
+
+                                            <!-- Read More Box -->
+                                            <div class="reportSubDiv">
+                                                <span class="activityTime">01:00 | Yesterday</span>
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                </p>
+
+                                                <a href="">Read More</a>
+                                            </div>
+
+                                            <div class="activityAction">
+                                                <a href="">Job Details</a>
+                                                <a href="">Officer Details</a>
+                                                <a href="" title="Get Directions"><i class="material-icons">directions</i></a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- Main List Box Ends -->
+
+            </div>
+            <!---------------------- Activity Feed tab content -------------------------->
+        </div>
+
+        <!-- Tab content Ends -->
+
+    </div>
+
+</div>
+<!-- Main Container End here -->
+
+<!-- Add new officer -->
+<div class="bottomContainer">
+    <button>Add New Officer</button>
+</div>
