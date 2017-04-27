@@ -211,21 +211,21 @@
                   <div class="activeJobs ">
                         <h4>TODAY</h4>
                         <!--Job Row 1-->
-                        <div *ngFor="let Object of asyncOb|async">
+                        <div *ngFor="let ob of asyncOb|async">
                        <div class="row">
                     <h5 class="col-xs-12"><span class="priorityIcon"></span>
-                         {{Object.obType.obNumber}} | {{Object.departmentType.departmentName}}   
+                         {{ob.obNumber}} | {{ob.mstDepartment.departmentName}}   
                     </h5>
                             <div class="jobDetail">
                                 <div class="col-xs-8">
-                                    <h4>{{Object.obType.natureOfOccurrence}}</h4>
-                                    <p>{{Object.area.areaName}}</p>
+                                    <h4>{{ob.natureOfOccurrence}}</h4>
+                                    <p>{{ob.mstArea.areaName}}</p>
                                 </div>
-                                <div class="col-xs-4 statusOpen"><span>{{Object.statusType.statusName}}</span></div>
+                                <div class="col-xs-4 statusOpen"><span>{{ob.mstStatus.statusName}}</span></div>
                             </div>
                             <div class="jobOfcDetail">
-                                <div class="col-xs-8"><img class="img-responsive imgBadge" src="images/badge.png" alt="badge">
-                             {{Object.employeeType.firstName}}{{Object.employeeType.lastName}}
+                                <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">
+                             {{ob.mstEmployee.firstName}}{{ob.mstEmployee.lastName}}
                                 </div>
                                 <div class="col-xs-4">03:12:56</div>
                             </div>
@@ -242,21 +242,21 @@
                     <h4>Top Rated Available Officers</h4>
                     
                     <!--Officer Row 1-->
-                    <div class="listSubBox availableOfficer" *ngFor="let Object of asyncOfficer|async">
+                    <div class="listSubBox availableOfficer" *ngFor="let officer of asyncOfficer|async">
                         <div class="row">
                             <div class="col-xs-2 noRightPadding badgeImgBox">
-                                <img src="images/BadgeNew.png" class="badgeImg" />
+                                <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
                             </div>
                             <div class="col-xs-10 noLeftPadding">
                                 <div class="listcontentBox">
                                     
-                                    <span class="officerId">{{Object.employeeCode}} | {{Object.department.departmentName}}</span>
+                                    <span class="officerId">{{officer.employeeCode}} | {{officer.mstDepartment.departmentName}}</span>
 
-                                    <h5 class="officerName">{{Object.firstName}} {{Object.lastName}}</h5>
+                                    <h5 class="officerName">{{officer.firstName}} {{officer.lastName}}</h5>
 
                                     <h5 class="officerPostContact">
-                                        <span class="post">{{Object.designation.designationName}}</span>
-                                        <span class="contact"><i class="material-icons">phone</i> {{Object.mobile}}</span>
+                                        <span class="post">{{officer.mstDesignation.designationName}}</span>
+                                        <span class="contact"><i class="material-icons">phone</i> {{officer.mobile}}</span>
                                     </h5>
                                 </div>
                             </div>

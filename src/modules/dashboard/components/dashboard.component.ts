@@ -35,16 +35,19 @@ export class DashboardComponent  implements OnInit {
   ];
   constructor(private store: Store<Dashboard>){}
   ngOnInit() {
+    this.store.dispatch({ type: OB_ACTIONS.GET_LIST });
+    this.asyncOb= this.store.select('occurenceBook')
+    this.asyncOb.subscribe((res:any) => {
+       console.log(res)
+       this.obs = res;
+    });
     this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
     this.asyncOfficer= this.store.select('employee')
     this.asyncOfficer.subscribe((res:any) => {
+     
        this.officers = res;
     });
-   this.store.dispatch({ type: OB_ACTIONS.GET_LIST });
-    this.asyncOb= this.store.select('ob')
-    this.asyncOb.subscribe((res:any) => {
-       this.obs = res;
-    });
+   
      
   }
 }

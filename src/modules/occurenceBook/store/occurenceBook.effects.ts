@@ -22,7 +22,7 @@ export class OccurenceBookEffects extends BaseService {
    .switchMap(action => 
        this.occurenceBookService.getObs()
         .map(res =>{
-          this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+          this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload: res })
         })
         .catch(() => Observable.of({ type: OB_ACTIONS.ON_FAILED  }))
       );
