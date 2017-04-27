@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Dashboard } from '../store/dashboard.model';
 import { DASHBOARD_ACTIONS } from '../store/dashboard.actions';
 import { EMPLOYEE_ACTIONS } from '../../employee/store/employee.actions';
+import {OB_ACTIONS} from '../../occurenceBook/store/occurenceBook.actions';
 
 @Component({
   moduleId: module.id,
@@ -15,6 +16,8 @@ export class DashboardComponent  implements OnInit {
   dashboard:Dashboard[];
   officers:any[]=[];
   asyncOfficer:Observable<any>
+  obs:any[]=[];
+  asyncOb:Observable<any>
   lat: number = 51.678418;
   lng: number = 7.809007;
     locations = [
@@ -36,6 +39,11 @@ export class DashboardComponent  implements OnInit {
     this.asyncOfficer= this.store.select('employee')
     this.asyncOfficer.subscribe((res:any) => {
        this.officers = res;
+    });
+   this.store.dispatch({ type: OB_ACTIONS.GET_LIST });
+    this.asyncOb= this.store.select('ob')
+    this.asyncOb.subscribe((res:any) => {
+       this.obs = res;
     });
      
   }
