@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import {AuthService} from '../../auth.service';
+import { Router } from '@angular/router';
 
 import {
   FormBuilder,
@@ -14,21 +15,25 @@ import {
   templateUrl: 'login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
-export class EsplLoginFormComponent {
+export class EsplLoginFormComponent implements OnInit {
 
   // needed to be public to allow access from fixture tests
   username: FormControl;
   password: FormControl;
   group: FormGroup;
 
-  constructor(private builder: FormBuilder,private authService: AuthService ) {
+  constructor(private _router: Router,private builder: FormBuilder,private authService: AuthService ) {
     this.reset();
   }
-
+  ngOnInit(){
+    if (this.authService.isAuthenticated) {
+        this._router.navigate(['/dashboard']);
+    }
+  }
   handleSubmit() {
    this.authService.login({userName:this.username.value,password:this.password.value}).subscribe(
           results => {
-                console.log('LoggedIN')
+              this._router.navigate(['/dashboard']);
           });
   }
 

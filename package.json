@@ -37,6 +37,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.0",
     "@angular/common": "~2.4.5",
     "@angular/compiler": "~2.4.5",
     "@angular/core": "~2.4.5",
@@ -114,8 +115,8 @@
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.1",
     "@angular/compiler-cli": "^2.4.0",
-    "bootstrap":"3.3.7",
-    "jquery":"3.2.1",
+    "bootstrap": "3.3.7",
+    "jquery": "3.2.1",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "3.2.0",
@@ -141,5 +142,15 @@
     "webpack-dev-server": "^2.2.0",
     "webpack-hot-middleware": "^2.12.2",
     "webpack-split-by-path": "^0.1.0-beta.1"
-  }
+  },
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahesh-kedari/angular2-starter-pack.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/mahesh-kedari/angular2-starter-pack/issues"
+  },
+  "homepage": "https://github.com/mahesh-kedari/angular2-starter-pack#readme"
 }

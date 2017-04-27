@@ -20,8 +20,10 @@ export class DashboardEffects extends BaseService {
     .ofType(DASHBOARD_ACTIONS.GET_DASHBOARD_LIST)
    .switchMap(action => 
        this.getList$(CONTEXT)
+       
         .map(res =>{
-          this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_SUCCESS, payload: res })
+          //this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_SUCCESS, payload: res })
+           this.store.dispatch({ type: DASHBOARD_ACTIONS.GET_DASHBOARD_SUCCESS, payload: res })
         })
         .catch(() => Observable.of({ type: DASHBOARD_ACTIONS.ON_FAILED  }))
       );

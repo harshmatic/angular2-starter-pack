@@ -11,7 +11,6 @@ import { EsplAlertComponent } from './alert/alert.component';
 import { EsplButtonComponent } from './button/button.component';
 import { EsplContainerComponent } from './container/container.component';
 import { EsplInputComponent } from './input/input.component';
-import { EsplLogoComponent } from './logo/logo.component';
 import { EsplFormComponent } from './form/form.component';
 import { EsplFormErrorComponent } from './form-error/form-error.component';
 import { EsplFormGroupComponent } from './form-group/form-group.component';
@@ -24,7 +23,7 @@ import { TitleCasePipe } from './title-case/title-case.pipe';
 import { TwainComponent } from './twain/twain.component';
 import { TwainService } from './twain/twain.service';
 import { BannerComponent } from './banner/banner.component';
-import { WelcomeComponent } from './welcome/welcome.component';
+//import { WelcomeComponent } from './welcome/welcome.component';
 import { IfAuthorizeDirective } from './directives/ifAuthorize.directive';
 
 export const components = [
@@ -33,7 +32,6 @@ export const components = [
   EsplButtonComponent,
   EsplContainerComponent,
   EsplInputComponent,
-  EsplLogoComponent,
   EsplFormComponent,
   EsplFormErrorComponent,
   EsplFormGroupComponent,
@@ -46,7 +44,7 @@ export const components = [
   TwainComponent,
   BannerComponent,
   IfAuthorizeDirective,
-  WelcomeComponent
+ // WelcomeComponent
 ];
 
 @NgModule({
