@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OfficerListComponent } from './components/officerList/officerList.component';
 import { AuthGuard } from '../../app/core/index'
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
+import { AssignOfficerComponent } from './components/assignOfficer/assignOfficer.component';
 
 const routes: Routes = [
    {
@@ -23,7 +24,13 @@ const routes: Routes = [
     data: {
     },
     canActivate: [AuthGuard],
-  }
+  },{
+    path: 'assign-officer',
+    component: AssignOfficerComponent,
+    data: {
+    },
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

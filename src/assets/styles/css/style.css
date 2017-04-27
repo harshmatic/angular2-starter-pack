@@ -150,7 +150,20 @@ h4{
 .whiteIconBar{
     background-color: #fff;
 }
-
+textarea.description {
+    resize: none;
+    background-color: #eaeaea;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+}
+textarea.description:focus {
+    border-color: transparent;
+    box-shadow: none;
+}
+label{
+    color: #6d6d6d;
+}
 /************ Media Query **************/
 @media only screen  and (max-width : 768px) {
     /************************************************** Dashboard Page ***************************************************/
@@ -181,10 +194,14 @@ h4{
         font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
         font-size: 3rem !important;
     }
-    .pageName > h1{
-        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
-        font-size: 2.8rem !important;
+    .pageName{
         text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding-bottom: 10px;
+    }
+    .pageName >  h1{
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+        font-size: 2.6rem !important;
     }
     /************ Scroll Stats **************/
     .carousel-indicators{
@@ -867,5 +884,110 @@ h4{
     }
     
     /************************************************** Submit Complaint Page ***************************************************/
+    button.greyBtn {
+        font-size: 1.4rem;
+        background-color: #bdbdbd;
+        border-radius: 48px;
+        width: 100%;
+        height: 39px;
+        border: 1px solid #adadad !important;
+        color: #fff;
+    }
+    .greyBtn > i {
+        margin-right: 1rem;
+    }
+    form{
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #000 !important;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+        color: #000 !important;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+        color: #000 !important;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+        color: #000 !important;
+    }
+    form.cards > .row >.col-xs-6 {
+        border-right:1px solid rgba(0,0,0,0.1);
+    }
+    form.cards > .row > .form-group {
+        border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+        margin-bottom: 0px;
+    }
+    .cards select, .cards input{
+        border: none !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+        font-size: 1.7rem !important;
+        font-weight: 600;
+        color: #000 !important;
+        padding-left: 0px !important;
+        border-radius: 0px !important;
+    }
+    .cards .form-group span.input-group-addon {
+        background-color: transparent !important;
+        border: 0px !important;
+    }
+    .input-group-btn-vertical > .greyBtn{
+        height: auto;
+    }
+    .spinner {
+        width: 100px;
+    }
+    .spinner input {
+        text-align: left;
+        width: 133px !important
+    }
+    .input-group-btn-vertical {
+        position: relative;
+        white-space: nowrap;
+        width: 1%;
+        vertical-align: middle;
+        display: table-cell;
+    }
+    .input-group-btn-vertical > .btn{
+        display: block;
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 8px;
+        margin-left: -1px;
+        position: relative;
+        border-radius: 0 !important;
+        background-color: transparent;
+        border: 0px !important;
+        color: #000;
+    }
+    .input-group-btn-vertical > .btn:focus,  .input-group-btn-vertical > .btn:active{
+        outline: 0px !important;
+        box-shadow: none !important;
+        background-color: #d0d0d0;
+    }
+    .input-group-btn-vertical > .btn:visited{
+        background-color: transparent !important;
+    }
+    .input-group-btn-vertical > .btn:first-child {
+        border-top-right-radius: 4px;
+    }
+    .input-group-btn-vertical > .btn:last-child {
+        margin-top: -2px;
+        border-bottom-right-radius: 4px;
+    }
+    .input-group-btn-vertical i{
+        position: absolute;
+        top: 0;
+        left: 4px;
+        font-size: 2rem;
+    }
+    textarea#exampleTextarea{
+        margin-bottom: 5rem;
+    }
     
+    /************************************************** Assign Officer Page ***************************************************/
 }

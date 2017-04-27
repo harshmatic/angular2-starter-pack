@@ -4,11 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { JobDetailComponent } from './components/jobDetail/jobDetail.component';
 import { AuthGuard } from '../../app/core/index'
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
+import { AddJobComponent } from './components/addJob/addJob.component';
 
 const routes: Routes = [
    {
     path: '',
-    redirectTo: 'officerList',
+    redirectTo: 'job-details',
   },
   {
     path: 'job-details',
@@ -23,7 +24,14 @@ const routes: Routes = [
     data: {
     },
     canActivate: [AuthGuard],
-  }
+  },
+   {
+    path: 'add-job',
+    component: AddJobComponent,
+    data: {
+    },
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

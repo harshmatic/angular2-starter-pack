@@ -9,6 +9,7 @@ import { OfficerListComponent } from './components/officerList/officerList.compo
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
 import { EmployeeEffects } from '../employee/store/employee.effects';
 import { EmployeeService } from '../employee/services/employee.service';
+import { AssignOfficerComponent } from './components/assignOfficer/assignOfficer.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { EmployeeService } from '../employee/services/employee.service';
   ],
   declarations: [
     OfficerListComponent,
-    ActivityFeedComponent
+    ActivityFeedComponent,
+    AssignOfficerComponent
   ],
   providers:[EmployeeService]
 })

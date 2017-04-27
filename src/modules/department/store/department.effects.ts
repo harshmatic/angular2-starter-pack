@@ -22,7 +22,7 @@ export class DepartmentEffects extends BaseService {
    .switchMap(action => 
        this.DepartmentService.getDepartments()
         .map(res =>{
-          this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+          this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_SUCCESS, payload: res })
         })
         .catch(() => Observable.of({ type: DEPARTMENT_ACTIONS.ON_FAILED  }))
       );
