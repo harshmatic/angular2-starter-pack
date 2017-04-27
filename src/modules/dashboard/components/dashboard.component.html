@@ -205,106 +205,36 @@
     </div>
     <!--jobs in progress ends here-->
 
-    <!-------------------- Active Jobs ------------------------>
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-            <h4>Active Jobs</h4>
-            <!--Active Jobs-->
-            <div class="activeJobs">
-                <h4>TODAY</h4>
-                <!--Job Row 1-->
-                <div class="row">
-                    <h5 class="col-xs-12"><span class="priorityIcon"></span>RC-001253 | Crime Branch</h5>
-                    <div class="jobDetail">
-                        <div class="col-xs-8">
-                            <h4>Armed Robbery In Progress</h4>
-                            <p>Nanyuki-Rumuruti Rd, Nanyuki, Kenya</p>
+          <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <h4>Active Jobs</h4>
+                  <div class="activeJobs ">
+                        <h4>TODAY</h4>
+                        <!--Job Row 1-->
+                        <div *ngFor="let Object of asyncOb|async">
+                       <div class="row">
+                    <h5 class="col-xs-12"><span class="priorityIcon"></span>
+                         {{Object.obType.obNumber}} | {{Object.departmentType.departmentName}}   
+                    </h5>
+                            <div class="jobDetail">
+                                <div class="col-xs-8">
+                                    <h4>{{Object.obType.natureOfOccurrence}}</h4>
+                                    <p>{{Object.area.areaName}}</p>
+                                </div>
+                                <div class="col-xs-4 statusOpen"><span>{{Object.statusType.statusName}}</span></div>
+                            </div>
+                            <div class="jobOfcDetail">
+                                <div class="col-xs-8"><img class="img-responsive imgBadge" src="images/badge.png" alt="badge">
+                             {{Object.employeeType.firstName}}{{Object.employeeType.lastName}}
+                                </div>
+                                <div class="col-xs-4">03:12:56</div>
+                            </div>
                         </div>
-                        <div class="col-xs-4 statusOpen"><span>Open</span></div>
-                    </div>
-                    <div class="jobOfcDetail">
-                        <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Robert Downey
-                            Jr
-                        </div>
-                        <div class="col-xs-4">03:12:56</div>
-                    </div>
-                </div>
-                <!--Job row 1 end here-->
-
-                <!--Job Row 2-->
-                <div class="row">
-                    <h5 class="col-xs-12"><span class="priorityIcon"></span>RC-001253 | Patrol Dept</h5>
-                    <div class="jobDetail">
-                        <div class="col-xs-8">
-                            <h4>Suspicious package in public</h4>
-                            <p>PesaPoint POS Quick Budget Stores - Nkubu</p>
-                        </div>
-                        <div class="col-xs-4 statusCourt"><span>To Court</span></div>
-                    </div>
-                    <div class="jobOfcDetail">
-                        <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Johnny Depp</div>
-                        <div class="col-xs-4">03:12:56</div>
-                    </div>
-                </div>
-                <!--Job row 2 end here-->
-
-                <!--Job Row 3-->
-                <div class="row">
-                    <h5 class="col-xs-12"><span class="priorityIcon"></span>RC-001253 | Crime Branch</h5>
-                    <div class="jobDetail">
-                        <div class="col-xs-8">
-                            <h4>Out of control house party</h4>
-                            <p>Caledona Estate, Nairobi, Kenya</p>
-                        </div>
-                        <div class="col-xs-4 statusOpen"><span>Open</span></div>
-                    </div>
-                    <div class="jobOfcDetail">
-                        <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Robert De
-                            Niro
-                        </div>
-                        <div class="col-xs-4">03:12:56</div>
-                    </div>
-                </div>
-                <!--Job row 3 end here-->
-
-                <!--Job Row 4-->
-                <div class="row">
-                    <h5 class="col-xs-12"><span class="priorityIcon"></span>RC-001253 | Traffic Police</h5>
-                    <div class="jobDetail">
-                        <div class="col-xs-8">
-                            <h4>Car and bike accident</h4>
-                            <p>National Museums Of Kenya Nairobi National Museum</p>
-                        </div>
-                        <div class="col-xs-4 statusCourt"><span>To Court</span></div>
-                    </div>
-                    <div class="jobOfcDetail">
-                        <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Brad Pitt</div>
-                        <div class="col-xs-4">03:12:56</div>
-                    </div>
-                </div>
-                <!--Job row 4 end here-->
-
-                <!--Job Row 5-->
-                <div class="row">
-                    <h5 class="col-xs-12"><span class="priorityIcon"></span>RC-001253 | Traffic Police</h5>
-                    <div class="jobDetail">
-                        <div class="col-xs-8">
-                            <h4>Domestic violence in progress</h4>
-                            <p>National Museums Of Kenya Nairobi National Museum</p>
-                        </div>
-                        <div class="col-xs-4 statusCourt"><span>Open</span></div>
-                    </div>
-                    <div class="jobOfcDetail">
-                        <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Matthew Mcconaughey</div>
-                        <div class="col-xs-4">03:12:56</div>
-                    </div>
-                </div>
-                <!--Job row 5 end here-->
-            </div>
-            <!--Active Jobs end here-->
-        </div>
-    </div>
-    <!--active jobs ends here-->
+                   </div><!--Active Jobs end here-->                    
+               </div>
+            </div> <!--active jobs ends here-->
+           <!--  -->
+           </div>
 
     <!-------------------- Available Officer ------------------------>
     <div class="row">
