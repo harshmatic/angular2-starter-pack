@@ -51,15 +51,8 @@ export class DashboardComponent  implements OnInit {
     this.asyncCaseReport= this.store.select('reports')
     this.asyncCaseReport.subscribe((res:any) => {
        this.caseReport = res;
-      
     });
-    this.store.dispatch({ type: REPORTS_ACTIONS.GET_OFFICER_LIST });
-    this.asyncOfficerReport= this.store.select('reports')
-    this.asyncOfficerReport.subscribe((res:any) => {
-     
-       this.offReport = res;
-      
-    });
+
      
     
   }

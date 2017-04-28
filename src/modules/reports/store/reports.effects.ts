@@ -25,16 +25,7 @@ export class ReportsEffects extends BaseService {
         })
         .catch(() => Observable.of({ type: REPORTS_ACTIONS.ON_FAILED  }))
       );
-      @Effect({ dispatch: false })
-  private getOfficersReport$ = this.actions$
-    .ofType(REPORTS_ACTIONS.GET_CASE_LIST)
-   .switchMap(action => 
-       this.reportsService.getReport("reports/GetOfficersStatistics")
-        .map(res =>{
-          this.store.dispatch({ type: REPORTS_ACTIONS.GET_OFFICERS_LIST_SUCCESS, payload: res })
-        })
-        .catch(() => Observable.of({ type: REPORTS_ACTIONS.ON_FAILED  }))
-      );
+
   constructor(
     private store: Store<any>,
     private actions$: Actions,

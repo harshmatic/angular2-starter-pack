@@ -27,14 +27,14 @@
                             <div class="row" >
                                 <div class="col-xs-6 statInnerBox">
                                     <span>Total Jobs</span>
-                                    <h3>{{ (asyncCaseReport|async).totalOccurrences}}</h3>
+                                    <h3>{{caseReport.occurrencesStatistics ? caseReport.occurrencesStatistics.total : ''}}</h3>
                                 </div>
                                 <div class="col-xs-6 statInnerBox">
-                                    <span *ngFor="let stat of (asyncCaseReport|async).priorityWiseStats"><strong>{{stat.count}}</strong>&nbsp;{{stat.priority}}</span>
+                                    <span *ngFor="let stat of caseReport.occurrencesStatistics?caseReport.occurrencesStatistics.priorityWiseStats:''"><strong>{{stat.count}}</strong>&nbsp;{{stat.priority}}</span>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-4 statInnerBox" *ngFor="let stat of (asyncCaseReport|async).statusWiseStats">
+                                <div class="col-xs-4 statInnerBox" *ngFor="let stat of caseReport.occurrencesStatistics?caseReport.occurrencesStatistics.statusWiseStats:''">
                                     <span>{{stat.statusName}}</span>
                                     <h3>{{stat.count}}</h3>
                                 </div>
@@ -52,7 +52,7 @@
                             <div class="row">
                                 <div class="col-xs-6 statInnerBox">
                                     <span>All Officers</span>
-                                    <h3>339</h3>
+                                    <h3>{{caseReport.officersStatistics ? caseReport.officersStatistics.total : ''}}</h3>
                                 </div>
                                 <div class="col-xs-6 statInnerBox">
                                     <span>On Scene</span>

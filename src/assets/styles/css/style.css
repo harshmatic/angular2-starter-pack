@@ -491,11 +491,15 @@ label{
         display: block;
         text-align: center;
     }
-    .jobOfcDetail > div.col-xs-8{
+    .jobOfcDetail > .col-xs-8{
         font-weight: bold;
         color: #153994;
         font-size: 1.5rem;
-        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif;
+    }
+    .jobOfcDetail > .notAssigned{
+        color: #a3a3a3;
+        font-family: "Conv_AVENIRLTSTD-BOOK", Georgia, serif;
     }
     .jobOfcDetail > div.col-xs-8 > img{
         width: 7%;
@@ -883,7 +887,7 @@ label{
         font-size: 1.4rem;
     }
     
-    /************************************************** Submit Complaint Page ***************************************************/
+    /************************************************** Submit Complaint/ Assign Officer Page ***************************************************/
     button.greyBtn {
         font-size: 1.4rem;
         background-color: #bdbdbd;
@@ -934,15 +938,20 @@ label{
         background-color: transparent !important;
         border: 0px !important;
     }
+    .input-group-btn-vertical.input-group-addon {
+        background-color: transparent !important;
+        border: 0px !important;
+        border-radius: 0px !important;
+        padding: 0px;
+    }
     .input-group-btn-vertical > .greyBtn{
         height: auto;
     }
     .spinner {
-        width: 100px;
+        width: 100%;
     }
     .spinner input {
         text-align: left;
-        width: 133px !important
     }
     .input-group-btn-vertical {
         position: relative;
@@ -989,5 +998,222 @@ label{
         margin-bottom: 5rem;
     }
     
-    /************************************************** Assign Officer Page ***************************************************/
+    /************************************************** For Job Details Inner Page ***************************************************/
+    .detailDropdown{
+        height: 40px!important;
+        box-shadow: none!important;
+        border: none!important;
+        color: #BE1A21!important;
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+        border-radius:5px!important;
+    }
+    .detailDropdown {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    .detailDropdownArrow{
+        position: absolute;
+        right: 0;
+        margin-top: -31px;
+        margin-right: 20px;
+    }
+    .viewActivityBtn{
+        background: #4E4E4E;
+        color: #fff;
+        font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
+        border: none!important;
+        height: 40px!important;
+        border-radius: 5px!important;
+        font-size: 1.2rem;
+        width: 100%;
+    }
+    .viewActivityBtnBox{
+        padding-left:0!important;
+
+    }
+    .whitePanel{
+        background:#fff;
+        padding:15px;
+        border-radius: 5px!important;
+        margin-top:15px;
+    }
+    .crimeUnitSpan{
+        margin-top: 0;
+        margin-bottom: 0;
+        font-family: "Conv_AVENIRLTSTD-BOOK", Georgia, serif !important;
+        color: #000;
+        font-weight: bold;
+    }
+    .crimeUnitName{
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+        line-height: 1.2em;
+        margin-bottom: 0;
+    }
+    .crimeUnitAddress{
+        color: #000;
+        font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
+        line-height: 1.2em;
+        font-size:1.5rem;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .rightIcon{
+        float: right;
+        color: #CCCCCC;
+        right: 0;
+    }
+    .crimeUnitTimeSpan{
+        font-family: "Conv_AVENIRLTSTD-BOOK", Georgia, serif !important;
+        color: #878787;
+        font-size: 1.4rem;
+        margin-top: 0;
+        font-weight: bold;
+    }
+    .crimeUnitTimeBlock{
+        color: #000;
+        font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
+        line-height: 1.2em;
+        font-size:1.6rem;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .marginBottomDetail{
+        margin-bottom: 15px;
+    }
+    .crimeUnitList{
+        padding:0;
+        list-style-type:none;
+    }
+    .crimeUnitList li{
+        border-radius:5px;
+        background:#DCDCDC;
+        color:#000;
+        font-size:1.5rem;
+        font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
+        float:left;
+        padding:4px 15px;
+        margin-right:15px;
+        margin-bottom:15px;
+    }
+    .jobDetailMain{
+        margin-bottom:5.3rem;
+    }
+    .noBottomPadding{
+        padding-bottom:0;
+    }
+    .crimeUnitDescr{
+        color: #000;
+        font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
+        line-height: 1.4em;
+        font-size:1.6rem;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .commentPanel{
+        background: #FEF6E2;
+        padding: 15px;
+        border-radius: 5px!important;
+        margin-top: 15px;
+        border:1px solid #fde6ad;
+        min-height: 120px;
+    }
+    .commentIcon{
+        float:right;
+        color:#DAD0B7;
+        margin-top: -3px;
+    }
+    .bottomEditBtn{
+        background: #082E8E!important;
+        border: none!important;
+        border-radius: 5px;
+        color: #fff;
+        font-family: "Conv_AVENIRLTSTD-Light", Georgia, serif !important;
+        padding: 10px;
+        width: 40%!important;
+        float:left;
+        margin-right:3%;
+    }
+    .bottomAssignBtn{
+        background: #BE1A21;
+        border: none!important;
+        border-radius: 5px;
+        color: #fff;
+        font-family: "Conv_AVENIRLTSTD-Light", Georgia, serif !important;
+        padding: 10px;
+        width: 57%!important;
+        float:left;
+    }
+    
+    /************************************************** For Login Page ***************************************************/
+    .loginMain{
+        height:100vh;
+        background-image:url('../images/loginMap.png');
+        background-size:cover;
+        padding-left:15px;
+        padding-right:15px;	
+        padding-top: 2rem;
+    }
+    .loginTopImg{
+        width: 10rem;
+        margin: 0 auto;
+        text-align:center;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+    }
+    .loginTopPanel{
+        text-align:center;
+    }
+    .loginText{
+        border:none!important;
+        box-shadow:none!important;
+        padding-left:0!important;
+    }
+    .loginText::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: grey!important;
+    }
+    .loginText::-moz-placeholder { /* Firefox 19+ */
+        color: grey!important;
+    }
+    .loginText:-ms-input-placeholder { /* IE 10+ */
+        color: grey!important;
+    }
+    .loginText:-moz-placeholder { /* Firefox 18- */
+        color: grey!important;
+    }
+    .loginPanel{
+        background: #fff;
+        padding: 10px 15px;
+        border-radius: 5px!important;
+        margin-top: 15px;
+    }
+    .loginTextImg{
+        position: absolute;
+        width: 12px;
+        right: 0;
+        margin-right: 28px;
+        margin-top: 20px;
+    }
+    .loginBtn{
+        background: #BE1A21;
+        border: none!important;
+        border-radius: 5px;
+        color: #fff;
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+        padding: 10px;
+        width: 100%;
+        margin-top: 3rem;
+    }
+    .loginLabel{
+        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+        font-size:1.3rem;
+    }
+    .loginFooter{
+        text-align: center;
+        bottom: 15px;
+        position: absolute;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        font-family: "Conv_AVENIRLTSTD-BOOK", Georgia, serif !important;
+    }
 }
