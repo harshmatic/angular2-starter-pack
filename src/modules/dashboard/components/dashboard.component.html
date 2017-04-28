@@ -206,6 +206,7 @@
                   <div class="activeJobs ">
                         <h4>TODAY</h4>
                         <!--Job Row 1-->
+
                         
                        <div class="row" *ngFor="let ob of asyncOb|async">
                     <h5 class="col-xs-12"><span class="priorityIcon"></span>
@@ -222,7 +223,11 @@
                                 <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">
                              {{ob.mstEmployee.firstName}}{{ob.mstEmployee.lastName}}
                                 </div>
-                                <div class="col-xs-4">03:12:56</div>
+                                <div class="col-xs-4">
+                             <!--  <span>{{ob.assignedTime | amDateFormat:'MM/DD/YYYY'}}</span>-->
+                        
+                                <span>{{ ob.assignedTime |  amTimeAgo:'true'  }}</span>              
+                             </div>
                             </div>
                         </div>
                    </div><!--Active Jobs end here-->                    
@@ -258,7 +263,5 @@
                         </div>	
                     </div>
     <!-- Available Office ends here-->
-
-
 </div>
 <!-- Main Container End here -->
