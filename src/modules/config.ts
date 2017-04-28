@@ -9,6 +9,7 @@ import {AreaReducer} from './area/store/area.reducer';
 import {OccurenceTypeReducer} from './occurenceType/store/occurenceType.reducer';
 import {StatusReducer} from './status/store/status.reducer';
 import {EmployeeReducer} from './employee/store/employee.reducer';
+import {ReportsReducer} from './reports/store/reports.reducer';
 
 
 export const routing = [
@@ -25,6 +26,7 @@ export const routing = [
   { path: 'employee', loadChildren: 'modules/employee/employee.module' },
   { path: 'officers', loadChildren: 'modules/officers/officer.module' },
   { path: 'jobs', loadChildren: 'modules/job/job.module' },
+  { path: 'reports', loadChildren: 'modules/reports/reports.module' },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' }
 
@@ -47,7 +49,8 @@ export const moduleReducers = {
   area: AreaReducer,
   occurenceType:OccurenceTypeReducer,
   status:StatusReducer,
-  employee:EmployeeReducer
+  employee:EmployeeReducer,
+  reports:ReportsReducer
 
 
 }
