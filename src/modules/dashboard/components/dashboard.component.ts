@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Dashboard } from '../store/dashboard.model';
 import { DASHBOARD_ACTIONS } from '../store/dashboard.actions';
 import { EMPLOYEE_ACTIONS } from '../../employee/store/employee.actions';
 import {OB_ACTIONS} from '../../occurenceBook/store/occurenceBook.actions';
+import {Pipe, ChangeDetectorRef, PipeTransform} from '@angular/core';
+import {TimeAgoPipe} from './dashboard-time-ago.pipe';
+import * as moment from 'moment';
 
 @Component({
   moduleId: module.id,
@@ -12,9 +15,13 @@ import {OB_ACTIONS} from '../../occurenceBook/store/occurenceBook.actions';
   templateUrl: 'dashboard.component.html',
   styleUrls:['dashboard.component.css']
 })
+@Pipe({ name: 'amDifference' })
 export class DashboardComponent  implements OnInit {
+   isValid = true;
   dashboard:Dashboard[];
   officers:any[]=[];
+  date:any;
+  time:any;
   asyncOfficer:Observable<any>
   obs:any[]=[];
   asyncOb:Observable<any>
@@ -38,16 +45,21 @@ export class DashboardComponent  implements OnInit {
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST });
     this.asyncOb= this.store.select('occurenceBook')
     this.asyncOb.subscribe((res:any) => {
-       console.log(res)
+       
+        
        this.obs = res;
     });
     this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
     this.asyncOfficer= this.store.select('employee')
+   
     this.asyncOfficer.subscribe((res:any) => {
      
        this.officers = res;
-    });
-   
-     
+    }); 
+ 
+      this.date = new Date();
+      //this.time = new Time();      
   }
+  
+
 }

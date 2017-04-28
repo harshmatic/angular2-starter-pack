@@ -12,12 +12,14 @@ import { EmployeeService } from '../employee/services/employee.service';
 import { OccurenceBookEffects } from '../occurenceBook/store/occurenceBook.effects';
 import { OccurenceBookService } from '../occurenceBook/services/occurenceBook.service';
 import { AgmCoreModule } from '@agm/core';
+import {MomentModule} from 'angular2-moment';
 @NgModule({
   imports: [
     SharedModule,
     AgmCoreModule.forRoot(),
     ReactiveFormsModule,
     DashboardRouting,
+    MomentModule,
     EffectsModule.run(DashboardEffects),
     EffectsModule.run(EmployeeEffects),
     EffectsModule.run(OccurenceBookEffects)
