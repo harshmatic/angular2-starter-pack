@@ -9,8 +9,6 @@ interface IReportsActions {
     INIT_FAILED: string;
     GET_CASE_LIST: string;
     GET_CASE_LIST_SUCCESS: string;
-    GET_OFFICER_LIST: string;
-    GET_OFFICERS_LIST_SUCCESS: string;
     ON_FAILED: string;
 
 }
@@ -24,8 +22,6 @@ export const REPORTS_ACTIONS: IReportsActions = {
     INIT_FAILED: `${CONTEXT}_INIT_FAILED`,
     GET_CASE_LIST: `${CONTEXT}GET_LIST`,
     GET_CASE_LIST_SUCCESS: `${CONTEXT}GET_LIST_SUCCESS`,
-    GET_OFFICER_LIST: `${CONTEXT}GET_LIST`,
-    GET_OFFICERS_LIST_SUCCESS: `${CONTEXT}GET_LIST_SUCCESS`,
     ON_FAILED: `${CONTEXT}_ON_FAILED`
     
 };

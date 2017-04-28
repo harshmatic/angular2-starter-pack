@@ -12,7 +12,6 @@ export function ReportsReducer(state: any[] = [], action: Action) {
         return action.payload;
     case REPORTS_ACTIONS.ON_FAILED:
         return state;
-    case REPORTS_ACTIONS.GET_OFFICERS_LIST_SUCCESS:
     default:
         return state;
   }

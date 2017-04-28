@@ -17,13 +17,14 @@ import { DepartmentService } from '../department/services/department.service';
 import { OccurenceTypeService } from '../occurenceType/services/occurenceType.service';
 import { OccurenceBookService } from '../occurenceBook/services/occurenceBook.service';
 import { JobService } from './services/job.service';
-
+import {MomentModule} from 'angular2-moment';
 
 @NgModule({
   imports: [
     SharedModule,
     ReactiveFormsModule,
     JobRouting,
+    MomentModule,
     EffectsModule.run(EmployeeEffects),
     EffectsModule.run(OccurenceTypeEffects),
     EffectsModule.run(DepartmentEffects),

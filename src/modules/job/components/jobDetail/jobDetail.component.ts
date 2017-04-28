@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { OccurenceBook } from '../../../occurenceBook/store/occurenceBook.model';
 import { OB_ACTIONS } from '../../../occurenceBook/store/occurenceBook.actions';
 import { Subscription } from 'rxjs/Subscription';
+import {TimeAgoPipe} from './jobDetail-time-ago.pipe';
+import * as moment from 'moment';
 declare var $: any;
 @Component({
   moduleId: module.id,
