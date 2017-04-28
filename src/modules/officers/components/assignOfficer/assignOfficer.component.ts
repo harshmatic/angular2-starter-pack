@@ -7,9 +7,9 @@ declare var $:any;
 @Component({
   moduleId: module.id,
   selector: 'app-job-detail',
-  templateUrl: 'jobDetail.component.html',
+  templateUrl: 'assignOfficer.component.html',
 })
-export class JobDetailComponent  implements OnInit {
+export class AssignOfficerComponent  implements OnInit {
   officers:any[]=[];
   asyncOfficer:Observable<any>
   showTab:boolean=true;

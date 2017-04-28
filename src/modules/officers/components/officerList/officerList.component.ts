@@ -23,13 +23,4 @@ export class OfficerListComponent  implements OnInit {
     });
      
   }
-  setTab(value,e) {
-      if (value==1){
-        this.showTab=true;
-      } else if(value==2) {
-        this.showTab=false;
-      }
-
-
-  }
 }

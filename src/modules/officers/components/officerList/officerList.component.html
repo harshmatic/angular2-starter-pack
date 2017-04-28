@@ -51,12 +51,12 @@
                                 </div>
                                 <div class="col-xs-10 noLeftPadding">
                                     <div class="listcontentBox">
-                                        <span class="officerId">{{item.employeeCode}} | {{item.department.departmentName}} </span>
+                                        <span class="officerId">{{item.employeeCode}} | {{item.mstDepartment?item.mstDepartment.departmentName:''}} </span>
 
                                         <h5 class="officerName">{{item.firstName+''+item.lastName}}</h5>
 
                                         <h5 class="officerPostContact">
-                                            <span class="post">{{item.designation.designationName}}</span>
+                                            <span class="post">{{item.mstDesignation?item.mstDesignation.designationName:''}}</span>
                                             <span class="contact"><i class="material-icons">phone</i> {{item.mobile}}</span>
                                         </h5>
 
@@ -68,7 +68,7 @@
 														</span>
                                             </div>
                                             <div class="col-xs-7">
-                                                <span class="caseDescr">{{item.occurrenceBooks[0].obNumber}} : {{item.occurrenceBooks[0].assignedComments}} </span>
+                                                <span class="caseDescr">{{item.mstOccurrenceBooks.length>0?item.mstOccurrenceBooks[0].obNumber:''}} : {{item.mstOccurrenceBooks.length>0?item.mstOccurrenceBooks[0].assignedComments:''}} </span>
                                             </div>
                                             <div class="col-xs-5">
                                                 <label class="caseStatus open">Open</label>
