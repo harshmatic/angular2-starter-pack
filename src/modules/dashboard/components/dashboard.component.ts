@@ -8,6 +8,7 @@ import {OB_ACTIONS} from '../../occurenceBook/store/occurenceBook.actions';
 import {Pipe, ChangeDetectorRef, PipeTransform} from '@angular/core';
 import {TimeAgoPipe} from './dashboard-time-ago.pipe';
 import * as moment from 'moment';
+import {REPORTS_ACTIONS} from '../../reports/store/reports.actions';
 
 @Component({
   moduleId: module.id,
@@ -23,31 +24,20 @@ export class DashboardComponent  implements OnInit {
   date:any;
   time:any;
   asyncOfficer:Observable<any>
+  offReport:any;
+  caseReport:any;
+  asyncCaseReport:Observable<any>;
+  asyncOfficerReport:Observable<any>;
   obs:any[]=[];
   asyncOb:Observable<any>
-  lat: number = 51.678418;
-  lng: number = 7.809007;
-    locations = [
-    {id: 1,  lat: 51.5239935252832,    lng:  5.137663903579778,   content: '/assets/styles/images/red.svg'},
-    {id: 2,  lat: 51.523853342911906,  lng:  5.1377765563584035,  content: '/assets/styles/images/blue.svg'},
-    {id: 3,  lat: 51.5237298485607,    lng:  5.137969675407476,   content: '/assets/styles/images/red.svg'},
-    {id: 4,  lat: 51.52355628836575,   lng:  5.138066234932012,   content: '/assets/styles/images/orange.svg'},
-    {id: 5,  lat: 51.52340275379578,   lng:  5.138211074218816,   content: '/assets/styles/images/orange.svg'},
-    {id: 6,  lat: 51.523199152806626,  lng:  5.138382735595769,   content: '/assets/styles/images/blue.svg'},
-    {id: 7,  lat: 51.5229955509073,    lng:  5.138511481628484,   content: '/assets/styles/images/blue.svg'},
-    {id: 8,  lat: 51.52280529912936,   lng:  5.138543668136663,   content: '/assets/styles/images/red.svg'},
-    {id: 9,  lat: 51.523596340777075,  lng:  5.138463201866216,   content: '/assets/styles/images/blue.svg'},
-    {id: 700,lat: 51.523372714362736,  lng:  5.1386992362595265,  content: '/assets/styles/images/red.svg'},
-    {id: 101, lat: 51.52329594683302,  lng:  5.138838711128301,   content: '/assets/styles/images/orange.svg'}
-  ];
+  locations:any;
   constructor(private store: Store<Dashboard>){}
   ngOnInit() {
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST,payload:{search:""} });
     this.asyncOb= this.store.select('occurenceBook')
     this.asyncOb.subscribe((res:any) => {
-       
-        
-       this.obs = res;
+        this.obs = res;
+       this.locations=this.obs[0];
     });
     this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
     this.asyncOfficer= this.store.select('employee')
@@ -55,10 +45,23 @@ export class DashboardComponent  implements OnInit {
     this.asyncOfficer.subscribe((res:any) => {
      
        this.officers = res;
-    }); 
- 
-      this.date = new Date();
-      //this.time = new Time();      
+
+    });
+    this.store.dispatch({ type: REPORTS_ACTIONS.GET_CASE_LIST });
+    this.asyncCaseReport= this.store.select('reports')
+    this.asyncCaseReport.subscribe((res:any) => {
+       this.caseReport = res;
+      
+    });
+    this.store.dispatch({ type: REPORTS_ACTIONS.GET_OFFICER_LIST });
+    this.asyncOfficerReport= this.store.select('reports')
+    this.asyncOfficerReport.subscribe((res:any) => {
+     
+       this.offReport = res;
+      
+    });
+     
+    
   }
   
 
