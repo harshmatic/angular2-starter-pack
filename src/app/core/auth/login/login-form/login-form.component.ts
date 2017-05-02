@@ -31,12 +31,25 @@ export class EsplLoginFormComponent implements OnInit {
     }
   }
   handleSubmit() {
-   this.authService.login({userName:this.username.value,password:this.password.value}).subscribe(
+      this.authService.login({userName:this.username.value,password:this.password.value}).subscribe(
           results => {
-              this._router.navigate(['/dashboard']);
+            this.getLoggedInUserPermission();
           });
   }
-
+   getLoggedInUserPermission(): void {
+        this.authService.getLoggedInUserPermission()
+            .subscribe(
+            results => {
+                this.getCurrentUserDetails();
+            });
+    };
+    getCurrentUserDetails(): void {
+        this.authService.getCurrentUserDetails()
+            .subscribe(
+            results => {
+                this._router.navigate(['/dashboard']);
+            });
+    };
   reset() {
     this.username = new FormControl('', Validators.required);
     this.password = new FormControl('', Validators.required);

@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers,Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
@@ -25,6 +25,19 @@ export class AuthService extends BaseService {
        this.isLoggedIn = true;
     });
   }
+  getLoggedInUserPermission() {
+    return this.get$('permissions',true).map((res:any)=>{
+          this.setLoggedInUserPermission(res)
+    })
+  }
+  getCurrentUserDetails() {
+    return this.get$('profile',true).map((res:any)=>{
+          this.setLoggedInUserDetail(res)
+    })
+  }
+ getCurrentUser() {
+        return JSON.parse(localStorage.getItem('loggedInUserDetails'));
+ }
   onAuthStatusChanged$ () {
     return this.onLoggedInChange;
   }
@@ -46,7 +59,7 @@ export class AuthService extends BaseService {
         this.onLoggedInChange.emit(false)
         
   }
-
+  
   private setToken(res) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
@@ -54,5 +67,19 @@ export class AuthService extends BaseService {
         let body = res.json();
         localStorage.setItem('accessToken', body.token);
         this.isLoggedIn = true;
+    }
+  private setLoggedInUserPermission(res: Response) {
+        if (res.status < 200 || res.status >= 300) {
+            throw new Error('Bad response status: ' + res.status);
+        }
+        let body = res.json();
+        localStorage.setItem('loggedInUserPermission', JSON.stringify(body));
+  }
+  private setLoggedInUserDetail(res: Response) {
+        if (res.status < 200 || res.status >= 300) {
+            throw new Error('Bad response status: ' + res.status);
+        }
+        let body = res.json();
+        localStorage.setItem('loggedInUserDetails', JSON.stringify(body));
     }
 }
