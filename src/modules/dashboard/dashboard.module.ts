@@ -15,6 +15,7 @@ import { ReportsEffects } from '../reports/store/reports.effects';
 import { ReportsService } from '../reports/services/reports.service';
 import { AgmCoreModule } from '@agm/core';
 import {MomentModule} from 'angular2-moment';
+import { TimeAgoPipe } from './components/dashboard-time-ago.pipe';
 @NgModule({
   imports: [
     SharedModule,
@@ -28,7 +29,8 @@ import {MomentModule} from 'angular2-moment';
     EffectsModule.run(ReportsEffects)
   ],
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    TimeAgoPipe
   ],
   providers:[DashboardService,EmployeeService,OccurenceBookService,ReportsService]
 })

@@ -20,7 +20,7 @@ export class EsplLoginFormComponent implements OnInit {
   // needed to be public to allow access from fixture tests
   username: FormControl;
   password: FormControl;
-  group: FormGroup;
+  authForm: FormGroup;
 
   constructor(private _router: Router,private builder: FormBuilder,private authService: AuthService ) {
     this.reset();
@@ -40,7 +40,7 @@ export class EsplLoginFormComponent implements OnInit {
   reset() {
     this.username = new FormControl('', Validators.required);
     this.password = new FormControl('', Validators.required);
-    this.group = this.builder.group({
+    this.authForm = this.builder.group({
       username: this.username,
       password: this.password
     });

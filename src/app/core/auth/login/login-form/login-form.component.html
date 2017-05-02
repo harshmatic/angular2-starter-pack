@@ -1,43 +1,23 @@
- <espl-form
-      [group]="group"
-      (onSubmit)="handleSubmit()">
-     
-      <espl-form-group
-        testid="login-username">
-        <espl-label qaid="qa-uname-label">Username</espl-label> "admin"
-        <espl-input
-          qaid="qa-uname-input"
-          inputType='text'
-          placeholder='Username'
-          [control]="username"></espl-input>
-       
-      </espl-form-group>
-
-      <espl-form-group
-        testid="login-password">
-        <espl-label qaid="qa-password-label">Password</espl-label> "superuser"
-        <espl-input
-          qaid="qa-password-input"
-          inputType='password'
-          placeholder='Password'
-          [control]="password"></espl-input>
-      </espl-form-group>
-
-      <espl-form-group
-        testid="login-submit">
-        <espl-button
-          qaid="qa-login-button"
-          className="md-raised-button"
-          type="button"
-          (onClick)="handleSubmit()">
-          Login
-        </espl-button>
-        <espl-button
-          qaid="qa-clear-button"
-          className="btn-primary"
-          type="reset"
-          (onClick)="reset()">
-          Clear
-        </espl-button>
-      </espl-form-group>
-    </espl-form>
+  <form  (ngSubmit)="handleSubmit()" [formGroup]="authForm">
+           
+			<div class="loginMain">
+				
+				<div class="loginTopPanel">
+					<img src="assets/styles/images/logo.png" class="loginTopImg"/>
+				</div>
+				
+				<div class="loginPanel">
+					<label class="loginLabel">Username</label>
+					<img src="assets/styles/images/user.png" class="loginTextImg"/>
+					<input formControlName="username" type="text" class="form-control loginText" placeholder="enter username"/>
+				</div>
+				
+				<div class="loginPanel">
+					<label class="loginLabel">Password</label>
+					<img src="assets/styles/images/password.png" class="loginTextImg"/>
+					<input type="password" formControlName="password" class="form-control loginText" placeholder="enter password"/>
+				</div>
+				<button class="loginBtn" type="submit" [disabled]="authForm.invalid">Sign In</button>
+				<h6 class="loginFooter">Copyrights &copy; 2017. All rights reserved.</h6>
+			</div>
+		</form>
