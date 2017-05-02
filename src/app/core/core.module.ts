@@ -25,7 +25,7 @@ import {
 import { reducer } from './store';
 import { SharedModule } from '../shared/shared.module';
 import { NotFoundPage } from './not-found/not-found.page';
-import { EsplAboutPage } from './about/about.page';
+import { EsplForbiddenPage } from './forbidden/forbidden.page';
 import { routing } from './core.routing';
 import { NavComponent } from './nav/nav.component';
 
@@ -90,7 +90,7 @@ const store = StoreModule.provideStore(reducer);
   declarations: [
     PlatformDirective,
     NotFoundPage,
-    EsplAboutPage,
+    EsplForbiddenPage,
     NavComponent
    // TitleComponent
   ],
@@ -99,7 +99,7 @@ const store = StoreModule.provideStore(reducer);
     ...bcNavComponents,
    // TitleComponent,
     NotFoundPage,
-    EsplAboutPage,
+    EsplForbiddenPage,
     CommonModule,
     FormsModule,
     RouterModule,

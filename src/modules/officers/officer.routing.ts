@@ -15,6 +15,7 @@ const routes: Routes = [
     path: 'officerList',
     component: OfficerListComponent,
     data: {
+      permissions:['OB.R']
     },
     canActivate: [AuthGuard],
   },
@@ -22,12 +23,14 @@ const routes: Routes = [
     path: 'activityFeed',
     component: ActivityFeedComponent,
     data: {
+      permissions:['OB.R']
     },
     canActivate: [AuthGuard],
   },{
     path: 'assign-officer',
     component: AssignOfficerComponent,
     data: {
+      permissions:['OB.W']
     },
     canActivate: [AuthGuard],
   },

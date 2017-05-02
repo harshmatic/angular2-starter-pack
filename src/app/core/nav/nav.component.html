@@ -12,11 +12,11 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Dashboard</a></li>
-                    <li><a href="#/jobs">Jobs</a></li>
-                    <li><a href="#/officers">Units</a></li>
+                    <li  routerLinkActive="active"><a routerLink="/dashboard">Dashboard</a></li>
+                    <li [ifAuthorize]="['OB.R']"  routerLinkActive="active"><a routerLink="/jobs">Occurrence Book</a></li>
+                    <li [ifAuthorize]="['EP.R']"  routerLinkActive="active"><a routerLink="/officers">Officer Management</a></li>
                     <li><a href="#">Inventory</a></li>
-                    <li><a href="#/reports">Reports</a></li>
+                    <li  routerLinkActive="active"><a routerLink="/reports">Reports</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="settingIcon" href="#"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
