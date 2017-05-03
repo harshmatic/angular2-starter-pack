@@ -18,7 +18,8 @@ import {REPORTS_ACTIONS} from '../../reports/store/reports.actions';
 })
 @Pipe({ name: 'amDifference' })
 export class DashboardComponent  implements OnInit {
-   isValid = true;
+  isValid = true;
+  officerPageNum:number=0;
   dashboard:Dashboard[];
   officers:any[]=[];
   date:any;
@@ -33,19 +34,20 @@ export class DashboardComponent  implements OnInit {
   locations:any;
   constructor(private store: Store<Dashboard>){}
   ngOnInit() {
-    this.store.dispatch({ type: OB_ACTIONS.GET_LIST,payload:{search:""} });
+    this.officers=[]
+    this.store.dispatch({ type: OB_ACTIONS.GET_LIST,payload:{search:"",pageNum:1,pageSize:5 } });
     this.asyncOb= this.store.select('occurenceBook')
     this.asyncOb.subscribe((res:any) => {
         this.obs = res;
        this.locations=this.obs[0];
     });
-    this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
+    this.store.dispatch({ 
+      type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE,
+      payload:{ pageNum:1,pageSize:5 }
+     });
     this.asyncOfficer= this.store.select('employee')
-   
     this.asyncOfficer.subscribe((res:any) => {
-     
-       this.officers = res;
-
+       this.officers=res
     });
     this.store.dispatch({ type: REPORTS_ACTIONS.GET_CASE_LIST });
     this.asyncCaseReport= this.store.select('reports')
@@ -56,6 +58,5 @@ export class DashboardComponent  implements OnInit {
      
     
   }
-  
 
 }

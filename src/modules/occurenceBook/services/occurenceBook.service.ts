@@ -20,9 +20,9 @@ export class OccurenceBookService extends BaseService {
         super(http,CONTEXT);
     }
     // Get All
-    getObs(searchQuery?:any) {
+    getObs(searchQuery?:any,pageNum?:any,pageSize?:any) {
         
-        return this.getList$(CONTEXT+"?searchQuery="+searchQuery,0,0,true).map(res => res.json());    
+        return this.getList$(CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize,0,0,true).map(res => res.json());    
     }
     // Add One
     addOb(ob:any) {        

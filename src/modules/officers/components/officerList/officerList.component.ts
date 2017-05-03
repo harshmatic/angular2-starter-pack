@@ -10,17 +10,35 @@ declare var $:any;
   templateUrl: 'officerList.component.html',
 })
 export class OfficerListComponent  implements OnInit {
+  officerPageNum:number=1;
   officers:any[]=[];
   asyncOfficer:Observable<any>
   showTab:boolean=true;
+  stopScroll:boolean=false;
   constructor(private store: Store<Employee>){}
 
   ngOnInit() {
-    this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
-    this.asyncOfficer= this.store.select('employee')
+    this.officers=[];
+    this.getOfficer();
+    this.asyncOfficer = this.store.select('employee');
     this.asyncOfficer.subscribe((res:any) => {
-       this.officers = res;
+      for(let i=0;i<res.length;i++){
+         this.officers.push(res[i]);
+      }
+      if(res.length>0){
+        this.officerPageNum++;
+        this.stopScroll = false;
+      }else{
+        this.stopScroll = true;
+      }
     });
-     
+  }
+  getOfficer() {
+    if(!this.stopScroll && this.officerPageNum>0) {
+       this.store.dispatch({ 
+         type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE,
+         payload:{ pageNum:this.officerPageNum,pageSize:5 }
+      });
+    }
   }
 }

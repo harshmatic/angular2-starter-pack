@@ -92,10 +92,14 @@
                 <div class="row cards">
                     <div class="col-xs-12">
                         <!--Active Jobs-->
-                        <div class="activeJobs">
+                        <div class="activeJobs" 
+                          infiniteScroll
+                          [infiniteScrollDistance]="2"
+                          [infiniteScrollThrottle]="500"
+                          (scrolled)="getJobs()">
                             <h4>TODAY</h4>
                             <!--Job Row 1-->
-                        <div class="row"  *ngFor="let ob of asyncOb|async">
+                        <div class="row"  *ngFor="let ob of obs">
                             <h5 class="col-xs-12">
                                 <span class="priorityIcon"></span>{{ob.obNumber}} | {{ob.mstDepartment.departmentName}} 
                                 </h5>

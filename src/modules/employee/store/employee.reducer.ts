@@ -19,6 +19,8 @@ export function EmployeeReducer(state: any[] = [], action: Action) {
         return action.payload;
     case EMPLOYEE_ACTIONS.DELETE_SUCCESS:
         return action.payload;
+    case EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE_SUCCESS:
+        return action.payload
     default:
         return state;
   }

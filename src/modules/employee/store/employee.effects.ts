@@ -55,6 +55,16 @@ export class EmployeeEffects  {
         })
         .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
       );
+  @Effect({ dispatch: false })
+  private getEmployeeByPage$ = this.actions$
+    .ofType(EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE)
+   .switchMap(action => 
+       this.EmployeeService.getEmployeesByPage(action.payload.pageNum,action.payload.pageSize)
+        .map(res =>{
+          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE_SUCCESS, payload: res })
+        })
+        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
+      );
   constructor(
     private store: Store<Employee>,
     private actions$: Actions,

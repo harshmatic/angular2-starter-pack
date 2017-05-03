@@ -20,7 +20,7 @@ export class OccurenceBookEffects extends BaseService {
   private getListOb$ = this.actions$
     .ofType(OB_ACTIONS.GET_LIST)
    .switchMap(action => 
-       this.occurenceBookService.getObs(action.payload.search)
+       this.occurenceBookService.getObs(action.payload.search,action.payload.pageNum,action.payload.pageSize)
         .map(res =>{
           this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload: res })
         })

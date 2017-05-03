@@ -15,7 +15,9 @@ declare var $: any;
   `],
   templateUrl: 'jobDetail.component.html',
 })
-export class JobDetailComponent implements OnInit, OnDestroy {
+export class JobDetailComponent implements OnInit{
+  jobPageNum:number=1;
+  stopScroll=false
   obs: any[] = [];
   asyncOb: Observable<any>
   showTab: boolean = true;
@@ -25,23 +27,37 @@ export class JobDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "" } });
+    //this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "" } });
+    this.getJobs();
     this.asyncOb = this.store.select('occurenceBook');
-    this.subscriptions.add(this.asyncOb.subscribe((res: any) => {
-      this.obs = res;
+    this.asyncOb.subscribe((res: any) => {
+     // this.obs = res;
+       for(let i=0;i<res.length;i++){
+         this.obs.push(res[i]);
+      }
+      if(res.length>0){
+        this.jobPageNum++;
+        this.stopScroll = false;
+      }else{
+        this.stopScroll = true;
+      }
     })
-    );
 
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
   }
 
   onKey(event: any) {
+       this.stopScroll =false;
+       this.obs=[]
        this.queryString = event.target.value;
-       this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: this.queryString } });
-
+       this.jobPageNum=1;
+       this.getJobs()
   }
-
+  getJobs(){
+    if(!this.stopScroll && this.jobPageNum>0) {
+       this.store.dispatch({ 
+         type: OB_ACTIONS.GET_LIST,
+         payload:{ search: this.queryString, pageNum:this.jobPageNum,pageSize:5 }
+      });
+    }
+  }
 }
