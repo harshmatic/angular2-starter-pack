@@ -27,6 +27,8 @@ import { BannerComponent } from './banner/banner.component';
 import { IfAuthorizeDirective } from './directives/ifAuthorize.directive';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
+
+
 export const components = [
   Draggable,
   EsplAlertComponent,
@@ -69,4 +71,9 @@ export const components = [
     TwainService
   ]
 })
-export class SharedModule { }
+
+export class SharedModule {
+   constructor() {
+  
+   }
+}

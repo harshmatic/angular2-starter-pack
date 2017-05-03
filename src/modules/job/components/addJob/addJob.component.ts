@@ -1,11 +1,11 @@
-import { Component, OnInit, NgZone, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, NgZone, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { DEPARTMENT_ACTIONS } from '../../../department/store/department.actions';
 import { OT_ACTIONS } from '../../../occurenceType/store/occurenceType.actions';
 import { JobService } from '../../services/job.service';
-import { AgmCoreModule, MapsAPILoader } from '@agm/core';
+import { MapsAPILoader } from '@agm/core';
 declare var $: any;
 @Component({
   moduleId: module.id,
@@ -36,6 +36,7 @@ export class AddJobComponent implements OnInit {
   constructor(private store: Store<any>, private formBuilder: FormBuilder,
     private mapsAPILoader: MapsAPILoader,
     private _zone: NgZone,
+    private ref: ChangeDetectorRef,
     private jobService: JobService) { }
 
   ngOnInit() {
@@ -73,7 +74,7 @@ export class AddJobComponent implements OnInit {
         types: ["geocode"]
       });
       autocomplete.addListener("place_changed", () => {
-       ;
+        ;
         this._zone.run(() => {
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
@@ -83,11 +84,12 @@ export class AddJobComponent implements OnInit {
             alert("Place Not found");
             return;
           } else {
-           
+
 
             this.latitude = place.geometry.location.lat();
             this.longitude = place.geometry.location.lng();
             this.zoom = 12;
+            this.ref.markForCheck();
 
           }
 
@@ -105,11 +107,15 @@ export class AddJobComponent implements OnInit {
       });
     }
   }
-    private bc() {
-      console.log("gotcha")
-    
+  markerDragEnd(lat: number, lng: number) {
+    this._zone.run(() => {
+      this.latitude = lat;
+      this.longitude = lng;
+      this.ref.markForCheck();
+
+    });
   }
-  
+
 
   onSubmit({ value, valid }: { value: any, valid: boolean }) {
     let payload = {
@@ -131,7 +137,6 @@ export class AddJobComponent implements OnInit {
       "location": "Near IARIRS Baner"
     }
     this.jobService.addJob(payload).subscribe(res => {
-      console.log('Done')
     })
   }
 }
