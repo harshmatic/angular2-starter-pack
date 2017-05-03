@@ -1,7 +1,7 @@
 import { Component, NgModule, NgZone, OnInit, ViewChild,ElementRef } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
-import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
+import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 declare var google:any;
 @Component({
   selector: 'my-app',
