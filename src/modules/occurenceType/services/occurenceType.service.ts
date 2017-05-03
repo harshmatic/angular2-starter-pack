@@ -21,7 +21,7 @@ export class OccurenceTypeService extends BaseService {
     }
     // Get All
     getOts() {        
-        return this.getList$(CONTEXT).map(res => res.json());    
+        return this.getList$(CONTEXT,0,0,true).map(res => res.json());    
     }
     // Add One
     addOt(ot:any) {        

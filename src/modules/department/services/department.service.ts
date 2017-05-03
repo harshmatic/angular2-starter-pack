@@ -21,7 +21,7 @@ export class DepartmentService extends BaseService {
     }
     // Get All
     getDepartments() {        
-        return this.getList$(CONTEXT).map(res => res.json());    
+        return this.getList$(CONTEXT,0,0,true).map(res => res.json());    
     }
     // Add One
     addDepartment(department:any) {        

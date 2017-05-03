@@ -8,6 +8,11 @@ declare var $: any;
 @Component({
   moduleId: module.id,
   selector: 'app-job-detail',
+  styles: [`
+    .sebm-google-map-container {
+       height: 300px;
+     }
+  `],
   templateUrl: 'jobDetail.component.html',
 })
 export class JobDetailComponent implements OnInit, OnDestroy {
