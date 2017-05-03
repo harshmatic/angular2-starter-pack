@@ -11,6 +11,7 @@ declare var $:any;
   styles: []
 })
 export class NavComponent implements OnInit, OnDestroy {
+  userDetail:any;
   isLoggedIn:boolean = false;
   loggedInSubscription:any
   constructor(private _router: Router, private authService: AuthService ) {
@@ -20,7 +21,14 @@ export class NavComponent implements OnInit, OnDestroy {
    this.loggedInSubscription = this.authService.onAuthStatusChanged$()
       .subscribe((value:any) => {
          this.isLoggedIn = value;
+         this.getUser();
        })
+   this.getUser();   
+  }
+  getUser(){
+    if(this.isLoggedIn){
+        this.userDetail = this.authService.getCurrentUser();
+    }
   }
   onLogout() {
     this.authService.logout();

@@ -23,7 +23,7 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle profileParent" data-toggle="dropdown" href="#">
                             <span class="profileImg"><img src="/assets/styles/images/user.jpg" class="img-responsive" alt="Profile Image"></span>
-                            <span class="profileText">Johnny Depp &nbsp;<span class="caret"></span></span>
+                            <span class="profileText">{{userDetail?userDetail.firstName+' '+userDetail.lastName:''}} &nbsp;<span class="caret"></span></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Profile</a></li>
