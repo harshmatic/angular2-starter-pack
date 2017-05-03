@@ -16,11 +16,15 @@ const CONTEXT = 'occurrencebook';
 @Injectable()
 export class JobService extends BaseService {
     constructor(public http: Http) {
-        super(http,CONTEXT);
+        super(http, CONTEXT);
     }
     // Add One
-    addJob(payload:any) {        
-        return this.post$('occurrencebook',payload).map(res => res.json());    
+    addJob(payload: any) {
+        return this.post$('occurrencebook', payload, true).map(res => res.json());
+    }
+    //Update One
+    updateOfficer(payload: any) {
+        return this.put$(CONTEXT + '/' + payload.obid, payload, true).map(res => []);
     }
 
 }

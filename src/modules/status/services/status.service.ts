@@ -10,34 +10,34 @@ import { Status } from '../store/status.model';
 import { BaseService } from '../../../app/core/services/index';
 
 /** Context for service calls */
-const CONTEXT = 'status/';
+const CONTEXT = 'statuses/';
 
 /** Service Definition */
 @Injectable()
 export class StatusService extends BaseService {
 
     constructor(public http: Http) {
-        super(http,CONTEXT);
+        super(http, CONTEXT);
     }
     // Get All
-    getStatusAll() {        
-        return this.getList$(CONTEXT).map(res => res.json());    
+    getStatusAll() {
+        return this.getList$(CONTEXT, 0, 0, true).map(res => res);
     }
     // Add One
-    addStatus(st:any) {        
-        return this.post$(CONTEXT,st).map(res => res.json());    
+    addStatus(st: any) {
+        return this.post$(CONTEXT, st).map(res => res.json());
     }
     //Update One
-    saveStatus(id:any,st:any) {        
-        return this.put$(CONTEXT+id,st, true).map(res => res.json());    
+    saveStatus(id: any, st: any) {
+        return this.put$(CONTEXT + id, st, true).map(res => res.json());
     }
     // Delete One
-    deleteStatus(id:any) {        
-        return this.delete$(CONTEXT+id).map(res => res.json());    
+    deleteStatus(id: any) {
+        return this.delete$(CONTEXT + id).map(res => res.json());
     }
     // Get One
-    getStatus(id:any) {        
-        return this.get$(CONTEXT+id).map(res => res.json());    
+    getStatus(id: any) {
+        return this.get$(CONTEXT + id).map(res => res.json());
     }
 
 }

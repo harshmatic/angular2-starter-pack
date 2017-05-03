@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JobRouting } from './job.routing';
 import { SharedModule } from '../../app/shared/shared.module';
 import { JobDetailComponent } from './components/jobDetail/jobDetail.component';
+import { JobEditComponent } from './components/jobEdit/jobEdit.component';
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
 import { AddJobComponent } from './components/addJob/addJob.component';
 import { EmployeeEffects } from '../employee/store/employee.effects';
@@ -16,6 +17,8 @@ import { EmployeeService } from '../employee/services/employee.service';
 import { DepartmentService } from '../department/services/department.service';
 import { OccurenceTypeService } from '../occurenceType/services/occurenceType.service';
 import { OccurenceBookService } from '../occurenceBook/services/occurenceBook.service';
+import { StatusService } from '../status/services/status.service';
+import { StatusEffects } from '../status/store/status.effects';
 import { JobService } from './services/job.service';
 
 
@@ -27,15 +30,17 @@ import { JobService } from './services/job.service';
     EffectsModule.run(EmployeeEffects),
     EffectsModule.run(OccurenceTypeEffects),
     EffectsModule.run(DepartmentEffects),
-    EffectsModule.run(OccurenceBookEffects)
+    EffectsModule.run(OccurenceBookEffects),
+     EffectsModule.run(StatusEffects)
     
   ],
   declarations: [
     JobDetailComponent,
     ActivityFeedComponent,
-    AddJobComponent
+    AddJobComponent,
+    JobEditComponent
   ],
-  providers:[EmployeeService,DepartmentService,OccurenceTypeService,JobService,OccurenceBookService]
+  providers:[EmployeeService,DepartmentService,OccurenceTypeService,JobService,OccurenceBookService,StatusService]
 
 })
 export default class JobModule { }

@@ -10,19 +10,33 @@ import { ActivityFeedComponent } from './components/activityFeed/activityFeed.co
 import { EmployeeEffects } from '../employee/store/employee.effects';
 import { EmployeeService } from '../employee/services/employee.service';
 import { AssignOfficerComponent } from './components/assignOfficer/assignOfficer.component';
+import { DepartmentService } from '../department/services/department.service';
+import { DepartmentEffects } from '../department/store/department.effects';
+import { OccurenceBookEffects } from '../occurenceBook/store/occurenceBook.effects';
+import { OccurenceBookService } from '../occurenceBook/services/occurenceBook.service';
+import { AreaService } from '../area/services/area.service';
+import { AreaEffects } from '../area/store/area.effects';
+import { DesignationService } from '../designation/services/designation.service';
+import { DesignationEffects } from '../designation/store/designation.effects';
+
+import { JobService } from '../job/services/job.service';
 
 @NgModule({
   imports: [
     SharedModule,
     ReactiveFormsModule,
     OfficerRouting,
-    EffectsModule.run(EmployeeEffects)
+    EffectsModule.run(EmployeeEffects),
+    EffectsModule.run(DepartmentEffects),
+    EffectsModule.run(OccurenceBookEffects),
+    EffectsModule.run(AreaEffects),
+    EffectsModule.run(DesignationEffects)
   ],
   declarations: [
     OfficerListComponent,
     ActivityFeedComponent,
     AssignOfficerComponent
   ],
-  providers:[EmployeeService]
+  providers: [EmployeeService, JobService, DepartmentService, OccurenceBookService, AreaService, DesignationService]
 })
 export default class OfficerModule { }

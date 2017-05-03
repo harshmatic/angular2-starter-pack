@@ -80,7 +80,7 @@
                         <div class="activeJobs">
                             <h4>TODAY</h4>
                             <!--Job Row 1-->
-                        <div class="row"  *ngFor="let ob of asyncOb|async">
+                        <div class="row"  *ngFor="let ob of obs" (click)="onOBClick(ob.obid);">
                             <h5 class="col-xs-12">
                                 <span class="priorityIcon"></span>{{ob.obNumber}} | {{ob.mstDepartment.departmentName}} 
                                 </h5>
@@ -315,6 +315,6 @@
 <!-- Main Container End here -->
 <!-- Add new officer -->
 <div class="bottomContainer">
-    <button >Create New Job</button>
+    <button (click)="onCreateJob();">Create New Job</button>
 </div>
 <!-- Add new officer Ends -->

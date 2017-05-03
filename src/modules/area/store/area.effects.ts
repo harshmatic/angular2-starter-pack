@@ -22,7 +22,7 @@ export class AreaEffects extends BaseService {
    .switchMap(action => 
        this.areaService.getAreas()
         .map(res =>{
-          this.store.dispatch({ type: AREA_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+          this.store.dispatch({ type: AREA_ACTIONS.GET_LIST_SUCCESS, payload: res})
         })
         .catch(() => Observable.of({ type: AREA_ACTIONS.ON_FAILED  }))
       );

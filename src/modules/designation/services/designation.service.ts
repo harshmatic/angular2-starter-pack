@@ -17,27 +17,27 @@ const CONTEXT = 'designations/';
 export class DesignationService extends BaseService {
 
     constructor(public http: Http) {
-        super(http,CONTEXT);
+        super(http, CONTEXT);
     }
     // Get All
-    getDesignations() {        
-        return this.getList$(CONTEXT).map(res => res.json());    
+    getDesignations() {
+        return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
     }
     // Add One
-    addDesignation(designation:any) {        
-        return this.post$(CONTEXT,designation).map(res => res.json());    
+    addDesignation(designation: any) {
+        return this.post$(CONTEXT, designation).map(res => res.json());
     }
     //Update One
-    saveDesignation(id:any,designation:any) {        
-        return this.put$(CONTEXT+id,designation, true).map(res => res.json());    
+    saveDesignation(id: any, designation: any) {
+        return this.put$(CONTEXT + id, designation, true).map(res => res.json());
     }
     // Delete One
-    deleteDesignation(id:any) {        
-        return this.delete$(CONTEXT+id).map(res => res.json());    
+    deleteDesignation(id: any) {
+        return this.delete$(CONTEXT + id).map(res => res.json());
     }
     // Get One
-    getDesignation(id:any) {        
-        return this.get$(CONTEXT+id).map(res => res.json());    
+    getDesignation(id: any) {
+        return this.get$(CONTEXT + id).map(res => res.json());
     }
 
 }
