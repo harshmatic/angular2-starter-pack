@@ -16,25 +16,21 @@ import { DepartmentService } from '../department/services/department.service';
 import { OccurenceTypeService } from '../occurenceType/services/occurenceType.service';
 import { OccurenceBookService } from '../occurenceBook/services/occurenceBook.service';
 import { JobService } from './services/job.service';
-import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import { AgmCoreModule  } from '@agm/core';
 
 @NgModule({
   imports: [
     SharedModule,
     ReactiveFormsModule,
     JobRouting,
-    AgmCoreModule.forRoot({
-      apiKey: "AIzaSyDM1MmeR32nGYx5Q90r26hVNpzPgBxTZdw",
-      libraries: ["places"]
-    }),
     FormsModule,
     ReactiveFormsModule,
     EffectsModule.run(EmployeeEffects),
     EffectsModule.run(OccurenceTypeEffects),
     EffectsModule.run(DepartmentEffects),
-    EffectsModule.run(OccurenceBookEffects)
+    EffectsModule.run(OccurenceBookEffects),
+    AgmCoreModule
     
   ],
   declarations: [

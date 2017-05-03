@@ -14,8 +14,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [usePanning]="true" [scaleControl]="true"
-                (boundsChange)="bc()">
-                    <agm-marker [latitude]="latitude" [longitude]="longitude" [visible]="true"></agm-marker>
+                >
+                    <agm-marker [latitude]="latitude" [longitude]="longitude" [visible]="true" [markerDraggable]="true" (dragEnd)="markerDragEnd($event.coords.lat,$event.coords.lng)"></agm-marker>
                 </agm-map>
             </div>
         </div>

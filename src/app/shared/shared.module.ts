@@ -26,6 +26,8 @@ import { BannerComponent } from './banner/banner.component';
 //import { WelcomeComponent } from './welcome/welcome.component';
 import { IfAuthorizeDirective } from './directives/ifAuthorize.directive';
 
+
+
 export const components = [
   Draggable,
   EsplAlertComponent,
@@ -52,6 +54,7 @@ export const components = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    
   ],
   declarations: [
     ...components
@@ -66,4 +69,9 @@ export const components = [
     TwainService
   ]
 })
-export class SharedModule { }
+
+export class SharedModule {
+   constructor() {
+  
+   }
+}

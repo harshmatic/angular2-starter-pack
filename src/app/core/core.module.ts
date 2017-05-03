@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+
+
 import {
   NavigatorModule,
   bcNavComponents
@@ -85,7 +87,8 @@ const store = StoreModule.provideStore(reducer);
     NavigatorModule,
     SharedModule,
     AuthModule,
-    routing
+    routing,
+    
   ],
   declarations: [
     PlatformDirective,
@@ -104,7 +107,7 @@ const store = StoreModule.provideStore(reducer);
     FormsModule,
     RouterModule,
     HttpModule,
-    PlatformDirective
+    PlatformDirective,
   ],
   providers: [
     CORE_PROVIDERS
