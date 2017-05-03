@@ -21,7 +21,7 @@ export class EmployeeService extends BaseService {
     }
     // Get All
     getEmployees() {      
-        return this.getList$(CONTEXT).map(res => res.json());    
+        return this.getList$(CONTEXT,0,0,true).map(res => res.json());    
    
     }
     // Add One

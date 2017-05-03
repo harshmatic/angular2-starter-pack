@@ -22,10 +22,10 @@ export class JobDetailComponent implements OnInit, OnDestroy {
 
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "" } });
     this.asyncOb = this.store.select('occurenceBook');
-    // this.subscriptions.add(this.asyncOb.subscribe((res: any) => {
-    //   this.obs = res;
-    // })
-    //);
+    this.subscriptions.add(this.asyncOb.subscribe((res: any) => {
+      this.obs = res;
+    })
+    );
 
   }
 

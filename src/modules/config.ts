@@ -27,6 +27,7 @@ export const routing = [
   { path: 'officers', loadChildren: 'modules/officers/officer.module' },
   { path: 'jobs', loadChildren: 'modules/job/job.module' },
   { path: 'reports', loadChildren: 'modules/reports/reports.module' },
+  { path: 'map', loadChildren: 'modules/maps/maps.module' },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' }
 

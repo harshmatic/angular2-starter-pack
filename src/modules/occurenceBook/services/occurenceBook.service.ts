@@ -22,7 +22,7 @@ export class OccurenceBookService extends BaseService {
     // Get All
     getObs(searchQuery?:any) {
         
-        return this.getList$(CONTEXT+"?searchQuery="+searchQuery).map(res => res.json());    
+        return this.getList$(CONTEXT+"?searchQuery="+searchQuery,0,0,true).map(res => res.json());    
     }
     // Add One
     addOb(ob:any) {        

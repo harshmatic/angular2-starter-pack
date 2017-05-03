@@ -19,7 +19,8 @@
     "types": [
       "hammerjs",
       "node",
-      "jasmine"
+      "jasmine",
+      "googlemaps"
     ]
   },
   "exclude": [

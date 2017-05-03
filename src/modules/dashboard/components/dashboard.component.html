@@ -55,18 +55,13 @@
                                     <h3>{{caseReport.officersStatistics ? caseReport.officersStatistics.total : ''}}</h3>
                                 </div>
                                 <div class="col-xs-6 statInnerBox">
-                                    <span>On Scene</span>
-                                    <h3>123</h3>
+                                    <span *ngFor="let stat of caseReport.officersStatistics?caseReport.officersStatistics.priorityWiseStats:''"><strong>{{stat.count}}</strong>&nbsp;{{stat.priority}}</span>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-6 statInnerBox">
-                                    <span>On Critical</span>
-                                    <h3>123</h3>
-                                </div>
-                                <div class="col-xs-6 statInnerBox">
-                                    <span>On Major</span>
-                                    <h3>123</h3>
+                                <div class="col-xs-4 statInnerBox" *ngFor="let stat of caseReport.officersStatistics?caseReport.officersStatistics.statusWiseStats:''">
+                                    <span>{{stat.statusName}}</span>
+                                    <h3>{{stat.count}}</h3>
                                 </div>
                             </div>
                         </div>

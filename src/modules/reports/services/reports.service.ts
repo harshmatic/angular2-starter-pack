@@ -20,7 +20,7 @@ export class ReportsService extends BaseService {
     }
     // Get All
     getReport(url) {        
-        return this.getList$(url).map(res => res.json());    
+        return this.getList$(url,0,0,true).map(res => res.json());    
     }
    
     
