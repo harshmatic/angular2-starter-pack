@@ -1,7 +1,8 @@
 import { Observable } from 'rxjs/Observable';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy,OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-
+import { Message } from 'primeng/primeng';
+import { MessageService } from './core/services/index';
 import * as fromRoot from './core/store/';
 
 @Component({
@@ -10,51 +11,19 @@ import * as fromRoot from './core/store/';
   styleUrls: ['./app.page.css'],
   templateUrl: './app.page.html'
 })
-export class AppPage {
-  showSidenav$: Observable<boolean>;
-  subtitle = '(Alpha)';
-
-  hasError$: Observable<boolean>;
-  isLoading$: Observable<boolean>;
-  firstName$: Observable<string>;
-  lastName$: Observable<string>;
-  loggedIn$: Observable<boolean>;
-  loggedOut$: Observable<boolean>;
+export class AppPage implements OnInit {
+  msgs: Message[] = [];
 
 
-  constructor(private store: Store<fromRoot.RootState>) {
-    /**
-     * Selectors can be applied with the `select` operator which passes the state
-     * tree to the provided selector
-     */
-    // this.showSidenav$ = this.store.select(fromRoot.getShowSidenav);
-    // this.hasError$ = this.store.select(fromRoot.hasError);
-    // this.isLoading$ = this.store.select(fromRoot.isLoading);
-    // this.firstName$ = this.store.select(fromRoot.getFirstName);
-    // this.lastName$ = this.store.select(fromRoot.getLastName);
-    // this.loggedIn$ = this.store.select(fromRoot.loggedIn);
-    // this.loggedOut$ = this.store.select(fromRoot.loggedOut);
+  constructor(private store: Store<fromRoot.RootState>,private messageService: MessageService) {
+    
   }
-
-  closeSidenav() {
-    /**
-     * All state updates are handled through dispatched actions in 'container'
-     * components. This provides a clear, reproducible history of state
-     * updates and user interaction through the life of our
-     * application.
-     */
-    //this.store.dispatch(new SliceActions.Update(slices.LAYOUT, ['nav', 'showSidenav'], false));
-  }
-
-  openSidenav() {
-   // this.store.dispatch(new SliceActions.Update(slices.LAYOUT, ['nav', 'showSidenav'], true));
-  }
-
-  loginUser(credentials) {
-   // this.store.dispatch(new SliceActions.Load(slices.SESSION, credentials));
-  }
-
-  logoutUser() {
-    //this.store.dispatch(new SliceActions.Update(slices.SESSION, [], (state) => initialSession()));
-  };
+ ngOnInit() {
+        this.messageService.getMessages()
+            .subscribe((value: Object) => {
+                this.msgs = [];
+                this.msgs.push(value);
+            });
+    }
+  
 }

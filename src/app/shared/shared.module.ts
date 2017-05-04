@@ -26,7 +26,10 @@ import { BannerComponent } from './banner/banner.component';
 //import { WelcomeComponent } from './welcome/welcome.component';
 import { IfAuthorizeDirective } from './directives/ifAuthorize.directive';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-
+import {
+     SharedModule as PrimSharedModule, CalendarModule,
+     GrowlModule
+} from 'primeng/primeng';
 
 
 export const components = [
@@ -65,6 +68,9 @@ export const components = [
     FormsModule,
     ReactiveFormsModule,
     InfiniteScrollModule,
+    PrimSharedModule,
+    CalendarModule,
+    GrowlModule,
     ...components
   ],
   providers: [
