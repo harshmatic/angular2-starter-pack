@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { OccurenceBook } from '../../../occurenceBook/store/occurenceBook.model';
 import { OB_ACTIONS } from '../../../occurenceBook/store/occurenceBook.actions';
 import { Subscription } from 'rxjs/Subscription';
+import { AuthService } from '../../../../app/core/index';
+ 
 declare var $: any;
 @Component({
   moduleId: module.id,
@@ -17,16 +19,17 @@ declare var $: any;
 })
 export class JobDetailComponent implements OnInit{
   jobPageNum:number=1;
+   userDetail:any;
   stopScroll=false
   obs: any[] = [];
   asyncOb: Observable<any>
   showTab: boolean = true;
   private subscriptions: Subscription = new Subscription();
   queryString = '';
-  constructor(private store: Store<OccurenceBook>) { }
+  constructor(private store: Store<OccurenceBook>, private authService: AuthService) { }
 
   ngOnInit() {
-
+    this.userDetail = this.authService.getCurrentUser();
     //this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "" } });
     this.getJobs();
     this.asyncOb = this.store.select('occurenceBook');
@@ -56,7 +59,7 @@ export class JobDetailComponent implements OnInit{
     if(!this.stopScroll && this.jobPageNum>0) {
        this.store.dispatch({ 
          type: OB_ACTIONS.GET_LIST,
-         payload:{ search: this.queryString, pageNum:this.jobPageNum,pageSize:5 }
+         payload:{ search: this.queryString, pageNum:this.jobPageNum,pageSize:5,areaId:this.userDetail.areaID }
       });
     }
   }

@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Employee } from '../../../employee/store/employee.model';
 import { EMPLOYEE_ACTIONS } from '../../../employee/store/employee.actions';
+import { AuthService } from '../../../../app/core/index';
 declare var $:any;
 @Component({
   moduleId: module.id,
@@ -10,14 +11,16 @@ declare var $:any;
   templateUrl: 'officerList.component.html',
 })
 export class OfficerListComponent  implements OnInit {
+  userDetail:any;
   officerPageNum:number=1;
   officers:any[]=[];
   asyncOfficer:Observable<any>
   showTab:boolean=true;
   stopScroll:boolean=false;
-  constructor(private store: Store<Employee>){}
+  constructor(private store: Store<Employee>, private authService: AuthService){}
 
   ngOnInit() {
+     this.userDetail = this.authService.getCurrentUser();
     this.officers=[];
     this.getOfficer();
     this.asyncOfficer = this.store.select('employee');
@@ -37,7 +40,7 @@ export class OfficerListComponent  implements OnInit {
     if(!this.stopScroll && this.officerPageNum>0) {
        this.store.dispatch({ 
          type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE,
-         payload:{ pageNum:this.officerPageNum,pageSize:5 }
+         payload:{ pageNum:this.officerPageNum,pageSize:5,areaId:this.userDetail.areaID  }
       });
     }
   }

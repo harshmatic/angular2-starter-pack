@@ -23,8 +23,8 @@ export class EmployeeService extends BaseService {
     getEmployees() {      
         return this.getList$(CONTEXT,0,0,true).map(res => res.json());    
     }
-    getEmployeesByPage(pageNum,pageSize) {      
-        return this.getList$(CONTEXT+'?pageNumber='+pageNum+'&pageSize='+pageSize,0,0,true).map(res => res.json());    
+    getEmployeesByPage(pageNum,pageSize,areaId) {      
+        return this.getList$(CONTEXT+'?pageNumber='+pageNum+'&pageSize='+pageSize+'&areaId='+areaId,0,0,true).map(res => res.json());    
     }
     // Add One
     addEmployee(employee:any) {        

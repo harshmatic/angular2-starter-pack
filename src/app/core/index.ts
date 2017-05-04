@@ -17,3 +17,4 @@ export { AuthGuard } from './auth/auth.guard';
 export { NotFoundPage } from './not-found/not-found.page';
 
 export { UserService } from './services/user.service';
+export { AuthService } from './auth/auth.service';

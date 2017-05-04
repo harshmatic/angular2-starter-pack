@@ -9,6 +9,7 @@ import {Pipe, ChangeDetectorRef, PipeTransform} from '@angular/core';
 import {TimeAgoPipe} from './dashboard-time-ago.pipe';
 import * as moment from 'moment';
 import {REPORTS_ACTIONS} from '../../reports/store/reports.actions';
+import { AuthService } from '../../../app/core/index';
 
 @Component({
   moduleId: module.id,
@@ -18,6 +19,7 @@ import {REPORTS_ACTIONS} from '../../reports/store/reports.actions';
 })
 @Pipe({ name: 'amDifference' })
 export class DashboardComponent  implements OnInit {
+  userDetail:any
   isValid = true;
   officerPageNum:number=0;
   dashboard:Dashboard[];
@@ -32,10 +34,11 @@ export class DashboardComponent  implements OnInit {
   obs:any[]=[];
   asyncOb:Observable<any>
   locations:any;
-  constructor(private store: Store<Dashboard>){}
+  constructor(private store: Store<Dashboard>, private authService: AuthService){}
   ngOnInit() {
+    this.userDetail = this.authService.getCurrentUser();
     this.officers=[]
-    this.store.dispatch({ type: OB_ACTIONS.GET_LIST,payload:{search:"",pageNum:1,pageSize:5 } });
+    this.store.dispatch({ type: OB_ACTIONS.GET_LIST,payload:{search:"",pageNum:1,pageSize:5,areaId:this.userDetail.areaID  } });
     this.asyncOb= this.store.select('occurenceBook')
     this.asyncOb.subscribe((res:any) => {
         this.obs = res;
@@ -43,7 +46,7 @@ export class DashboardComponent  implements OnInit {
     });
     this.store.dispatch({ 
       type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE,
-      payload:{ pageNum:1,pageSize:5 }
+      payload:{ pageNum:1,pageSize:5,areaId:this.userDetail.areaID  }
      });
     this.asyncOfficer= this.store.select('employee')
     this.asyncOfficer.subscribe((res:any) => {
