@@ -16,6 +16,7 @@ declare var $: any;
   templateUrl: 'jobEdit.component.html',
 })
 export class JobEditComponent implements OnInit, OnDestroy {
+  public selectedStatus:any;
   public obs: any = [];
   public comment: string = '';
   public status: any[] = [];
@@ -44,6 +45,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
     this.subscriptions.add(this.asyncOb.subscribe((res: any) => {
       if (Object.keys(res).length > 0) {
         this.obs = res;
+        this.selectedStatus = res.statusID;
         console.log(this.obs);
       }
     })

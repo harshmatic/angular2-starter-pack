@@ -19,6 +19,9 @@ declare var $: any;
   templateUrl: 'assignOfficer.component.html',
 })
 export class AssignOfficerComponent implements OnInit, OnDestroy {
+  public selectedDept: any;
+  public selectedArea: any;
+  public selectedRank: any;
   vehStartTime: Date;
   officers: any[] = [];
   public obs: any = [];
@@ -75,11 +78,15 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { id: this.obId } });
     this.asyncOb = this.store.select('occurenceBook');
     this.subscriptions.add(this.asyncOb.subscribe((res: any) => {
-      if (Object.keys(res).length>0) {
-      this.obs = res;
-      console.log("obj=>"+JSON.stringify(this.obs));
+      if (Object.keys(res).length > 0) {
+        this.obs = res;
+        this.selectedDept = res.departmentID;
+        this.selectedArea = res.areaID;
+        this.selectedRank = res.mstEmployee.designationID;
+        console.log("obj=>", this.obs);
+        this.getOfficer();
       }
-      
+
     })
     );
 
@@ -101,6 +108,22 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       this.ranks = res;
     });
   }
+  getOfficer() {
+    let value = {
+      "areaID": this.selectedArea,
+      "departmentID": this.selectedDept,
+      "rankID": this.selectedRank
+    }
+    this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_BY_DEPT, payload: { id: value } });
+    this.asyncOfficer = this.store.select('employee');
+    this.asyncOfficer.subscribe((res: any) => {
+      if (Object.keys(res).length > 0) {
+        this.officers = res;
+        console.log("designation=>", this.officers);
+      }
+
+    });
+  }
   ngOnDestroy() {
     this.sub.unsubscribe();
     this.subscriptions.unsubscribe();
@@ -110,8 +133,11 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_BY_DEPT, payload: { id: value } });
       this.asyncOfficer = this.store.select('employee');
       this.asyncOfficer.subscribe((res: any) => {
-        this.officers = res;
-        console.log("dept=>"+this.officers);
+        if (Object.keys(res).length > 0) {
+          this.officers = res;
+          console.log("designation=>", this.officers);
+        }
+
       });
     }
   }
@@ -158,10 +184,10 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       submitFlag = true;
       this.rankError = true;
     } else { this.rankError = false; }
-    // if (value.officerID === "" || value.officerID === undefined) {
-    //   submitFlag = true;
-    //   this.offError = true;
-    // } else { this.offError = false; }
+    if (value.officerID === "" || value.officerID === undefined) {
+      submitFlag = true;
+      this.offError = true;
+    } else { this.offError = false; }
     if (value.VehicleID === "" || value.VehicleID === undefined) {
       submitFlag = true;
       this.vehAllotmentError = true;

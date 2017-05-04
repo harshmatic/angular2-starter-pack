@@ -8,7 +8,7 @@
 				<!-- Status Dropdown -->
 				<div class="row">
 					<div class="col-xs-8">
-						<select class="form-control detailDropdown" (change)="onStatusChange()">
+						<select class="form-control detailDropdown" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
 							<option *ngFor="let option of asyncStatus | async" [value]="option.statusID">{{option.statusName}}</option>
 							<!--<option [value]="">Solved</option>-->
 						</select>
