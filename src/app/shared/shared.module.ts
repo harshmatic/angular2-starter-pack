@@ -25,6 +25,9 @@ import { TwainService } from './twain/twain.service';
 import { BannerComponent } from './banner/banner.component';
 //import { WelcomeComponent } from './welcome/welcome.component';
 import { IfAuthorizeDirective } from './directives/ifAuthorize.directive';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
+
 
 export const components = [
   Draggable,
@@ -52,6 +55,7 @@ export const components = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    InfiniteScrollModule
   ],
   declarations: [
     ...components
@@ -60,10 +64,16 @@ export const components = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    InfiniteScrollModule,
     ...components
   ],
   providers: [
     TwainService
   ]
 })
-export class SharedModule { }
+
+export class SharedModule {
+   constructor() {
+  
+   }
+}

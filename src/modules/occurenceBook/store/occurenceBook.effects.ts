@@ -19,9 +19,15 @@ export class OccurenceBookEffects extends BaseService {
   @Effect({ dispatch: false })
   private getListOb$ = this.actions$
     .ofType(OB_ACTIONS.GET_LIST)
+<<<<<<< HEAD
     .switchMap(action =>
       this.occurenceBookService.getObs(action.payload.search)
         .map(res => {
+=======
+   .switchMap(action => 
+       this.occurenceBookService.getObs(action.payload.search,action.payload.pageNum,action.payload.pageSize)
+        .map(res =>{
+>>>>>>> 06dd07b675f32cc5a0c6898b0b82c21f294c05fd
           this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload: res })
         })
         .catch(() => Observable.of({ type: OB_ACTIONS.ON_FAILED }))

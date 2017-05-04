@@ -1,5 +1,3 @@
-
-
 <!-------------------- Main Container ------------------------>
 <div class="main-container container">
     <div class="pageName">
@@ -20,11 +18,11 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <!--Job Stat Card-->
-                <div class="item active" >
+                <div class="item active">
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 statCard">
                         <h4>Jobs Statistics</h4>
-                        <div class="jobStats" >
-                            <div class="row" >
+                        <div class="jobStats">
+                            <div class="row">
                                 <div class="col-xs-6 statInnerBox">
                                     <span>Total Jobs</span>
                                     <h3>{{caseReport.occurrencesStatistics ? caseReport.occurrencesStatistics.total : ''}}</h3>
@@ -172,8 +170,8 @@
                 <div class="closeBtn jobContentCard"><i class="material-icons">&#xE5CD;</i></div>
             </div>-->
             <!--<agm-map [latitude]="locations.lattitude" [longitude]="locations.longitude" [zoom]="locations.mapZoomLevel">-->
-                <agm-map [latitude]="18.550335" [longitude]="73.809956" [zoom]="11">
-                <agm-marker *ngFor="let location of asyncOb|async" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="'/assets/styles/images/red.svg'" >
+            <agm-map [latitude]="18.550335" [longitude]="73.809956" [zoom]="11">
+                <agm-marker *ngFor="let location of asyncOb|async" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="'/assets/styles/images/red.svg'">
                     <agm-info-window [disableAutoPan]="true">
                         <div class="row jobContentCard" style="display:block">
                             <div class="col-xs-8">
@@ -195,68 +193,69 @@
     </div>
     <!--jobs in progress ends here-->
 
-          <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                    <h4>Active Jobs</h4>
-                  <div class="activeJobs ">
-                        <h4>TODAY</h4>
-                        <!--Job Row 1-->
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <h4>Active Jobs</h4>
+            <div class="activeJobs ">
+                <h4>TODAY</h4>
+                <!--Job Row 1-->
 
-                        
-                       <div class="row" *ngFor="let ob of asyncOb|async">
-                    <h5 class="col-xs-12"><span class="priorityIcon"></span>
-                         {{ob.obNumber}} | {{ob.mstDepartment.departmentName}}   
+
+                <div class="row" *ngFor="let ob of asyncOb|async">
+                    <h5 class="col-xs-12"><span class="priorityIcon"></span> {{ob.obNumber}} | {{ob.mstDepartment.departmentName}}
                     </h5>
-                            <div class="jobDetail">
-                                <div class="col-xs-8">
-                                    <h4>{{ob.natureOfOccurrence}}</h4>
-                                    <p>{{ob.mstArea.areaName}}</p>
-                                </div>
-                                <div class="col-xs-4 statusOpen"><span>{{ob.mstStatus.statusName}}</span></div>
-                            </div>
-                            <div class="jobOfcDetail">
-                                <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">
-                             {{ob.mstEmployee.firstName}}{{ob.mstEmployee.lastName}}
-                                </div>
-                                <div class="col-xs-4">
-                             <!--  <span>{{ob.assignedTime | amDateFormat:'MM/DD/YYYY'}}</span>-->
-                        
-                                <span>{{ ob.assignedTime |  amTimeAgo:'true'  }}</span>              
-                             </div>
-                            </div>
+                    <div class="jobDetail">
+                        <div class="col-xs-8">
+                            <h4>{{ob.natureOfOccurrence}}</h4>
+                            <p>{{ob.mstArea.areaName}}</p>
                         </div>
-                   </div><!--Active Jobs end here-->                    
-               </div>
-            </div> <!--active jobs ends here-->
-           <!--  -->
-           </div>
+                        <div class="col-xs-4 statusOpen"><span>{{ob.mstStatus.statusName}}</span></div>
+                    </div>
+                    <div class="jobOfcDetail">
+                        <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge"> {{ob.mstEmployee.firstName}}{{ob.mstEmployee.lastName}}
+                        </div>
+                        <div class="col-xs-4">
+                            <!--  <span>{{ob.assignedTime | amDateFormat:'MM/DD/YYYY'}}</span>-->
 
+                            <span>{{ ob.assignedTime |  amTimeAgo:'true'  }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Active Jobs end here-->
+        </div>
+    </div>
+    <!--active jobs ends here-->
     <!-------------------- Available Officer ------------------------>
     <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                    <h4>Top Rated Available Officers</h4>
-                    
-                    <!--Officer Row 1-->
-                    <div class="listSubBox availableOfficer" *ngFor="let officer of asyncOfficer|async">
-                        <div class="row">
-                            <div class="col-xs-2 noRightPadding badgeImgBox">
-                                <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
-                            </div>
-                            <div class="col-xs-10 noLeftPadding">
-                                <div class="listcontentBox">
-                                    
-                                    <span class="officerId">{{officer.employeeCode}} | {{officer.mstDepartment.departmentName}}</span>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <h4>Top Rated Available Officers</h4>
 
-                                    <h5 class="officerName">{{officer.firstName}} {{officer.lastName}}</h5>
-
-                                    <h5 class="officerPostContact">
-                                        <span class="post">{{officer.mstDesignation.designationName}}</span>
-                                        <span class="contact"><i class="material-icons">phone</i> {{officer.mobile}}</span>
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>	
+            <!--Officer Row 1-->
+            <div class="listSubBox availableOfficer" *ngFor="let officer of asyncOfficer|async">
+                <div class="row">
+                    <div class="col-xs-2 noRightPadding badgeImgBox">
+                        <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
                     </div>
-    <!-- Available Office ends here-->
+                    <div class="col-xs-10 noLeftPadding">
+                        <div class="listcontentBox">
+
+                            <span class="officerId">{{officer.employeeCode}} | {{officer.mstDepartment.departmentName}}</span>
+
+                            <h5 class="officerName">{{officer.firstName}} {{officer.lastName}}</h5>
+
+                            <h5 class="officerPostContact">
+                                <span class="post">{{officer.mstDesignation.designationName}}</span>
+                                <span class="contact"><i class="material-icons">phone</i> {{officer.mobile}}</span>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Available Office ends here-->
+    </div>
 </div>
+
+
 <!-- Main Container End here -->

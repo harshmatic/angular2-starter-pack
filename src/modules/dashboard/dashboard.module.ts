@@ -13,20 +13,20 @@ import { OccurenceBookEffects } from '../occurenceBook/store/occurenceBook.effec
 import { OccurenceBookService } from '../occurenceBook/services/occurenceBook.service';
 import { ReportsEffects } from '../reports/store/reports.effects';
 import { ReportsService } from '../reports/services/reports.service';
-import { AgmCoreModule } from '@agm/core';
 import {MomentModule} from 'angular2-moment';
 import { TimeAgoPipe } from './components/dashboard-time-ago.pipe';
+import { AgmCoreModule  } from '@agm/core'
 @NgModule({
   imports: [
     SharedModule,
-    AgmCoreModule.forRoot(),
     ReactiveFormsModule,
     DashboardRouting,
     MomentModule,
     EffectsModule.run(DashboardEffects),
     EffectsModule.run(EmployeeEffects),
     EffectsModule.run(OccurenceBookEffects),
-    EffectsModule.run(ReportsEffects)
+    EffectsModule.run(ReportsEffects),
+    AgmCoreModule
   ],
   declarations: [
     DashboardComponent,
