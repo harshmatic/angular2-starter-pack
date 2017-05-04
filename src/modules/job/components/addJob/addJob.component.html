@@ -21,37 +21,49 @@
         </div>
         {{latitude}}
     <form class="cards" novalidate (ngSubmit)="onSubmit(jobForm)" [formGroup]="jobForm">
-        
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <label for="exampleSelect1">Area</label>
+                <select formControlName="areaID" name="areaName" class="form-control" id="exampleSelect1" [class.invalid]="!jobForm.controls.areaID.valid"> 
+                    <option value="" disabled selected>Select Area</option>
+                    <option *ngFor="let option of asyncArea | async" [value]="option.areaID">{{option.areaName}}</option>
+                </select>
+            </div>
+        </div>
+        <p *ngIf="areaError" class="alert alert-danger">Please select area</p>
         <div class="row">
             <div class="form-group col-xs-12">
                 <label for="Category">Department</label>
-                <select formControlName="departmentID" class="form-control" id="Category"> 
-                    <option value=" " disabled selected>Select Department</option>
+                <select formControlName="departmentID" class="form-control" id="Category" [class.invalid]="!jobForm.controls.departmentID.valid">  
+                    <option value="" disabled selected>Select Department</option>
                     <option *ngFor="let option of asyncdepartment | async" [value]="option.departmentID">{{option.departmentName}}</option>
                 </select>
             </div>
         </div>
+        <p *ngIf="depError" class="alert alert-danger">Please select department</p>
         <div class="row">
             <div class="form-group col-xs-12">
                 <label for="exampleSelect1">Category</label>
-                <select formControlName="obTypeID" name="occurenceType" class="form-control" id="exampleSelect1"> 
-                    <option value=" " disabled selected>Select Category</option>
+                <select formControlName="obTypeID" name="occurenceType" class="form-control" id="exampleSelect1" [class.invalid]="!jobForm.controls.obTypeID.valid"> 
+                    <option value="" disabled selected>Select Category</option>
                     <option *ngFor="let option of asyncOT | async" [value]="option.obTypeID">{{option.obTypeName}}</option>
                 </select>
             </div>
         </div>
+        <p *ngIf="catError" class="alert alert-danger">Please select Category</p>
         <div class="row">
             <div class="form-group col-xs-12">
                 <label for="reportTitle">Report Title</label>
                 <input formControlName="natureOfOccurrence" name="natureOfOccurrence" type='text' class="form-control" placeholder="Enter title"
-                />
+                [class.invalid]="!jobForm.controls.natureOfOccurrence.valid"/>
             </div>
         </div>
+        <p *ngIf="reportError" class="alert alert-danger">Please enter report title</p>
         <div class="row">
             <div class="form-group col-xs-6">
                 <label for="exampleInputEmail1">Time of Crime</label>
                 <div class='input-group date' id='datetimepicker3'>
-                    <input formControlName="obTime" name="obTime" type='text' class="form-control" value="00" />
+                    <input formControlName="obTime" name="obTime" type='time' class="form-control" value="00" [class.invalid]="!jobForm.controls.obTime.valid"/>
                     <span class="input-group-addon">
                      <span class="glyphicon glyphicon-time"></span>
                     </span>
@@ -90,6 +102,7 @@
                 </div>
             </div>
         </div>
+        <p *ngIf="timeError" class="alert alert-danger">Please enter crime time</p>
         <div class="row">
             <div class="form-group col-xs-12">
                 <label for="exampleSelect1">Weapons (if any)</label>
@@ -144,9 +157,11 @@
         <div class="row">
             <div class="form-group col-xs-12">
                 <label for="exampleTextarea">Description</label>
-                <textarea formControlName="remark" name="remark" class="form-control description" id="exampleTextarea" rows="5"></textarea>
+                <textarea formControlName="remark" name="remark" class="form-control description" id="exampleTextarea" rows="5" [class.invalid]="!jobForm.controls.remark.valid"></textarea>
+           <p *ngIf="remarkError" class="alert alert-danger">Please enter remark</p>
             </div>
         </div>
+        
     </form>
 </div>
 <!-- Main Container End here -->

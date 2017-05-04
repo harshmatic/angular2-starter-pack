@@ -11,46 +11,57 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 
 
 @Injectable()
-export class EmployeeEffects  {
+export class EmployeeEffects {
 
   @Effect({ dispatch: false })
   private getListEmployee$ = this.actions$
     .ofType(EMPLOYEE_ACTIONS.GET_LIST)
-   .switchMap(action => 
-       this.EmployeeService.getEmployees()
-        .map(res =>{
+    .switchMap(action =>
+      this.EmployeeService.getEmployees()
+        .map(res => {
           this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_SUCCESS, payload: res })
         })
-        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
-      );
- @Effect({ dispatch: false })
+        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED }))
+    );
+
+  @Effect({ dispatch: false })
+  private getListEmployees$ = this.actions$
+    .ofType(EMPLOYEE_ACTIONS.GET_LIST_BY_DEPT)
+    .switchMap(action =>
+      this.EmployeeService.getEmployeesByDept(action.payload.id)
+        .map(res => {
+          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_BY_DEPT_SUCCESS, payload: res })
+        })
+        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED }))
+    );
+
+  @Effect({ dispatch: false })
   private addEmployee$ = this.actions$
     .ofType(EMPLOYEE_ACTIONS.ADD)
-   .switchMap(action => {
-    return this.EmployeeService.addEmployee(action.payload)
-        .map(res =>{
+    .switchMap(action => {
+      return this.EmployeeService.addEmployee(action.payload)
+        .map(res => {
           this.store.dispatch({ type: EMPLOYEE_ACTIONS.ADD_SUCCESS, payload: res.json() })
         })
-        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
-   }
-       
-      );
+        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED }))
+    }
+    );
   @Effect({ dispatch: false })
   private updateEmployee$ = this.actions$
     .ofType(EMPLOYEE_ACTIONS.UPDATE)
-   .switchMap(action => 
-        this.EmployeeService.saveEmployee(action.payload.id,action.payload.updates)
-        .map(res =>{
+    .switchMap(action =>
+      this.EmployeeService.saveEmployee(action.payload.id, action.payload.updates)
+        .map(res => {
           this.store.dispatch({ type: EMPLOYEE_ACTIONS.UPDATE_SUCCESS, payload: res.json() })
         })
-        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
-      );
+        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED }))
+    );
   @Effect({ dispatch: false })
   private deleteEmployee$ = this.actions$
     .ofType(EMPLOYEE_ACTIONS.DELETE)
-   .switchMap(action => 
-       this.EmployeeService.deleteEmployee(action.payload)
-        .map(res =>{
+    .switchMap(action =>
+      this.EmployeeService.deleteEmployee(action.payload)
+        .map(res => {
           this.store.dispatch({ type: EMPLOYEE_ACTIONS.DELETE_SUCCESS, payload: res.json() })
         })
         .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))

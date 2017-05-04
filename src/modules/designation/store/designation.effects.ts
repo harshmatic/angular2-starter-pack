@@ -22,7 +22,7 @@ export class DesignationEffects extends BaseService {
    .switchMap(action => 
        this.DesignationService.getDesignations()
         .map(res =>{
-          this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+          this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_SUCCESS, payload: res})
         })
         .catch(() => Observable.of({ type: DESIGNATION_ACTIONS.ON_FAILED  }))
       );

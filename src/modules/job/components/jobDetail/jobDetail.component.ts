@@ -5,7 +5,7 @@ import { OccurenceBook } from '../../../occurenceBook/store/occurenceBook.model'
 import { OB_ACTIONS } from '../../../occurenceBook/store/occurenceBook.actions';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../../../app/core/index';
- 
+import { ActivatedRoute, Router } from '@angular/router';
 declare var $: any;
 @Component({
   moduleId: module.id,
@@ -26,22 +26,25 @@ export class JobDetailComponent implements OnInit{
   showTab: boolean = true;
   private subscriptions: Subscription = new Subscription();
   queryString = '';
-  constructor(private store: Store<OccurenceBook>, private authService: AuthService) { }
+  constructor(private store: Store<OccurenceBook>, private route: ActivatedRoute,
+    private router: Router, private authService: AuthService) { }
+
 
   ngOnInit() {
     this.userDetail = this.authService.getCurrentUser();
     //this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "" } });
     this.getJobs();
     this.asyncOb = this.store.select('occurenceBook');
+
     this.asyncOb.subscribe((res: any) => {
-     // this.obs = res;
-       for(let i=0;i<res.length;i++){
-         this.obs.push(res[i]);
+      // this.obs = res;
+      for (let i = 0; i < res.length; i++) {
+        this.obs.push(res[i]);
       }
-      if(res.length>0){
+      if (res.length > 0) {
         this.jobPageNum++;
         this.stopScroll = false;
-      }else{
+      } else {
         this.stopScroll = true;
       }
     })
@@ -49,11 +52,17 @@ export class JobDetailComponent implements OnInit{
   }
 
   onKey(event: any) {
-       this.stopScroll =false;
-       this.obs=[]
-       this.queryString = event.target.value;
-       this.jobPageNum=1;
-       this.getJobs()
+    this.stopScroll = false;
+    this.obs = []
+    this.queryString = event.target.value;
+    this.jobPageNum = 1;
+    this.getJobs()
+  }
+  onOBClick(id: any) {
+    this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: id } });
+  }
+  onCreateJob() {
+    this.router.navigate(['/jobs/addJob']);
   }
   getJobs(){
     if(!this.stopScroll && this.jobPageNum>0) {
@@ -63,4 +72,5 @@ export class JobDetailComponent implements OnInit{
       });
     }
   }
+
 }

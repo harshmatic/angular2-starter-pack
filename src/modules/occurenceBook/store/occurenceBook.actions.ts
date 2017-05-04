@@ -9,6 +9,8 @@ interface IOBActions {
     INIT_FAILED: string;
     GET_LIST: string;
     GET_LIST_SUCCESS: string;
+    GET_OB: string;
+    GET_OB_SUCCESS: string;
     ON_FAILED: string;
     ADD_SUCCESS:string;
     ADD:string;
@@ -27,6 +29,8 @@ export const OB_ACTIONS: IOBActions = {
     INIT_FAILED: `${CONTEXT}_INIT_FAILED`,
     GET_LIST: `${CONTEXT}GET_LIST`,
     GET_LIST_SUCCESS: `${CONTEXT}GET_LIST_SUCCESS`,
+    GET_OB: `${CONTEXT}GET_OB`,
+    GET_OB_SUCCESS: `${CONTEXT}GET_OB_SUCCESS`,
     ADD_SUCCESS: `${CONTEXT}ADD_SUCCESS`,
     ADD: `${CONTEXT}ADD`,
     DELETE_SUCCESS: `${CONTEXT} DELETE_SUCCESS`,

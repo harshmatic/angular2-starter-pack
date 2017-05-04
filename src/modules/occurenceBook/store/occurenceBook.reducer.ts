@@ -19,6 +19,8 @@ export function OccurenceBookReducer(state: any[] = [], action: Action) {
         return action.payload;
     case OB_ACTIONS.DELETE_SUCCESS:
         return action.payload;
+    case OB_ACTIONS.GET_OB_SUCCESS:
+        return action.payload;
     default:
         return state;
   }

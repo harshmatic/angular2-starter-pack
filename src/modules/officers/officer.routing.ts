@@ -30,7 +30,7 @@ const routes: Routes = [
     path: 'assign-officer',
     component: AssignOfficerComponent,
     data: {
-      permissions:['OB.W']
+      //permissions:['OB.W']
     },
     canActivate: [AuthGuard],
   },

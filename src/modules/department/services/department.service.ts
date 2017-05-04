@@ -20,24 +20,24 @@ export class DepartmentService extends BaseService {
         super(http,CONTEXT, router);
     }
     // Get All
-    getDepartments() {        
-        return this.getList$(CONTEXT,0,0,true).map(res => res.json());    
+    getDepartments() {
+        return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
     }
     // Add One
-    addDepartment(department:any) {        
-        return this.post$(CONTEXT,department).map(res => res.json());    
+    addDepartment(department: any) {
+        return this.post$(CONTEXT, department).map(res => res.json());
     }
     //Update One
-    saveDepartment(id:any,department:any) {        
-        return this.put$(CONTEXT+id,department, true).map(res => res.json());    
+    saveDepartment(id: any, department: any) {
+        return this.put$(CONTEXT + id, department, true).map(res => res.json());
     }
     // Delete One
-    deleteDepartment(id:any) {        
-        return this.delete$(CONTEXT+id).map(res => res.json());    
+    deleteDepartment(id: any) {
+        return this.delete$(CONTEXT + id).map(res => res.json());
     }
     // Get One
-    getDepartment(id:any) {        
-        return this.get$(CONTEXT+id).map(res => res.json());    
+    getDepartment(id: any) {
+        return this.get$(CONTEXT + id).map(res => res.json());
     }
 
 }

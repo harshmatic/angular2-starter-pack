@@ -1,0 +1,125 @@
+ <!-------------------- Main Container ------------------------>
+        <div class="main-container container">
+			<div class="pageName">
+        		<h1>OB ID: Rc-0008956</h1>
+    		</div>
+        
+			<div class="jobDetailMain">
+				<!-- Status Dropdown -->
+				<div class="row">
+					<div class="col-xs-8">
+						<select class="form-control detailDropdown" (change)="onStatusChange()">
+							<option *ngFor="let option of asyncStatus | async" [value]="option.statusID">{{option.statusName}}</option>
+							<!--<option [value]="">Solved</option>-->
+						</select>
+						<i class="material-icons detailDropdownArrow">keyboard_arrow_down</i>
+					</div>
+					<div class="col-xs-4 viewActivityBtnBox">
+						<button class="viewActivityBtn">View Activity</button>
+					</div>
+				</div>
+				<div class="whitePanel">
+					<h6 class="crimeUnitSpan">{{obs.obNumber}} | {{obs.mstDepartment?obs.mstDepartment.departmentName:''}}</h6>
+					<h4 class="crimeUnitName">{{obs.mstDepartment?obs.mstDepartment.departmentDespcription:''}}</h4>
+				</div>	
+				
+				<div class="whitePanel">		
+					<div class="row">
+						<div class="col-xs-10">
+							<h4 class="crimeUnitAddress">{{obs.location}}</h4>	
+						</div>
+						<div class="col-xs-2">
+							<i class="material-icons rightIcon">location_on</i>	
+						</div>
+					</div>						
+				</div>
+			
+				<div class="whitePanel">		
+					<div class="row">
+						<div class="col-xs-10">
+							<h6 class="crimeUnitTimeSpan">Time of Crime</h6>
+							<h4 class="crimeUnitTimeBlock">14:00 | 24 April 2017</h4>	
+						</div>
+						<div class="col-xs-2">
+							<i class="material-icons rightIcon">query_builder</i>		
+						</div>
+					</div>				
+				</div>
+			
+				<div class="whitePanel noBottomPadding">		
+					<div class="row">
+						<div class="col-xs-12 marginBottomDetail">
+							<h6 class="crimeUnitTimeSpan">Accused</h6>
+							<h4 class="crimeUnitTimeBlock">15</h4>	
+						</div>
+						
+						<div class="col-xs-12 ">
+							<h6 class="crimeUnitTimeSpan">Weapons</h6>
+							<ul class="crimeUnitList">
+								<li>Beretta</li>
+								<li>Bolt-Action Rifle</li>
+								<li>Pistol</li>
+								<li>AK-47</li>
+							</ul>	
+						</div>
+						
+						<div class="col-xs-12">
+							<h6 class="crimeUnitTimeSpan">Vehicles</h6>
+							<ul class="crimeUnitList">
+								<li>Jeep</li>
+								<li>Sedan</li>
+								<li>Hummer</li>
+								<li>Toyota</li>
+								<li>Woksvagan</li>
+							</ul>	
+						</div>
+					</div>				
+				</div>
+				
+				<div class="whitePanel">		
+					<div class="row">
+						<div class="col-xs-6">
+							<h6 class="crimeUnitTimeSpan">Hostages</h6>
+							<h4 class="crimeUnitTimeBlock">15</h4>
+						</div>		
+						<div class="col-xs-6">
+							<h6 class="crimeUnitTimeSpan">Casualties</h6>
+							<h4 class="crimeUnitTimeBlock">06</h4>
+						</div>		
+					</div>							
+				</div>	
+				
+				<div class="whitePanel">		
+					<div class="row">
+						<div class="col-xs-12">
+							<h6 class="crimeUnitTimeSpan">Description</h6>
+							<h4 class="crimeUnitDescr">								
+								{{obs.remark}}
+							</h4>	
+						</div>			
+					</div>							
+				</div>	
+					
+				<div class="commentPanel">		
+					<div class="row">
+						<div class="col-xs-12">
+							<h6 class="crimeUnitTimeSpan">Comment <i class="material-icons commentIcon">comment</i></h6>
+							<h4 class="crimeUnitDescr">								
+								<textarea class="form-control description" [(ngModel)]="comment" id="exampleTextarea" rows="3" ></textarea>
+							</h4>	
+						</div>			
+					</div>
+					<!--<p *ngIf="!editJobForm.controls.comment.valid" class="alert alert-danger">Please enter comment</p>							-->
+				</div>	
+					
+			</div>
+           
+		   
+	
+		</div>
+        <!-- Main Container End here -->
+        <!-- Add new officer -->
+		<div class="bottomContainer">
+			<button class="bottomEditBtn" (click)="onSubmit()">Save</button>
+			<button class="bottomAssignBtn" (click)="OnAssignOfficer()">Assign Unit</button>
+		</div>

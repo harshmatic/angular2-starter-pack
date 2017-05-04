@@ -1,11 +1,16 @@
+
 import { Component, OnInit, NgZone, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { DEPARTMENT_ACTIONS } from '../../../department/store/department.actions';
 import { OT_ACTIONS } from '../../../occurenceType/store/occurenceType.actions';
+import { AREA_ACTIONS } from '../../../area/store/area.actions';
 import { JobService } from '../../services/job.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MapsAPILoader } from '@agm/core';
+
 declare var $: any;
 @Component({
   moduleId: module.id,
@@ -20,7 +25,9 @@ declare var $: any;
 })
 export class AddJobComponent implements OnInit {
   departments: any[] = [];
+  area: any[] = [];
   asyncdepartment: Observable<any>;
+  asyncArea: Observable<any>;
   occurrenceTypes: any[] = [];
   asyncOT: Observable<any>
   jobForm: FormGroup;
@@ -28,6 +35,13 @@ export class AddJobComponent implements OnInit {
   public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
+  public location: string = '';
+  depError: boolean = false;
+  remarkError: boolean = false;
+  timeError: boolean = false;
+  reportError: boolean = false;
+  catError: boolean = false;
+  areaError: boolean = false;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -37,7 +51,8 @@ export class AddJobComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private _zone: NgZone,
     private ref: ChangeDetectorRef,
-    private jobService: JobService) { }
+    private jobService: JobService,
+    private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.zoom = 11;
@@ -51,23 +66,31 @@ export class AddJobComponent implements OnInit {
     this.setCurrentPosition();
     this.jobForm = this.formBuilder.group({
       Id: [null],
+      areaID: ['', [Validators.required]],
       departmentID: ['', [Validators.required]],
       obTypeID: ['', [Validators.required]],
       obTime: ['', [Validators.required]],
       natureOfOccurrence: ['', [Validators.required]],
       remark: [''],
     });
+    this.store.dispatch({ type: AREA_ACTIONS.GET_LIST });
     this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST });
     this.store.dispatch({ type: OT_ACTIONS.GET_LIST });
 
-    this.asyncdepartment = this.store.select('department')
+    this.asyncArea = this.store.select('area');
+    this.asyncArea.subscribe((res: any) => {
+      this.area = res;
+    });
+    this.asyncdepartment = this.store.select('department');
     this.asyncdepartment.subscribe((res: any) => {
       this.departments = res;
     });
-    this.asyncOT = this.store.select('occurenceType')
+    this.asyncOT = this.store.select('occurenceType');
     this.asyncOT.subscribe((res: any) => {
       this.occurrenceTypes = res;
     });
+
+
 
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
@@ -88,6 +111,7 @@ export class AddJobComponent implements OnInit {
 
             this.latitude = place.geometry.location.lat();
             this.longitude = place.geometry.location.lng();
+            this.location = place.formatted_address;
             this.zoom = 12;
             this.ref.markForCheck();
 
@@ -117,26 +141,64 @@ export class AddJobComponent implements OnInit {
   }
 
 
+
+
+
   onSubmit({ value, valid }: { value: any, valid: boolean }) {
-    let payload = {
-      "areaID": "411bfab2-0d44-4fb9-8835-184db90f44fa",
-      "obNumber": "987",
-      "departmentID": value.departmentID,
-      "statusID": "ebeed096-ea34-43e2-948e-32bb98f31401",
-      "natureOfOccurrence": value.natureOfOccurrence,
-      "obTime": "2017-04-10T19:25:14.9100866",
-      "obTypeID": value.obTypeID,
-      "caseFileNumber": "2",
-      "remark": value.remark,
-      "lattitude": 18.550335,
-      "longitude": 73.809956,
-      "assignedTime": "2017-04-27T06:24:58.6589837",
-      "assignedTO": "56c385ae-ce46-41d4-b7fe-08df9aef3333",
-      "assignedComments": "Assigned to SAIG in CID",
-      "mapZoomLevel": 11,
-      "location": "Near IARIRS Baner"
+    if (!this.validate(value)) {
+      let payload = {
+        "areaID": value.areaID,
+        "obTypeID": value.obTypeID,
+        "departmentID": value.departmentID,
+        "statusID": "853bdecf-1ed1-46c4-b200-e8be243fddad",
+        "obNumber": "456789",
+        "obTime": value.obTime,
+        "caseFileNumber": "2",
+        "natureOfOccurrence": value.natureOfOccurrence,
+        "remark": value.remark,
+        "assignedTO": "56c385ae-ce46-41d4-b7fe-08df9aef3333",
+        "assignedComments": "123",
+        "mapZoomLevel": 12,
+        "lattitude": this.latitude,
+        "longitude": this.longitude,
+        "location": this.location,
+        "assignedTime": "2017-05-03T15:04:23.5032781",
+        "priority": 2
+      }
+
+      this.jobService.addJob(payload).subscribe(res => {
+        console.log('done');
+        this.router.navigate(['/jobs/jobDetails']);
+      })
     }
-    this.jobService.addJob(payload).subscribe(res => {
-    })
+
+  }
+  validate(value: any) {
+    let submitFlag = false;
+    if (value.areaID === "" || value.areaID === undefined) {
+      submitFlag = true;
+      this.areaError = true;
+    } else { this.areaError = false; }
+    if (value.departmentID === "" || value.departmentID === undefined) {
+      submitFlag = true;
+      this.depError = true;
+    } else { this.depError = false; }
+    if (value.obTypeID === "" || value.obTypeID === undefined) {
+      submitFlag = true;
+      this.catError = true;
+    } else { this.catError = false; }
+    if (value.natureOfOccurrence === "" || value.natureOfOccurrence === undefined) {
+      submitFlag = true;
+      this.reportError = true;
+    } else { this.reportError = false; }
+    if (value.obTime === "" || value.obTime === undefined) {
+      submitFlag = true;
+      this.timeError = true;
+    } else { this.timeError = false; }
+    if (value.remark === "" || value.remark === undefined) {
+      submitFlag = true;
+      this.remarkError = true;
+    } else { this.remarkError = false; }
+    return submitFlag;
   }
 }

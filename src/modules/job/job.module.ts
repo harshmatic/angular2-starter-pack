@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { JobRouting } from './job.routing';
 import { SharedModule } from '../../app/shared/shared.module';
 import { JobDetailComponent } from './components/jobDetail/jobDetail.component';
+import { JobEditComponent } from './components/jobEdit/jobEdit.component';
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
 import { AddJobComponent } from './components/addJob/addJob.component';
 import { EmployeeEffects } from '../employee/store/employee.effects';
@@ -16,8 +17,12 @@ import { DepartmentService } from '../department/services/department.service';
 import { OccurenceTypeService } from '../occurenceType/services/occurenceType.service';
 import { OccurenceBookService } from '../occurenceBook/services/occurenceBook.service';
 import { JobService } from './services/job.service';
+import { StatusService } from '../status/services/status.service';
+import { StatusEffects } from '../status/store/status.effects';
+import { AreaService } from '../area/services/area.service';
+import { AreaEffects } from '../area/store/area.effects';
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AgmCoreModule  } from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -30,15 +35,18 @@ import { AgmCoreModule  } from '@agm/core';
     EffectsModule.run(OccurenceTypeEffects),
     EffectsModule.run(DepartmentEffects),
     EffectsModule.run(OccurenceBookEffects),
+    EffectsModule.run(StatusEffects),
+    EffectsModule.run(AreaEffects),
     AgmCoreModule
-    
+
   ],
   declarations: [
     JobDetailComponent,
     ActivityFeedComponent,
-    AddJobComponent
+    AddJobComponent,
+    JobEditComponent
   ],
-  providers:[EmployeeService,DepartmentService,OccurenceTypeService,JobService,OccurenceBookService]
+  providers: [EmployeeService, DepartmentService, OccurenceTypeService, JobService, OccurenceBookService, StatusService, AreaService]
 
 })
 export default class JobModule { }

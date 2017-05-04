@@ -26,6 +26,10 @@ export class EmployeeService extends BaseService {
     getEmployeesByPage(searchQuery,pageNum,pageSize,areaId) {      
         return this.getList$(CONTEXT+'?searchQuery='+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&areaId='+areaId,0,0,true).map(res => res.json());    
     }
+    //get Employees by Department/area/rank
+    getEmployeesByDept (ob:any){
+        return this.getList$(CONTEXT+'?departmentID='+ ob.departmentID +'&areaID='+ ob.areaID +'&designationID='+ ob.rankID,0,0,true).map(res => res.json());
+    }
     // Add One
     addEmployee(employee:any) {        
         return this.post$(CONTEXT,employee).map(res => res.json());    
