@@ -10,6 +10,7 @@ import { AREA_ACTIONS } from '../../../area/store/area.actions';
 import { JobService } from '../../services/job.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MapsAPILoader } from '@agm/core';
+import { MessageService } from '../../../../app/core/services/index';
 
 declare var $: any;
 @Component({
@@ -52,6 +53,7 @@ export class AddJobComponent implements OnInit {
     private _zone: NgZone,
     private ref: ChangeDetectorRef,
     private jobService: JobService,
+    private messageService: MessageService,
     private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -167,7 +169,7 @@ export class AddJobComponent implements OnInit {
       }
 
       this.jobService.addJob(payload).subscribe(res => {
-        console.log('done');
+        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occurence Book Saved' });
         this.router.navigate(['/jobs/jobDetails']);
       })
     }
