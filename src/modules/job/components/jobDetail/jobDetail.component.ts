@@ -19,7 +19,7 @@ declare var $: any;
 })
 export class JobDetailComponent implements OnInit{
   jobPageNum:number=1;
-   userDetail:any;
+  userDetail:any;
   stopScroll=false
   obs: any[] = [];
   asyncOb: Observable<any>

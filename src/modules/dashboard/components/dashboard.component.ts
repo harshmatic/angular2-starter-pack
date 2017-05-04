@@ -46,7 +46,7 @@ export class DashboardComponent  implements OnInit {
     });
     this.store.dispatch({ 
       type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE,
-      payload:{ pageNum:1,pageSize:5,areaId:this.userDetail.areaID  }
+      payload:{search:"", pageNum:1,pageSize:5,areaId:this.userDetail.areaID  }
      });
     this.asyncOfficer= this.store.select('employee')
     this.asyncOfficer.subscribe((res:any) => {

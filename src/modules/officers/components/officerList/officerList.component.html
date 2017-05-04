@@ -21,7 +21,7 @@
 
                 <!--  Search Box -->
 
-                <input type="text" class="form-control searchBox" placeholder="Search Officer by name,location and ID" />
+               <input (keyup)="onKey($event)" type="text" class="form-control searchBox" placeholder="Search Officers" />
                 <i class="material-icons searchIcon">search</i>
 
                 <!--  Search Box Ends -->

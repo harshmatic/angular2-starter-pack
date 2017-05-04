@@ -59,7 +59,7 @@ export class EmployeeEffects  {
   private getEmployeeByPage$ = this.actions$
     .ofType(EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE)
    .switchMap(action => 
-       this.EmployeeService.getEmployeesByPage(action.payload.pageNum,action.payload.pageSize,action.payload.areaId)
+       this.EmployeeService.getEmployeesByPage(action.payload.search,action.payload.pageNum,action.payload.pageSize,action.payload.areaId)
         .map(res =>{
           this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE_SUCCESS, payload: res })
         })

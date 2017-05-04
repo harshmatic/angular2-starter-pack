@@ -16,6 +16,7 @@ export class OfficerListComponent  implements OnInit {
   officers:any[]=[];
   asyncOfficer:Observable<any>
   showTab:boolean=true;
+  queryString='';
   stopScroll:boolean=false;
   constructor(private store: Store<Employee>, private authService: AuthService){}
 
@@ -36,11 +37,20 @@ export class OfficerListComponent  implements OnInit {
       }
     });
   }
+
+  onKey(event: any) {
+       this.stopScroll =false;
+       this.officers=[]
+       this.queryString = event.target.value;
+       this.officerPageNum=1;
+       this.getOfficer()
+  }
+  
   getOfficer() {
     if(!this.stopScroll && this.officerPageNum>0) {
        this.store.dispatch({ 
          type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE,
-         payload:{ pageNum:this.officerPageNum,pageSize:5,areaId:this.userDetail.areaID  }
+         payload:{ search: this.queryString,pageNum:this.officerPageNum,pageSize:5,areaId:this.userDetail.areaID  }
       });
     }
   }
