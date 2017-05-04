@@ -47,6 +47,7 @@
                     [infiniteScrollDistance]="2"
                     [infiniteScrollThrottle]="500"
                     (scrolled)="getOfficer()">
+                    <div class="row"  *ngFor="let ob of asyncOfficer|async" ></div>
                     <div *ngFor="let item of officers">
                         <div class="listSubBox">
                             <div class="row">
