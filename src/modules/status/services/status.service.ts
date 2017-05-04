@@ -16,8 +16,8 @@ const CONTEXT = 'status/';
 @Injectable()
 export class StatusService extends BaseService {
 
-    constructor(public http: Http) {
-        super(http,CONTEXT);
+    constructor(public http: Http, router: Router) {
+        super(http,CONTEXT, router);
     }
     // Get All
     getStatusAll() {        

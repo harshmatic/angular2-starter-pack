@@ -16,8 +16,8 @@ const CONTEXT = 'area/';
 @Injectable()
 export class AreaService extends BaseService {
 
-    constructor(public http: Http) {
-        super(http,CONTEXT);
+    constructor(public http: Http, router: Router) {
+        super(http,CONTEXT, router);
     }
     // Get All
     getAreas() {        

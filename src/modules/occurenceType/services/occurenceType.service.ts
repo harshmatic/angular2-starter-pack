@@ -16,8 +16,8 @@ const CONTEXT = 'occurrencetype/';
 @Injectable()
 export class OccurenceTypeService extends BaseService {
 
-    constructor(public http: Http) {
-        super(http,CONTEXT);
+    constructor(public http: Http, router: Router) {
+        super(http,CONTEXT, router);
     }
     // Get All
     getOts() {        

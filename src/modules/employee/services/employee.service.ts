@@ -16,8 +16,8 @@ const CONTEXT = 'employees/';
 /** Service Definition */
 @Injectable()
 export class EmployeeService extends BaseService {
-    constructor(public http: Http) {
-        super(http,CONTEXT);
+    constructor(public http: Http, router: Router) {
+        super(http,CONTEXT,router);
     }
     // Get All
     getEmployees() {      

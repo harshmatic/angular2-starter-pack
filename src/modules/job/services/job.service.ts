@@ -15,8 +15,8 @@ const CONTEXT = 'occurrencebook';
 /** Service Definition */
 @Injectable()
 export class JobService extends BaseService {
-    constructor(public http: Http) {
-        super(http,CONTEXT);
+    constructor(public http: Http, router: Router) {
+        super(http,CONTEXT, router);
     }
     // Add One
     addJob(payload:any) {        

@@ -16,8 +16,8 @@ const CONTEXT = 'occurrencebook/';
 @Injectable()
 export class OccurenceBookService extends BaseService {
 
-    constructor(public http: Http) {
-        super(http,CONTEXT);
+    constructor(public http: Http, router: Router) {
+        super(http,CONTEXT,router);
     }
     // Get All
     getObs(searchQuery?:any,pageNum?:any,pageSize?:any,areaId?:any) {

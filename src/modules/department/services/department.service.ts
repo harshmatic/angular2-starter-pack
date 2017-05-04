@@ -16,8 +16,8 @@ const CONTEXT = 'departments/';
 @Injectable()
 export class DepartmentService extends BaseService {
 
-    constructor(public http: Http) {
-        super(http,CONTEXT);
+    constructor(public http: Http, router: Router) {
+        super(http,CONTEXT, router);
     }
     // Get All
     getDepartments() {        

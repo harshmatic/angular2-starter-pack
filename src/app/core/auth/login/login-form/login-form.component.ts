@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import {AuthService} from '../../auth.service';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 import {
   FormBuilder,
@@ -21,14 +21,22 @@ export class EsplLoginFormComponent implements OnInit {
   username: FormControl;
   password: FormControl;
   authForm: FormGroup;
-
-  constructor(private _router: Router,private builder: FormBuilder,private authService: AuthService ) {
+  queryUrl:'';
+  constructor(private _router: Router,
+          private builder: FormBuilder,
+          private route: ActivatedRoute,
+          private authService: AuthService ) {
     this.reset();
   }
   ngOnInit(){
     if (this.authService.isAuthenticated) {
         this._router.navigate(['/dashboard']);
     }
+    this.route.queryParams.subscribe(params => {
+                 if(params['url']) {
+                    this.queryUrl=params['url'];
+                 }
+      } );
   }
   handleSubmit() {
       this.authService.login({userName:this.username.value,password:this.password.value}).subscribe(
@@ -47,7 +55,11 @@ export class EsplLoginFormComponent implements OnInit {
         this.authService.getCurrentUserDetails()
             .subscribe(
             results => {
-                this._router.navigate(['/dashboard']);
+               if(this.queryUrl) {
+                    this._router.navigate([this.queryUrl]);
+                } else {
+                  this._router.navigate(['/dashboard']);
+                }
             });
     };
   reset() {

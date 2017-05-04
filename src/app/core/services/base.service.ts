@@ -1,6 +1,7 @@
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { MessageService } from './message.service';
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
@@ -25,12 +26,13 @@ export class BaseService implements HttpServices {
     private httpService: Http;
     private requestUrl: string;
     private messageService:MessageService;
-
+    private router:Router;
     /** Base Service constructor : Accepts Analytics Service, Http Service, Context path, Log service */
-    constructor(_httpService: Http, _context: string, messageService?: MessageService) {
+    constructor(_httpService: Http, _context: string, router?:Router, messageService?: MessageService) {
         this.httpService = _httpService;
         //this.requestUrl = this.baseUrl.concat(_context);
         this.messageService = messageService;
+        this.router = router;
     }
 
     _window(): any {
@@ -152,6 +154,9 @@ export class BaseService implements HttpServices {
         // In a real world app, we might use a remote logging infrastructure
         let errMsg: string;
         if (error instanceof Response) {
+            if(error.status===401) {
+                this.onUnAuthorized();
+            }
             const body = error.json() || '';
             const err = body.error_description ||  body.error || body.Message || JSON.stringify(body);
             errMsg = err;
@@ -174,5 +179,12 @@ export class BaseService implements HttpServices {
         headers.append('Content-Type', 'application/json');
         headers.append('Accept', 'application/json');
         this.options = new RequestOptions({ headers: headers });
+    }
+    private onUnAuthorized() {
+        localStorage.clear();
+        if(location.hash!=='#/login') {
+            this.router.navigate(['/login']);
+           // this.messageService.setSessionTimeOutMessage(true);
+        }
     }
 }
