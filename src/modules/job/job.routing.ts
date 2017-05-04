@@ -16,6 +16,7 @@ const routes: Routes = [
     path: 'jobDetails',
     component: JobDetailComponent,
     data: {
+       permissions:['OB.R']
     },
     canActivate: [AuthGuard],
   },
@@ -23,6 +24,7 @@ const routes: Routes = [
     path: 'activityFeed',
     component: ActivityFeedComponent,
     data: {
+       permissions:['OB.R']
     },
     canActivate: [AuthGuard],
   },
@@ -30,6 +32,7 @@ const routes: Routes = [
     path: 'addJob',
     component: AddJobComponent,
     data: {
+       permissions:['OB.C']
     },
     canActivate: [AuthGuard],
   },

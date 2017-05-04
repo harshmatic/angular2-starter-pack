@@ -135,7 +135,7 @@
 </div>
 <!-- Main Container End here -->
 <!-- Add new officer -->
-<div class="bottomContainer">
+<div class="bottomContainer" [ifAuthorize]="['OB.C']" >
     <button (click)="onCreateJob();">Create New OB</button>
 </div>
 <!-- Add new officer Ends -->
