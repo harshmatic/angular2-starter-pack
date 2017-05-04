@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { OB_ACTIONS } from '../../../occurenceBook/store/occurenceBook.actions';
 import { AREA_ACTIONS } from '../../../area/store/area.actions';
 import { DESIGNATION_ACTIONS } from '../../../designation/store/designation.actions';
+import { MessageService } from '../../../../app/core/services/index';
 
 declare var $: any;
 @Component({
@@ -49,8 +50,10 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
   public obId; any;
   private sub: Subscription = new Subscription();
   private subscriptions: Subscription = new Subscription();
-  constructor(private store: Store<Employee>, private formBuilder: FormBuilder, private jobService: JobService,
-    private router: Router, private route: ActivatedRoute) { }
+  constructor(private store: Store<Employee>, private formBuilder: FormBuilder,
+    private jobService: JobService,
+    private router: Router, private route: ActivatedRoute,
+    private messageService: MessageService) { }
 
   ngOnInit() {
 
@@ -165,6 +168,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       this.obs.assignedComments = value.remark;
       this.jobService.updateOfficer(this.obs).subscribe(res => {
         console.log('Done');
+        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Data Saved' });
         this.router.navigate(['/jobs/jobDetails']);
       })
     }

@@ -9,6 +9,7 @@ import { STATUS_ACTIONS } from '../../../status/store/status.actions';
 import { Subscription } from 'rxjs/Subscription';
 import { JobService } from '../../services/job.service';
 import { OccurenceBookService } from '../../../occurenceBook/services/occurenceBook.service';
+import { MessageService } from '../../../../app/core/services/index';
 declare var $: any;
 @Component({
   moduleId: module.id,
@@ -30,7 +31,8 @@ export class JobEditComponent implements OnInit, OnDestroy {
   queryString = '';
   constructor(private store: Store<OccurenceBook>, private route: ActivatedRoute, private router: Router,
     private formBuilder: FormBuilder, private jobService: JobService,
-    private occurenceBookService: OccurenceBookService) { }
+    private occurenceBookService: OccurenceBookService,
+    private messageService: MessageService) { }
 
   ngOnInit() {
     this.sub = this.route
@@ -94,7 +96,9 @@ export class JobEditComponent implements OnInit, OnDestroy {
       //   "Location": "Near Agarrwal Packers and Movers"
       // }
       this.obs.mstStatus = null;
+      this.obs.statusID = this.selectedStatus;
       this.jobService.addJob(this.obs).subscribe(res => {
+        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Saved' });
         console.log('Done');
       });
     } else {
@@ -103,6 +107,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
         "ReveiwComments": this.comment
       };
       this.occurenceBookService.addReview(payload).subscribe(res => {
+         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Comment Saved' });
         console.log('Done');
       });
     }
