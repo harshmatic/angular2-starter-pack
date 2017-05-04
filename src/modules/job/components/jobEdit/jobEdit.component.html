@@ -119,7 +119,7 @@
 		</div>
         <!-- Main Container End here -->
         <!-- Add new officer -->
-		<div class="bottomContainer">
+		<div class="bottomContainer" [ifAuthorize]="['OB.U']">
 			<button class="bottomEditBtn" (click)="onSubmit()">Save</button>
 			<button class="bottomAssignBtn" (click)="OnAssignOfficer()">Assign Unit</button>
 		</div>
