@@ -22,8 +22,8 @@
                             <option *ngFor="let option of asyncdepartment | async" [value]="option.departmentID">{{option.departmentName}}</option>
                         </select>
                     </div>
-                    <p *ngIf="depError" class="alert alert-danger">Please select department</p>
                 </div>
+                <p *ngIf="depError" class="alert alert-danger">Please select department</p>
                 <div class="row">
                     <div class="form-group col-xs-12">
                         <label for="area">Area</label>
@@ -32,8 +32,8 @@
                             <option *ngFor="let option of asyncArea | async" [value]="option.areaID">{{option.areaName}}</option>
                         </select>
                     </div>
-                    <p *ngIf="areaError" class="alert alert-danger">Please select area</p>
                 </div>
+                <p *ngIf="areaError" class="alert alert-danger">Please select area</p>
                 <div class="row">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Select Rank</label>
@@ -42,8 +42,8 @@
                             <option *ngFor="let option of asyncRank | async" [value]="option.designationID">{{option.designationName}}</option>
                         </select>
                     </div>
-                    <p *ngIf="rankError" class="alert alert-danger">Please select Rank</p>
                 </div>
+                    <p *ngIf="rankError" class="alert alert-danger">Please select Rank</p>
                 <div class="row">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Select Officer</label>
@@ -51,10 +51,9 @@
                             <option value="" disabled selected>Select Officer</option>
                             <option *ngFor="let option of asyncOfficer | async" [value]="option.employeeID">{{option.firstName +" "+ option.lastName}}</option>
                         </select>
-                        
                     </div>
-                    <p *ngIf="offError" class="alert alert-danger">Please select officer</p>
                 </div>
+                    <p *ngIf="offError" class="alert alert-danger">Please select officer</p>
                 <div class="row">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Vehicles Allotment</label>
@@ -77,8 +76,8 @@
                             </optgroup>
                         </select>
                     </div>
-                    <p *ngIf="vehAllotmentError" class="alert alert-danger">Please select vehicle allotment</p>
                 </div>
+                <p *ngIf="vehAllotmentError" class="alert alert-danger">Please select vehicle allotment</p>
                 <div class="row">
                     <div class="form-group col-xs-6">
                         <label for="exampleInputEmail1">Vehicle Start Time</label>
@@ -132,8 +131,9 @@
                             </optgroup>
                         </select>
                     </div>
-                    <p *ngIf="weaponError" class="alert alert-danger">Please select weapon allotment</p>
+                    
                 </div>
+                <p *ngIf="weaponError" class="alert alert-danger">Please select weapon allotment</p>
                 <div class="row">
                     <div class="form-group col-xs-6">
                         <label for="exampleInputEmail1">Collection Time</label>
