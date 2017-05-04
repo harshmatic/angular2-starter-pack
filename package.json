@@ -97,6 +97,7 @@
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
     "ngrx-store-localstorage": "0.1.5",
+    "ngx-infinite-scroll": "^0.5.1",
     "nodemon": "^1.9.2",
     "package-json": "4.0.0",
     "passport": "^0.3.2",

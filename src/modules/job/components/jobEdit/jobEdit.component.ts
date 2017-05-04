@@ -42,10 +42,10 @@ export class JobEditComponent implements OnInit, OnDestroy {
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { id: this.obId } });
     this.asyncOb = this.store.select('occurenceBook');
     this.subscriptions.add(this.asyncOb.subscribe((res: any) => {
-      if (Object.keys(res).length>0) {
+      if (Object.keys(res).length > 0) {
         this.obs = res;
+        console.log(this.obs);
       }
-      console.log(this.obs);
     })
     );
     this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST });
