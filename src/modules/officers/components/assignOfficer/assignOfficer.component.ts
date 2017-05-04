@@ -166,26 +166,26 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       submitFlag = true;
       this.vehAllotmentError = true;
     } else { this.vehAllotmentError = false; }
-    if (value.startTime === "" || value.startTime === undefined) {
-      submitFlag = true;
-      this.startTimeError = true;
-    } else { this.startTimeError = false; }
-    if (value.endTime === "" || value.endTime === undefined) {
-      submitFlag = true;
-      this.posError = true;
-    } else { this.posError = false; }
+    // if (value.startTime === "" || value.startTime === undefined) {
+    //   submitFlag = true;
+    //   this.startTimeError = true;
+    // } else { this.startTimeError = false; }
+    // if (value.endTime === "" || value.endTime === undefined) {
+    //   submitFlag = true;
+    //   this.posError = true;
+    // } else { this.posError = false; }
     if (value.WeaponAllotment === "" || value.WeaponAllotment === undefined) {
       submitFlag = true;
       this.weaponError = true;
     } else { this.weaponError = false; }
-    if (value.collectionTime === "" || value.collectionTime === undefined) {
-      submitFlag = true;
-      this.collectionError = true;
-    } else { this.collectionError = false; }
-    if (value.PossessionTime === "" || value.PossessionTime === undefined) {
-      submitFlag = true;
-      this.posTimeError = true;
-    } else { this.posTimeError = false; }
+    // if (value.collectionTime === "" || value.collectionTime === undefined) {
+    //   submitFlag = true;
+    //   this.collectionError = true;
+    // } else { this.collectionError = false; }
+    // if (value.PossessionTime === "" || value.PossessionTime === undefined) {
+    //   submitFlag = true;
+    //   this.posTimeError = true;
+    // } else { this.posTimeError = false; }
     if (value.remark === "" || value.remark === undefined) {
       submitFlag = true;
       this.RemarkError = true;
