@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <!--Map Card-->
-                <div class="mapJobs jobActivityMapBox">
+                <!--<div class="mapJobs jobActivityMapBox">
                     <div class="jobMarkers">
                         <span class="criticalJob marker"></span>
                         <span class="criticalJob marker"></span>
@@ -44,8 +44,6 @@
                         <span class="minorJob marker"></span>
                         <span class="majorJob marker"></span>
                     </div>
-                    <!--jobmarker end here-->
-                    <!--Content Card-->
                     <div class="row jobContentCard">
                         <div class="col-xs-8">
                             <h3>Armed Robbery In Progress</h3>
@@ -58,10 +56,27 @@
                             <span>Duty Hours</span>
                         </div>
                     </div>
-                    <!--content Card end here-->
-                    <!--Card Close icon-->
                     <div class="closeBtn jobContentCard"><i class="material-icons">&#xE5CD;</i></div>
-                </div>
+                </div>-->
+                <agm-map [latitude]="18.550335" [longitude]="73.809956" [zoom]="11">
+                <agm-marker *ngFor="let location of asyncOb|async" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="'/assets/styles/images/red.svg'" >
+                    <agm-info-window [disableAutoPan]="true">
+                        <div class="row jobContentCard" style="display:block">
+                            <div class="col-xs-8">
+                                <h3>Armed Robbery In Progress</h3>
+                                <span>Nanyuki-Rumuruti Rd, Nanyuki, Kenya</span>
+                                <div><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Robert
+                                    Downey Jr
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <h3>03:12</h3>
+                                <span>Duty Hours</span>
+                            </div>
+                        </div>
+                    </agm-info-window>
+                </agm-marker>
+            </agm-map>
                 <div class="filterBox">
                     <h5>Job List</h5>
                     <div class="dropdown filterDropdown">
@@ -77,10 +92,18 @@
                 <div class="row cards">
                     <div class="col-xs-12">
                         <!--Active Jobs-->
-                        <div class="activeJobs">
+                        <div class="activeJobs" 
+                          infiniteScroll
+                          [infiniteScrollDistance]="2"
+                          [infiniteScrollThrottle]="500"
+                          (scrolled)="getJobs()">
                             <h4>TODAY</h4>
                             <!--Job Row 1-->
+<<<<<<< HEAD
                         <div class="row"  *ngFor="let ob of obs" (click)="onOBClick(ob.obid);">
+=======
+                        <div class="row"  *ngFor="let ob of obs">
+>>>>>>> 06dd07b675f32cc5a0c6898b0b82c21f294c05fd
                             <h5 class="col-xs-12">
                                 <span class="priorityIcon"></span>{{ob.obNumber}} | {{ob.mstDepartment.departmentName}} 
                                 </h5>

@@ -9,9 +9,16 @@ declare var $: any;
 @Component({
   moduleId: module.id,
   selector: 'app-job-detail',
+  styles: [`
+    .sebm-google-map-container {
+       height: 300px;
+     }
+  `],
   templateUrl: 'jobDetail.component.html',
 })
-export class JobDetailComponent implements OnInit, OnDestroy {
+export class JobDetailComponent implements OnInit{
+  jobPageNum:number=1;
+  stopScroll=false
   obs: any[] = [];
   asyncOb: Observable<any>
   showTab: boolean = true;
@@ -22,23 +29,33 @@ export class JobDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "" } });
+    //this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "" } });
+    this.getJobs();
     this.asyncOb = this.store.select('occurenceBook');
+<<<<<<< HEAD
     this.subscriptions.add(this.asyncOb.subscribe((res: any) => {
       if (Object.keys(res).length>0) {
       this.obs = res;
       console.log("objectDetailsaaa=>",res);
+=======
+    this.asyncOb.subscribe((res: any) => {
+     // this.obs = res;
+       for(let i=0;i<res.length;i++){
+         this.obs.push(res[i]);
+      }
+      if(res.length>0){
+        this.jobPageNum++;
+        this.stopScroll = false;
+      }else{
+        this.stopScroll = true;
+>>>>>>> 06dd07b675f32cc5a0c6898b0b82c21f294c05fd
       }
     })
-    );
 
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
   }
 
   onKey(event: any) {
+<<<<<<< HEAD
     this.queryString = event.target.value;
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: this.queryString } });
 
@@ -50,4 +67,20 @@ export class JobDetailComponent implements OnInit, OnDestroy {
     this.router.navigate(['/jobs/addJob']);
   }
 
+=======
+       this.stopScroll =false;
+       this.obs=[]
+       this.queryString = event.target.value;
+       this.jobPageNum=1;
+       this.getJobs()
+  }
+  getJobs(){
+    if(!this.stopScroll && this.jobPageNum>0) {
+       this.store.dispatch({ 
+         type: OB_ACTIONS.GET_LIST,
+         payload:{ search: this.queryString, pageNum:this.jobPageNum,pageSize:5 }
+      });
+    }
+  }
+>>>>>>> 06dd07b675f32cc5a0c6898b0b82c21f294c05fd
 }

@@ -21,9 +21,15 @@ export class OccurenceBookService extends BaseService {
     }
     // Get All
 <<<<<<< HEAD
+<<<<<<< HEAD
     getObs(searchQuery?: any) {
 
         return this.getList$(CONTEXT + "?searchQuery=" + searchQuery, 0, 0, true).map(res => res.json());
+=======
+    getObs(searchQuery?:any,pageNum?:any,pageSize?:any) {
+        
+        return this.getList$(CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize,0,0,true).map(res => res.json());    
+>>>>>>> 06dd07b675f32cc5a0c6898b0b82c21f294c05fd
 =======
     getObs(searchQuery?:any,pageNum?:any,pageSize?:any) {
         

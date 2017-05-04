@@ -64,8 +64,23 @@ export class EmployeeEffects {
         .map(res => {
           this.store.dispatch({ type: EMPLOYEE_ACTIONS.DELETE_SUCCESS, payload: res.json() })
         })
+<<<<<<< HEAD
         .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED }))
     );
+=======
+        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
+      );
+  @Effect({ dispatch: false })
+  private getEmployeeByPage$ = this.actions$
+    .ofType(EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE)
+   .switchMap(action => 
+       this.EmployeeService.getEmployeesByPage(action.payload.pageNum,action.payload.pageSize)
+        .map(res =>{
+          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE_SUCCESS, payload: res })
+        })
+        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
+      );
+>>>>>>> 06dd07b675f32cc5a0c6898b0b82c21f294c05fd
   constructor(
     private store: Store<Employee>,
     private actions$: Actions,
