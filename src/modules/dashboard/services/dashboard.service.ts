@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
 import { Dashboard } from '../store/dashboard.model';
 import { BaseService } from '../../../app/core/services/index';
+import { MessageService } from '../../../app/core/services/index';
 
 /** Context for service calls */
 const CONTEXT = 'dashboard';
@@ -16,8 +17,8 @@ const CONTEXT = 'dashboard';
 @Injectable()
 export class DashboardService extends BaseService {
 
-    constructor(public http: Http) {
-        super(http,CONTEXT);
+    constructor(public http: Http, router: Router,messageService: MessageService) {
+        super(http,CONTEXT, router,messageService);
     }
 
 }

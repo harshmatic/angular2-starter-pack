@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
 import { BaseService } from '../../../app/core/services/index';
-
+import { MessageService } from '../../../app/core/services/index';
 /** Context for service calls */
 const CONTEXT = 'occurrencetype/';
 
@@ -15,8 +15,8 @@ const CONTEXT = 'occurrencetype/';
 @Injectable()
 export class ReportsService extends BaseService {
 
-    constructor(public http: Http, router: Router) {
-        super(http,CONTEXT, router);
+    constructor(public http: Http, router: Router,messageService: MessageService) {
+        super(http,CONTEXT, router,messageService);
     }
     // Get All
     getReport(url) {        

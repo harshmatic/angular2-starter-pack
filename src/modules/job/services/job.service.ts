@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
 import { BaseService } from '../../../app/core/services/index';
-
+import { MessageService } from '../../../app/core/services/index';
 
 /** Context for service calls */
 const CONTEXT = 'occurrencebook';
@@ -15,8 +15,8 @@ const CONTEXT = 'occurrencebook';
 /** Service Definition */
 @Injectable()
 export class JobService extends BaseService {
-    constructor(public http: Http, router: Router) {
-        super(http,CONTEXT, router);
+    constructor(public http: Http, router: Router, messageService: MessageService) {
+        super(http,CONTEXT, router,messageService);
     }
     // Add One
     addJob(payload: any) {
