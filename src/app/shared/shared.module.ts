@@ -26,6 +26,7 @@ import { BannerComponent } from './banner/banner.component';
 //import { WelcomeComponent } from './welcome/welcome.component';
 import { IfAuthorizeDirective } from './directives/ifAuthorize.directive';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { TimeAgoPipe } from '../../modules/dashboard/components/dashboard-time-ago.pipe';
 import {
      SharedModule as PrimSharedModule, CalendarModule,
      GrowlModule
@@ -61,6 +62,7 @@ export const components = [
     InfiniteScrollModule
   ],
   declarations: [
+    TimeAgoPipe,
     ...components
   ],
   exports: [
@@ -71,6 +73,7 @@ export const components = [
     PrimSharedModule,
     CalendarModule,
     GrowlModule,
+    TimeAgoPipe,
     ...components
   ],
   providers: [

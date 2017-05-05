@@ -6,7 +6,7 @@ import { DASHBOARD_ACTIONS } from '../store/dashboard.actions';
 import { EMPLOYEE_ACTIONS } from '../../employee/store/employee.actions';
 import { OB_ACTIONS } from '../../occurenceBook/store/occurenceBook.actions';
 import { Pipe, ChangeDetectorRef, PipeTransform } from '@angular/core';
-import { TimeAgoPipe } from './dashboard-time-ago.pipe';
+//import { TimeAgoPipe } from './dashboard-time-ago.pipe';
 import * as moment from 'moment';
 import { REPORTS_ACTIONS } from '../../reports/store/reports.actions';
 import { AuthService } from '../../../app/core/index';
@@ -17,7 +17,7 @@ import { AuthService } from '../../../app/core/index';
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css']
 })
-@Pipe({ name: 'amDifference' })
+//@Pipe({ name: 'amDifference' })
 export class DashboardComponent implements OnInit {
   userDetail: any
   isValid = true;
