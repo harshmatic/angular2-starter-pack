@@ -17,7 +17,7 @@ declare var $: any;
   templateUrl: 'jobEdit.component.html',
 })
 export class JobEditComponent implements OnInit, OnDestroy {
-  public selectedStatus:any;
+  public selectedStatus: any;
   public obs: any = [];
   public comment: string = '';
   public status: any[] = [];
@@ -56,7 +56,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
     this.asyncStatus = this.store.select('status');
     this.subscriptions.add(this.asyncStatus.subscribe((res: any) => {
       this.status = res;
-     // console.log("status =>" + this.status);
+      // console.log("status =>" + this.status);
     })
     );
 
@@ -107,7 +107,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
         "ReveiwComments": this.comment
       };
       this.occurenceBookService.addReview(payload).subscribe(res => {
-         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Comment Saved' });
+        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Comment Saved' });
         //console.log('Done2');
       });
     }

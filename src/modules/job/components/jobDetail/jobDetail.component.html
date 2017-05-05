@@ -59,7 +59,7 @@
                     <div class="closeBtn jobContentCard"><i class="material-icons">&#xE5CD;</i></div>
                 </div>-->
                 <agm-map [latitude]="18.550335" [longitude]="73.809956" [zoom]="11">
-                <agm-marker *ngFor="let location of asyncOb|async" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="'/assets/styles/images/red.svg'" >
+                <agm-marker *ngFor="let location of obs" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="'/assets/styles/images/red.svg'" >
                     <agm-info-window [disableAutoPan]="true">
                         <div class="row jobContentCard" style="display:block">
                             <div class="col-xs-8">

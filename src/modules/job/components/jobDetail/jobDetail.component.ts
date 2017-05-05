@@ -49,6 +49,7 @@ export class JobDetailComponent implements OnInit{
       } else {
         this.stopScroll = true;
       }
+      //console.log('occurence=>',this.obs);
     })
 
   }
