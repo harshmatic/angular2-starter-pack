@@ -144,6 +144,9 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       });
     }
   }
+  onBack(){
+    this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: this.obId } });
+  }
   onSubmit({ value, valid }: { value: any, valid: boolean }) {
     if (!this.validate(value)) {
       // let payload = {

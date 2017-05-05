@@ -1,7 +1,14 @@
  <!-------------------- Main Container ------------------------>
         <div class="main-container container">
 			<div class="pageName">
-				<h1>OB ID: {{obs.obNumber}}</h1>
+				<div class="row">
+				<div class="col-xs-3">
+					<button class="viewActivityBtn" [routerLink]="['/jobs/jobDetails']">Back</button>
+				</div>		
+				<div class="col-xs-9">
+					<h4 style="text-align: left;">OB ID: {{obs.obNumber}}</h4>
+				</div>
+				</div>
     		</div>
         
 			<div class="jobDetailMain">
