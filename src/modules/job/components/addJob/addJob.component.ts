@@ -43,7 +43,7 @@ export class AddJobComponent implements OnInit {
   reportError: boolean = false;
   catError: boolean = false;
   areaError: boolean = false;
-
+  locationError : boolean = false;
   @ViewChild("search")
   public searchElementRef: ElementRef;
 
@@ -177,6 +177,10 @@ export class AddJobComponent implements OnInit {
   }
   validate(value: any) {
     let submitFlag = false;
+    if (this.location === "" || this.location === undefined) {
+      submitFlag = true;
+      this.locationError = true;
+    } else { this.locationError = false; }
     if (value.areaID === "" || value.areaID === undefined) {
       submitFlag = true;
       this.areaError = true;

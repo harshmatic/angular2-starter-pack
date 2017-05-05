@@ -3,9 +3,11 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { OccurenceBook } from '../../../occurenceBook/store/occurenceBook.model';
 import { OB_ACTIONS } from '../../../occurenceBook/store/occurenceBook.actions';
+import { Pipe, ChangeDetectorRef, PipeTransform } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../../../app/core/index';
 import { ActivatedRoute, Router } from '@angular/router';
+//import {TimeAgoPipe} from '../../../dashboard/components/dashboard-time-ago.pipe';
 declare var $: any;
 @Component({
   moduleId: module.id,

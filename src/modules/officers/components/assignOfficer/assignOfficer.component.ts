@@ -86,7 +86,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
         this.selectedDept = res.departmentID;
         this.selectedArea = res.areaID;
         this.selectedRank = res.mstEmployee.designationID;
-        console.log("obj=>", this.obs);
+        //console.log("obj=>", this.obs);
         this.getOfficer();
       }
 
@@ -122,7 +122,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
     this.asyncOfficer.subscribe((res: any) => {
       if (Object.keys(res).length > 0) {
         this.officers = res;
-        console.log("designation=>", this.officers);
+        //console.log("designation=>", this.officers);
       }
 
     });
@@ -138,7 +138,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       this.asyncOfficer.subscribe((res: any) => {
         if (Object.keys(res).length > 0) {
           this.officers = res;
-          console.log("designation=>", this.officers);
+          //console.log("designation=>", this.officers);
         }
 
       });
@@ -167,7 +167,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       this.obs.assignedTO = value.officerID;
       this.obs.assignedComments = value.remark;
       this.jobService.updateOfficer(this.obs).subscribe(res => {
-        console.log('Done');
+        //console.log('Done');
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Data Saved' });
         this.router.navigate(['/jobs/jobDetails']);
       })
