@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
 import { OccurenceBook } from '../store/occurenceBook.model';
 import { BaseService } from '../../../app/core/services/index';
-
+import { MessageService } from '../../../app/core/services/index';
 /** Context for service calls */
 const CONTEXT = 'occurrencebook/';
 
@@ -16,8 +16,8 @@ const CONTEXT = 'occurrencebook/';
 @Injectable()
 export class OccurenceBookService extends BaseService {
 
-    constructor(public http: Http, router: Router) {
-        super(http,CONTEXT,router);
+    constructor(public http: Http, router: Router,messageService: MessageService) {
+        super(http,CONTEXT,router,messageService);
     }
     // Get All
     getObs(searchQuery?:any,pageNum?:any,pageSize?:any,areaId?:any) {

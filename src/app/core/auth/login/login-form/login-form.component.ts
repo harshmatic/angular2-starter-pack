@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import {AuthService} from '../../auth.service';
-import { Router,ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MessageService } from '../../../../../app/core/services/index';
 
 import {
   FormBuilder,
@@ -10,7 +11,7 @@ import {
 } from '@angular/forms';
 
 @Component({
-  moduleId:module.id,
+  moduleId: module.id,
   selector: 'app-espl-login-form',
   templateUrl: 'login-form.component.html',
   styleUrls: ['./login-form.component.css']
@@ -21,47 +22,52 @@ export class EsplLoginFormComponent implements OnInit {
   username: FormControl;
   password: FormControl;
   authForm: FormGroup;
-  queryUrl:'';
+  queryUrl: '';
   constructor(private _router: Router,
-          private builder: FormBuilder,
-          private route: ActivatedRoute,
-          private authService: AuthService ) {
+    private builder: FormBuilder,
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private messageService: MessageService) {
     this.reset();
   }
-  ngOnInit(){
+  ngOnInit() {
     if (this.authService.isAuthenticated) {
-        this._router.navigate(['/dashboard']);
+      this._router.navigate(['/dashboard']);
     }
     this.route.queryParams.subscribe(params => {
-                 if(params['url']) {
-                    this.queryUrl=params['url'];
-                 }
-      } );
+      if (params['url']) {
+        this.queryUrl = params['url'];
+      }
+    });
   }
   handleSubmit() {
-      this.authService.login({userName:this.username.value,password:this.password.value}).subscribe(
-          results => {
-            this.getLoggedInUserPermission();
-          });
+    if (this.username.value !== '' && this.password.value !== '') {
+      this.authService.login({ userName: this.username.value, password: this.password.value }).subscribe(
+        results => {
+          this.getLoggedInUserPermission();
+        });
+    } else {
+      this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: 'Enter Username and Password' });
+    }
   }
-   getLoggedInUserPermission(): void {
-        this.authService.getLoggedInUserPermission()
-            .subscribe(
-            results => {
-                this.getCurrentUserDetails();
-            });
-    };
-    getCurrentUserDetails(): void {
-        this.authService.getCurrentUserDetails()
-            .subscribe(
-            results => {
-               if(this.queryUrl) {
-                    this._router.navigate([this.queryUrl]);
-                } else {
-                  this._router.navigate(['/dashboard']);
-                }
-            });
-    };
+  getLoggedInUserPermission(): void {
+    this.authService.getLoggedInUserPermission()
+      .subscribe(
+      results => {
+        this.getCurrentUserDetails();
+      });
+  };
+  getCurrentUserDetails(): void {
+    this.authService.getCurrentUserDetails()
+      .subscribe(
+      results => {
+        if (this.queryUrl) {
+          this._router.navigate([this.queryUrl]);
+        } else {
+          this._router.navigate(['/dashboard']);
+        }
+      });
+  };
   reset() {
     this.username = new FormControl('', Validators.required);
     this.password = new FormControl('', Validators.required);

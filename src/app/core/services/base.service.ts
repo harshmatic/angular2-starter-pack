@@ -157,11 +157,10 @@ export class BaseService implements HttpServices {
             if(error.status===401) {
                 this.onUnAuthorized();
             }
-            const body = error.json() || '';
-            const err = body.error_description ||  body.error || body.Message || JSON.stringify(body);
+            const err = error.text() || error.json()||'';
+            //const err = body.error_description ||  body.error || body.Message || JSON.stringify(body);
             errMsg = err;
-            console.error(err)
-            //this.messageService.addMessage({ severity: 'error', summary: 'Failed', detail: errMsg  });
+            this.messageService.addMessage({ severity: 'error', summary: 'Failed', detail: errMsg  });
         } else {
             errMsg = error.message ? error.message : error.toString();
         }

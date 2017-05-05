@@ -18,6 +18,7 @@ declare var $: any;
   moduleId: module.id,
   selector: 'app-job-detail',
   templateUrl: 'assignOfficer.component.html',
+  styleUrls: ['assignOfficer.component.css']
 })
 export class AssignOfficerComponent implements OnInit, OnDestroy {
   public selectedDept: any;

@@ -15,6 +15,7 @@ declare var $: any;
   moduleId: module.id,
   selector: 'app-job-edit',
   templateUrl: 'jobEdit.component.html',
+  styleUrls: ['jobEdit.component.css']
 })
 export class JobEditComponent implements OnInit, OnDestroy {
   public selectedStatus: any;

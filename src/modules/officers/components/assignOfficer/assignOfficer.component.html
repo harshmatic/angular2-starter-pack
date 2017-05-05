@@ -6,8 +6,8 @@
                     <button class="viewActivityBtn" (click)="onBack()">Back</button>
 				</div>		
 				<div class="col-xs-9">
-                    <h4 style="text-align: left;">Assign Officer</h4>
-                    <h5 style="text-align: left;">OB ID: {{obs.obNumber}}</h5>
+                    <h4 class="heading">Assign Officer</h4>
+                    <h5 class="heading">OB ID: {{obs.obNumber}}</h5>
 				</div>
 				</div>
     		</div>
@@ -23,7 +23,7 @@
             <form class="cards" novalidate (ngSubmit)="onSubmit(assignOfficerForm)" [formGroup]="assignOfficerForm">
                 <div class="row">
                     <div class="form-group col-xs-12">
-                        <label for="exampleSelect1">Department<span class="required" style="color:red"> * </span></label>
+                        <label for="exampleSelect1">Department<span class="required"> * </span></label>
                         <select formControlName="departmentID" class="form-control" id="exampleSelect1" [(ngModel)]="selectedDept" [class.invalid]="!assignOfficerForm.controls.departmentID.valid"  (change)="selectDept(assignOfficerForm)"> 
                             <option value="" disabled selected>Select Department</option>
                             <option *ngFor="let option of asyncdepartment | async" [value]="option.departmentID">{{option.departmentName}}</option>
@@ -33,7 +33,7 @@
                 <p *ngIf="depError" class="alert alert-danger">Please select department</p>
                 <div class="row">
                     <div class="form-group col-xs-12">
-                        <label for="area">Area<span class="required" style="color:red"> * </span></label>
+                        <label for="area">Area<span class="required"> * </span></label>
                         <select formControlName="areaID" class="form-control" id="area" [class.invalid]="!assignOfficerForm.controls.areaID.valid" [(ngModel)]="selectedArea" (change)="selectDept(assignOfficerForm)"> 
                             <option value="" disabled selected>select Area</option>
                             <option *ngFor="let option of asyncArea | async" [value]="option.areaID">{{option.areaName}}</option>
@@ -43,7 +43,7 @@
                 <p *ngIf="areaError" class="alert alert-danger">Please select area</p>
                 <div class="row">
                     <div class="form-group col-xs-12">
-                        <label for="exampleSelect1">Select Rank<span class="required" style="color:red"> * </span></label>
+                        <label for="exampleSelect1">Select Rank<span class="required"> * </span></label>
                         <select formControlName="rankID" class="form-control" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.rankID.valid" [(ngModel)]="selectedRank" (change)="selectDept(assignOfficerForm)">
                             <option value="" disabled selected>Select Rank</option>
                             <option *ngFor="let option of asyncRank | async" [value]="option.designationID">{{option.designationName}}</option>
@@ -53,7 +53,7 @@
                     <p *ngIf="rankError" class="alert alert-danger">Please select Rank</p>
                 <div class="row">
                     <div class="form-group col-xs-12">
-                        <label for="exampleSelect1">Select Officer<span class="required" style="color:red"> * </span></label>
+                        <label for="exampleSelect1">Select Officer<span class="required"> * </span></label>
                         <select formControlName="officerID" class="form-control" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.officerID.valid"> 
                             <option value="" disabled selected>Select Officer</option>
                             <option *ngFor="let option of asyncOfficer | async" [value]="option.employeeID">{{option.firstName +" "+ option.lastName}}</option>
@@ -63,7 +63,7 @@
                     <p *ngIf="offError" class="alert alert-danger">Please select officer</p>
                 <div class="row">
                     <div class="form-group col-xs-12">
-                        <label for="exampleSelect1">Vehicles Allotment<span class="required" style="color:red"> * </span></label>
+                        <label for="exampleSelect1">Vehicles Allotment<span class="required"> * </span></label>
                         <select formControlName="VehicleID" class="form-control" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.VehicleID.valid">
                            <option value="" disabled selected>Select Vehicle</option>
                             <optgroup label="Pistols">
@@ -113,7 +113,7 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-xs-12">
-                        <label for="exampleSelect1">Weapon Allotment<span class="required" style="color:red"> * </span></label>
+                        <label for="exampleSelect1">Weapon Allotment<span class="required"> * </span></label>
                         <select class="form-control" formControlName="WeaponAllotment" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.WeaponAllotment.valid">
                            <option value="" disabled selected>Select Weapon</option>
                             <optgroup label="Chevrolet">
@@ -170,7 +170,7 @@
                 
                 <div class="row">
                     <div class="form-group col-xs-12">
-                        <label for="exampleTextarea">Remarks | Comments<span class="required" style="color:red"> * </span></label>
+                        <label for="exampleTextarea">Remarks | Comments<span class="required"> * </span></label>
                         <textarea formControlName="remark" class="form-control description" id="exampleTextarea" rows="5" [class.invalid]="!assignOfficerForm.controls.remark.valid"></textarea>
                         <p *ngIf="RemarkError" class="alert alert-danger" style="margin-bottom: 30px;">Please enter remark</p>
                     </div>

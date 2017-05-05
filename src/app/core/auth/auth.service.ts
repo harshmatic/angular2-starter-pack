@@ -5,6 +5,8 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import { BaseService } from '../services/index';
+import { Router } from '@angular/router';
+import { MessageService } from '../services/index';
 
 //CONFIGESPL
 import {ApiBaseAuthUrl} from '../../../modules/config';
@@ -15,14 +17,16 @@ export class AuthService extends BaseService {
   isLoggedIn: boolean = false;
   onLoggedInChange: EventEmitter<any> = new EventEmitter<any>();
    
-  constructor(public http: Http) {
-        super(http,CONTEXT);
+  constructor(public http: Http, router: Router, messageService: MessageService) {
+        super(http,CONTEXT,router, messageService);
   }
 
   login(credentials) {
     return this.post$(ApiBaseAuthUrl,JSON.stringify(credentials)).map(res => {
        this.setToken(res);
        this.isLoggedIn = true;
+    }).catch(err => {
+                return Observable.throw(err);;
     });
   }
   getLoggedInUserPermission() {
