@@ -48,7 +48,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
       if (Object.keys(res).length > 0) {
         this.obs = res;
         this.selectedStatus = res.statusID;
-        //console.log(this.obs);
+        console.log(this.obs);
       }
     })
     );
@@ -97,9 +97,9 @@ export class JobEditComponent implements OnInit, OnDestroy {
       // }
       this.obs.mstStatus = null;
       this.obs.statusID = this.selectedStatus;
-      this.jobService.addJob(this.obs).subscribe(res => {
+      this.jobService.updateOfficer(this.obs).subscribe(res => {
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Saved' });
-        //console.log('Done');
+        //console.log('Done1');
       });
     } else {
       let payload = {
@@ -108,7 +108,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
       };
       this.occurenceBookService.addReview(payload).subscribe(res => {
          this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Comment Saved' });
-        //console.log('Done');
+        //console.log('Done2');
       });
     }
 
