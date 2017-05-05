@@ -176,6 +176,7 @@ export class BaseService implements HttpServices {
         if (isSecured) {
             headers.append('Authorization', 'Bearer ' + localStorage.getItem('accessToken'));
         }
+        headers.append("Cache-Control", "no-cache, no-store, must-revalidate")
         headers.append('Content-Type', 'application/json');
         headers.append('Accept', 'application/json');
         this.options = new RequestOptions({ headers: headers });
