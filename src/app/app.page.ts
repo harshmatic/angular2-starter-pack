@@ -7,7 +7,6 @@ import * as fromRoot from './core/store/';
 
 @Component({
   selector: 'app-root',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./app.page.css'],
   templateUrl: './app.page.html'
 })

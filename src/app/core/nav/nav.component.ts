@@ -43,6 +43,10 @@ export class NavComponent implements OnInit, OnDestroy {
                 $(".navbar-header").toggleClass('toggleNavColor');
                 $(".icon-bar").toggleClass('whiteIconBar');
             });
+            $("#myNavbar ul li").on("click", function() {
+              $(".navbar-toggle").click();
+                
+            });
            });
      }
 }
