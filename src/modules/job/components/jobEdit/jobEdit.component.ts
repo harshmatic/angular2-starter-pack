@@ -48,7 +48,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
       if (Object.keys(res).length > 0) {
         this.obs = res;
         this.selectedStatus = res.statusID;
-        //console.log(this.obs);
+        console.log(this.obs);
       }
     })
     );

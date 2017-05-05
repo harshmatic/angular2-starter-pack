@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
     this.asyncOb = this.store.select('occurenceBook')
     this.asyncOb.subscribe((res: any) => {
       this.obs = res;
-      console.log("Occurence=>",res);
+      //console.log("Occurence=>",res);
       this.locations = this.obs[0];
     });
     this.store.dispatch({
