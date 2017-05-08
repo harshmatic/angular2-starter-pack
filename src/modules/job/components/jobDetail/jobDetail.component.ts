@@ -36,7 +36,7 @@ export class JobDetailComponent implements OnInit {
 
     this.asyncOb.subscribe((res: any) => {
       // this.obs = res;
-      for (let i = res.length - 1; i > 0; i--) {
+      for (let i = res.length - 1; i >= 0; i--) {
         this.obs.push(res[i]);
       }
       console.log('occ =>', this.obs);
