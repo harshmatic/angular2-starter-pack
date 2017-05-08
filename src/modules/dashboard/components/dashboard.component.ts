@@ -42,7 +42,10 @@ export class DashboardComponent implements OnInit {
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "", pageNum: 1, pageSize: 5, areaId: this.userDetail.areaID } });
     this.asyncOb = this.store.select('occurenceBook')
     this.asyncOb.subscribe((res: any) => {
-      this.obs = res.reverse();
+      if (res.length > 0) {
+        this.obs = res.reverse();
+      }
+
       //console.log("Occurence=>",res);
       this.locations = this.obs[0];
     });
