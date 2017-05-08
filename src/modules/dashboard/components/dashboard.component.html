@@ -212,7 +212,7 @@
                         <div class="col-xs-4 statusOpen"><span>{{ob.mstStatus.statusName}}</span></div>
                     </div>
                     <div class="jobOfcDetail">
-                        <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge"> {{ob.mstEmployee.firstName}}{{ob.mstEmployee.lastName}}
+                        <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge"> {{ob.mstEmployee?ob.mstEmployee.firstName + " " + ob.mstEmployee.lastName : "Not Assigned"}}
                         </div>
                         <div class="col-xs-4">
                             <!--  <span>{{ob.assignedTime | amDateFormat:'MM/DD/YYYY'}}</span>-->

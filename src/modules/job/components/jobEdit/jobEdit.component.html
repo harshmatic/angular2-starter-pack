@@ -3,10 +3,12 @@
 			<div class="pageName">
 				<div class="row">
 				<div class="col-xs-3">
-					<button class="viewActivityBtn" [routerLink]="['/jobs/jobDetails']">Back</button>
+					<span class="glyphicon glyphicon-arrow-left" [routerLink]="['/jobs/jobDetails']" aria-hidden="true"></span>
+					<!--<button class="viewActivityBtn" [routerLink]="['/jobs/jobDetails']">Back</button>-->
 				</div>		
 				<div class="col-xs-9">
 					<h4 class="heading">OB ID: {{obs.obNumber}}</h4>
+					<h6 class="heading">{{obs.natureOfOccurrence}}</h6>
 				</div>
 				</div>
     		</div>
@@ -15,7 +17,7 @@
 				<!-- Status Dropdown -->
 				<div class="row">
 					<div class="col-xs-8">
-						<select class="form-control detailDropdown" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
+						<select [ifAuthorizeDisable]="['OB.U']" class="form-control detailDropdown" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
 							<option *ngFor="let option of asyncStatus | async" [value]="option.statusID">{{option.statusName}}</option>
 							<!--<option [value]="">Solved</option>-->
 						</select>
@@ -112,7 +114,7 @@
 						<div class="col-xs-12">
 							<h6 class="crimeUnitTimeSpan">Comment <i class="material-icons commentIcon">comment</i></h6>
 							<h4 class="crimeUnitDescr">								
-								<textarea class="form-control description" [(ngModel)]="comment" id="exampleTextarea" rows="3" ></textarea>
+								<textarea [ifAuthorizeDisable]="['OB.U']" class="form-control description" [(ngModel)]="comment" id="exampleTextarea" rows="3" ></textarea>
 							</h4>	
 						</div>			
 					</div>

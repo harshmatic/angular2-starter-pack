@@ -153,7 +153,7 @@ export class AddJobComponent implements OnInit {
         "caseFileNumber": "2",
         "natureOfOccurrence": value.natureOfOccurrence,
         "remark": value.remark,
-        "assignedTO": "56c385ae-ce46-41d4-b7fe-08df9aef3333",
+        "assignedTO": null,
         "assignedComments": "123",
         "mapZoomLevel": 12,
         "lattitude": this.latitude,
