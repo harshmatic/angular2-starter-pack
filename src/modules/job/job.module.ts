@@ -19,6 +19,8 @@ import { OccurenceBookService } from '../occurenceBook/services/occurenceBook.se
 import { JobService } from './services/job.service';
 import { StatusService } from '../status/services/status.service';
 import { StatusEffects } from '../status/store/status.effects';
+import { ActivityService } from '../activity/services/activity.service';
+import { ActivityEffects } from '../activity/store/activity.effects';
 import { AreaService } from '../area/services/area.service';
 import { AreaEffects } from '../area/store/area.effects';
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -37,6 +39,7 @@ import { AgmCoreModule } from '@agm/core';
     EffectsModule.run(OccurenceBookEffects),
     EffectsModule.run(StatusEffects),
     EffectsModule.run(AreaEffects),
+    EffectsModule.run(ActivityEffects),
     AgmCoreModule
 
   ],
@@ -46,7 +49,7 @@ import { AgmCoreModule } from '@agm/core';
     AddJobComponent,
     JobEditComponent
   ],
-  providers: [EmployeeService, DepartmentService, OccurenceTypeService, JobService, OccurenceBookService, StatusService, AreaService]
+  providers: [EmployeeService, DepartmentService, ActivityService,OccurenceTypeService, JobService, OccurenceBookService, StatusService, AreaService]
 
 })
 export default class JobModule { }

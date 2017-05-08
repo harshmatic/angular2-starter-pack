@@ -1,8 +1,7 @@
 import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Employee } from '../../../employee/store/employee.model';
-import { EMPLOYEE_ACTIONS } from '../../../employee/store/employee.actions';
+import { ACTIVITY_ACTIONS } from '../../../activity/store/activity.actions';
 declare var $:any;
 @Component({
   moduleId: module.id,
@@ -10,17 +9,17 @@ declare var $:any;
   templateUrl: 'activityFeed.component.html',
 })
 export class ActivityFeedComponent  implements OnInit {
-  officers:any[]=[];
-  asyncOfficer:Observable<any>
+  activities:any[]=[];
+  asyncActivities:Observable<any>
   showTab:boolean=true;
-  constructor(private store: Store<Employee>){}
+  constructor(private store: Store<any>){}
 
   ngOnInit() {
-    // this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
-    // this.asyncOfficer= this.store.select('employee')
-    // this.asyncOfficer.subscribe((res:any) => {
-    //    this.officers = res;
-    // });
+    this.store.dispatch({ type: ACTIVITY_ACTIONS.GET_LIST });
+    this.asyncActivities= this.store.select('activity')
+    this.asyncActivities.subscribe((res:any) => {
+       this.activities = res;
+    });
      
   }
 }

@@ -10,6 +10,7 @@ import {OccurenceTypeReducer} from './occurenceType/store/occurenceType.reducer'
 import {StatusReducer} from './status/store/status.reducer';
 import {EmployeeReducer} from './employee/store/employee.reducer';
 import {ReportsReducer} from './reports/store/reports.reducer';
+import {ActivityReducer} from './activity/store/activity.reducer';
 
 
 export const routing = [
@@ -28,12 +29,14 @@ export const routing = [
   { path: 'jobs', loadChildren: 'modules/job/job.module' },
   { path: 'reports', loadChildren: 'modules/reports/reports.module' },
   { path: 'map', loadChildren: 'modules/maps/maps.module' },
+  { path: 'activity', loadChildren: 'modules/activity/activity.module' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' }
 
 ];
 
-export const ApiBase = "http://192.168.100.103:6070/api/";
+export const ApiBase = "http://localhost:6058/api/";
 export const ApiBaseAuthUrl = "auth/token";
 
 export interface RootState {
@@ -51,7 +54,8 @@ export const moduleReducers = {
   occurenceType:OccurenceTypeReducer,
   status:StatusReducer,
   employee:EmployeeReducer,
-  reports:ReportsReducer
+  reports:ReportsReducer,
+  activity:ActivityReducer
 
 
 }
