@@ -24,6 +24,8 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
   public selectedDept: any;
   public selectedArea: any;
   public selectedRank: any;
+  public selectedOfficer: any;
+  public remark: any;
   vehStartTime: Date;
   officers: any[] = [];
   public obs: any = [];
@@ -86,7 +88,9 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
         this.obs = res;
         this.selectedDept = res.departmentID;
         this.selectedArea = res.areaID;
-        this.selectedRank = res.mstEmployee.designationID;
+        this.selectedRank = res.mstEmployee ? res.mstEmployee.designationID : '';
+        this.selectedOfficer = res.mstEmployee ? res.mstEmployee.employeeID : '';
+        this.remark = res.remark;
         //console.log("obj=>", this.obs);
         this.getOfficer();
       }
@@ -123,7 +127,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
     this.asyncOfficer.subscribe((res: any) => {
       if (Object.keys(res).length > 0) {
         this.officers = res;
-        //console.log("designation=>", this.officers);
+        //console.log("officer=>", this.officers);
       }
 
     });
@@ -145,7 +149,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       });
     }
   }
-  onBack(){
+  onBack() {
     this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: this.obId } });
   }
   onSubmit({ value, valid }: { value: any, valid: boolean }) {
@@ -172,7 +176,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       this.obs.assignedComments = value.remark;
       this.jobService.updateOfficer(this.obs).subscribe(res => {
         //console.log('Done');
-        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Data Saved' });
+        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Officer assigned successfully' });
         //this.router.navigate(['/jobs/jobDetails']);
         this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: this.obId } });
       })
@@ -197,10 +201,10 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       submitFlag = true;
       this.offError = true;
     } else { this.offError = false; }
-    if (value.VehicleID === "" || value.VehicleID === undefined) {
-      submitFlag = true;
-      this.vehAllotmentError = true;
-    } else { this.vehAllotmentError = false; }
+    // if (value.VehicleID === "" || value.VehicleID === undefined) {
+    //   submitFlag = true;
+    //   this.vehAllotmentError = true;
+    // } else { this.vehAllotmentError = false; }
     // if (value.startTime === "" || value.startTime === undefined) {
     //   submitFlag = true;
     //   this.startTimeError = true;
@@ -209,10 +213,10 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
     //   submitFlag = true;
     //   this.posError = true;
     // } else { this.posError = false; }
-    if (value.WeaponAllotment === "" || value.WeaponAllotment === undefined) {
-      submitFlag = true;
-      this.weaponError = true;
-    } else { this.weaponError = false; }
+    // if (value.WeaponAllotment === "" || value.WeaponAllotment === undefined) {
+    //   submitFlag = true;
+    //   this.weaponError = true;
+    // } else { this.weaponError = false; }
     // if (value.collectionTime === "" || value.collectionTime === undefined) {
     //   submitFlag = true;
     //   this.collectionError = true;

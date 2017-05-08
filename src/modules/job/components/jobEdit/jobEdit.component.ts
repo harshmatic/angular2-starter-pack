@@ -99,7 +99,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
       this.obs.mstStatus = null;
       this.obs.statusID = this.selectedStatus;
       this.jobService.updateOfficer(this.obs).subscribe(res => {
-        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Saved' });
+        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status updated' });
         //console.log('Done1');
       });
     } else {
@@ -107,8 +107,14 @@ export class JobEditComponent implements OnInit, OnDestroy {
         "OBID": this.obId,
         "ReveiwComments": this.comment
       };
+      this.obs.mstStatus = null;
+      this.obs.statusID = this.selectedStatus;
+      this.jobService.updateOfficer(this.obs).subscribe(res => {
+        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status and comment saved' });
+        //console.log('Done1');
+      });
       this.occurenceBookService.addReview(payload).subscribe(res => {
-        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Comment Saved' });
+        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Comment saved' });
         //console.log('Done2');
       });
     }
