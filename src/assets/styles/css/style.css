@@ -1195,7 +1195,7 @@ label{
     width: 12px;
     right: 0;
     margin-right: 28px;
-    margin-top: 20px;
+    margin-top: 32px;
 }
 .loginBtn{
 	background: #BE1A21;
@@ -1313,7 +1313,7 @@ label{
 	.loginTextImg {
 		position: absolute;
 		width: 12px;
-		margin-top: 20px;
+		margin-top: 32px;
 		float: right;
 		margin-left: 18em;
 		right:auto!important;
