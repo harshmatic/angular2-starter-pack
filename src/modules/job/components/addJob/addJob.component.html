@@ -2,11 +2,20 @@
 <div class="main-container container">
     <div class="pageName"></div>
 
-        <div class="row">
+       
+    <form class="cards" novalidate (ngSubmit)="onSubmit(jobForm)" [formGroup]="jobForm">
+         <div class="row">
             <div class="col-xs-12">
                 <!--<button class="greyBtn"><i class="fa fa-map-marker" aria-hidden="true"></i>Location</button>-->
+                 
                 <input placeholder="search for location *" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
-                    #search [formControl]="searchControl">
+                style ="background: #C9C9C9!important;
+    color: #000!important;
+    height: 40px!important;
+    box-shadow: none!important;
+    padding-left: 38px!important;
+    font-size: 1.3rem!important;font-weight: 500;" #search [formControl]="searchControl">
+    <i class="material-icons searchIcon">search</i>
             </div>
         </div>
         <br/>
@@ -19,7 +28,6 @@
                 </agm-map>
             </div>
         </div>
-    <form class="cards" novalidate (ngSubmit)="onSubmit(jobForm)" [formGroup]="jobForm">
         <div class="row">
             <div class="form-group col-xs-12">
                 <label for="exampleSelect1">Area<span class="required"> * </span></label>
