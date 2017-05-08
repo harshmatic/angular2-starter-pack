@@ -81,7 +81,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
         this.obId = params['OccurenceBookID'];
       });
 
-    this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { id: this.obId } });
+    this.store.dispatch({ type: OB_ACTIONS.GET_OB, payload: { id: this.obId } });
     this.asyncOb = this.store.select('occurenceBook');
     this.subscriptions.add(this.asyncOb.subscribe((res: any) => {
       if (Object.keys(res).length > 0) {
@@ -91,7 +91,6 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
         this.selectedRank = res.mstEmployee ? res.mstEmployee.designationID : '';
         this.selectedOfficer = res.mstEmployee ? res.mstEmployee.employeeID : '';
         this.remark = res.remark;
-        //console.log("obj=>", this.obs);
         this.getOfficer();
       }
 
@@ -127,7 +126,6 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
     this.asyncOfficer.subscribe((res: any) => {
       if (Object.keys(res).length > 0) {
         this.officers = res;
-        //console.log("officer=>", this.officers);
       }
 
     });
@@ -143,7 +141,6 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       this.asyncOfficer.subscribe((res: any) => {
         if (Object.keys(res).length > 0) {
           this.officers = res;
-          //console.log("designation=>", this.officers);
         }
 
       });
@@ -154,30 +151,10 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
   }
   onSubmit({ value, valid }: { value: any, valid: boolean }) {
     if (!this.validate(value)) {
-      // let payload = {
-      //   "areaID": "411bfab2-0d44-4fb9-8835-184db90f44fa",
-      //   "obTypeID": "758b1995-7f92-4d87-9588-b90800abf222",
-      //   "departmentID": "a1da1d8e-1111-4634-b538-a01709472222",
-      //   "mstStatus": null,
-      //   "statusID": "ebeed096-ea34-43e2-948e-32bb98f31401",
-      //   "obNumber": "2456",
-      //   "obTime": "2017-04-10T19:25:14.9100866",
-      //   "caseFileNumber": "221",
-      //   "natureOfOccurrence": "Nature 221",
-      //   "remark": "Test Remark 221",
-      //   "assignedTO": value.officerID,
-      //   "assignedComments": value.remark,
-      //   "MapZoomLevel": 10,
-      //   "Lattitude": 18.555905,
-      //   "Longitude": 73.805589,
-      //   "Location": "Near Agarrwal Packers and Movers"
-      // }
       this.obs.assignedTO = value.officerID;
       this.obs.assignedComments = value.remark;
       this.jobService.updateOfficer(this.obs).subscribe(res => {
-        //console.log('Done');
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Officer assigned successfully' });
-        //this.router.navigate(['/jobs/jobDetails']);
         this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: this.obId } });
       })
     }
@@ -201,30 +178,6 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       submitFlag = true;
       this.offError = true;
     } else { this.offError = false; }
-    // if (value.VehicleID === "" || value.VehicleID === undefined) {
-    //   submitFlag = true;
-    //   this.vehAllotmentError = true;
-    // } else { this.vehAllotmentError = false; }
-    // if (value.startTime === "" || value.startTime === undefined) {
-    //   submitFlag = true;
-    //   this.startTimeError = true;
-    // } else { this.startTimeError = false; }
-    // if (value.endTime === "" || value.endTime === undefined) {
-    //   submitFlag = true;
-    //   this.posError = true;
-    // } else { this.posError = false; }
-    // if (value.WeaponAllotment === "" || value.WeaponAllotment === undefined) {
-    //   submitFlag = true;
-    //   this.weaponError = true;
-    // } else { this.weaponError = false; }
-    // if (value.collectionTime === "" || value.collectionTime === undefined) {
-    //   submitFlag = true;
-    //   this.collectionError = true;
-    // } else { this.collectionError = false; }
-    // if (value.PossessionTime === "" || value.PossessionTime === undefined) {
-    //   submitFlag = true;
-    //   this.posTimeError = true;
-    // } else { this.posTimeError = false; }
     if (value.remark === "" || value.remark === undefined) {
       submitFlag = true;
       this.RemarkError = true;
