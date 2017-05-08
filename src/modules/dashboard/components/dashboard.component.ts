@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit {
         $(this).fadeOut();
         $(".marker").removeClass('active');
       });
-
+      console.log($(window).width());
       if ($(window).width() >= 768) {
         $('#statBar').removeClass('carousel-inner');
 

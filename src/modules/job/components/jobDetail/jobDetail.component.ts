@@ -12,11 +12,7 @@ declare var $: any;
 @Component({
   moduleId: module.id,
   selector: 'app-job-detail',
-  styles: [`
-    .sebm-google-map-container {
-       height: 300px;
-     }
-  `],
+  styleUrls: ['jobDetail.component.css'],
   templateUrl: 'jobDetail.component.html',
 })
 export class JobDetailComponent implements OnInit {
@@ -61,6 +57,30 @@ export class JobDetailComponent implements OnInit {
     this.queryString = event.target.value;
     this.jobPageNum = 1;
     this.getJobs()
+  }
+  ngAfterViewInit(){
+    $(document).ready(function () {
+    if ($(window).width() <= 767) {
+
+                var offset = $(".stickyRow").offset();
+                var sticky = $(".stickyRow");
+                var additionalPixels = 157;
+
+                $(window).scroll(function () {
+                    var scrollTop = $(window).scrollTop();
+                    if (scrollTop > 156) {
+
+                        if ($(window).scrollTop() > offset.top - additionalPixels) {
+                            $(".stickyRow").addClass('affix');
+                        } else {
+                            $(".stickyRow").removeClass('affix');
+                        }
+                    } else {
+                        $(".stickyRow").removeClass('affix');
+                    }
+                });
+            }
+    });
   }
   onOBClick(id: any) {
     this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: id } });

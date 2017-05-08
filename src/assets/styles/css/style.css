@@ -1719,3 +1719,21 @@ form.cards > .row > .form-group label {
     margin-top: -2px;
 }
 /*************** 4 May 2017 - For Reports Page Ends *************************/
+/************** 8 May 2017 - For ReUI bugs ************************/
+form.cards > .row > .form-group {        
+    height: 100px;
+    }
+    form.cards > .row > .form-group.descrFormGroup {        
+        height: auto!important;
+    }
+    @media (max-width:767px){ 
+        form.cards > .row > .form-group label {  
+            color: #6d6d6d;  font-size: 12px; 
+        }
+    }
+    .pageName { 
+        border:none!important;
+        }
+    form {    
+        border:none!important;
+    }

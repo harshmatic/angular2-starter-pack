@@ -20,6 +20,30 @@ export class OfficerListComponent implements OnInit {
   stopScroll: boolean = false;
   constructor(private store: Store<Employee>, private authService: AuthService) { }
 
+  ngAfterViewInit(){
+    $(document).ready(function () {
+    if ($(window).width() <= 767) {
+
+                var offset = $(".stickyRow").offset();
+                var sticky = $(".stickyRow");
+                var additionalPixels = 157;
+
+                $(window).scroll(function () {
+                    var scrollTop = $(window).scrollTop();
+                    if (scrollTop > 156) {
+
+                        if ($(window).scrollTop() > offset.top - additionalPixels) {
+                            $(".stickyRow").addClass('affix');
+                        } else {
+                            $(".stickyRow").removeClass('affix');
+                        }
+                    } else {
+                        $(".stickyRow").removeClass('affix');
+                    }
+                });
+            }
+    });
+  }
   ngOnInit() {
     this.userDetail = this.authService.getCurrentUser();
     this.officers = [];

@@ -137,10 +137,11 @@
 
 
     <!-------------------- Jobs in Progress ------------------------>
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mapCard">
+    <div class="row cards col-md-7 noMobilePadding noDesktopLeftPadding">
+                <div class="col-xs-12 mapCard noDesktopPadding">
             <h4>Jobs in Progress</h4>
             <!--Map Card-->
+            <div class="mapJobs">
             <!--<div class="mapJobs">
                 <div class="jobMarkers">
                     <span class="criticalJob marker"></span>
@@ -173,7 +174,7 @@
             <agm-map [latitude]="18.550335" [longitude]="73.809956" [zoom]="11">
                 <agm-marker *ngFor="let location of asyncOb|async" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="'/assets/styles/images/red.svg'">
                     <agm-info-window [disableAutoPan]="true">
-                        <div class="row jobContentCard" style="display:block">
+                        <div class="row jobContentCard" >
                             <div class="col-xs-8">
                                 <h3>Armed Robbery In Progress</h3>
                                 <span>Nanyuki-Rumuruti Rd, Nanyuki, Kenya</span>
@@ -185,16 +186,19 @@
                                 <h3>03:12</h3>
                                 <span>Duty Hours</span>
                             </div>
+                            
                         </div>
+                        <div class="closeBtn jobContentCard"><i class="material-icons">&#xE5CD;</i></div>
                     </agm-info-window>
                 </agm-marker>
             </agm-map>
         </div>
     </div>
+    </div>
     <!--jobs in progress ends here-->
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+    <div class="row cards col-md-5 noMobilePadding noDesktopRightPadding">
+        <div class="col-xs-12 noDesktopPadding">
             <h4>Active Jobs</h4>
             <div class="activeJobs ">
                 <h4>TODAY</h4>
@@ -217,7 +221,7 @@
                         <div class="col-xs-4">
                             <!--  <span>{{ob.assignedTime | amDateFormat:'MM/DD/YYYY'}}</span>-->
 
-                            <span>{{ ob.obTime |  amTimeAgo:'true'  }}</span>
+                            {{ ob.obTime |  amTimeAgo:'true'  }}
                         </div>
                     </div>
                 </div>
@@ -228,7 +232,7 @@
     <!--active jobs ends here-->
     <!-------------------- Available Officer ------------------------>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+        <div class="col-xs-12">
             <h4>Top Rated Available Officers</h4>
 
             <!--Officer Row 1-->

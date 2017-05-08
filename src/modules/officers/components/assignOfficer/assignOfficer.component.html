@@ -1,28 +1,21 @@
   <!-------------------- Main Container ------------------------>
         <div class="main-container container">
             <div class="pageName">
-				<div class="row">
+                <h1>Assign Officer</h1>
+                <span>OB ID: {{obs.obNumber}}</span>
+				<!--<div class="row">
 				<div class="col-xs-3">
                     <span class="glyphicon glyphicon-arrow-left" (click)="onBack()" aria-hidden="true"></span>
-                    <!--<button class="viewActivityBtn" (click)="onBack()">Back</button>-->
+                   
 				</div>		
 				<div class="col-xs-9">
-                    <h4 class="heading">Assign Officer</h4>
-                    <h5 class="heading">OB ID: {{obs.obNumber}}</h5>
+                    
 				</div>
-				</div>
+				</div>-->
     		</div>
-            <!--<div class="row cards">
-                <div class="col-xs-6">
-                    <button class="greyBtn"><i class="fa fa-home" aria-hidden="true"></i>Select Dept.</button>
-                </div>
-                <div class="col-xs-6">
-                    <button class="greyBtn"><i class="fa fa-map-marker" aria-hidden="true"></i>Location</button>
-                </div>
-            </div>-->
             
             <form class="cards" novalidate (ngSubmit)="onSubmit(assignOfficerForm)" [formGroup]="assignOfficerForm">
-                <div class="row">
+                <div class="row col-md-6 noMobilePadding noDesktopLeftPadding">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Department<span class="required"> * </span></label>
                         <select formControlName="departmentID" class="form-control" id="exampleSelect1" [(ngModel)]="selectedDept" [class.invalid]="!assignOfficerForm.controls.departmentID.valid"  (change)="selectDept(assignOfficerForm)"> 
@@ -32,7 +25,7 @@
                     </div>
                 </div>
                 <p *ngIf="depError" class="alert alert-danger">Please select department</p>
-                <div class="row">
+                <div class="row col-md-6 noMobilePadding noDesktopRightPadding">
                     <div class="form-group col-xs-12">
                         <label for="area">Area<span class="required"> * </span></label>
                         <select disabled='true' formControlName="areaID" class="form-control" id="area" [class.invalid]="!assignOfficerForm.controls.areaID.valid" [(ngModel)]="selectedArea" (change)="selectDept(assignOfficerForm)"> 
@@ -42,7 +35,7 @@
                     </div>
                 </div>
                 <p *ngIf="areaError" class="alert alert-danger">Please select area</p>
-                <div class="row">
+                <div class="row col-md-6 noMobilePadding noDesktopLeftPadding">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Select Rank<span class="required"> * </span></label>
                         <select formControlName="rankID" class="form-control" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.rankID.valid" [(ngModel)]="selectedRank" (change)="selectDept(assignOfficerForm)">
@@ -52,7 +45,7 @@
                     </div>
                 </div>
                     <p *ngIf="rankError" class="alert alert-danger">Please select Rank</p>
-                <div class="row">
+                <div class="row col-md-6 noMobilePadding noDesktopRightPadding">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Select Officer<span class="required"> * </span></label>
                         <select formControlName="officerID" class="form-control" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.officerID.valid" [(ngModel)]="selectedOfficer"> 
@@ -62,7 +55,7 @@
                     </div>
                 </div>
                     <p *ngIf="offError" class="alert alert-danger">Please select officer</p>
-                <div class="row">
+                <div class="row col-md-6 noMobilePadding noDesktopLeftPadding">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Vehicles Allotment</label>
                         <select formControlName="VehicleID" class="form-control" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.VehicleID.valid">
@@ -86,7 +79,8 @@
                     </div>
                 </div>
                 <!--<p *ngIf="vehAllotmentError" class="alert alert-danger">Please select vehicle allotment</p>-->
-                <div class="row">
+                <div class="row col-md-6 noMobilePadding noDesktopRightPadding">
+
                     <div class="form-group col-xs-6">
                         <label for="exampleInputEmail1">Vehicle Start Time</label>
                         <div class='input-group date' id='VehicleStartTime'>
@@ -112,7 +106,7 @@
                         <!--<p *ngIf="posError" class="alert alert-danger">Please select possession time</p>-->
                     </div>
                 </div>
-                <div class="row">
+                <div class="row col-md-6 noMobilePadding noDesktopLeftPadding">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Weapon Allotment</label>
                         <select class="form-control" formControlName="WeaponAllotment" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.WeaponAllotment.valid">
@@ -141,8 +135,9 @@
                     </div>
                     
                 </div>
+
                 <!--<p *ngIf="weaponError" class="alert alert-danger">Please select weapon allotment</p>-->
-                <div class="row">
+                 <div class="row col-md-6 noMobilePadding noDesktopRightPadding">
                     <div class="form-group col-xs-6">
                         <label for="exampleInputEmail1">Collection Time</label>
                         <div class='input-group date' id='datetimepicker3'>
@@ -170,7 +165,7 @@
                 
                 
                 <div class="row">
-                    <div class="form-group col-xs-12">
+                    <div class="form-group col-xs-12 descrFormGroup">
                         <label for="exampleTextarea">Remarks | Comments<span class="required"> * </span></label>
                         <textarea formControlName="remark" class="form-control description" id="exampleTextarea" [(ngModel)]="remark" rows="5" [class.invalid]="!assignOfficerForm.controls.remark.valid"></textarea>
                         <p *ngIf="RemarkError" class="alert alert-danger" style="margin-bottom: 30px;">Please enter remark</p>

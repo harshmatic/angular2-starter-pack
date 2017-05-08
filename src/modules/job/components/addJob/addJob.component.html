@@ -1,8 +1,6 @@
 <!-------------------- Main Container ------------------------>
 <div class="main-container container">
-    <div class="pageName">
-        <h1>Job ID: Rc-0008956</h1>
-    </div>
+    <div class="pageName"></div>
 
         <div class="row">
             <div class="col-xs-12">
@@ -11,6 +9,7 @@
                     #search [formControl]="searchControl">
             </div>
         </div>
+        <br/>
         <p *ngIf="locationError" class="alert alert-danger">Please enter location</p>
         <div class="row">
             <div class="col-xs-12">
@@ -20,7 +19,6 @@
                 </agm-map>
             </div>
         </div>
-        {{latitude}}
     <form class="cards" novalidate (ngSubmit)="onSubmit(jobForm)" [formGroup]="jobForm">
         <div class="row">
             <div class="form-group col-xs-12">
@@ -156,7 +154,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-xs-12">
+            <div class="form-group col-xs-12 descrFormGroup">
                 <label for="exampleTextarea">Description<span class="required"> * </span></label>
                 <textarea formControlName="remark" name="remark" class="form-control description" id="exampleTextarea" rows="5" [class.invalid]="!jobForm.controls.remark.valid"></textarea>
            <p *ngIf="remarkError" class="alert alert-danger">Please enter remark</p>

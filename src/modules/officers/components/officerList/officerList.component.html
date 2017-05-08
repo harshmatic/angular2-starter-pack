@@ -18,27 +18,36 @@
             <div id="officer-details-tab" class="active tab-pane fade in">
 
                 <hr class="separatorLine" />
-
                 <!--  Search Box -->
+                <div class="row stickyRow">
+                    <div class="col-xs-8 col-md-10 noMobileRightPadding">
 
-                <input (keyup)="onKey($event)" type="text" class="form-control searchBox" placeholder="Search Officers" />
-                <i class="material-icons searchIcon">search</i>
 
+                        <input (keyup)="onKey($event)" type="text" class="form-control searchBox" placeholder="Search Officers" />
+                        <i class="material-icons searchIcon">search</i>
+                    </div>
+
+                    <div class="col-xs-4 col-md-2">
+                        <!--  Desktop Filter Box - Hidden in mobile -->
+                        <div class="filterBox desktopFilterBox">
+                            <div class="dropdown filterDropdown">
+                                <button class="btn btn-primary dropdown-toggle filterToggle" type="button" data-toggle="dropdown">Filter
+										  <i class="material-icons">keyboard_arrow_down</i></button>
+                                <ul class="dropdown-menu filterDropdownMenu">
+                                    <li><a href="#">Filter 1</a></li>
+                                    <li><a href="#">Filter 2</a></li>
+                                    <li><a href="#">Filter 3</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!--  Search Box Ends -->
 
                 <hr class="separatorLine" />
 
                 <div class="filterBox">
                     <h5>Officers List</h5>
-                    <div class="dropdown filterDropdown">
-                        <button class="btn btn-primary dropdown-toggle filterToggle" type="button" data-toggle="dropdown">Filter
-								  <i class="material-icons">keyboard_arrow_down</i></button>
-                        <ul class="dropdown-menu filterDropdownMenu">
-                            <li><a href="#">Filter 1</a></li>
-                            <li><a href="#">Filter 2</a></li>
-                            <li><a href="#">Filter 3</a></li>
-                        </ul>
-                    </div>
                 </div>
 
                 <!-- Main List Box -->
@@ -48,10 +57,10 @@
                     <div *ngFor="let item of officers">
                         <div class="listSubBox">
                             <div class="row">
-                                <div class="col-xs-2 noRightPadding badgeImgBox">
+                                <div class="col-xs-2 col-md-1 noRightPadding badgeImgBox">
                                     <img src="/assets/styles/images/BadgeNew.png" class="badgeImg" />
                                 </div>
-                                <div class="col-xs-10 noLeftPadding">
+                                <div class="col-xs-10 col-md-11 noLeftPadding">
                                     <div class="listcontentBox">
                                         <span class="officerId">{{item.employeeCode}} | {{item.mstDepartment?item.mstDepartment.departmentName:''}} </span>
 
