@@ -165,7 +165,7 @@ label{
     color: #6d6d6d;
 }
 /************ Media Query **************/
-@media only screen  and (max-width : 768px) {
+/*@media only screen  and (max-width : 768px) {*/
     /************************************************** Dashboard Page ***************************************************/
     .navbar-inverse{
         background-color: #f1f2f2 !important;
@@ -616,9 +616,9 @@ label{
         margin-top: -30px;
     }
     .filterDropdownMenu{
-        margin-left: -52px!important;
         min-width: 130px!important;
     }
+	
     .filterDropdownMenu a:hover{
         background:#f5f5f5;
     }
@@ -887,7 +887,7 @@ label{
         font-size: 1.4rem;
     }
     
-    /************************************************** Submit Complaint/ Assign Officer Page ***************************************************/
+    /************************************************** Submit Complaint Page ***************************************************/
     button.greyBtn {
         font-size: 1.4rem;
         background-color: #bdbdbd;
@@ -998,222 +998,548 @@ label{
         margin-bottom: 5rem;
     }
     
-    /************************************************** For Job Details Inner Page ***************************************************/
-    .detailDropdown{
-        height: 40px!important;
-        box-shadow: none!important;
-        border: none!important;
-        color: #BE1A21!important;
-        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
-        border-radius:5px!important;
-    }
-    .detailDropdown {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-    }
-    .detailDropdownArrow{
-        position: absolute;
-        right: 0;
-        margin-top: -31px;
-        margin-right: 20px;
-    }
-    .viewActivityBtn{
-        background: #4E4E4E;
-        color: #fff;
-        font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
-        border: none!important;
-        height: 40px!important;
-        border-radius: 5px!important;
-        font-size: 1.2rem;
-        width: 100%;
-    }
-    .viewActivityBtnBox{
-        padding-left:0!important;
+    /************************************************** Assign Officer Page ***************************************************/
+/*}*/
 
-    }
-    .whitePanel{
-        background:#fff;
-        padding:15px;
-        border-radius: 5px!important;
-        margin-top:15px;
-    }
-    .crimeUnitSpan{
-        margin-top: 0;
-        margin-bottom: 0;
-        font-family: "Conv_AVENIRLTSTD-BOOK", Georgia, serif !important;
-        color: #000;
-        font-weight: bold;
-    }
-    .crimeUnitName{
-        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
-        line-height: 1.2em;
-        margin-bottom: 0;
-    }
-    .crimeUnitAddress{
-        color: #000;
-        font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
-        line-height: 1.2em;
-        font-size:1.5rem;
-        margin-bottom: 0;
-        margin-top: 0;
-    }
-    .rightIcon{
-        float: right;
-        color: #CCCCCC;
-        right: 0;
-    }
-    .crimeUnitTimeSpan{
-        font-family: "Conv_AVENIRLTSTD-BOOK", Georgia, serif !important;
-        color: #878787;
-        font-size: 1.4rem;
-        margin-top: 0;
-        font-weight: bold;
-    }
-    .crimeUnitTimeBlock{
-        color: #000;
-        font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
-        line-height: 1.2em;
-        font-size:1.6rem;
-        margin-bottom: 0;
-        margin-top: 0;
-    }
-    .marginBottomDetail{
-        margin-bottom: 15px;
-    }
-    .crimeUnitList{
-        padding:0;
-        list-style-type:none;
-    }
-    .crimeUnitList li{
-        border-radius:5px;
-        background:#DCDCDC;
-        color:#000;
-        font-size:1.5rem;
-        font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
-        float:left;
-        padding:4px 15px;
-        margin-right:15px;
-        margin-bottom:15px;
-    }
-    .jobDetailMain{
-        margin-bottom:5.3rem;
-    }
-    .noBottomPadding{
-        padding-bottom:0;
-    }
-    .crimeUnitDescr{
-        color: #000;
-        font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
-        line-height: 1.4em;
-        font-size:1.6rem;
-        margin-bottom: 0;
-        margin-top: 0;
-    }
-    .commentPanel{
-        background: #FEF6E2;
-        padding: 15px;
-        border-radius: 5px!important;
-        margin-top: 15px;
-        border:1px solid #fde6ad;
-        min-height: 120px;
-    }
-    .commentIcon{
-        float:right;
-        color:#DAD0B7;
-        margin-top: -3px;
-    }
-    .bottomEditBtn{
-        background: #082E8E!important;
-        border: none!important;
-        border-radius: 5px;
-        color: #fff;
-        font-family: "Conv_AVENIRLTSTD-Light", Georgia, serif !important;
-        padding: 10px;
-        width: 40%!important;
-        float:left;
-        margin-right:3%;
-    }
-    .bottomAssignBtn{
-        background: #BE1A21;
-        border: none!important;
-        border-radius: 5px;
-        color: #fff;
-        font-family: "Conv_AVENIRLTSTD-Light", Georgia, serif !important;
-        padding: 10px;
-        width: 57%!important;
-        float:left;
-    }
-    
-    /************************************************** For Login Page ***************************************************/
-    .loginMain{
-        height:100vh;
-        background-image:url('../images/loginMap.png');
-        background-size:cover;
-        padding-left:15px;
-        padding-right:15px;	
-        padding-top: 2rem;
-    }
-    .loginTopImg{
-        width: 10rem;
-        margin: 0 auto;
-        text-align:center;
-        margin-bottom: 2rem;
-        margin-top: 2rem;
-    }
-    .loginTopPanel{
-        text-align:center;
-    }
-    .loginText{
-        border:none!important;
-        box-shadow:none!important;
-        padding-left:0!important;
-    }
-    .loginText::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-        color: grey!important;
-    }
-    .loginText::-moz-placeholder { /* Firefox 19+ */
-        color: grey!important;
-    }
-    .loginText:-ms-input-placeholder { /* IE 10+ */
-        color: grey!important;
-    }
-    .loginText:-moz-placeholder { /* Firefox 18- */
-        color: grey!important;
-    }
-    .loginPanel{
-        background: #fff;
-        padding: 10px 15px;
-        border-radius: 5px!important;
-        margin-top: 15px;
-    }
-    .loginTextImg{
-        position: absolute;
-        width: 12px;
-        right: 0;
-        margin-right: 28px;
-        margin-top: 20px;
-    }
-    .loginBtn{
-        background: #BE1A21;
-        border: none!important;
-        border-radius: 5px;
-        color: #fff;
-        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
-        padding: 10px;
-        width: 100%;
-        margin-top: 3rem;
-    }
-    .loginLabel{
-        font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
-        font-size:1.3rem;
-    }
-    .loginFooter{
-        text-align: center;
-        bottom: 15px;
-        position: absolute;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        font-family: "Conv_AVENIRLTSTD-BOOK", Georgia, serif !important;
-    }
+
+
+/******* For job details screen - 28 april 2017 - by chaitanya *******/
+.detailDropdown{
+	height: 40px!important;
+    box-shadow: none!important;
+    border: none!important;
+    color: #BE1A21!important;
+	font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+	border-radius:5px!important;
 }
+.detailDropdown {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.detailDropdownArrow{
+	position: absolute;
+    right: 0;
+    margin-top: -31px;
+    margin-right: 20px;
+}
+.viewActivityBtn{
+	background: #4E4E4E;
+    color: #fff;
+    font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
+    border: none!important;
+    height: 40px!important;
+    border-radius: 5px!important;
+    font-size: 1.2rem;
+    width: 100%;
+}
+.viewActivityBtnBox{
+	padding-left:0!important;
+	
+}
+.whitePanel{
+	background:#fff;
+	padding:15px;
+	border-radius: 5px!important;
+	margin-top:15px;
+}
+.crimeUnitSpan{
+	margin-top: 0;
+    margin-bottom: 0;
+	font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
+	color: #000;
+}
+.crimeUnitName{
+	font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+	line-height: 1.2em;
+	margin-bottom: 0;
+}
+.crimeUnitAddress{
+	color: #000;
+	font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
+	line-height: 1.2em;
+	font-size:1.5rem;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+.rightIcon{
+	float: right;
+    color: #CCCCCC;
+    right: 0;
+}
+.crimeUnitTimeSpan{
+	font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+	color: #878787;
+	font-size:1.3rem;
+	margin-top:0;
+}
+.crimeUnitTimeBlock{
+	color: #000;
+	font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
+	line-height: 1.2em;
+	font-size:1.6rem;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+.marginBottomDetail{
+	margin-bottom: 15px;
+}
+.crimeUnitList{
+	padding:0;
+	list-style-type:none;
+}
+.crimeUnitList li{
+	border-radius:5px;
+	background:#DCDCDC;
+	color:#000;
+	font-size:1.5rem;
+	font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
+	float:left;
+	padding:4px 15px;
+	margin-right:15px;
+	margin-bottom:15px;
+}
+.jobDetailMain{
+	margin-bottom:5.3rem;
+}
+.noBottomPadding{
+	padding-bottom:0;
+}
+.crimeUnitDescr{
+	color: #000;
+	font-family: "Conv_AVENIRLTSTD-LIGHT", Georgia, serif !important;
+	line-height: 1.4em;
+	font-size:1.6rem;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+.commentPanel{
+	background: #FEF6E2;
+    padding: 15px;
+    border-radius: 5px!important;
+    margin-top: 15px;
+	border:1px solid #fde6ad;
+	min-height: 120px;
+}
+.commentIcon{
+	float:right;
+	color:#DAD0B7;
+	margin-top: -3px;
+}
+.bottomEditBtn{
+	background: #082E8E!important;
+    border: none!important;
+    border-radius: 5px;
+    color: #fff;
+    font-family: "Conv_AVENIRLTSTD-Light", Georgia, serif !important;
+    padding: 10px;
+    width: 40%!important;
+	float:left;
+	margin-right:3%;
+}
+.bottomAssignBtn{
+	background: #BE1A21;
+    border: none!important;
+    border-radius: 5px;
+    color: #fff;
+    font-family: "Conv_AVENIRLTSTD-Light", Georgia, serif !important;
+    padding: 10px;
+    width: 57%!important;
+	float:left;
+}
+/******* For job details screen - 28 april 2017 - by chaitanya ends *******/
+
+/******************** For Login screen - 28 april 2017 ********************/
+.loginMain{
+	height:100vh;
+	background-image:url('../images/loginMap.png');
+	background-size:cover;
+	padding-left:15px;
+	padding-right:15px;	
+	padding-top: 2rem;
+}
+.loginTopImg{
+	width: 10rem;
+    margin: 0 auto;
+	text-align:center;
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+}
+.loginTopPanel{
+	text-align:center;
+}
+.loginText{
+	border:none!important;
+	box-shadow:none!important;
+	padding-left:0!important;
+}
+.loginText::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	color: grey!important;
+}
+.loginText::-moz-placeholder { /* Firefox 19+ */
+	color: grey!important;
+}
+.loginText:-ms-input-placeholder { /* IE 10+ */
+	color: grey!important;
+}
+.loginText:-moz-placeholder { /* Firefox 18- */
+	color: grey!important;
+}
+.loginPanel{
+	background: #fff;
+    padding: 10px 15px;
+    border-radius: 5px!important;
+    margin-top: 15px;
+}
+.loginTextImg{
+	position: absolute;
+    width: 12px;
+    right: 0;
+    margin-right: 28px;
+    margin-top: 20px;
+}
+.loginBtn{
+	background: #BE1A21;
+    border: none!important;
+    border-radius: 5px;
+    color: #fff;
+    font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+    padding: 10px;
+    width: 100%;
+	margin-top: 3rem;
+}
+.loginLabel{
+	font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+	font-size:1.3rem;
+}
+.loginFooter{
+	text-align: center;
+    bottom: 15px;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+	font-family: "Conv_AVENIRLTSTD-BOOK", Georgia, serif !important;
+}
+/***************9*** For Login screen - 28 april 2017  *************************/
+
+/*************** 2 May 2017 - For Desktop version *************************/
+
+@media (max-width:767px){
+	.noMobilePadding{
+		padding:0!important;
+	}
+}
+@media (min-width:768px){
+	.navbar{
+		border:none!important;
+	}
+	.closeBtn {
+		padding-top: 0.5%;
+		right: 25.5%;
+	}
+	.mapJobs > .row {
+		position: absolute;
+		bottom: 1rem;
+		left: 2rem;
+		right: 3rem;
+		margin-top: 1rem;
+		background-color: #fff;
+		width: 50%;
+		height: 50% !important;
+		margin: 0 auto;
+	}
+	.mapJobs > .row > .col-xs-8 > h3 {
+		font-size: 2rem !important;
+	}
+	.mapJobs > .row > .col-xs-8 > span {
+		font-size: 1.5rem !important;
+	}
+	.mapJobs > .row > .col-xs-8 > div {
+		font-size: 1.4rem;
+	}
+	.availableOfficer {		
+		width: 50%;
+		float: left;
+	}
+	.jobOfcDetail > div.col-xs-8 > img {
+		width: auto;
+	}
+	.mapCard {
+		margin-top:0;
+	}
+	.noMobilePadding{
+		margin-left:0!important;
+		margin-right:0!important;
+	}
+	.noDesktopLeftPadding{
+		padding-left:0!important;
+	}
+	.noDesktopRightPadding{
+		padding-right:0!important;
+	}
+	.noDesktopPadding{
+		padding:0!important;
+	}
+	.navbar-inverse {
+		background-color: #222!important;
+	}
+	.activityImg {
+		width: 4rem;
+		margin: 0 auto;
+	}
+	.activityTable tr td:first-child {
+		width: 15%!important;
+		text-align: center;
+	}
+	.activityAction a i {
+		float: none;
+	}
+	.loginTopImg {
+		width: 10rem;
+		margin: 0 auto;
+		text-align: center;
+		margin-bottom: 4rem;
+		margin-top: 2rem;
+	}
+	.loginPanel {
+		background: #fff;
+		padding: 10px 15px;
+		border-radius: 5px!important;
+		margin-top: 15px;
+		width: 360px;
+		margin: 0 auto;
+		margin-bottom: 15px;
+	}
+	.loginTextImg {
+		position: absolute;
+		width: 12px;
+		margin-top: 20px;
+		float: right;
+		margin-left: 18em;
+		right:auto!important;
+	}
+	.loginBtn {		
+		margin-top: 3rem;
+		margin: 0 auto;
+		width: 360px;
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin-top: 15px;
+	}
+	.mapJobs {
+		background-size:cover;
+		height: 540px;
+	}
+	.jobDetail > .statusOpen > span, .jobDetail > .statusCourt > span {		
+		width: 90px;
+		float: right;
+		font-size: 12px!important;
+	}
+	.statusOpen{
+		text-align:right;
+	}
+	.jobOfcDetail > div.col-xs-4 {
+		text-align: right;
+	}
+	.officer-tabs li {
+		text-align: center;
+		width: 20%;
+		float: none!important;
+		display: inline-block!important;
+	}
+	.bottomContainer {
+        text-align: center;
+	}
+	.bottomContainer button {
+        width: 200px;
+		margin: 0 auto;
+	}
+	.caseRow .caseStatus {
+        width: 100px;
+		text-align: center;
+		float: right;
+	}
+	.badgeImg {
+		width: 35px;
+	}
+	.listSubBox{
+		width:100%;
+	}
+	.bottomEditBtn{
+		width:15%!important;
+		margin-right:15px!important;
+		float: none;
+	}
+	.bottomAssignBtn{
+		width:15%!important;
+		float: none;
+	}
+	.detailDropdown, .viewActivityBtn{
+		margin-top:15px;
+	}
+}
+/*************** 2 May 2017 - For Desktop version Ends *************************/
+
+
+.caseRow .caseStatus.open {
+	border-radius: 4px!important;
+    padding: 2% 6% 2% 6%!important;
+    margin-top: 10px!important;
+    display: block!important;
+    text-align: center!important;
+    width: 90px!important;
+    float: right!important;
+    font-size: 12px!important;
+    border: 1px solid #000!important;
+	background:#fff!important;
+	color:#000!important;
+}
+.caseRow .caseStatus.incourt {
+    border-radius: 4px!important;
+    padding: 2% 4% 2% 4%!important;
+    margin-top: 10px!important;
+    display: block!important;
+    text-align: center!important;
+    width: 90px!important;
+    float: right!important;
+    font-size: 12px!important;
+    border: 1px solid #b7b7b7!important;
+    background: #b7b7b7!important;
+    color: #fff!important;
+}
+.caseRow .caseStatus.closed {
+	border-radius: 4px!important;
+    padding: 2% 4% 2% 4%!important;
+    margin-top: 10px!important;
+    display: block!important;
+    text-align: center!important;
+    width: 90px!important;
+    float: right!important;
+    font-size: 12px!important;
+    border: 1px solid #BE1A21!important;
+    background: #BE1A21!important;
+    color: #fff!important;
+}
+form.cards > .row > .form-group label {
+    color: #6d6d6d;
+    font-size: 14px;
+}
+/*************** 3 May 2017 - For Desktop version *************************/
+@media (min-width:768px){
+	form.cards {		
+		width: 70%;
+		margin: 0 auto!important;
+		margin-top: 2.5rem !important;
+	}
+	.selectLocationBox{
+		text-align:center;
+	}
+	button.greyBtn {		
+		width: 28%;		
+		margin: 0 auto;
+	}
+	.alignRightDesktop{
+		text-align:right;
+	}
+	.alignLeftDesktop{
+		text-align:left;
+	}
+	.searchBox {
+		
+	}
+	/*.desktopFilterBox{
+		display:block;
+	}*/
+	
+	.activeJobs {
+        height: 540px;
+	}
+	.availableOfficer{
+		float:left!important;
+		width:50%!important;
+	}
+}
+.desktopFilterBox .filterDropdown {
+	float: right;
+	margin-top: 6px!important;
+	width:100%!important;
+}
+.desktopFilterBox  .filterToggle {
+	height: 40px!important;
+	margin-top: -7px!important;
+	font-size: 12px!important;
+	width:100%!important;
+}
+.gobackBtn{
+	padding: 8px 15px 8px 5px;
+    background: #082E8E;
+    color: #fff!important;
+    text-decoration: none!important;
+    border-radius: 5px;
+}
+.searchBox {
+}
+.gobackBtn:hover{
+	background: #082E8E!important;	
+	text-decoration: none!important;
+}
+.gobackBtn i{
+	vertical-align: middle!important;
+    font-size: 20px!important;
+    margin-top: -2px;
+}
+@media (min-width:768px){
+	.noMobileRightPadding{
+		padding-right:15px!important;
+	}
+	.noMobileLeftPadding{
+		padding-left:15px!important;
+	}
+}
+@media (max-width:767px){
+	.noMobileLeftPadding{
+		padding-left:0!important;
+	}
+	.noMobileRightPadding{
+		padding-right:0!important;
+	}	
+}
+
+.affix {
+    top: 0;
+    width: 100%!important;
+    z-index: 999999!important;
+    position: fixed!important;
+    /*margin-top: 60px!important;*/
+    padding-top:8px;
+	padding-bottom:8px;
+	background:#fff;
+	-webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+}
+.goBackLink{
+	display:none;
+}
+@media (max-width:767px){
+	.filterDropdownMenu{			
+		margin-left: -50px!important;
+		min-width: 130px!important;
+		margin-top: 2px!important;
+	}
+	.headerBox{
+		display:none;
+	}
+	.goBackLink{
+		display: block;
+		margin-left: 5px;
+		margin-top: 12px;
+		width: 30px;
+	}
+	.goBackLink i{
+		font-size: 30px!important;
+		color:#000!important;
+	}
+}
+
+/*************** 3 May 2017 - For Desktop version Ends *************************/

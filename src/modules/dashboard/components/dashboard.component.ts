@@ -10,6 +10,7 @@ import { TimeAgoPipe } from './dashboard-time-ago.pipe';
 import * as moment from 'moment';
 import { REPORTS_ACTIONS } from '../../reports/store/reports.actions';
 import { AuthService } from '../../../app/core/index';
+declare var $: any;
 
 @Component({
   moduleId: module.id,
@@ -61,6 +62,30 @@ export class DashboardComponent implements OnInit {
 
 
 
+  }
+  ngAfterViewInit() {
+    $(document).ready(function () {
+
+      $(".marker").click(function () {
+        $("span.active").removeClass('active');
+        $(".jobContentCard").fadeOut(500);
+        $(this).addClass('active');
+        $(".jobContentCard").fadeIn(500);
+      });
+      $('.closeBtn').on("click", function () {
+        $(this).siblings('div.row').fadeOut();
+        $(this).addClass('noDisplay');
+        $(this).fadeOut();
+        $(".marker").removeClass('active');
+      });
+
+      if ($(window).width() >= 768) {
+        $('#statBar').removeClass('carousel-inner');
+
+        $('#myCarousel').children('.carousel-indicators').css('display', 'none');
+
+      }
+    });
   }
 
 }
