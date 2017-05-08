@@ -35,7 +35,7 @@
                 <div class="row">
                     <div class="form-group col-xs-12">
                         <label for="area">Area<span class="required"> * </span></label>
-                        <select formControlName="areaID" class="form-control" id="area" [class.invalid]="!assignOfficerForm.controls.areaID.valid" [(ngModel)]="selectedArea" (change)="selectDept(assignOfficerForm)"> 
+                        <select disabled='true' formControlName="areaID" class="form-control" id="area" [class.invalid]="!assignOfficerForm.controls.areaID.valid" [(ngModel)]="selectedArea" (change)="selectDept(assignOfficerForm)"> 
                             <option value="" disabled selected>select Area</option>
                             <option *ngFor="let option of asyncArea | async" [value]="option.areaID">{{option.areaName}}</option>
                         </select>
