@@ -157,7 +157,7 @@
             <div class="form-group col-xs-12 descrFormGroup">
                 <label for="exampleTextarea">Description<span class="required"> * </span></label>
                 <textarea formControlName="remark" name="remark" class="form-control description" id="exampleTextarea" rows="5" [class.invalid]="!jobForm.controls.remark.valid"></textarea>
-           <p *ngIf="remarkError" class="alert alert-danger">Please enter remark</p>
+           <p *ngIf="remarkError" class="alert alert-danger desc">Please enter remark</p>
             </div>
         </div>
         

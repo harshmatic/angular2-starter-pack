@@ -116,8 +116,7 @@
                                 </div>
 
                                 <div class="jobOfcDetail">
-                                    <div class="col-xs-8"><img class="img-responsive imgBadge" src="assets/styles/images/badge.png" alt="badge">                                        {{ob.mstEmployee?ob.mstEmployee.firstName + " " + ob.mstEmployee.lastName : "Not
-                                        Assigned"}}
+                                    <div class="col-xs-8"><img class="img-responsive imgBadge" src="assets/styles/images/badge.png" alt="badge">{{ob.mstEmployee?ob.mstEmployee.firstName + " " + ob.mstEmployee.lastName : "Not Assigned"}}
                                     </div>
                                     <div class="col-xs-4">{{ ob.obTime | amTimeAgo:'true' }}</div>
                                 </div>

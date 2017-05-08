@@ -7,7 +7,6 @@ import { Pipe, ChangeDetectorRef, PipeTransform } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../../../app/core/index';
 import { ActivatedRoute, Router } from '@angular/router';
-//import {TimeAgoPipe} from '../../../dashboard/components/dashboard-time-ago.pipe';
 declare var $: any;
 @Component({
   moduleId: module.id,
@@ -30,23 +29,19 @@ export class JobDetailComponent implements OnInit {
 
   ngOnInit() {
     this.userDetail = this.authService.getCurrentUser();
-    //this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "" } });
     this.getJobs();
     this.asyncOb = this.store.select('occurenceBook');
 
     this.asyncOb.subscribe((res: any) => {
-      // this.obs = res;
       for (let i = res.length - 1; i >= 0; i--) {
         this.obs.push(res[i]);
       }
-      console.log('occ =>', this.obs);
       if (res.length > 0) {
         this.jobPageNum++;
         this.stopScroll = false;
       } else {
         this.stopScroll = true;
       }
-      //console.log('occurence=>',this.obs);
     })
 
   }
@@ -58,28 +53,28 @@ export class JobDetailComponent implements OnInit {
     this.jobPageNum = 1;
     this.getJobs()
   }
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     $(document).ready(function () {
-    if ($(window).width() <= 767) {
+      if ($(window).width() <= 767) {
 
-                var offset = $(".stickyRow").offset();
-                var sticky = $(".stickyRow");
-                var additionalPixels = 157;
+        var offset = $(".stickyRow").offset();
+        var sticky = $(".stickyRow");
+        var additionalPixels = 157;
 
-                $(window).scroll(function () {
-                    var scrollTop = $(window).scrollTop();
-                    if (scrollTop > 156) {
+        $(window).scroll(function () {
+          var scrollTop = $(window).scrollTop();
+          if (scrollTop > 156) {
 
-                        if ($(window).scrollTop() > offset.top - additionalPixels) {
-                            $(".stickyRow").addClass('affix');
-                        } else {
-                            $(".stickyRow").removeClass('affix');
-                        }
-                    } else {
-                        $(".stickyRow").removeClass('affix');
-                    }
-                });
+            if ($(window).scrollTop() > offset.top - additionalPixels) {
+              $(".stickyRow").addClass('affix');
+            } else {
+              $(".stickyRow").removeClass('affix');
             }
+          } else {
+            $(".stickyRow").removeClass('affix');
+          }
+        });
+      }
     });
   }
   onOBClick(id: any) {
