@@ -3,9 +3,9 @@
     <div class="officerListMainBox">
         <ul class="nav nav-tabs officer-tabs">
             <li class="active">
-                <a >Officer Detail</a>
+                <a>Officer Detail</a>
             </li>
-            <li >
+            <li>
                 <a [routerLink]="['/officers/activityFeed']">Activity Feed</a>
             </li>
         </ul>
@@ -21,7 +21,7 @@
 
                 <!--  Search Box -->
 
-               <input (keyup)="onKey($event)" type="text" class="form-control searchBox" placeholder="Search Officers" />
+                <input (keyup)="onKey($event)" type="text" class="form-control searchBox" placeholder="Search Officers" />
                 <i class="material-icons searchIcon">search</i>
 
                 <!--  Search Box Ends -->
@@ -42,12 +42,8 @@
                 </div>
 
                 <!-- Main List Box -->
-                <div class="mainListBox"
-                    infiniteScroll
-                    [infiniteScrollDistance]="2"
-                    [infiniteScrollThrottle]="500"
-                    (scrolled)="getOfficer()">
-                    <div class="row"  *ngFor="let ob of asyncOfficer|async" ></div>
+                <div class="mainListBox" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="getOfficer()">
+                    <div class="row" *ngFor="let ob of asyncOfficer|async"></div>
                     <div *ngIf="officers.length==0">No Record Found</div>
                     <div *ngFor="let item of officers">
                         <div class="listSubBox">
@@ -66,18 +62,20 @@
                                             <span class="contact"><i class="material-icons">phone</i> {{item.mobile}}</span>
                                         </h5>
 
-                                        <div class="row caseRow">
+                                        <div class="row caseRow" *ngIf="item.mstOccurrenceBooks.length>0">
                                             <div class="col-xs-12">
                                                 <span class="assignedLabel">
 															Case Assigned
 															<label class="priorityIconOfficer red"></label>
 														</span>
                                             </div>
-                                            <div class="col-xs-7">
-                                                <span class="caseDescr">{{item.mstOccurrenceBooks.length>0?item.mstOccurrenceBooks[0].obNumber:''}} : {{item.mstOccurrenceBooks.length>0?item.mstOccurrenceBooks[0].assignedComments:''}} </span>
-                                            </div>
-                                            <div class="col-xs-5">
-                                                <label class="caseStatus open">Open</label>
+                                            <div *ngFor="let ob of item.mstOccurrenceBooks">
+                                                <div class="col-xs-7">
+                                                    <span class="caseDescr">{{ob.obNumber}} : {{ob.natureOfOccurrence}} </span>
+                                                </div>
+                                                <div class="col-xs-5">
+                                                    <label class="caseStatus open">{{ob.mstStatus.statusName}}</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +91,7 @@
 
             </div>
             <!---------------------- Officer Details tab content Ends -------------------------->
-            </div>
+        </div>
 
         <!-- Tab content Ends -->
 
@@ -103,6 +101,6 @@
 <!-- Main Container End here -->
 
 <!-- Add new officer -->
-<div class="bottomContainer" *ngIf="false" >
+<div class="bottomContainer" *ngIf="false">
     <button>Add New Officer</button>
 </div>

@@ -19,10 +19,10 @@ declare var $: any;
   `],
   templateUrl: 'jobDetail.component.html',
 })
-export class JobDetailComponent implements OnInit{
-  jobPageNum:number=1;
-  userDetail:any;
-  stopScroll=false
+export class JobDetailComponent implements OnInit {
+  jobPageNum: number = 1;
+  userDetail: any;
+  stopScroll = false
   obs: any[] = [];
   asyncOb: Observable<any>
   showTab: boolean = true;
@@ -40,9 +40,10 @@ export class JobDetailComponent implements OnInit{
 
     this.asyncOb.subscribe((res: any) => {
       // this.obs = res;
-      for (let i = 0; i < res.length; i++) {
+      for (let i = res.length - 1; i > 0; i--) {
         this.obs.push(res[i]);
       }
+      console.log('occ =>', this.obs);
       if (res.length > 0) {
         this.jobPageNum++;
         this.stopScroll = false;
@@ -67,11 +68,11 @@ export class JobDetailComponent implements OnInit{
   onCreateJob() {
     this.router.navigate(['/jobs/addJob']);
   }
-  getJobs(){
-    if(!this.stopScroll && this.jobPageNum>0) {
-       this.store.dispatch({ 
-         type: OB_ACTIONS.GET_LIST,
-         payload:{ search: this.queryString, pageNum:this.jobPageNum,pageSize:5,areaId:this.userDetail.areaID }
+  getJobs() {
+    if (!this.stopScroll && this.jobPageNum > 0) {
+      this.store.dispatch({
+        type: OB_ACTIONS.GET_LIST,
+        payload: { search: this.queryString, pageNum: this.jobPageNum, pageSize: 5, areaId: this.userDetail.areaID }
       });
     }
   }
