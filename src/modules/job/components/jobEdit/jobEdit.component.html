@@ -3,10 +3,12 @@
 			<div class="pageName">
 				<div class="row">
 				<div class="col-xs-3">
-					<button class="viewActivityBtn" [routerLink]="['/jobs/jobDetails']">Back</button>
+					<span class="glyphicon glyphicon-arrow-left" [routerLink]="['/jobs/jobDetails']" aria-hidden="true"></span>
+					<!--<button class="viewActivityBtn" [routerLink]="['/jobs/jobDetails']">Back</button>-->
 				</div>		
 				<div class="col-xs-9">
 					<h4 class="heading">OB ID: {{obs.obNumber}}</h4>
+					<h6 class="heading">{{obs.natureOfOccurrence}}</h6>
 				</div>
 				</div>
     		</div>
