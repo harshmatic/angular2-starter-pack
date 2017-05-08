@@ -25,6 +25,8 @@ import { TwainService } from './twain/twain.service';
 import { BannerComponent } from './banner/banner.component';
 //import { WelcomeComponent } from './welcome/welcome.component';
 import { IfAuthorizeDirective } from './directives/ifAuthorize.directive';
+import { IfAuthorizeDisableDirective } from './directives/ifAuthorizeDisable.directive';
+
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { TimeAgoPipe } from '../../modules/dashboard/components/dashboard-time-ago.pipe';
 import {
@@ -51,6 +53,7 @@ export const components = [
   TwainComponent,
   BannerComponent,
   IfAuthorizeDirective,
+  IfAuthorizeDisableDirective
  // WelcomeComponent
 ];
 
