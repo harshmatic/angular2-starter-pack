@@ -300,9 +300,9 @@ label{
     }
     
     /************ Map card **************/
-    .jobContentCard{
+    /*.jobContentCard{
         display: none;
-    }
+    }*/
     .mapCard{
         margin-top: 5rem;
     }
@@ -325,7 +325,7 @@ label{
         width: 97%;
         height: 50% !important;
     }
-    .mapJobs > .row > .col-xs-8, .mapJobs > .row > .col-xs-4{
+    .jobContentCard > .col-xs-8, .jobContentCard > .col-xs-4{
         padding: 0 !important;
         height: 100%;
         padding: 1rem !important;
@@ -335,11 +335,11 @@ label{
         background-color: #F3F3F3;
         text-align: left;
     }
-    .mapJobs > .row > .col-xs-8 > h3{
+    .jobContentCard > .col-xs-8 > h3{
         font-size: 1.8rem !important;
         margin-bottom: 0 !important;
     }
-    .mapJobs > .row > .col-xs-8 > span{
+    .jobContentCard > .col-xs-8 > span{
         font-size: 1.4rem !important;
     }
     .mapJobs > .row > .col-xs-4 > h3{
@@ -349,14 +349,14 @@ label{
         font-size: 1.4rem !important;
         font-weight: bold
     }
-    .mapJobs > .row > .col-xs-8 > div{
+    .jobContentCard > .col-xs-8 > div{
         margin-top: 6% !important;
         font-weight: bold;
         color: #153994;
         font-size: 1.6rem;
         font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
     }
-    .mapJobs > .row > .col-xs-8 > div > img{
+    .jobContentCard > .col-xs-8 > div > img{
         display: inline-block !important;
         margin-right: 1rem !important;
     }
@@ -460,15 +460,23 @@ label{
     .activeJobs > .row > h5{
         color: #454545;
     }
-    .priorityIcon{
+        .priorityIcon{
         display: inline-block;
         width: 10px;
         height: 10px;
-        background-color: #BE1A21;
         transform: rotate(45deg);
          -ms-transform: rotate(45deg); /* IE 9 */
          -webkit-transform: rotate(45deg);
         margin-right: 1rem;
+    }
+.priorityIcon.red{
+        background-color: #BE1A21;
+    }
+    .priorityIcon.orange{
+        background-color: #FA7D19;
+    }
+    .priorityIcon.blue{
+        background-color: #2D8CEE;
     }
     .jobDetail > div.col-xs-8 > h4{
         font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;    
@@ -477,10 +485,25 @@ label{
     .statusOpen > span{
         border: 1px solid #000;
     }
+    .statusClose > span{
+        background:#BE1A21;
+    }
     .statusCourt > span{
         background-color: #b7b7b7;
         color: #fff;
     }
+    .statusAssigned > span {    
+        background-color: #0d3fbc;    
+        color: #fff;
+        }
+    statusProgress > span {    
+        background-color: #eea404;    
+        color: #fff;
+        }
+    .statusReviewed > span {   
+         background-color: #1ea5e9;    
+         color: #fff;
+         }
     .jobDetail > .statusOpen > span, .jobDetail > .statusCourt > span{
         font-size: 1.4rem !important;
         -webkit-border-radius: 4px;
@@ -861,17 +884,17 @@ label{
         text-align: center;
         padding-top: 1.6%;
     }
-    .mapJobs > .row > .col-xs-8 > h3 {
+    .jobContentCard > .col-xs-8 > h3 {
         font-size: 1.5rem !important;
         margin-bottom: 0.5rem !important;
     }
-    .mapJobs > .row > .col-xs-8 > span {
+    .jobContentCard > .row > .col-xs-8 > span {
         font-size: 1.3rem !important;
     }
-    .mapJobs > .row > .col-xs-8 > div {
+    .jobContentCard > .row > .col-xs-8 > div {
         font-size: 1.3rem;
     }
-    .mapJobs > .row > .col-xs-8 > div > img {
+    .jobContentCard > .row > .col-xs-8 > div > img {
         width: 1.7rem;
     }
     .criticalJob, .majorJob, .minorJob {
@@ -1011,10 +1034,6 @@ label{
     color: #BE1A21!important;
 	font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
 	border-radius:5px!important;
-}
-.detailDropdown {
-    -webkit-appearance: none;
-    -moz-appearance: none;
 }
 .detailDropdownArrow{
 	position: absolute;
@@ -1248,13 +1267,13 @@ label{
 		height: 50% !important;
 		margin: 0 auto;
 	}
-	.mapJobs > .row > .col-xs-8 > h3 {
+	.jobContentCard > .col-xs-8 > h3 {
 		font-size: 2rem !important;
 	}
-	.mapJobs > .row > .col-xs-8 > span {
+	.jobContentCard > .col-xs-8 > span {
 		font-size: 1.5rem !important;
 	}
-	.mapJobs > .row > .col-xs-8 > div {
+	.jobContentCard > .col-xs-8 > div {
 		font-size: 1.4rem;
 	}
 	.availableOfficer {		

@@ -8,6 +8,8 @@ import * as moment from 'moment';
 import { AuthService } from '../../../../app/core/index';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Priority } from '../../../config';
+import { Status } from '../../../config';
 declare var $: any;
 
 @Component({
@@ -54,6 +56,38 @@ export class AssignedComponent implements OnInit {
     this.jobPageNum = 1;
     this.getJobs()
   }
+  applyPriority(priority) {
+    for (var key in Priority) {
+      if (key == priority) {
+        return Priority[key];
+      } else {
+        return "blue";
+      }
+    }
+  }
+
+  applyStatus(status){
+ 
+  // for (var key in Status) {
+  //    console.log(key)
+  //     if (key == status) {
+        return Status[status];
+    //   } else {
+    //     return Status['Open'];
+    //   }
+    // }
+
+  }
+   applyIcon(priority) {
+    for (var key in Priority) {
+      if (key == priority) {
+        return "/assets/styles/images/"+Priority[key]+".svg";
+      } else {
+        return "/assets/styles/images/blue.svg";
+      }
+    }
+  }
+
   ngAfterViewInit() {
     $(document).ready(function () {
       if ($(window).width() <= 767) {

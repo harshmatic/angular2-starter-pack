@@ -27,6 +27,7 @@ import { AreaEffects } from '../area/store/area.effects';
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AgmCoreModule } from '@agm/core';
 
+
 @NgModule({
   imports: [
     SharedModule,

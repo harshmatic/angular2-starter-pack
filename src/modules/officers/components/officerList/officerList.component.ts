@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Employee } from '../../../employee/store/employee.model';
 import { EMPLOYEE_ACTIONS } from '../../../employee/store/employee.actions';
 import { AuthService } from '../../../../app/core/index';
+import { Status } from '../../../config';
 declare var $: any;
 @Component({
   moduleId: module.id,
@@ -61,7 +62,18 @@ export class OfficerListComponent implements OnInit,OnDestroy {
       }
     });
   }
+  applyStatus(status){
+ 
+  // for (var key in Status) {
+  //    console.log(key)
+  //     if (key == status) {
+        return Status[status];
+    //   } else {
+    //     return Status['Open'];
+    //   }
+    // }
 
+  }
   onKey(event: any) {
     this.stopScroll = false;
     this.officers = []

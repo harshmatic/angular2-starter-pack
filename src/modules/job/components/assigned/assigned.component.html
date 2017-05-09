@@ -68,13 +68,13 @@
                 </div>-->
                 <div class="mapJobs jobActivityMapBox">
                     <agm-map [latitude]="18.550335" [longitude]="73.809956" [zoom]="11">
-                        <agm-marker *ngFor="let location of obs" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="'/assets/styles/images/red.svg'">
+                        <agm-marker *ngFor="let location of obs" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="applyIcon(location.priority)">
                             <agm-info-window [disableAutoPan]="true">
                                 <div class="row jobContentCard" style="display:block">
                                     <div class="col-xs-8">
                                         <h3>{{location.natureOfOccurrence}}</h3>
                                         <span>{{location.location}}</span>
-                                        <div><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Robert
+                                        <div><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">
                                             {{location.mstEmployee?location.mstEmployee.firstName + " " + location.mstEmployee.lastName : "Not Assigned"}}
                                         </div>
                                     </div>
@@ -102,14 +102,14 @@
                             <div class="row" *ngFor="let ob of obs" (click)="onOBClick(ob.obid);">
 
                                 <h5 class="col-xs-12">
-                                    <span class="priorityIcon"></span>{{ob.obNumber}} | {{ob.mstDepartment.departmentName}}
+                                    <span class="priorityIcon" [ngClass]="applyPriority(ob.priority)"></span>{{ob.obNumber}} | {{ob.mstDepartment.departmentName}}
                                 </h5>
                                 <div class="jobDetail">
                                     <div class="col-xs-8">
                                         <h4>{{ob.natureOfOccurrence}}</h4>
                                         <p>{{ob.mstArea.areaName}}</p>
                                     </div>
-                                    <div class="col-xs-4 statusOpen"><span>{{ob.mstStatus.statusName}}</span></div>
+                                    <div class="col-xs-4 statusOpen" [ngClass]="applyStatus(ob.mstStatus.statusName)"><span>{{ob.mstStatus.statusName}}</span></div>
                                 </div>
 
                                 <div class="jobOfcDetail">
