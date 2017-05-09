@@ -36,7 +36,7 @@ export class JobDetailComponent implements OnInit,OnDestroy {
     this.asyncOb = this.store.select('occurenceBook');
 
     this.subscriptions = this.asyncOb.subscribe((res: any) => {
-      for (let i = res.length - 1; i >= 0; i--) {
+     for(let i=0; i<res.length;i++){
         this.obs.push(res[i]);
       }
       if (res.length > 0) {

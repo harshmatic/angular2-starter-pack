@@ -9,3 +9,22 @@
 .sebm-google-map-container {
 		height: 350px;
 }
+.jobOfcDetail > .col-xs-7{
+	font-weight: bold;
+    color: #153994;
+    font-size: 1.5rem;
+    font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif;
+}
+.jobOfcDetail > div.col-xs-7 > img {
+    width: 7%;
+    height: auto;
+    display: inline-block !important;
+    margin-right: 1rem !important;
+}
+.jobOfcDetail > div.col-xs-5 {
+    font-family: "Conv_AVENIRLTSTD-HEAVY", Georgia, serif !important;
+    font-size: 1.4rem;
+}
+.statusOpen{
+	    min-height: 69px !important;
+}

@@ -32,13 +32,15 @@ export class AddJobComponent implements OnInit {
   public searchControl: FormControl;
   public zoom: number;
   public location: string = '';
+  public priorityData: any = [{ 'id': 1, 'prio': 'Critical' }, { 'id': 2, 'prio': 'Major' }, { 'id': 2, 'prio': 'Minor' }];
   depError: boolean = false;
   remarkError: boolean = false;
   timeError: boolean = false;
   reportError: boolean = false;
   catError: boolean = false;
   areaError: boolean = false;
-  locationError : boolean = false;
+  locationError: boolean = false;
+  prioError: boolean = false;
   @ViewChild("search")
   public searchElementRef: ElementRef;
 
@@ -66,6 +68,7 @@ export class AddJobComponent implements OnInit {
       areaID: ['', [Validators.required]],
       departmentID: ['', [Validators.required]],
       obTypeID: ['', [Validators.required]],
+      priorityID: ['', [Validators.required]],
       obTime: ['', [Validators.required]],
       natureOfOccurrence: ['', [Validators.required]],
       remark: [''],
@@ -160,7 +163,7 @@ export class AddJobComponent implements OnInit {
         "longitude": this.longitude,
         "location": this.location,
         "assignedTime": "2017-05-03T15:04:23.5032781",
-        "priority": 2
+        "priority": value.priorityID
       }
 
       this.jobService.addJob(payload).subscribe(res => {
@@ -188,6 +191,10 @@ export class AddJobComponent implements OnInit {
       submitFlag = true;
       this.catError = true;
     } else { this.catError = false; }
+    if (value.priorityID === "" || value.priorityID === undefined) {
+      submitFlag = true;
+      this.prioError = true;
+    } else { this.prioError = false; }
     if (value.natureOfOccurrence === "" || value.natureOfOccurrence === undefined) {
       submitFlag = true;
       this.reportError = true;
