@@ -18,7 +18,8 @@ import { AreaService } from '../area/services/area.service';
 import { AreaEffects } from '../area/store/area.effects';
 import { DesignationService } from '../designation/services/designation.service';
 import { DesignationEffects } from '../designation/store/designation.effects';
-
+import { ActivityService } from '../activity/services/activity.service';
+import { ActivityEffects } from '../activity/store/activity.effects';
 import { JobService } from '../job/services/job.service';
 
 @NgModule({
@@ -30,13 +31,14 @@ import { JobService } from '../job/services/job.service';
     EffectsModule.run(DepartmentEffects),
     EffectsModule.run(OccurenceBookEffects),
     EffectsModule.run(AreaEffects),
-    EffectsModule.run(DesignationEffects)
+    EffectsModule.run(DesignationEffects),
+    EffectsModule.run(ActivityEffects)
   ],
   declarations: [
     OfficerListComponent,
     ActivityFeedComponent,
     AssignOfficerComponent
   ],
-  providers: [EmployeeService, JobService, DepartmentService, OccurenceBookService, AreaService, DesignationService]
+  providers: [EmployeeService,ActivityService, JobService, DepartmentService, OccurenceBookService, AreaService, DesignationService]
 })
 export default class OfficerModule { }
