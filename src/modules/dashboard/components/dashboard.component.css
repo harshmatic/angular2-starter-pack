@@ -9,3 +9,9 @@
 .sebm-google-map-container {
 		height: 350px;
 }
+#statInrBox{
+	padding-left: 0px !important;
+}
+#stateNameInrBox{
+	    font-size: small !important;
+}
