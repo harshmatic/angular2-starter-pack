@@ -19,7 +19,7 @@ export class ActivityEffects extends BaseService {
   private getActivity$ = this.actions$
     .ofType(ACTIVITY_ACTIONS.GET_LIST)
    .switchMap(action => 
-       this.activityService.getActivity()
+       this.activityService.getActivity(action.payload.pageNum,action.payload.pageSize)
         .map(res =>{
           this.store.dispatch({ type: ACTIVITY_ACTIONS.GET_LIST_SUCCESS, payload: res})
         })

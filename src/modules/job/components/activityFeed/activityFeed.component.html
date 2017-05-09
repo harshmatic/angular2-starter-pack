@@ -21,10 +21,10 @@
                 </div>
 
                 <!-- Main List Box -->
-                <div class="mainListBox">
+                <div class="mainListBox"  infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="getActivities()">
 
                     <!-- Box 1 -->
-                    <div class="listSubBox" *ngFor="let act of asyncActivities|async" >
+                    <div class="listSubBox" *ngFor="let act of activities" >
                         <div class="">
                             <table class="table activityTable">
                                 <tbody>
@@ -33,7 +33,7 @@
                                             <img src="/assets/styles/images/added.png" class="activityImg" />
                                         </td>
                                         <td>
-                                            <span class="activityTime">14:00 | Today</span>
+                                            <span class="activityTime">{{act.createdOn |  timeAgo }}</span>
                                             <p class="activityDescr">
                                                 {{act.createdByName}}
                                                 <ng-template [ngIf]="act.type == 'Status'">
@@ -59,8 +59,8 @@
                                             </p>
 
                                             <div class="activityAction">
-                                                <a href="">Officer Details</a>
-                                                <a (click)="onOBClick(act.obid);">View Job Details</a>
+                                                <!--<a href="">Officer Details</a>-->
+                                                <a href='' (click)="onOBClick(act.obid);">View Job Details</a>
                                             </div>
 
                                         </td>

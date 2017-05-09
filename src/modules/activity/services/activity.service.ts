@@ -19,8 +19,8 @@ export class ActivityService extends BaseService {
         super(http,CONTEXT, router,messageService);
     }
     // Get All
-    getActivity() {
-        return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
+    getActivity(pageNum?:any,pageSize?:any) {
+        return this.getList$(CONTEXT+'?&pageNumber='+pageNum+'&pageSize='+pageSize, 0, 0, true).map(res => res.json());
     }
 
 
