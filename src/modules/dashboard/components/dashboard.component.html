@@ -32,8 +32,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-4 statInnerBox" *ngFor="let stat of caseReport.occurrencesStatistics?caseReport.occurrencesStatistics.statusWiseStats:''">
-                                    <span>{{stat.statusName}}</span>
+                                <div class="col-xs-4 statInnerBox" id="statInrBox" *ngFor="let stat of caseReport.occurrencesStatistics?caseReport.occurrencesStatistics.statusWiseStats:''">
+                                    <span id="stateNameInrBox">{{stat.statusName}}</span>
                                     <h3>{{stat.count}}</h3>
                                 </div>
                             </div>
@@ -209,11 +209,11 @@
                     <h5 class="col-xs-12"><span class="priorityIcon"></span> {{ob.obNumber}} | {{ob.mstDepartment.departmentName}}
                     </h5>
                     <div class="jobDetail">
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <h4>{{ob.natureOfOccurrence}}</h4>
                             <p>{{ob.mstArea.areaName}}</p>
                         </div>
-                        <div class="col-xs-4 statusOpen"><span>{{ob.mstStatus.statusName}}</span></div>
+                        <div class="col-xs-5 statusOpen"><span>{{ob.mstStatus.statusName}}</span></div>
                     </div>
                     <div class="jobOfcDetail">
                         <div class="col-xs-8"><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge"> {{ob.mstEmployee?ob.mstEmployee.firstName + " " + ob.mstEmployee.lastName : "Not Assigned"}}
