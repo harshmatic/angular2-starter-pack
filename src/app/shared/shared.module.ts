@@ -28,7 +28,7 @@ import { IfAuthorizeDirective } from './directives/ifAuthorize.directive';
 import { IfAuthorizeDisableDirective } from './directives/ifAuthorizeDisable.directive';
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { TimeAgoPipe } from '../../modules/dashboard/components/dashboard-time-ago.pipe';
+import {TimeAgoPipe} from 'time-ago-pipe'
 import {
      SharedModule as PrimSharedModule, CalendarModule,
      GrowlModule
