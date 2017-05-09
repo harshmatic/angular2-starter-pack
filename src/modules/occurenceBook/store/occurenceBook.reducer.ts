@@ -11,6 +11,8 @@ export function OccurenceBookReducer(state: any[] = [], action: Action) {
   switch (action.type) {
     case OB_ACTIONS.GET_LIST_SUCCESS:
         return action.payload;
+    case OB_ACTIONS.GET_LIST_SUCCESS_BY_OFFICER:
+    return action.payload;
     case OB_ACTIONS.ON_FAILED:
         return state;
     case OB_ACTIONS.ADD_SUCCESS:

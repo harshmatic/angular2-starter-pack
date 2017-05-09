@@ -6,6 +6,7 @@ import { JobEditComponent } from './components/jobEdit/jobEdit.component';
 import { AuthGuard } from '../../app/core/index';
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
 import { AddJobComponent } from './components/addJob/addJob.component';
+import { AssignedComponent } from './components/assigned/assigned.component';
 
 const routes: Routes = [
    {
@@ -39,6 +40,13 @@ const routes: Routes = [
   {
     path: 'jobEdit',
     component: JobEditComponent,
+    data: {
+    },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'myObs',
+    component: AssignedComponent,
     data: {
     },
     canActivate: [AuthGuard],

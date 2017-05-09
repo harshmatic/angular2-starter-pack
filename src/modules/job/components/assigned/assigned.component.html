@@ -1,0 +1,139 @@
+<div class="main-container container">
+    <div class="officerListMainBox">
+        <ul class="nav nav-tabs officer-tabs">
+            <li class="active">
+                <a>My OBS Detail</a>
+            </li>
+        </ul>
+        <!-- Tab content -->
+        <div class="tab-content profile-tab-content">
+            <!---------------------- Officer Details tab content -------------------------->
+            <div id="officer-details-tab" class="tab-pane fade in active">
+                <hr class="separatorLine" />
+
+                <!--  Search Box -->
+                <div class="row stickyRow">
+                    <div class="col-xs-8 col-md-10 noMobileRightPadding">
+
+                        <input (keyup)="onKey($event)" type="text" class="form-control searchBox" placeholder="Search Occurence Book" />
+                        <i class="material-icons searchIcon">search</i>
+                    </div>
+
+                    <div class="col-xs-4 col-md-2">
+                        <!--  Desktop Filter Box - Hidden in mobile -->
+                        <div class="filterBox desktopFilterBox">
+                            <div class="dropdown filterDropdown">
+                                <button class="btn btn-primary dropdown-toggle filterToggle" type="button" data-toggle="dropdown">Filter
+										  <i class="material-icons">keyboard_arrow_down</i></button>
+                                <ul class="dropdown-menu filterDropdownMenu">
+                                    <li><a href="#">Filter 1</a></li>
+                                    <li><a href="#">Filter 2</a></li>
+                                    <li><a href="#">Filter 3</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <!--  Search Box Ends -->
+                <!--  Search Box -->
+
+                <!--Map Card-->
+                <!--<div class="mapJobs jobActivityMapBox">
+                    <div class="jobMarkers">
+                        <span class="criticalJob marker"></span>
+                        <span class="criticalJob marker"></span>
+                        <span class="criticalJob marker"></span>
+                        <span class="majorJob marker"></span>
+                        <span class="majorJob marker"></span>
+                        <span class="majorJob marker"></span>
+                        <span class="minorJob marker"></span>
+                        <span class="minorJob marker"></span>
+                        <span class="minorJob marker"></span>
+                        <span class="majorJob marker"></span>
+                    </div>
+                    <div class="row jobContentCard">
+                        <div class="col-xs-8">
+                            <h3>Armed Robbery In Progress</h3>
+                            <span>Nanyuki-Rumuruti Rd, Nanyuki, Kenya</span>
+                            <div><img class="img-responsive imgBadge" src="assets/styles/images/badge.png" alt="badge">Robert
+                                Downey Jr</div>
+                        </div>
+                        <div class="col-xs-4">
+                            <h3>03:12</h3>
+                            <span>Duty Hours</span>
+                        </div>
+                    </div>
+                    <div class="closeBtn jobContentCard"><i class="material-icons">&#xE5CD;</i></div>
+                </div>-->
+                <div class="mapJobs jobActivityMapBox">
+                    <agm-map [latitude]="18.550335" [longitude]="73.809956" [zoom]="11">
+                        <agm-marker *ngFor="let location of obs" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="'/assets/styles/images/red.svg'">
+                            <agm-info-window [disableAutoPan]="true">
+                                <div class="row jobContentCard" style="display:block">
+                                    <div class="col-xs-8">
+                                        <h3>{{location.natureOfOccurrence}}</h3>
+                                        <span>{{location.location}}</span>
+                                        <div><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Robert
+                                            {{location.mstEmployee?location.mstEmployee.firstName + " " + location.mstEmployee.lastName : "Not Assigned"}}
+                                        </div>
+                                    </div>
+                                    <!--<div class="col-xs-4">
+                                        <h3>03:12</h3>
+                                        <span>Duty Hours</span>
+                                    </div>-->
+                                </div>
+                            </agm-info-window>
+                        </agm-marker>
+                    </agm-map>
+                </div>
+
+                <div class="filterBox">
+                    <h5>OB List</h5>
+
+                </div>
+                <div class="row cards">
+                    <div class="col-xs-12">
+                        <!--Active Jobs-->
+                        <div class="activeJobs" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="getJobs()">
+                            <h4>TODAY</h4>
+                            <!--Job Row 1-->
+                            <div *ngIf="obs.length==0">No Record Found</div>
+                            <div class="row" *ngFor="let ob of obs" (click)="onOBClick(ob.obid);">
+
+                                <h5 class="col-xs-12">
+                                    <span class="priorityIcon"></span>{{ob.obNumber}} | {{ob.mstDepartment.departmentName}}
+                                </h5>
+                                <div class="jobDetail">
+                                    <div class="col-xs-8">
+                                        <h4>{{ob.natureOfOccurrence}}</h4>
+                                        <p>{{ob.mstArea.areaName}}</p>
+                                    </div>
+                                    <div class="col-xs-4 statusOpen"><span>{{ob.mstStatus.statusName}}</span></div>
+                                </div>
+
+                                <div class="jobOfcDetail">
+                                    <div class="col-xs-8"><img class="img-responsive imgBadge" src="assets/styles/images/badge.png" alt="badge">{{ob.mstEmployee?ob.mstEmployee.firstName + " " + ob.mstEmployee.lastName : "Not Assigned"}}
+                                    </div>
+                                    <div class="col-xs-4">{{ ob.obTime  | timeAgo}}</div>
+                                </div>
+                            </div>
+                            <!--Job row 1 end here-->
+
+                        </div>
+                        <!--Active Jobs end here-->
+                    </div>
+                </div>
+                <!--active jobs ends here-->
+            </div>
+            <!---------------------- Officer Details tab content Ends -------------------------->
+        </div>
+        <!-- Tab content Ends -->
+    </div>
+</div>
+<!-- Main Container End here -->
+<!-- Add new officer -->
+<div class="bottomContainer" [ifAuthorize]="['OB.C']">
+    <button (click)="onCreateJob();">Create New OB</button>
+</div>
+<!-- Add new officer Ends -->

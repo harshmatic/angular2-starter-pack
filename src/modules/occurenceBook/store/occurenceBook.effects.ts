@@ -26,6 +26,16 @@ export class OccurenceBookEffects extends BaseService {
         })
         .catch(() => Observable.of({ type: OB_ACTIONS.ON_FAILED }))
     );
+    @Effect({ dispatch: false })
+  private getListObOff$ = this.actions$
+    .ofType(OB_ACTIONS.GET_LIST_BY_OFFICER)
+   .switchMap(action => 
+       this.occurenceBookService.getObsOff(action.payload.search,action.payload.pageNum,action.payload.pageSize,action.payload.assignedTo)
+        .map(res =>{
+          this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS_BY_OFFICER, payload: res })
+        })
+        .catch(() => Observable.of({ type: OB_ACTIONS.ON_FAILED }))
+    );
 
   @Effect({ dispatch: false })
   private getOb$ = this.actions$

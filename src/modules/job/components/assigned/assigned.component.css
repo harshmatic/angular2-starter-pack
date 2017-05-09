@@ -1,0 +1,11 @@
+
+
+@media (min-width:768px){
+.sebm-google-map-container {
+		height: 540px !important;
+}
+}
+
+.sebm-google-map-container {
+		height: 350px;
+}

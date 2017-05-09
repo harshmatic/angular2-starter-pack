@@ -7,6 +7,7 @@ import { SharedModule } from '../../app/shared/shared.module';
 import { JobDetailComponent } from './components/jobDetail/jobDetail.component';
 import { JobEditComponent } from './components/jobEdit/jobEdit.component';
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
+import { AssignedComponent } from './components/assigned/assigned.component';
 import { AddJobComponent } from './components/addJob/addJob.component';
 import { EmployeeEffects } from '../employee/store/employee.effects';
 import { OccurenceTypeEffects } from '../occurenceType/store/occurenceType.effects';
@@ -47,7 +48,8 @@ import { AgmCoreModule } from '@agm/core';
     JobDetailComponent,
     ActivityFeedComponent,
     AddJobComponent,
-    JobEditComponent
+    JobEditComponent,
+    AssignedComponent
   ],
   providers: [EmployeeService, DepartmentService, ActivityService,OccurenceTypeService, JobService, OccurenceBookService, StatusService, AreaService]
 
