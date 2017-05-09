@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit,OnDestroy {
     this.asyncOb = this.store.select('occurenceBook')
     this.subscriptions =  this.asyncOb.subscribe((res: any) => {
       if (res.length > 0) {
-        this.obs = res.reverse();
+        this.obs = res;
       }
 
       //console.log("Occurence=>",res);
