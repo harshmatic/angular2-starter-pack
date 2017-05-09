@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit,OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Dashboard } from '../store/dashboard.model';
@@ -10,6 +10,7 @@ import { Pipe, ChangeDetectorRef, PipeTransform } from '@angular/core';
 import * as moment from 'moment';
 import { REPORTS_ACTIONS } from '../../reports/store/reports.actions';
 import { AuthService } from '../../../app/core/index';
+import { Subscription } from 'rxjs/Subscription';
 declare var $: any;
 
 @Component({
@@ -19,7 +20,7 @@ declare var $: any;
   styleUrls: ['dashboard.component.css']
 })
 //@Pipe({ name: 'amDifference' })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit,OnDestroy {
   userDetail: any
   isValid = true;
   officerPageNum: number = 0;
@@ -34,6 +35,7 @@ export class DashboardComponent implements OnInit {
   asyncOfficerReport: Observable<any>;
   obs: any[] = [];
   asyncOb: Observable<any>
+  private subscriptions: Subscription;
   locations: any;
   constructor(private store: Store<Dashboard>, private authService: AuthService) { }
   ngOnInit() {
@@ -41,7 +43,7 @@ export class DashboardComponent implements OnInit {
     this.officers = []
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "", pageNum: 1, pageSize: 5, areaId: this.userDetail.areaID } });
     this.asyncOb = this.store.select('occurenceBook')
-    this.asyncOb.subscribe((res: any) => {
+    this.subscriptions =  this.asyncOb.subscribe((res: any) => {
       if (res.length > 0) {
         this.obs = res.reverse();
       }
@@ -65,6 +67,11 @@ export class DashboardComponent implements OnInit {
 
 
 
+  }
+  ngOnDestroy() {
+    this.store.dispatch({ type: OB_ACTIONS.CLEAR });
+    this.store.dispatch({ type: EMPLOYEE_ACTIONS.CLEAR });
+    this.subscriptions.unsubscribe();
   }
   ngAfterViewInit() {
     $(document).ready(function () {

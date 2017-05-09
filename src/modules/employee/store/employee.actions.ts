@@ -20,6 +20,7 @@ interface IEMPLOYEEActions {
     UPDATE:string;
     GET_LIST_BY_PAGE:string;
     GET_LIST_BY_PAGE_SUCCESS:string;
+    CLEAR:string;
 }
 
 /**
@@ -42,4 +43,5 @@ export const EMPLOYEE_ACTIONS: IEMPLOYEEActions = {
     ON_FAILED: `${CONTEXT}_ON_FAILED`,
     GET_LIST_BY_PAGE_SUCCESS: `${CONTEXT}_GET_LIST_BY_PAGE_SUCCESS`,
     GET_LIST_BY_PAGE: `${CONTEXT}_GET_LIST_BY_PAGE`,
+    CLEAR: `${CONTEXT}_CLEAR`,
 };

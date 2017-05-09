@@ -14,14 +14,14 @@ declare var $: any;
   styleUrls: ['jobDetail.component.css'],
   templateUrl: 'jobDetail.component.html',
 })
-export class JobDetailComponent implements OnInit {
+export class JobDetailComponent implements OnInit,OnDestroy {
   jobPageNum: number = 1;
   userDetail: any;
   stopScroll = false
   obs: any[] = [];
   asyncOb: Observable<any>
   showTab: boolean = true;
-  private subscriptions: Subscription = new Subscription();
+  private subscriptions: Subscription;
   queryString = '';
   constructor(private store: Store<OccurenceBook>, private route: ActivatedRoute,
     private router: Router, private authService: AuthService) { }
@@ -29,15 +29,18 @@ export class JobDetailComponent implements OnInit {
 
   ngOnInit() {
     this.userDetail = this.authService.getCurrentUser();
-    this.getJobs();
+    this.store.dispatch({
+        type: OB_ACTIONS.GET_LIST,
+        payload: { search: this.queryString, pageNum: this.jobPageNum, pageSize: 5, areaId: this.userDetail.areaID }
+    });
     this.asyncOb = this.store.select('occurenceBook');
 
-    this.asyncOb.subscribe((res: any) => {
+    this.subscriptions = this.asyncOb.subscribe((res: any) => {
       for (let i = res.length - 1; i >= 0; i--) {
         this.obs.push(res[i]);
       }
       if (res.length > 0) {
-        this.jobPageNum++;
+       // this.jobPageNum++;
         this.stopScroll = false;
       } else {
         this.stopScroll = true;
@@ -45,7 +48,10 @@ export class JobDetailComponent implements OnInit {
     })
 
   }
-
+  ngOnDestroy() {
+    this.store.dispatch({ type: OB_ACTIONS.CLEAR });
+    this.subscriptions.unsubscribe();
+  }
   onKey(event: any) {
     this.stopScroll = false;
     this.obs = []
@@ -85,6 +91,7 @@ export class JobDetailComponent implements OnInit {
   }
   getJobs() {
     if (!this.stopScroll && this.jobPageNum > 0) {
+      this.jobPageNum++;
       this.store.dispatch({
         type: OB_ACTIONS.GET_LIST,
         payload: { search: this.queryString, pageNum: this.jobPageNum, pageSize: 5, areaId: this.userDetail.areaID }

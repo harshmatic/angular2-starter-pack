@@ -20,6 +20,7 @@ interface IOBActions {
     DELETE:string;
     UPDATE_SUCCESS:string;
     UPDATE:string;
+    CLEAR:string;
 }
 
 /**
@@ -41,5 +42,6 @@ export const OB_ACTIONS: IOBActions = {
     DELETE: `${CONTEXT} DELETE`,
     UPDATE_SUCCESS: `${CONTEXT}UPDATE_SUCCESS`,
     UPDATE: `${CONTEXT}UPDATE`,
+    CLEAR: `${CONTEXT}_CLEAR`,
     ON_FAILED: `${CONTEXT}_ON_FAILED`
 };

@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit,OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Employee } from '../../../employee/store/employee.model';
@@ -10,7 +10,7 @@ declare var $:any;
   selector: 'app-activity-feed',
   templateUrl: 'activityFeed.component.html',
 })
-export class ActivityFeedComponent  implements OnInit {
+export class ActivityFeedComponent  implements OnInit,OnDestroy {
    activities:any[]=[];
   asyncActivities:Observable<any>
   showTab:boolean=true;
@@ -46,5 +46,8 @@ export class ActivityFeedComponent  implements OnInit {
   }
   onOBClick(id: any) {
     this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: id } });
+  }
+  ngOnDestroy() {
+    this.store.dispatch({ type: ACTIVITY_ACTIONS.CLEAR });
   }
 }

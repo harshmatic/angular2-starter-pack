@@ -12,6 +12,8 @@ export function ActivityReducer(state: any[] = [], action: Action) {
         return action.payload;
     case ACTIVITY_ACTIONS.ON_FAILED:
         return state;
+    case ACTIVITY_ACTIONS.CLEAR:
+        return [];
     default:
         return state;
   }

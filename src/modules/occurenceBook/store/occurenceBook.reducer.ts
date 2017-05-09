@@ -12,7 +12,7 @@ export function OccurenceBookReducer(state: any[] = [], action: Action) {
     case OB_ACTIONS.GET_LIST_SUCCESS:
         return action.payload;
     case OB_ACTIONS.GET_LIST_SUCCESS_BY_OFFICER:
-    return action.payload;
+        return action.payload;
     case OB_ACTIONS.ON_FAILED:
         return state;
     case OB_ACTIONS.ADD_SUCCESS:
@@ -23,6 +23,8 @@ export function OccurenceBookReducer(state: any[] = [], action: Action) {
         return action.payload;
     case OB_ACTIONS.GET_OB_SUCCESS:
         return action.payload;
+    case OB_ACTIONS.CLEAR:
+        return [];
     default:
         return state;
   }

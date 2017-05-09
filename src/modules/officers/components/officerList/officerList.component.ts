@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit,OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Employee } from '../../../employee/store/employee.model';
@@ -10,7 +10,7 @@ declare var $: any;
   selector: 'app-officerList',
   templateUrl: 'officerList.component.html',
 })
-export class OfficerListComponent implements OnInit {
+export class OfficerListComponent implements OnInit,OnDestroy {
   userDetail: any;
   officerPageNum: number = 1;
   officers: any[] = [];
@@ -77,5 +77,8 @@ export class OfficerListComponent implements OnInit {
         payload: { search: this.queryString, pageNum: this.officerPageNum, pageSize: 5, areaId: this.userDetail.areaID }
       });
     }
+  }
+  ngOnDestroy() {
+    this.store.dispatch({ type: EMPLOYEE_ACTIONS.CLEAR });
   }
 }
