@@ -90,7 +90,6 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
         this.selectedArea = res.areaID;
         this.selectedRank = res.mstEmployee ? res.mstEmployee.designationID : '';
         this.selectedOfficer = res.mstEmployee ? res.mstEmployee.employeeID : '';
-        this.remark = res.remark;
         this.getOfficer();
       }
 

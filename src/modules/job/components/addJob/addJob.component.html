@@ -60,6 +60,16 @@
         <p *ngIf="catError" class="alert alert-danger">Please select Category</p>
         <div class="row">
             <div class="form-group col-xs-12">
+                <label for="exampleSelect1">Priority<span class="required"> * </span></label>
+                <select formControlName="priorityID" name="occurenceType" class="form-control" id="exampleSelect1" [class.invalid]="!jobForm.controls.priorityID.valid"> 
+                    <option value="" disabled selected>Select Priority</option>
+                    <option *ngFor="let option of priorityData" [value]="option.prio">{{option.prio}}</option>
+                </select>
+            </div>
+        </div>
+        <p *ngIf="prioError" class="alert alert-danger">Please select Priority</p>
+        <div class="row">
+            <div class="form-group col-xs-12">
                 <label for="reportTitle">Report Title<span class="required"> * </span></label>
                 <input formControlName="natureOfOccurrence" name="natureOfOccurrence" type='text' class="form-control" placeholder="Enter title"
                 [class.invalid]="!jobForm.controls.natureOfOccurrence.valid"/>
@@ -70,7 +80,7 @@
             <div class="form-group col-xs-6">
                 <label for="exampleInputEmail1">Time of Crime<span class="required"> * </span></label>
                 <div class='input-group date'>
-                    <p-calendar formControlName="obTime" name="obTime" [timeOnly]="true"></p-calendar>
+                    <p-calendar formControlName="obTime" name="obTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
                     <span class="input-group-addon">
                      <span class="glyphicon glyphicon-time"></span>
                     </span>
