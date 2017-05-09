@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { JobService } from '../../services/job.service';
 import { OccurenceBookService } from '../../../occurenceBook/services/occurenceBook.service';
 import { MessageService } from '../../../../app/core/services/index';
+import { Priority } from '../../../config';
 declare var $: any;
 @Component({
   moduleId: module.id,
@@ -59,6 +60,15 @@ export class JobEditComponent implements OnInit, OnDestroy {
     })
     );
 
+  }
+  applyIcon(priority) {
+    for (var key in Priority) {
+      if (key == priority) {
+        return "/assets/styles/images/"+Priority[key]+".svg";
+      } else {
+        return "/assets/styles/images/blue.svg";
+      }
+    }
   }
 
   ngOnDestroy() {

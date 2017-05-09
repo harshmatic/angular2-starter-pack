@@ -82,8 +82,8 @@
                                                 <div class="col-xs-7">
                                                     <span class="caseDescr">{{ob.obNumber}} : {{ob.natureOfOccurrence}} </span>
                                                 </div>
-                                                <div class="col-xs-5">
-                                                    <label class="caseStatus open">{{ob.mstStatus.statusName}}</label>
+                                                <div class="col-xs-5 statusOpen" [ngClass]="applyStatus(ob.mstStatus.statusName)">
+                                                    <span class="caseStatus open" >{{ob.mstStatus.statusName}}</span>
                                                 </div>
                                             </div>
                                         </div>

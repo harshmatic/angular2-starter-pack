@@ -7,6 +7,8 @@ import { Pipe, ChangeDetectorRef, PipeTransform } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../../../app/core/index';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Priority } from '../../../config';
+import { Status } from '../../../config';
 declare var $: any;
 @Component({
   moduleId: module.id,
@@ -91,5 +93,36 @@ export class JobDetailComponent implements OnInit {
       });
     }
   }
+  applyPriority(priority) {
+    for (var key in Priority) {
+      if (key == priority) {
+        return Priority[key];
+      } else {
+        return "blue";
+      }
+    }
+  }
 
+  applyStatus(status){
+ 
+  // for (var key in Status) {
+  //    console.log(key)
+  //     if (key == status) {
+        return Status[status];
+    //   } else {
+    //     return Status['Open'];
+    //   }
+    // }
+
+  }
+
+   applyIcon(priority) {
+    for (var key in Priority) {
+      if (key == priority) {
+        return "/assets/styles/images/"+Priority[key]+".svg";
+      } else {
+        return "/assets/styles/images/blue.svg";
+      }
+    }
+  }
 }

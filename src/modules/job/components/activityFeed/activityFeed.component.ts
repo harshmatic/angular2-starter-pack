@@ -42,7 +42,9 @@ export class ActivityFeedComponent  implements OnInit {
       payload: { pageNum: this.pageNum, pageSize: 5 }
     });
   }
-  }
+}
+
+
   onOBClick(id: any) {
     this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: id } });
   }
