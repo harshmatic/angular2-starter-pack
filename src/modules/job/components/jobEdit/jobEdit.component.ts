@@ -61,15 +61,27 @@ export class JobEditComponent implements OnInit, OnDestroy {
     );
 
   }
+  //Color Coding
+  applyPriority(priority) {
+    for (var key in Priority) {
+      if (Priority.hasOwnProperty(priority)) {
+        return Priority[priority];
+      } else {
+        return "blue";
+      }
+    }
+  }
   applyIcon(priority) {
     for (var key in Priority) {
-      if (key == priority) {
-        return "/assets/styles/images/"+Priority[key]+".svg";
+      if (Priority.hasOwnProperty(priority)) {
+        return "/assets/styles/images/" + Priority[priority] + ".svg";
       } else {
         return "/assets/styles/images/blue.svg";
       }
     }
+
   }
+
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();

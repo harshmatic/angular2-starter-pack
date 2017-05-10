@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit,OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Dashboard } from '../store/dashboard.model';
@@ -22,7 +22,7 @@ declare var $: any;
   styleUrls: ['dashboard.component.css']
 })
 //@Pipe({ name: 'amDifference' })
-export class DashboardComponent implements OnInit,OnDestroy {
+export class DashboardComponent implements OnInit, OnDestroy {
   userDetail: any
   isValid = true;
   officerPageNum: number = 0;
@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit,OnDestroy {
     this.officers = []
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "", pageNum: 1, pageSize: 5, areaId: this.userDetail.areaID } });
     this.asyncOb = this.store.select('occurenceBook')
-    this.subscriptions =  this.asyncOb.subscribe((res: any) => {
+    this.subscriptions = this.asyncOb.subscribe((res: any) => {
       if (res.length > 0) {
         this.obs = res;
       }
@@ -75,38 +75,40 @@ export class DashboardComponent implements OnInit,OnDestroy {
     this.store.dispatch({ type: EMPLOYEE_ACTIONS.CLEAR });
     this.subscriptions.unsubscribe();
   }
+
+  //Color Coding
   applyPriority(priority) {
     for (var key in Priority) {
-      if (key == priority) {
-        return Priority[key];
+      if (Priority.hasOwnProperty(priority)) {
+        return Priority[priority];
       } else {
         return "blue";
       }
     }
   }
-   applyIcon(priority) {
+  applyIcon(priority) {
     for (var key in Priority) {
-      if (key == priority) {
-        return "/assets/styles/images/"+Priority[key]+".svg";
+      if (Priority.hasOwnProperty(priority)) {
+        return "/assets/styles/images/" + Priority[priority] + ".svg";
       } else {
         return "/assets/styles/images/blue.svg";
       }
     }
-  }
-    
-  
-applyStatus(status){
- 
-  // for (var key in Status) {
-  //    console.log(key)
-  //     if (key == status) {
-        return Status[status];
-    //   } else {
-    //     return Status['Open'];
-    //   }
-    // }
 
   }
+  applyStatus(status) {
+
+    for (var key in Status) {
+      if (Status.hasOwnProperty(status)) {
+        return Status[status];
+      } else {
+        return Status['Open'];
+      }
+    }
+
+  }
+
+  
   ngAfterViewInit() {
     $(document).ready(function () {
 

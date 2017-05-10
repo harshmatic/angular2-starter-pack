@@ -56,36 +56,36 @@ export class AssignedComponent implements OnInit {
     this.jobPageNum = 1;
     this.getJobs()
   }
+  //Color Coding
   applyPriority(priority) {
     for (var key in Priority) {
-      if (key == priority) {
-        return Priority[key];
+      if (Priority.hasOwnProperty(priority)) {
+        return Priority[priority];
       } else {
         return "blue";
       }
     }
   }
-
-  applyStatus(status){
- 
-  // for (var key in Status) {
-  //    console.log(key)
-  //     if (key == status) {
-        return Status[status];
-    //   } else {
-    //     return Status['Open'];
-    //   }
-    // }
-
-  }
-   applyIcon(priority) {
+  applyIcon(priority) {
     for (var key in Priority) {
-      if (key == priority) {
-        return "/assets/styles/images/"+Priority[key]+".svg";
+      if (Priority.hasOwnProperty(priority)) {
+        return "/assets/styles/images/" + Priority[priority] + ".svg";
       } else {
         return "/assets/styles/images/blue.svg";
       }
     }
+
+  }
+  applyStatus(status) {
+
+    for (var key in Status) {
+      if (Status.hasOwnProperty(status)) {
+        return Status[status];
+      } else {
+        return Status['Open'];
+      }
+    }
+
   }
 
   ngAfterViewInit() {

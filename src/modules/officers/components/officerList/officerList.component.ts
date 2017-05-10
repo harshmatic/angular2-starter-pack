@@ -62,16 +62,16 @@ export class OfficerListComponent implements OnInit,OnDestroy {
       }
     });
   }
-  applyStatus(status){
- 
-  // for (var key in Status) {
-  //    console.log(key)
-  //     if (key == status) {
+
+  applyStatus(status) {
+
+    for (var key in Status) {
+      if (Status.hasOwnProperty(status)) {
         return Status[status];
-    //   } else {
-    //     return Status['Open'];
-    //   }
-    // }
+      } else {
+        return Status['Open'];
+      }
+    }
 
   }
   onKey(event: any) {
