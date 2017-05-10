@@ -172,7 +172,7 @@
             </div>-->
             <!--<agm-map [latitude]="locations.lattitude" [longitude]="locations.longitude" [zoom]="locations.mapZoomLevel">-->
             <agm-map [latitude]="18.550335" [longitude]="73.809956" [zoom]="11">
-                <agm-marker *ngFor="let location of asyncOb|async" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="applyIcon(location.priority)">
+                <agm-marker *ngFor="let location of obs" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="applyIcon(location.priority)">
                     <agm-info-window [disableAutoPan]="true" >
                         <div class="row jobContentCard" style="display:block;">
                                     <div class="col-xs-8">
@@ -203,8 +203,8 @@
                 <h4>TODAY</h4>
                 <!--Job Row 1-->
 
-                <div *ngIf="asyncOb.length==0">No Record Found</div>
-                <div class="row" *ngFor="let ob of asyncOb|async">
+                <div *ngIf="obs.length==0">No Record Found</div>
+                <div class="row" *ngFor="let ob of obs">
                     <h5 class="col-xs-12"><span class="priorityIcon" [ngClass]="applyPriority(ob.priority)"></span> {{ob.obNumber}} | {{ob.mstDepartment.departmentName}}
                     </h5>
                     <div class="jobDetail">

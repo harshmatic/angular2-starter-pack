@@ -7,6 +7,7 @@ import { SharedModule } from '../../app/shared/shared.module';
 import { JobDetailComponent } from './components/jobDetail/jobDetail.component';
 import { JobEditComponent } from './components/jobEdit/jobEdit.component';
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
+import { ViewActivityFeedComponent } from './components/viewActivity/viewActivity.component';
 import { AssignedComponent } from './components/assigned/assigned.component';
 import { AddJobComponent } from './components/addJob/addJob.component';
 import { EmployeeEffects } from '../employee/store/employee.effects';
@@ -48,6 +49,7 @@ import { AgmCoreModule } from '@agm/core';
   declarations: [
     JobDetailComponent,
     ActivityFeedComponent,
+    ViewActivityFeedComponent,
     AddJobComponent,
     JobEditComponent,
     AssignedComponent

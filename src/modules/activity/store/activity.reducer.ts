@@ -12,6 +12,8 @@ export function ActivityReducer(state: any[] = [], action: Action) {
         let activity=Object.assign([],state)
         let stateActivity=activity.concat(action.payload)
         return Object.assign([],state,stateActivity);
+    case ACTIVITY_ACTIONS.GET_LIST_BY_OB_SUCCESS:
+            return action.payload;
     case ACTIVITY_ACTIONS.ON_FAILED:
         return state;
     case ACTIVITY_ACTIONS.CLEAR:

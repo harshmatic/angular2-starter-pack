@@ -5,6 +5,7 @@ import { JobDetailComponent } from './components/jobDetail/jobDetail.component';
 import { JobEditComponent } from './components/jobEdit/jobEdit.component';
 import { AuthGuard } from '../../app/core/index';
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
+import { ViewActivityFeedComponent } from './components/viewActivity/viewActivity.component';
 import { AddJobComponent } from './components/addJob/addJob.component';
 import { AssignedComponent } from './components/assigned/assigned.component';
 
@@ -47,6 +48,13 @@ const routes: Routes = [
   {
     path: 'myObs',
     component: AssignedComponent,
+    data: {
+    },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'viewActivity',
+    component: ViewActivityFeedComponent,
     data: {
     },
     canActivate: [AuthGuard],
