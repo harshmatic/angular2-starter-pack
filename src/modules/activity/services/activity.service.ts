@@ -23,5 +23,9 @@ export class ActivityService extends BaseService {
         return this.getList$(CONTEXT+'?&pageNumber='+pageNum+'&pageSize='+pageSize, 0, 0, true).map(res => res.json());
     }
 
+    getActivityByOB(pageNum?:any,pageSize?:any,id?:any){
+        return this.getList$(CONTEXT+'?&pageNumber='+pageNum+'&pageSize='+pageSize+'&obID='+id, 0, 0, true).map(res => res.json());
+    }
+
 
 }

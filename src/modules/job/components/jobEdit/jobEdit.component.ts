@@ -81,7 +81,9 @@ export class JobEditComponent implements OnInit, OnDestroy {
     }
 
   }
-
+  onViewActivity(){
+    this.router.navigate(['/jobs/viewActivity'], { queryParams: { OccurenceBookID: this.obId } });
+  }
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
