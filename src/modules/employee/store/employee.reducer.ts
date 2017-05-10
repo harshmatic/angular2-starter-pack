@@ -22,7 +22,9 @@ export function EmployeeReducer(state: any[] = [], action: Action) {
     case EMPLOYEE_ACTIONS.GET_LIST_BY_DEPT_SUCCESS:
         return action.payload;
     case EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE_SUCCESS:
-        return action.payload;
+        let emp=Object.assign([],state)
+        let stateEmp=emp.concat(action.payload)
+        return Object.assign([],state,stateEmp);
     case EMPLOYEE_ACTIONS.CLEAR:
         return [];
     default:

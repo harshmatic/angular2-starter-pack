@@ -10,7 +10,9 @@ import { OB_ACTIONS } from './occurenceBook.actions';
 export function OccurenceBookReducer(state: any[] = [], action: Action) {
   switch (action.type) {
     case OB_ACTIONS.GET_LIST_SUCCESS:
-        return action.payload;
+        let ob=Object.assign([],state)
+        let stateOB=ob.concat(action.payload)
+        return Object.assign([],state,stateOB);
     case OB_ACTIONS.GET_LIST_SUCCESS_BY_OFFICER:
         return action.payload;
     case OB_ACTIONS.ON_FAILED:

@@ -23,15 +23,13 @@ export class ActivityFeedComponent  implements OnInit,OnDestroy {
     this.asyncActivities= this.store.select('activity')
 
     this.asyncActivities.subscribe((res: any) => {
-      for (let i = res.length - 1; i >= 0; i--) {
-        this.activities.push(res[i]);
-      }
-      if (res.length > 0) {
+      if(res.length===this.activities.length){
+        this.stopScroll = true;
+      } else {
         this.pageNum++;
         this.stopScroll = false;
-      } else {
-        this.stopScroll = true;
       }
+     this.activities = res;
     })
      
   }

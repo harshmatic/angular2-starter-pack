@@ -51,15 +51,13 @@ export class OfficerListComponent implements OnInit,OnDestroy {
     this.getOfficer();
     this.asyncOfficer = this.store.select('employee');
     this.asyncOfficer.subscribe((res: any) => {
-      for (let i = 0; i < res.length; i++) {
-        this.officers.push(res[i]);
-      }
-      if (res.length > 0) {
+      if(res.length===this.officers.length){
+        this.stopScroll = true;
+      } else {
         this.officerPageNum++;
         this.stopScroll = false;
-      } else {
-        this.stopScroll = true;
       }
+     this.officers = res;
     });
   }
 
@@ -75,6 +73,7 @@ export class OfficerListComponent implements OnInit,OnDestroy {
 
   }
   onKey(event: any) {
+    this.store.dispatch({ type: EMPLOYEE_ACTIONS.CLEAR });
     this.stopScroll = false;
     this.officers = []
     this.queryString = event.target.value;

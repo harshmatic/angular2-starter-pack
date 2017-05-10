@@ -24,25 +24,23 @@ export class ActivityFeedComponent  implements OnInit,OnDestroy {
     this.asyncActivities= this.store.select('activity')
 
     this.asyncActivities.subscribe((res: any) => {
-      for (let i = res.length - 1; i >= 0; i--) {
-        this.activities.push(res[i]);
-      }
-      if (res.length > 0) {
+      if(res.length===this.activities.length){
+        this.stopScroll = true;
+      } else {
         this.pageNum++;
         this.stopScroll = false;
-      } else {
-        this.stopScroll = true;
       }
+     this.activities = res;
     })
      
   }
   getActivities(){
      if (!this.stopScroll && this.pageNum > 0) {
-     this.store.dispatch({
-      type: ACTIVITY_ACTIONS.GET_LIST,
-      payload: { pageNum: this.pageNum, pageSize: 5 }
-    });
-  }
+      this.store.dispatch({
+        type: ACTIVITY_ACTIONS.GET_LIST,
+         payload: { pageNum: this.pageNum, pageSize: 5 }
+      });
+    }
   }
   onOBClick(id: any) {
     this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: id } });

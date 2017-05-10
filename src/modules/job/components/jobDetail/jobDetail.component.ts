@@ -31,32 +31,27 @@ export class JobDetailComponent implements OnInit,OnDestroy {
 
   ngOnInit() {
     this.userDetail = this.authService.getCurrentUser();
-    this.store.dispatch({
-        type: OB_ACTIONS.GET_LIST,
-        payload: { search: this.queryString, pageNum: this.jobPageNum, pageSize: 5, areaId: this.userDetail.areaID }
-    });
+    this.getJobs();
     this.asyncOb = this.store.select('occurenceBook');
 
     this.subscriptions = this.asyncOb.subscribe((res: any) => {
-     for(let i=0; i<res.length;i++){
-        this.obs.push(res[i]);
-      }
-      if (res.length > 0) {
-       // this.jobPageNum++;
-        this.stopScroll = false;
-      } else {
+      if(res.length===this.obs.length){
         this.stopScroll = true;
+      } else {
+         this.jobPageNum++;
+        this.stopScroll = false;
       }
+     this.obs = res;
     })
-
   }
   ngOnDestroy() {
     this.store.dispatch({ type: OB_ACTIONS.CLEAR });
     this.subscriptions.unsubscribe();
   }
   onKey(event: any) {
+    this.store.dispatch({ type: OB_ACTIONS.CLEAR });
     this.stopScroll = false;
-    this.obs = []
+    this.obs = [];
     this.queryString = event.target.value;
     this.jobPageNum = 1;
     this.getJobs()
@@ -93,7 +88,6 @@ export class JobDetailComponent implements OnInit,OnDestroy {
   }
   getJobs() {
     if (!this.stopScroll && this.jobPageNum > 0) {
-      this.jobPageNum++;
       this.store.dispatch({
         type: OB_ACTIONS.GET_LIST,
         payload: { search: this.queryString, pageNum: this.jobPageNum, pageSize: 5, areaId: this.userDetail.areaID }

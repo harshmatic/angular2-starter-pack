@@ -13,14 +13,12 @@ import { OccurenceBookEffects } from '../occurenceBook/store/occurenceBook.effec
 import { OccurenceBookService } from '../occurenceBook/services/occurenceBook.service';
 import { ReportsEffects } from '../reports/store/reports.effects';
 import { ReportsService } from '../reports/services/reports.service';
-import {MomentModule} from 'angular2-moment';
 import { AgmCoreModule  } from '@agm/core'
 @NgModule({
   imports: [
     SharedModule,
     ReactiveFormsModule,
     DashboardRouting,
-    MomentModule,
     EffectsModule.run(DashboardEffects),
     EffectsModule.run(EmployeeEffects),
     EffectsModule.run(OccurenceBookEffects),
