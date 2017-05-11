@@ -31,7 +31,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import {TimeAgoPipe} from 'time-ago-pipe'
 import {
      SharedModule as PrimSharedModule, CalendarModule,
-     GrowlModule
+     GrowlModule,CheckboxModule,ButtonModule
 } from 'primeng/primeng';
 
 
@@ -76,6 +76,8 @@ export const components = [
     PrimSharedModule,
     CalendarModule,
     GrowlModule,
+    CheckboxModule,
+    ButtonModule,
     TimeAgoPipe,
     ...components
   ],

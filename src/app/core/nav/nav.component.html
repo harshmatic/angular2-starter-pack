@@ -1,6 +1,6 @@
 <div [hidden]='!isLoggedIn'>
     <!-------------------- Nav Bar ------------------------>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse {{mainCSS}}">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -11,22 +11,25 @@
                 <!--<a class="navbar-brand" href="#">Kenya Police</a>-->
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li  routerLinkActive="active"><a routerLink="/dashboard">Dashboard</a></li>
+                <ul class="nav navbar-nav" *ngFor="let navData of navbarData">
+                    <li *ngIf="navData.Authorize.length > 0" [ifAuthorize]="navData.Authorize" routerLinkActive="active"><a routerLink="{{navData.Routerlink}}">{{navData.Name}}</a></li>
+                    <li *ngIf="navData.Authorize.length === 0" routerLinkActive="active"><a routerLink="{{navData.Routerlink}}">{{navData.Name}}</a></li>
+                    <!--<li  routerLinkActive="active"><a routerLink="/dashboard">Dashboard</a></li>
                     <li [ifAuthorize]="['OB.R']"  routerLinkActive="active"><a routerLink="/jobs">Occurrence Book</a></li>
                     <li [ifAuthorize]="['EP.R']"  routerLinkActive="active"><a routerLink="/officers">Officer Management</a></li>
                     <li><a href="#">Inventory</a></li>
-                    <li  routerLinkActive="active"><a routerLink="/reports">Reports</a></li>
+                    <li  routerLinkActive="active"><a routerLink="/reports">Reports</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle profileParent" data-toggle="dropdown" href="#">
                             <span class="profileImg"><img src="/assets/styles/images/user.jpg" class="img-responsive" alt="Profile Image"></span>
-                            <span class="profileText">{{userDetail?userDetail.firstName+' '+userDetail.lastName:''}} &nbsp;<span class="caret"></span></span>
+                            <span class="profileText">{{userDetails?userDetails.firstName+' '+userDetails.lastName:''}} &nbsp;<span class="caret"></span></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!--<li><a href="#">Profile</a></li>-->
-                            <li><a href="#/jobs/myObs">My Cases</a></li>
+                            <!--<li><a (click)="menus.function">{{menus.name}}</a></li>-->
+                            <li><a (click)="onMyCases()">My Cases</a></li>
                             <li><a (click)="onLogout()">Sign Out</a></li>
                         </ul>
                     </li>

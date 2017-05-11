@@ -1,9 +1,9 @@
   <form  (ngSubmit)="handleSubmit()" [formGroup]="authForm">
            
-			<div class="loginMain">
+			<div class="loginMain {{mainCSS}}">
 				
 				<div class="loginTopPanel">
-					<img src="assets/styles/images/logo.png" class="loginTopImg"/>
+					<img src="{{Logo}}" class="loginTopImg"/>
 				</div>
 				
 				<div class="loginPanel">
@@ -16,6 +16,10 @@
 					<label class="loginLabel">Password</label>
 					<img src="assets/styles/images/password.png" class="loginTextImg"/>
 					<input type="password" formControlName="password" class="form-control loginText" placeholder="enter password"/>
+				</div>
+				<div class="loginPanel">
+					<p-checkbox formControlName="remember" binary="true" label="Remember me"></p-checkbox>
+					<a href="#/forgot" id="forgotPwd">Forgot password ?</a>
 				</div>
 				<button class="loginBtn" type="submit">Sign In</button>
 				<h6 class="loginFooter">Copyrights &copy; 2017. All rights reserved.</h6>

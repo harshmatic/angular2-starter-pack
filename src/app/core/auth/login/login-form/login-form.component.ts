@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from '../../../../../app/core/services/index';
+import { CheckboxModule } from 'primeng/primeng';
 
 import {
   FormBuilder,
@@ -17,10 +18,14 @@ import {
   styleUrls: ['./login-form.component.css']
 })
 export class EsplLoginFormComponent implements OnInit {
-
+  //getting data from login-page.ts
+  @Input() Logo: any;
+  @Input() mainCSS: any;
   // needed to be public to allow access from fixture tests
+  checked: boolean = false;
   username: FormControl;
   password: FormControl;
+  remember: FormControl;
   authForm: FormGroup;
   queryUrl: '';
   constructor(private _router: Router,
@@ -71,9 +76,11 @@ export class EsplLoginFormComponent implements OnInit {
   reset() {
     this.username = new FormControl('', Validators.required);
     this.password = new FormControl('', Validators.required);
+    this.remember = new FormControl('', Validators.required);
     this.authForm = this.builder.group({
       username: this.username,
-      password: this.password
+      password: this.password,
+      remember: this.remember
     });
   }
 };

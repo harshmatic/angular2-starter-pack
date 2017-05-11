@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 
 import { EsplLoginFormComponent } from './login-form/login-form.component';
+import { ForgotPwdComponent } from './forgotPwd/forgot-pwd.component';
+import { LoginPageComponent} from '../login/login-page/login-page.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { LoginRouting } from './login.routing';
 import { AuthService } from '../auth.service';
@@ -18,7 +20,9 @@ import { AuthService } from '../auth.service';
     LoginRouting
   ],
   declarations: [
-    EsplLoginFormComponent
+    EsplLoginFormComponent,
+    ForgotPwdComponent,
+    LoginPageComponent
   ],
   exports: [
   ],

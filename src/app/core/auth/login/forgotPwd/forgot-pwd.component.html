@@ -1,0 +1,21 @@
+  <form [formGroup]="authForm">
+           
+			<div class="loginMain">
+				
+				<div class="loginTopPanel">
+					<img src="assets/styles/images/logo.png" class="loginTopImg"/>
+				</div>
+				
+				<div class="loginPanel">
+					<label class="loginLabel">Enter your username below to reset your password.</label>
+					<!--<img src="assets/styles/images/user.png" class="loginTextImg"/>-->
+					<input formControlName="username" type="text" class="form-control loginText" placeholder="Enter username"/>
+				</div>
+				<div class="loginPanel">
+                    <button pButton type="button" (click)="back()" label="Back"></button>
+                    <button pButton type="submit" label="Submit" id="submit"></button>
+                </div>
+				
+				<h6 class="loginFooter">Copyrights &copy; 2017. All rights reserved.</h6>
+			</div>
+		</form>
