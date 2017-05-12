@@ -10,11 +10,8 @@ import { BaseService } from '../../../app/core/services/index';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 
-/// Define the appi endpoint here
-const CONTEXT = 'occurrencebook';
-
 @Injectable()
-export class OccurenceBookEffects extends BaseService {
+export class OccurenceBookEffects {
 
   @Effect({ dispatch: false })
   private getListOb$ = this.actions$
@@ -84,6 +81,5 @@ export class OccurenceBookEffects extends BaseService {
     private store: Store<OccurenceBook>,
     private actions$: Actions,
     private occurenceBookService: OccurenceBookService,
-    public http: Http
-  ) { super(http, CONTEXT); }
+  ) {}
 }

@@ -25,7 +25,7 @@
                                             <img src="/assets/styles/images/added.png" class="activityImg" />
                                         </td>
                                         <td>
-                                            <span class="activityTime">{{act.createdOn |  timeAgo }}</span>
+                                            <span class="activityTime">{{act.createdOn |  amTimeAgo }}</span>
                                             <p class="activityDescr">
                                                 {{act.createdByName}}
                                                 <ng-template [ngIf]="act.type == 'Status'">

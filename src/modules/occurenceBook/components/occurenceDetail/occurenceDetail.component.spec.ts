@@ -8,10 +8,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SharedModule } from '../../../../app/shared/shared.module';
-import {JobDetailComponent} from './jobDetail.component';
+import {OccurenceDetailComponent} from './occurenceDetail.component';
 import { AuthService } from '../../../../app/core/index';
-import { OccurenceBookEffects } from '../../../occurenceBook/store/occurenceBook.effects';
-import { OccurenceBookService } from '../../../occurenceBook/services/occurenceBook.service';
+import { OccurenceBookEffects } from '../../store/occurenceBook.effects';
+import { OccurenceBookService } from '../../services/occurenceBook.service';
+import { OccurenceBookReducer } from '../../../occurenceBook/store/occurenceBook.reducer';
 
 @Component({selector: 'test-cmp', template: '<app-job-detail></app-job-detail>'})
 class TestComponent {}
@@ -35,9 +36,8 @@ class AuthServiceStub {
 }
 class OccurenceBookServiceStub {
   getObs(searchQuery?:any,pageNum?:any,pageSize?:any,areaId?:any) {
-      console.log('------------------------------------->>>>>>>>>>>>>>>'+areaId)
      return new Observable<any>((observer:any) => {
-       observer.next([1,2,3]);
+       observer.next([]);
      });
   }
 }
@@ -47,13 +47,13 @@ describe('Component: OB Detail Component', () => {
         TestBed.configureTestingModule({
             imports: [
                 EffectsModule.run(OccurenceBookEffects),
-                StoreModule.provideStore({occurenceBook:[]}),
+                StoreModule.provideStore({occurenceBook:OccurenceBookReducer}),
                 SharedModule,RouterTestingModule, CommonModule,
                 FormsModule, ReactiveFormsModule
             ],
             schemas: [NO_ERRORS_SCHEMA],
             declarations: [
-                JobDetailComponent, TestComponent, RouterLinkStubDirective
+                OccurenceDetailComponent, TestComponent, RouterLinkStubDirective
             ],
             providers: [
                {
@@ -77,23 +77,23 @@ describe('Component: OB Detail Component', () => {
                 expect(TestComponent).toBeDefined();
             });
     }));
-    // it('checking ui', async(() => {
-    //     TestBed.compileComponents()
-    //         .then(() => {
-    //             let fixture = TestBed.createComponent(JobDetailComponent);
-    //             fixture.detectChanges();
-    //             let element = fixture.nativeElement;
-    //             //expect(element.querySelector('.loginFooter').innerText).toEqual('Copyrights © 2017. All rights reserved.');
-    //         });
-    // }));
+    it('checking ui', async(() => {
+        TestBed.compileComponents()
+            .then(() => {
+                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                fixture.detectChanges();
+                let element = fixture.nativeElement;
+                expect(element.querySelector('.searchIcon').innerText).toEqual('search');
+            });
+    }));
 
-    // it('check component variable', async(() => {
-    //     TestBed.compileComponents()
-    //         .then(() => {
-    //             let fixture = TestBed.createComponent(EsplLoginFormComponent);
-    //             fixture.detectChanges();
-    //             let componentInstance = fixture.componentInstance;
-    //             expect(componentInstance.queryUrl).toBe('');
-    //         });
-    // }));
+    it('check component variable', async(() => {
+        TestBed.compileComponents()
+            .then(() => {
+                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                fixture.detectChanges();
+                let componentInstance = fixture.componentInstance;
+                expect(componentInstance.jobPageNum).toBe(1);
+            });
+    }));
 });

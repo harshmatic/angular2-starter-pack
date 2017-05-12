@@ -28,7 +28,7 @@ export class EsplLoginFormComponent implements OnInit {
   password: FormControl;
   remember: FormControl;
   authForm: FormGroup;
-  queryUrl: '';
+  queryUrl:string= '';
   constructor(private _router: Router,
     private builder: FormBuilder,
     private route: ActivatedRoute,
@@ -102,7 +102,7 @@ export class EsplLoginFormComponent implements OnInit {
   reset() {
     this.username = new FormControl('', Validators.required);
     this.password = new FormControl('', Validators.required);
-    this.remember = new FormControl('', Validators.required);
+    this.remember = new FormControl('');
     this.authForm = this.builder.group({
       username: this.username,
       password: this.password,
