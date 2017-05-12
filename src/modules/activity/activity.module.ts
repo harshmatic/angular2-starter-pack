@@ -21,4 +21,4 @@ import { ActivityService } from './services/activity.service';
   ],
   providers:[ActivityService]
 })
-export default class ActivityModule { }
+export class ActivityModule {   }

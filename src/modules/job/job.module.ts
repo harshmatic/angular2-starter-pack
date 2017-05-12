@@ -55,4 +55,4 @@ import { AgmCoreModule } from '@agm/core';
   providers: [EmployeeService, DepartmentService, ActivityService,OccurenceTypeService, JobService, OccurenceBookService, StatusService, AreaService]
 
 })
-export default class JobModule { }
+export class JobModule { }

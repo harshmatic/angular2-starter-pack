@@ -21,4 +21,4 @@ import { DesignationService } from './services/designation.service';
   ],
   providers:[DesignationService]
 })
-export default class DesignationModule { }
+export class DesignationModule { }

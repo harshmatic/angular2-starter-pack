@@ -203,7 +203,7 @@
                 <h4>TODAY</h4>
                 <!--Job Row 1-->
 
-                <div *ngIf="asyncOb.length==0">No Record Found</div>
+                <div *ngIf="(asyncOb | async)?.length==0">No Record Found</div>
                 <div class="row" *ngFor="let ob of asyncOb|async">
                     <h5 class="col-xs-12"><span class="priorityIcon" [ngClass]="applyPriority(ob.priority)"></span> {{ob.obNumber}} | {{ob.mstDepartment.departmentName}}
                     </h5>

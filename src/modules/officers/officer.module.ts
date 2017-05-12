@@ -41,4 +41,4 @@ import { JobService } from '../job/services/job.service';
   ],
   providers: [EmployeeService,ActivityService, JobService, DepartmentService, OccurenceBookService, AreaService, DesignationService]
 })
-export default class OfficerModule { }
+export class OfficerModule { }

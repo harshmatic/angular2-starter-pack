@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   asyncCaseReport: Observable<any>;
   asyncOfficerReport: Observable<any>;
   obs: any[] = [];
-  asyncOb: Observable<any>
+  asyncOb: Observable<any>;
   private subscriptions: Subscription;
   locations: any;
   constructor(private store: Store<Dashboard>, private authService: AuthService) { }

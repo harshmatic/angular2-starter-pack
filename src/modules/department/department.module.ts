@@ -21,4 +21,4 @@ import { DepartmentService } from './services/department.service';
   ],
   providers:[DepartmentService]
 })
-export default class DepartmentModule { }
+export class DepartmentModule { }

@@ -19,4 +19,4 @@ import { ReportsService } from './services/reports.service';
   ],
   providers:[ReportsService]
 })
-export default class OccurenceTypeModule { }
+export class ReportModule { }

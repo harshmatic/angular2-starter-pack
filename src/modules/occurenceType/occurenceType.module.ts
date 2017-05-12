@@ -21,4 +21,4 @@ import { OccurenceTypeService } from './services/occurenceType.service';
   ],
   providers:[OccurenceTypeService]
 })
-export default class OccurenceTypeModule { }
+export class OccurenceTypeModule { }
