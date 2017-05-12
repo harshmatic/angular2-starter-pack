@@ -21,4 +21,4 @@ import { StatusService } from './services/status.service';
   ],
   providers:[StatusService]
 })
-export default class StatusModule { }
+export class StatusModule { }

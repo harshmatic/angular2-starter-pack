@@ -21,4 +21,4 @@ import { ShiftService } from './services/shift.service';
   ],
   providers:[ShiftService]
 })
-export default class ShiftModule { }
+export class ShiftModule { }

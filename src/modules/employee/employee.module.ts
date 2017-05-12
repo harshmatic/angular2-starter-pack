@@ -21,4 +21,4 @@ import { EmployeeService } from './services/employee.service';
   ],
   providers:[EmployeeService]
 })
-export default class EmployeeModule { }
+export class EmployeeModule { }

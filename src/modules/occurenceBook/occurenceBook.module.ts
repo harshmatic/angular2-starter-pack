@@ -21,4 +21,4 @@ import { OccurenceBookService } from './services/occurenceBook.service';
   ],
   providers:[OccurenceBookService]
 })
-export default class OccurenceBookModule { }
+export class OccurenceBookModule { }
