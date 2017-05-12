@@ -15,8 +15,8 @@ import * as fromRoot from './core/store/';
 export class AppPage implements OnInit {
     //Passing data to nav controller
     public navMenu: any = [{ 'Name': 'Dashboard', 'Routerlink': '/dashboard', 'Authorize': [] },
-    { 'Name': 'Occurrence Book', 'Routerlink': '/jobs', 'Authorize': ['OB.R'] },
-    { 'Name': 'Officer Management', 'Routerlink': '/officers', 'Authorize': ['EP.R'] },
+    { 'Name': 'Occurrence Book', 'Routerlink': '/ob/occurenceDetails', 'Authorize': ['OB.R'] },
+    { 'Name': 'Officer Management', 'Routerlink': '/employee/officerList', 'Authorize': ['EP.R'] },
     { 'Name': 'Inventory', 'Routerlink': '#', 'Authorize': [] },
     { 'Name': 'Reports', 'Routerlink': '/reports', 'Authorize': [] }];
     public cssClass: any = 'mainCSS';

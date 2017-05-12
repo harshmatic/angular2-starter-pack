@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { DEPARTMENT_ACTIONS } from '../../../department/store/department.actions';
 import { OT_ACTIONS } from '../../../occurenceType/store/occurenceType.actions';
 import { AREA_ACTIONS } from '../../../area/store/area.actions';
-import { JobService } from '../../services/job.service';
+import { OccurenceBookService } from '../../services/occurenceBook.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MapsAPILoader } from '@agm/core';
 import { MessageService } from '../../../../app/core/services/index';
@@ -16,10 +16,10 @@ declare var $: any;
 @Component({
   moduleId: module.id,
   selector: 'app-job-detail',
-  templateUrl: 'addJob.component.html',
-  styleUrls: ['addJob.component.css']
+  templateUrl: 'addOccurence.component.html',
+  styleUrls: ['addOccurence.component.css']
 })
-export class AddJobComponent implements OnInit {
+export class AddOccurenceComponent implements OnInit {
   departments: any[] = [];
   area: any[] = [];
   asyncdepartment: Observable<any>;
@@ -49,7 +49,7 @@ export class AddJobComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private _zone: NgZone,
     private ref: ChangeDetectorRef,
-    private jobService: JobService,
+    private occurenceBookService: OccurenceBookService,
     private messageService: MessageService,
     private route: ActivatedRoute, private router: Router) { }
 
@@ -166,9 +166,9 @@ export class AddJobComponent implements OnInit {
         "priority": value.priorityID
       }
 
-      this.jobService.addJob(payload).subscribe(res => {
+      this.occurenceBookService.addJob(payload).subscribe(res => {
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occurence Book Saved' });
-        this.router.navigate(['/jobs/jobDetails']);
+        this.router.navigate(['/ob/occurenceDetails']);
       })
     }
 

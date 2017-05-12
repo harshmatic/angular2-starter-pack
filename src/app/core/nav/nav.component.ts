@@ -59,6 +59,6 @@ export class NavComponent implements OnInit, OnDestroy {
     });
   }
   onMyCases(){
-    this._router.navigate(['/jobs/myObs']);
+    this._router.navigate(['/ob/myObs']);
   }
 }

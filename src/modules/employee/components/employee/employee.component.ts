@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Employee } from '../store/employee.model';
-import { EMPLOYEE_ACTIONS } from '../store/employee.actions';
-import { Patch } from '../../patchReq.model';
+import { Employee } from '../../store/employee.model';
+import { EMPLOYEE_ACTIONS } from '../../store/employee.actions';
+import { Patch } from '../../../patchReq.model';
 @Component({
   moduleId: module.id,
   selector: 'app-employee',

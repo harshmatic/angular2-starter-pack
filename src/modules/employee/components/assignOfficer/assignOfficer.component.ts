@@ -6,7 +6,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Employee } from '../../../employee/store/employee.model';
 import { EMPLOYEE_ACTIONS } from '../../../employee/store/employee.actions';
 import { DEPARTMENT_ACTIONS } from '../../../department/store/department.actions';
-import { JobService } from '../../../job/services/job.service';
+import { OccurenceBookService } from '../../../occurenceBook/services/occurenceBook.service';
 import { Subscription } from 'rxjs/Subscription';
 import { OB_ACTIONS } from '../../../occurenceBook/store/occurenceBook.actions';
 import { AREA_ACTIONS } from '../../../area/store/area.actions';
@@ -54,7 +54,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
   private sub: Subscription = new Subscription();
   private subscriptions: Subscription = new Subscription();
   constructor(private store: Store<Employee>, private formBuilder: FormBuilder,
-    private jobService: JobService,
+    private occurenceBookService: OccurenceBookService,
     private router: Router, private route: ActivatedRoute,
     private messageService: MessageService) { }
 
@@ -146,15 +146,15 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
     }
   }
   onBack() {
-    this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: this.obId } });
+    this.router.navigate(['/ob/occurenceEdit'], { queryParams: { OccurenceBookID: this.obId } });
   }
   onSubmit({ value, valid }: { value: any, valid: boolean }) {
     if (!this.validate(value)) {
       this.obs.assignedTO = value.officerID;
       this.obs.assignedComments = value.remark;
-      this.jobService.updateOfficer(this.obs).subscribe(res => {
+      this.occurenceBookService.updateOfficer(this.obs).subscribe(res => {
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Officer assigned successfully' });
-        this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: this.obId } });
+        this.router.navigate(['/ob/occurenceEdit'], { queryParams: { OccurenceBookID: this.obId } });
       })
     }
 

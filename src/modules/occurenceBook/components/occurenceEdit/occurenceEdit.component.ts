@@ -7,18 +7,17 @@ import { OccurenceBook } from '../../../occurenceBook/store/occurenceBook.model'
 import { OB_ACTIONS } from '../../../occurenceBook/store/occurenceBook.actions';
 import { STATUS_ACTIONS } from '../../../status/store/status.actions';
 import { Subscription } from 'rxjs/Subscription';
-import { JobService } from '../../services/job.service';
-import { OccurenceBookService } from '../../../occurenceBook/services/occurenceBook.service';
+import { OccurenceBookService } from '../../services/occurenceBook.service';
 import { MessageService } from '../../../../app/core/services/index';
 import { Priority } from '../../../config';
 declare var $: any;
 @Component({
   moduleId: module.id,
   selector: 'app-job-edit',
-  templateUrl: 'jobEdit.component.html',
-  styleUrls: ['jobEdit.component.css']
+  templateUrl: 'occurenceEdit.component.html',
+  styleUrls: ['occurenceEdit.component.css']
 })
-export class JobEditComponent implements OnInit, OnDestroy {
+export class occurenceEditComponent implements OnInit, OnDestroy {
   public selectedStatus: any;
   public obs: any = [];
   public comment: string = '';
@@ -32,7 +31,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
   private sub: Subscription = new Subscription();
   queryString = '';
   constructor(private store: Store<OccurenceBook>, private route: ActivatedRoute, private router: Router,
-    private formBuilder: FormBuilder, private jobService: JobService,
+    private formBuilder: FormBuilder,
     private occurenceBookService: OccurenceBookService,
     private messageService: MessageService) { }
 
@@ -82,7 +81,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
 
   }
   onViewActivity(){
-    this.router.navigate(['/jobs/viewActivity'], { queryParams: { OccurenceBookID: this.obId } });
+    this.router.navigate(['/ob/viewActivity'], { queryParams: { OccurenceBookID: this.obId } });
   }
 
   ngOnDestroy() {
@@ -90,7 +89,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
   OnAssignOfficer() {
-    this.router.navigate(['/officers/assign-officer'], { queryParams: { OccurenceBookID: this.obId } });
+    this.router.navigate(['/employee/assign-officer'], { queryParams: { OccurenceBookID: this.obId } });
   }
   onStatusChange() {
     // this.occurenceBookService.updateStatusHistory(this.obId).subscribe(res => {
@@ -101,7 +100,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
     if (this.comment === '') {
       this.obs.mstStatus = null;
       this.obs.statusID = this.selectedStatus;
-      this.jobService.updateOfficer(this.obs).subscribe(res => {
+      this.occurenceBookService.updateOfficer(this.obs).subscribe(res => {
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status updated' });
       });
     } else {
@@ -111,7 +110,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
       };
       this.obs.mstStatus = null;
       this.obs.statusID = this.selectedStatus;
-      this.jobService.updateOfficer(this.obs).subscribe(res => {
+      this.occurenceBookService.updateOfficer(this.obs).subscribe(res => {
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status and comment saved' });
       });
       this.occurenceBookService.addReview(payload).subscribe(res => {

@@ -24,8 +24,6 @@ export const routing = [
   { path: 'shift', loadChildren: 'modules/shift/shift.module#ShiftModule' },
   { path: 'designation', loadChildren: 'modules/designation/designation.module#DesignationModule' },
   { path: 'employee', loadChildren: 'modules/employee/employee.module#EmployeeModule' },
-  { path: 'officers', loadChildren: 'modules/officers/officer.module#OfficerModule' },
-  { path: 'jobs', loadChildren: 'modules/job/job.module#JobModule' },
   { path: 'reports', loadChildren: 'modules/reports/reports.module#ReportModule' },
   { path: 'activity', loadChildren: 'modules/activity/activity.module#ActivityModule' },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -33,7 +31,8 @@ export const routing = [
 
 ];
 
-export const ApiBase = "http://192.168.100.103:6070/api/";
+//export const ApiBase = "http://192.168.100.103:6070/api/";
+export const ApiBase = "http://localhost:6058/api/";
 export const ApiBaseAuthUrl = "auth/token";
 
 export interface RootState {

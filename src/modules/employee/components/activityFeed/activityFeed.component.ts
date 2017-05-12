@@ -45,7 +45,7 @@ export class ActivityFeedComponent  implements OnInit,OnDestroy {
   }
   }
   onOBClick(id: any) {
-    this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: id } });
+    this.router.navigate(['/ob/occurenceEdit'], { queryParams: { OccurenceBookID: id } });
   }
   ngOnDestroy() {
     this.store.dispatch({ type: ACTIVITY_ACTIONS.CLEAR });

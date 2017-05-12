@@ -22,6 +22,7 @@ export class LoginPageComponent implements OnInit {
     // passind data to login-form page
     public logoPath = "assets/styles/images/logo.png";
     public mainCSS = 'mainCSS';
+    public authenticationType = 'tokenBase';
     constructor(private _router: Router,
         private builder: FormBuilder,
         private route: ActivatedRoute,

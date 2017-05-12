@@ -21,6 +21,7 @@ export class EsplLoginFormComponent implements OnInit {
   //getting data from login-page.ts
   @Input() Logo: any;
   @Input() mainCSS: any;
+  @Input() authenticationType: any;
   // needed to be public to allow access from fixture tests
   checked: boolean = false;
   username: FormControl;
@@ -46,13 +47,27 @@ export class EsplLoginFormComponent implements OnInit {
     });
   }
   handleSubmit() {
-    if (this.username.value !== '' && this.password.value !== '') {
-      this.authService.login({ userName: this.username.value, password: this.password.value }).subscribe(
-        results => {
-          this.getLoggedInUserPermission();
-        });
-    } else {
-      this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: 'Enter Username and Password' });
+    //If Input parameter is tokenBase 
+    if (this.authenticationType === 'tokenBase') {
+      if (this.username.value !== '' && this.password.value !== '') {
+        this.authService.login({ userName: this.username.value, password: this.password.value }).subscribe(
+          results => {
+            this.getLoggedInUserPermission();
+          });
+      } else {
+        this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: 'Enter Username and Password' });
+      }
+    }
+    //If input parameter is OAuth
+    if (this.authenticationType === 'OAuth') {
+      if (this.username.value !== '' && this.password.value !== '') {
+        this.authService.oAuth({ userName: this.username.value, password: this.password.value }).subscribe(
+          results => {
+            this.getLoggedInUserPermission();
+          });
+      } else {
+        this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: 'Enter Username and Password' });
+      }
     }
   }
   getLoggedInUserPermission(): void {

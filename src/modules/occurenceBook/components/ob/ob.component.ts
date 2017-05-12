@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { OccurenceBook } from '../store/occurenceBook.model';
-import { OB_ACTIONS } from '../store/occurenceBook.actions';
-import { Patch } from '../../patchReq.model';
+import { OccurenceBook } from '../../store/occurenceBook.model';
+import { OB_ACTIONS } from '../../store/occurenceBook.actions';
+import { Patch } from '../../../patchReq.model';
 @Component({
   moduleId: module.id,
   selector: 'app-occurence-book',
