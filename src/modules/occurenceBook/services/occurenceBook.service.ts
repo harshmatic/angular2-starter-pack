@@ -52,5 +52,13 @@ export class OccurenceBookService extends BaseService {
     addReview (ob:any){
         return this.post$(CONTEXT+ob.OBID+'/addreview', ob,true).map(res => res.json());
     }
+    // Add One
+    addJob(payload: any) {
+        return this.post$('occurrencebook', payload, true).map(res => res.json());
+    }
+    //Update One
+    updateOfficer(payload: any) {
+        return this.put$(CONTEXT + payload.obid, payload, true).map(res => []);
+    }
 
 }

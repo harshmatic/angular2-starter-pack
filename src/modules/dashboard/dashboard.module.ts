@@ -30,4 +30,4 @@ import { AgmCoreModule  } from '@agm/core'
   ],
   providers:[DashboardService,EmployeeService,OccurenceBookService,ReportsService]
 })
-export default class DashboardModule { }
+export class DashboardModule { }

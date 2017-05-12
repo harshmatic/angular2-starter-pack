@@ -21,4 +21,4 @@ import { AreaService } from './services/area.service';
   ],
   providers:[AreaService]
 })
-export default class AreaModule { }
+export class AreaModule { }

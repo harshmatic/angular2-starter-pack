@@ -17,5 +17,5 @@ import { AgmCoreModule  } from '@agm/core'
   declarations: [ Maps ],
   bootstrap: [ Maps ]
 })
-export default class MapsModule { }
+export class MapsModule { }
 

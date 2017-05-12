@@ -47,7 +47,7 @@ interface ICoreModuleOptions {
  */
 
 
-const store = StoreModule.provideStore(reducer);
+//const store = StoreModule.provideStore(reducer);
 
 @NgModule({
   imports: [
@@ -59,7 +59,7 @@ const store = StoreModule.provideStore(reducer);
      * meta-reducer. This returns all providers for an @ngrx/store
      * based application.
      */
-    store,
+    StoreModule.provideStore(reducer),
 
     /**
      * @ngrx/router-store keeps router state up-to-date in the store and uses

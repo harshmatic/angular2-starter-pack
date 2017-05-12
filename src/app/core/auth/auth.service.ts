@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Http, Headers,Response, RequestOptions } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
@@ -9,62 +9,76 @@ import { Router } from '@angular/router';
 import { MessageService } from '../services/index';
 
 //CONFIGESPL
-import {ApiBaseAuthUrl} from '../../../modules/config';
+import { ApiBaseAuthUrl } from '../../../modules/config';
 
 const CONTEXT = ApiBaseAuthUrl;
 @Injectable()
 export class AuthService extends BaseService {
-  isLoggedIn: boolean = false;
-  onLoggedInChange: EventEmitter<any> = new EventEmitter<any>();
-   
-  constructor(public http: Http, router: Router, messageService: MessageService) {
-        super(http,CONTEXT,router, messageService);
-  }
+    isLoggedIn: boolean = false;
+    onLoggedInChange: EventEmitter<any> = new EventEmitter<any>();
 
-  login(credentials) {
-    return this.post$(ApiBaseAuthUrl,JSON.stringify(credentials)).map(res => {
-       this.setToken(res);
-       this.isLoggedIn = true;
-    }).catch(err => {
-                return Observable.throw(err);;
-    });
-  }
-  getLoggedInUserPermission() {
-    return this.get$('permissions',true).map((res:any)=>{
-          this.setLoggedInUserPermission(res)
-    })
-  }
-  getCurrentUserDetails() {
-    return this.get$('profile',true).map((res:any)=>{
-          this.setLoggedInUserDetail(res)
-    })
-  }
- getCurrentUser() {
-        return JSON.parse(localStorage.getItem('loggedInUserDetails'));
- }
-  onAuthStatusChanged$ () {
-    return this.onLoggedInChange;
-  }
-  isAuthenticated() {
-    if (localStorage.getItem('accessToken')) {
-        this.isLoggedIn = true;
-         this.onLoggedInChange.emit(true)
-        return true;
-    } else {
-        this.isLoggedIn = false;
-         this.onLoggedInChange.emit(false)
-        return false;
+    constructor(public http: Http, router: Router, messageService: MessageService) {
+        super(http, CONTEXT, router, messageService);
     }
-  }
 
-  logout() {
+    login(credentials) {
+        return this.post$(ApiBaseAuthUrl, JSON.stringify(credentials)).map(res => {
+            this.setToken(res);
+            this.isLoggedIn = true;
+        }).catch(err => {
+            return Observable.throw(err);
+        });
+    }
+    oAuth(credentials) {
+        // this.oauthService.tryLogin({
+        //     validationHandler: context => {
+        //         var search = new URLSearchParams();
+        //         search.set('token', context.idToken);
+        //         search.set('client_id', oauthService.clientId);
+        //         search.set('username', credentials.username);
+        //         search.set('password', credentials.password);
+        //         return http.get(validationUrl, { search }).toPromise();
+        //     }
+        // });
+        console.log('TO DO : Need to implement angular2-oauth2 service');
+        return Observable.throw('');
+    }
+    getLoggedInUserPermission() {
+        return this.get$('permissions', true).map((res: any) => {
+            this.setLoggedInUserPermission(res)
+        })
+    }
+    getCurrentUserDetails() {
+        return this.get$('profile', true).map((res: any) => {
+            this.setLoggedInUserDetail(res)
+        })
+    }
+    getCurrentUser() {
+        return JSON.parse(localStorage.getItem('loggedInUserDetails'));
+    }
+    onAuthStatusChanged$() {
+        return this.onLoggedInChange;
+    }
+    isAuthenticated() {
+        if (localStorage.getItem('accessToken')) {
+            this.isLoggedIn = true;
+            this.onLoggedInChange.emit(true)
+            return true;
+        } else {
+            this.isLoggedIn = false;
+            this.onLoggedInChange.emit(false)
+            return false;
+        }
+    }
+
+    logout() {
         localStorage.clear();
         this.isLoggedIn = false;
         this.onLoggedInChange.emit(false)
-        
-  }
-  
-  private setToken(res) {
+
+    }
+
+    private setToken(res) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }
@@ -72,14 +86,14 @@ export class AuthService extends BaseService {
         localStorage.setItem('accessToken', body.token);
         this.isLoggedIn = true;
     }
-  private setLoggedInUserPermission(res: Response) {
+    private setLoggedInUserPermission(res: Response) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }
         let body = res.json();
         localStorage.setItem('loggedInUserPermission', JSON.stringify(body));
-  }
-  private setLoggedInUserDetail(res: Response) {
+    }
+    private setLoggedInUserDetail(res: Response) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }

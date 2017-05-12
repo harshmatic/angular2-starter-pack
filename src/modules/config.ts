@@ -12,31 +12,29 @@ import { EmployeeReducer } from './employee/store/employee.reducer';
 import { ReportsReducer } from './reports/store/reports.reducer';
 import { ActivityReducer } from './activity/store/activity.reducer';
 
-
 export const routing = [
 
 
-  { path: 'ob', loadChildren: 'modules/occurenceBook/occurenceBook.module' },
-  { path: 'area', loadChildren: 'modules/area/area.module' },
-  { path: 'ot', loadChildren: 'modules/occurenceType/occurenceType.module' },
-  { path: 'status', loadChildren: 'modules/status/status.module' },
-  { path: 'dashboard', loadChildren: 'modules/dashboard/dashboard.module' },
-  { path: 'department', loadChildren: 'modules/department/department.module' },
-  { path: 'shift', loadChildren: 'modules/shift/shift.module' },
-  { path: 'designation', loadChildren: 'modules/designation/designation.module' },
-  { path: 'employee', loadChildren: 'modules/employee/employee.module' },
-  { path: 'officers', loadChildren: 'modules/officers/officer.module' },
-  { path: 'jobs', loadChildren: 'modules/job/job.module' },
-  { path: 'reports', loadChildren: 'modules/reports/reports.module' },
-  { path: 'map', loadChildren: 'modules/maps/maps.module' },
-  { path: 'activity', loadChildren: 'modules/activity/activity.module' },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'ob', loadChildren: 'modules/occurenceBook/occurenceBook.module#OccurenceBookModule' },
+  { path: 'area', loadChildren: 'modules/area/area.module#AreaModule' },
+  { path: 'ot', loadChildren: 'modules/occurenceType/occurenceType.module#OccurenceTypeModule' },
+  { path: 'status', loadChildren: 'modules/status/status.module#StatusModule' },
+  { path: 'dashboard', loadChildren: 'modules/dashboard/dashboard.module#DashboardModule' },
+  { path: 'department', loadChildren: 'modules/department/department.module#DepartmentModule' },
+  { path: 'shift', loadChildren: 'modules/shift/shift.module#ShiftModule' },
+  { path: 'designation', loadChildren: 'modules/designation/designation.module#DesignationModule' },
+  { path: 'employee', loadChildren: 'modules/employee/employee.module#EmployeeModule' },
+  { path: 'reports', loadChildren: 'modules/reports/reports.module#ReportModule' },
+  { path: 'activity', loadChildren: 'modules/activity/activity.module#ActivityModule' },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' }
 
 ];
 
 export const ApiBase ="http://192.168.101.21:6058/api/";
+
+//export const ApiBase = "http://192.168.100.103:6070/api/";
+
 export const ApiBaseAuthUrl = "auth/token";
 
 export interface RootState {

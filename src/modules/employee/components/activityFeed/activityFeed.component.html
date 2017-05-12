@@ -1,0 +1,96 @@
+<div class="main-container container">
+
+    <div class="officerListMainBox">
+        <ul class="nav nav-tabs officer-tabs">
+            <li>
+                <a [routerLink]="['/employee/officerList']">Officer Detail</a>
+            </li>
+            <li class="active">
+                <a>Activity Feed</a>
+            </li>
+        </ul>
+
+        <!-- Tab content -->
+        <div class="tab-content profile-tab-content">
+            <!---------------------- Activity Feed tab content -------------------------->
+            <div id="activity-feed-tab" class="active tab-pane fade in">
+
+                <div class="headerBox">
+                    <h5>Recent Activity</h5>
+                    <label class="updateCount">>{{(asyncActivities|async).length}} New Updates</label>
+                </div>
+
+                 <!-- Main List Box -->
+                <div class="mainListBox"  infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="getActivities()">
+
+                    <!-- Box 1 -->
+                    <div class="listSubBox" *ngFor="let act of activities" >
+                        <div class="">
+                            <table class="table activityTable">
+                                <tbody>
+                                    <tr >
+                                        <td>
+                                            <img src="/assets/styles/images/added.png" class="activityImg" />
+                                        </td>
+                                        <td>
+                                            <span class="activityTime">{{act.createdOn |  amTimeAgo }}</span>
+                                            <p class="activityDescr">
+                                                {{act.createdByName}}
+                                                <ng-template [ngIf]="act.type == 'Status'">
+                                                    <b>Changed Status </b> of 
+                                                     <b>{{act.obNumber}}</b> : <i class="italicFont">{{act.natureOfOccurrence}}</i>
+                                                     to  
+                                                    <b>{{act.value}}</b>
+                                                </ng-template>
+                                                <ng-template [ngIf]="act.type == 'Comments'">
+                                                    <b>Commented</b> on 
+                                                    <b>{{act.obNumber}}</b> : <i class="italicFont">{{act.natureOfOccurrence}}</i> 
+                                                    <div class="reportSubDiv">
+                                                        <p>
+                                                            {{act.value}}
+                                                        </p>
+                                                     </div>
+                                                </ng-template>
+                                                <ng-template [ngIf]="act.type == 'AssignedTo'">
+                                                    <b>Assigned </b> {{act.value}} to
+                                                    <b>{{act.obNumber}}</b> : <i class="italicFont">{{act.natureOfOccurrence}}</i> 
+                                                </ng-template>
+                                                
+                                            </p>
+
+                                            <div class="activityAction">
+                                                <!--<a href="">Officer Details</a>-->
+                                                <a href='' (click)="onOBClick(act.obid);">View Job Details</a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <hr class="activitySeparator" />
+
+
+
+
+                </div>
+                <!-- Main List Box Ends -->
+
+            </div>
+            <!---------------------- Activity Feed tab content -------------------------->
+        </div>
+
+        <!-- Tab content Ends -->
+
+    </div>
+
+</div>
+<!-- Main Container End here -->
+
+<!-- Add new officer -->
+<div class="bottomContainer"  *ngIf="false">
+    <button>Add New Officer</button>
+</div>

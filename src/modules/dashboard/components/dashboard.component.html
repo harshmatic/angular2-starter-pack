@@ -202,7 +202,6 @@
             <div class="activeJobs ">
                 <h4>TODAY</h4>
                 <!--Job Row 1-->
-
                 <div *ngIf="obs.length==0">No Record Found</div>
                 <div class="row" *ngFor="let ob of obs">
                     <h5 class="col-xs-12"><span class="priorityIcon" [ngClass]="applyPriority(ob.priority)"></span> {{ob.obNumber}} | {{ob.mstDepartment.departmentName}}
