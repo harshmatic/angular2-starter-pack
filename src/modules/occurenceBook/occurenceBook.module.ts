@@ -6,12 +6,12 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OccurenceBookRouting } from './occurenceBook.routing';
 import { SharedModule } from '../../app/shared/shared.module';
 import { OccurenceBookComponent } from './components/ob/ob.component';
-import { occurenceEditComponent } from './components/occurenceEdit/occurenceEdit.component';
+import { OccurenceEditComponent } from './components/occurenceEdit/occurenceEdit.component';
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
 import { ViewActivityFeedComponent } from './components/viewActivity/viewActivity.component';
 import { AssignedComponent } from './components/assigned/assigned.component';
 import { AddOccurenceComponent } from './components/addOccurence/addOccurence.component';
-import { occurenceDetailComponent } from './components/occurenceDetail/occurenceDetail.component';
+import { OccurenceDetailComponent } from './components/occurenceDetail/occurenceDetail.component';
 import { OccurenceBookEffects } from './store/occurenceBook.effects';
 import { OccurenceBookService } from './services/occurenceBook.service';
 import { EmployeeEffects } from '../employee/store/employee.effects';
@@ -32,8 +32,8 @@ import { AgmCoreModule } from '@agm/core';
   imports: [
     SharedModule,
     ReactiveFormsModule,
+    FormsModule,
     OccurenceBookRouting,
-    EffectsModule.run(OccurenceBookEffects),
     EffectsModule.run(EmployeeEffects),
     EffectsModule.run(OccurenceTypeEffects),
     EffectsModule.run(DepartmentEffects),
@@ -44,13 +44,13 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule
   ],
   declarations: [
-    OccurenceBookComponent,
+    OccurenceDetailComponent,
     ActivityFeedComponent,
     ViewActivityFeedComponent,
     AddOccurenceComponent,
-    occurenceEditComponent,
-    AssignedComponent,
-    occurenceDetailComponent
+    OccurenceBookComponent,
+    OccurenceEditComponent,
+    AssignedComponent
   ],
   providers: [OccurenceBookService, EmployeeService, DepartmentService, ActivityService, OccurenceTypeService,
     OccurenceBookService, StatusService, AreaService]

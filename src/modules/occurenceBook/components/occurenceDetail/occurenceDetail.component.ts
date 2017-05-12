@@ -16,7 +16,7 @@ declare var $: any;
   styleUrls: ['occurenceDetail.component.css'],
   templateUrl: 'occurenceDetail.component.html',
 })
-export class occurenceDetailComponent implements OnInit,OnDestroy {
+export class OccurenceDetailComponent implements OnInit, OnDestroy {
   jobPageNum: number = 1;
   userDetail: any;
   stopScroll = false
@@ -32,17 +32,17 @@ export class occurenceDetailComponent implements OnInit,OnDestroy {
   ngOnInit() {
     this.userDetail = this.authService.getCurrentUser();
     this.store.dispatch({
-        type: OB_ACTIONS.GET_LIST,
-        payload: { search: this.queryString, pageNum: this.jobPageNum, pageSize: 5, areaId: this.userDetail.areaID }
+      type: OB_ACTIONS.GET_LIST,
+      payload: { search: this.queryString, pageNum: this.jobPageNum, pageSize: 5, areaId: this.userDetail.areaID }
     });
     this.asyncOb = this.store.select('occurenceBook');
 
     this.subscriptions = this.asyncOb.subscribe((res: any) => {
-     for(let i=0; i<res.length;i++){
+      for (let i = 0; i < res.length; i++) {
         this.obs.push(res[i]);
       }
       if (res.length > 0) {
-       // this.jobPageNum++;
+        // this.jobPageNum++;
         this.stopScroll = false;
       } else {
         this.stopScroll = true;
