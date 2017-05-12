@@ -35,13 +35,16 @@ export class JobDetailComponent implements OnInit,OnDestroy {
     this.asyncOb = this.store.select('occurenceBook');
 
     this.subscriptions = this.asyncOb.subscribe((res: any) => {
-      if(res.length===this.obs.length){
+      console.log('subs',res)
+      if(res){
+       if(res.length===this.obs.length){
         this.stopScroll = true;
       } else {
          this.jobPageNum++;
         this.stopScroll = false;
       }
      this.obs = res;
+     }
     })
   }
   ngOnDestroy() {
@@ -57,28 +60,28 @@ export class JobDetailComponent implements OnInit,OnDestroy {
     this.getJobs()
   }
   ngAfterViewInit() {
-    $(document).ready(function () {
-      if ($(window).width() <= 767) {
+    // $(document).ready(function () {
+    //   if ($(window).width() <= 767) {
 
-        var offset = $(".stickyRow").offset();
-        var sticky = $(".stickyRow");
-        var additionalPixels = 157;
+    //     var offset = $(".stickyRow").offset();
+    //     var sticky = $(".stickyRow");
+    //     var additionalPixels = 157;
 
-        $(window).scroll(function () {
-          var scrollTop = $(window).scrollTop();
-          if (scrollTop > 156) {
+    //     $(window).scroll(function () {
+    //       var scrollTop = $(window).scrollTop();
+    //       if (scrollTop > 156) {
 
-            if ($(window).scrollTop() > offset.top - additionalPixels) {
-              $(".stickyRow").addClass('affix');
-            } else {
-              $(".stickyRow").removeClass('affix');
-            }
-          } else {
-            $(".stickyRow").removeClass('affix');
-          }
-        });
-      }
-    });
+    //         if ($(window).scrollTop() > offset.top - additionalPixels) {
+    //           $(".stickyRow").addClass('affix');
+    //         } else {
+    //           $(".stickyRow").removeClass('affix');
+    //         }
+    //       } else {
+    //         $(".stickyRow").removeClass('affix');
+    //       }
+    //     });
+    //   }
+    // });
   }
   onOBClick(id: any) {
     this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: id } });
