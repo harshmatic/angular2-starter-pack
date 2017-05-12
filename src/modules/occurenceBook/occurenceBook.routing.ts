@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { OccurenceBookComponent } from './components/ob/ob.component';
 import { AuthGuard } from '../../app/core/index';
-import { occurenceDetailComponent } from './components/occurenceDetail/occurenceDetail.component';
-import { occurenceEditComponent } from './components/occurenceEdit/occurenceEdit.component';
+import { OccurenceDetailComponent } from './components/occurenceDetail/occurenceDetail.component';
+import { OccurenceEditComponent } from './components/occurenceEdit/occurenceEdit.component';
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
 import { ViewActivityFeedComponent } from './components/viewActivity/viewActivity.component';
 import { AddOccurenceComponent } from './components/addOccurence/addOccurence.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
   },
    {
     path: 'occurenceDetails',
-    component: occurenceDetailComponent,
+    component: OccurenceDetailComponent,
     data: {
        permissions:['OB.R']
     },
@@ -45,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: 'occurenceEdit',
-    component: occurenceEditComponent,
+    component: OccurenceEditComponent,
     data: {
     },
     canActivate: [AuthGuard],

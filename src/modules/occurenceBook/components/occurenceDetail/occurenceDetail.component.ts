@@ -16,7 +16,7 @@ declare var $: any;
   styleUrls: ['occurenceDetail.component.css'],
   templateUrl: 'occurenceDetail.component.html',
 })
-export class occurenceDetailComponent implements OnInit,OnDestroy {
+export class OccurenceDetailComponent implements OnInit, OnDestroy {
   jobPageNum: number = 1;
   userDetail: any;
   stopScroll = false

@@ -43,6 +43,10 @@ export class AuthService extends BaseService {
         console.log('TO DO : Need to implement angular2-oauth2 service');
         return Observable.throw('');
     }
+    simpleLogin(credentials) {
+        console.log('TO DO : Need to implement method so user can login without token');
+        return Observable.throw('');
+    }
     getLoggedInUserPermission() {
         return this.get$('permissions', true).map((res: any) => {
             this.setLoggedInUserPermission(res)

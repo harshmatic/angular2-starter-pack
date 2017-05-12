@@ -17,7 +17,7 @@ declare var $: any;
   templateUrl: 'occurenceEdit.component.html',
   styleUrls: ['occurenceEdit.component.css']
 })
-export class occurenceEditComponent implements OnInit, OnDestroy {
+export class OccurenceEditComponent implements OnInit, OnDestroy {
   public selectedStatus: any;
   public obs: any = [];
   public comment: string = '';
@@ -80,7 +80,7 @@ export class occurenceEditComponent implements OnInit, OnDestroy {
     }
 
   }
-  onViewActivity(){
+  onViewActivity() {
     this.router.navigate(['/ob/viewActivity'], { queryParams: { OccurenceBookID: this.obId } });
   }
 

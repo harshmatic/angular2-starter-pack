@@ -69,6 +69,17 @@ export class EsplLoginFormComponent implements OnInit {
         this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: 'Enter Username and Password' });
       }
     }
+    //If Input parameter is simple
+    if (this.authenticationType === 'simple') {
+      if (this.username.value !== '' && this.password.value !== '') {
+        this.authService.simpleLogin({ userName: this.username.value, password: this.password.value }).subscribe(
+          results => {
+            this.getLoggedInUserPermission();
+          });
+      } else {
+        this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: 'Enter Username and Password' });
+      }
+    }
   }
   getLoggedInUserPermission(): void {
     this.authService.getLoggedInUserPermission()
