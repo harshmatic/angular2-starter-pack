@@ -34,6 +34,7 @@ export class LoginPageComponent implements OnInit {
     ngOnInit() {
 
     }
+    //Reviewed by salauddin
     handleSubmit(evt) {
     //If Input parameter is tokenBase 
     if (this.authenticationType === 'tokenBase') {
