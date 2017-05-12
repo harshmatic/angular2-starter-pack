@@ -21,7 +21,7 @@ export class EsplLoginFormComponent implements OnInit {
   //getting data from login-page.ts
   @Input() Logo: any;
   @Input() mainCSS: any;
-  @Input() authenticationType: any;
+  @Output() doLogin: EventEmitter<any> = new EventEmitter();
   // needed to be public to allow access from fixture tests
   checked: boolean = false;
   username: FormControl;
@@ -46,59 +46,9 @@ export class EsplLoginFormComponent implements OnInit {
       }
     });
   }
-  handleSubmit() {
-    //If Input parameter is tokenBase 
-    if (this.authenticationType === 'tokenBase') {
-      if (this.username.value !== '' && this.password.value !== '') {
-        this.authService.login({ userName: this.username.value, password: this.password.value }).subscribe(
-          results => {
-            this.getLoggedInUserPermission();
-          });
-      } else {
-        this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: 'Enter Username and Password' });
-      }
-    }
-    //If input parameter is OAuth
-    if (this.authenticationType === 'OAuth') {
-      if (this.username.value !== '' && this.password.value !== '') {
-        this.authService.oAuth({ userName: this.username.value, password: this.password.value }).subscribe(
-          results => {
-            this.getLoggedInUserPermission();
-          });
-      } else {
-        this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: 'Enter Username and Password' });
-      }
-    }
-    //If Input parameter is simple
-    if (this.authenticationType === 'simple') {
-      if (this.username.value !== '' && this.password.value !== '') {
-        this.authService.simpleLogin({ userName: this.username.value, password: this.password.value }).subscribe(
-          results => {
-            this.getLoggedInUserPermission();
-          });
-      } else {
-        this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: 'Enter Username and Password' });
-      }
-    }
+  handleSubmit({ value, valid }: { value: any, valid: boolean }) {
+    this.doLogin.emit(value);
   }
-  getLoggedInUserPermission(): void {
-    this.authService.getLoggedInUserPermission()
-      .subscribe(
-      results => {
-        this.getCurrentUserDetails();
-      });
-  };
-  getCurrentUserDetails(): void {
-    this.authService.getCurrentUserDetails()
-      .subscribe(
-      results => {
-        if (this.queryUrl) {
-          this._router.navigate([this.queryUrl]);
-        } else {
-          this._router.navigate(['/dashboard']);
-        }
-      });
-  };
   reset() {
     this.username = new FormControl('', Validators.required);
     this.password = new FormControl('', Validators.required);
