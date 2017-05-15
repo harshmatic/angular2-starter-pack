@@ -6,6 +6,8 @@ import { WindowService } from './window.service';
 import { AppService } from './app.service';
 import { UserService } from './user.service';
 import {MessageService} from './message.service';
+import {GlobalErrorHandler} from './exception.service';
+
 export const CORE_PROVIDERS: any[] = [
   AppService,
   ConsoleService,
@@ -13,7 +15,8 @@ export const CORE_PROVIDERS: any[] = [
   RouterExtensions,
   WindowService,
   UserService,
-  MessageService
+  MessageService,
+  GlobalErrorHandler
 ];
 
 export * from './app.service';
@@ -23,3 +26,4 @@ export * from './router-extensions.service';
 export * from './window.service';
 export * from './base.service';
 export * from './message.service';
+export * from './exception.service';
