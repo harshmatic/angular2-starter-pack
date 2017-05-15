@@ -29,6 +29,7 @@ export class AuthService extends BaseService {
             return Observable.throw(err);
         });
     }
+    // Reviewed by salauddin
     oAuth(credentials) {
         // this.oauthService.tryLogin({
         //     validationHandler: context => {

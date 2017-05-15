@@ -30,7 +30,6 @@ import { NotFoundPage } from './not-found/not-found.page';
 import { EsplForbiddenPage } from './forbidden/forbidden.page';
 import { routing } from './core.routing';
 import { NavComponent } from './nav/nav.component';
-
 // module
 import { PlatformDirective } from './platform/platform.directive';
 import { CORE_PROVIDERS } from './services/index';
@@ -87,7 +86,7 @@ interface ICoreModuleOptions {
     NavigatorModule,
     SharedModule,
     AuthModule,
-    routing,
+    routing
     
   ],
   declarations: [
@@ -107,7 +106,7 @@ interface ICoreModuleOptions {
     FormsModule,
     RouterModule,
     HttpModule,
-    PlatformDirective,
+    PlatformDirective
   ],
   providers: [
     CORE_PROVIDERS

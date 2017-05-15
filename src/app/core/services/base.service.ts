@@ -2,6 +2,8 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { MessageService } from './message.service';
 import { Router } from '@angular/router';
+import { GlobalErrorHandler } from './exception.service';
+import { LogService } from './log.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
@@ -22,17 +24,21 @@ export class BaseService implements HttpServices {
 
     private baseUrl: string = ApiBase;
     private options: RequestOptions;
-
+    private log:LogService;
     private httpService: Http;
     private requestUrl: string;
     private messageService:MessageService;
+    private errorHandle:GlobalErrorHandler;
     private router:Router;
     /** Base Service constructor : Accepts Analytics Service, Http Service, Context path, Log service */
-    constructor(_httpService: Http, _context: string, router?:Router, messageService?: MessageService) {
+    constructor(_httpService: Http, _context: string, router?:Router, messageService?: MessageService,errorHandle?:GlobalErrorHandler,log?:LogService) {
         this.httpService = _httpService;
         //this.requestUrl = this.baseUrl.concat(_context);
         this.messageService = messageService;
+        this.errorHandle = errorHandle;
+        this.log = log;
         this.router = router;
+        debugger;
     }
 
     _window(): any {
@@ -51,6 +57,7 @@ export class BaseService implements HttpServices {
             return data;
         })
         .catch(err => {
+            this.log.error(err);
             return this.handleError(err);
         });
     }
@@ -84,6 +91,7 @@ export class BaseService implements HttpServices {
             return data;
         })
         .catch(err => {
+            //throw new Error('Im errorn');
             return this.handleError(err);
         });
 
@@ -160,11 +168,11 @@ export class BaseService implements HttpServices {
             const err = error.text() || error.json()||'';
             //const err = body.error_description ||  body.error || body.Message || JSON.stringify(body);
             errMsg = err;
-            this.messageService.addMessage({ severity: 'error', summary: 'Failed', detail: errMsg  });
+            //this.errorHandle.handleError(error);
         } else {
             errMsg = error.message ? error.message : error.toString();
         }
-        console.error(errMsg);
+    
         return Observable.throw(errMsg);
     }
     /**

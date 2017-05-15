@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule,ErrorHandler } from '@angular/core';
  import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { LoginModule } from './core/auth/login/login.module';
+import { GlobalErrorHandler } from './core/services/exception.service';
+
 /** TODO: remove when work-around is not needed*/
 import 'hammerjs';
 
@@ -40,7 +42,8 @@ import { CoreModule } from './core/core.module';
     AgmCoreModule
   ],
   providers:[
-     Location, {provide: LocationStrategy, useClass: HashLocationStrategy}
+     Location, {provide: LocationStrategy, useClass: HashLocationStrategy},
+     { provide: ErrorHandler, useClass: GlobalErrorHandler }
    
   ]
 })

@@ -10,6 +10,7 @@ import { ViewActivityFeedComponent } from './components/viewActivity/viewActivit
 import { AddOccurenceComponent } from './components/addOccurence/addOccurence.component';
 import { AssignedComponent } from './components/assigned/assigned.component';
 
+//Reviewed by salauddin
 const routes: Routes = [
   {
     path: '',

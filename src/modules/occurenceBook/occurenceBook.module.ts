@@ -28,6 +28,7 @@ import { AreaService } from '../area/services/area.service';
 import { AreaEffects } from '../area/store/area.effects';
 import { AgmCoreModule } from '@agm/core';
 
+// Reviewed by salauddin
 @NgModule({
   imports: [
     SharedModule,
