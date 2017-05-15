@@ -8,14 +8,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SharedModule } from '../../../../app/shared/shared.module';
-import {OccurenceDetailComponent} from './occurenceDetail.component';
+import {AssignedComponent} from './assigned.component';
 import { AuthService } from '../../../../app/core/index';
 import { OccurenceBookEffects } from '../../store/occurenceBook.effects';
 import { OccurenceBookService } from '../../services/occurenceBook.service';
 import { OccurenceBookReducer } from '../../../occurenceBook/store/occurenceBook.reducer';
 import { Priority } from '../../../config';
 import { Status } from '../../../config';
-@Component({selector: 'test-cmp', template: '<app-job-detail></app-job-detail>'})
+@Component({selector: 'test-cmp', template: '<app-assigned></app-assigned>'})
 class TestComponent {}
 
 @Directive({selector: '[routerLink]'})
@@ -41,9 +41,14 @@ class OccurenceBookServiceStub {
        observer.next(testData);
      });
   }
+  getObsOff(searchQuery?:any,pageNum?:any,pageSize?:any,areaId?:any) {
+     return new Observable<any>((observer:any) => {
+       observer.next(testData);
+     });
+  }
 }
 
-describe('Component: OB Detail Component', () => {
+describe('Component: Assigned Component', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
@@ -54,7 +59,7 @@ describe('Component: OB Detail Component', () => {
             ],
             schemas: [NO_ERRORS_SCHEMA],
             declarations: [
-                OccurenceDetailComponent, TestComponent, RouterLinkStubDirective
+                AssignedComponent, TestComponent, RouterLinkStubDirective
             ],
             providers: [
                {
@@ -78,20 +83,10 @@ describe('Component: OB Detail Component', () => {
                 expect(TestComponent).toBeDefined();
             });
     }));
-    it('checking ui', async(() => {
-        TestBed.compileComponents()
-            .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
-                fixture.detectChanges();
-                let element = fixture.nativeElement;
-                expect(element.querySelector('.searchIcon').innerText).toEqual('search');
-            });
-    }));
-
     it('check component init', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                let fixture = TestBed.createComponent(AssignedComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
                 expect(componentInstance.jobPageNum).toBe(2);
@@ -99,10 +94,10 @@ describe('Component: OB Detail Component', () => {
                 expect(componentInstance.obs.length).toBe(1);
             });
     }));
-    it('it should check onKeyup method', async(() => {
+        it('it should check onKeyup method', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                let fixture = TestBed.createComponent(AssignedComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
                 componentInstance.onKey({target:{value:'test'}});
@@ -112,18 +107,18 @@ describe('Component: OB Detail Component', () => {
     it('it should check getJobs method', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                let fixture = TestBed.createComponent(AssignedComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
                 componentInstance.getJobs();
-                expect(componentInstance.jobPageNum).toBe(3);
-                 expect(componentInstance.obs.length).toBe(2);
+                expect(componentInstance.jobPageNum).toBe(2);
+                expect(componentInstance.obs.length).toBe(1);
             });
     }));
     it('it should check applyPriority method', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                let fixture = TestBed.createComponent(AssignedComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
                 let result=componentInstance.applyPriority('test');
@@ -135,7 +130,7 @@ describe('Component: OB Detail Component', () => {
     it('it should check applyIcon method', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                let fixture = TestBed.createComponent(AssignedComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
                 let result=componentInstance.applyIcon('test');
@@ -147,7 +142,7 @@ describe('Component: OB Detail Component', () => {
     it('it should check applyStatus method', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                let fixture = TestBed.createComponent(AssignedComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
                 let result=componentInstance.applyStatus('test');

@@ -35,7 +35,6 @@ export class OccurenceDetailComponent implements OnInit, OnDestroy {
     this.asyncOb = this.store.select('occurenceBook');
 
     this.subscriptions = this.asyncOb.subscribe((res: any) => {
-      console.log('subs',res)
       if(res){
        if(res.length===this.obs.length){
         this.stopScroll = true;

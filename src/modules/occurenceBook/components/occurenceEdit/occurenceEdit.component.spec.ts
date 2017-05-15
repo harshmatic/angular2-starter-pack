@@ -2,26 +2,30 @@ import {Component, Directive, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {async, inject, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
+import { Router, ActivatedRoute } from '@angular/router';
 import {CommonModule} from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SharedModule } from '../../../../app/shared/shared.module';
-import {OccurenceDetailComponent} from './occurenceDetail.component';
+import {OccurenceEditComponent} from './occurenceEdit.component';
 import { AuthService } from '../../../../app/core/index';
 import { OccurenceBookEffects } from '../../store/occurenceBook.effects';
 import { OccurenceBookService } from '../../services/occurenceBook.service';
 import { OccurenceBookReducer } from '../../../occurenceBook/store/occurenceBook.reducer';
-import { Priority } from '../../../config';
-import { Status } from '../../../config';
-@Component({selector: 'test-cmp', template: '<app-job-detail></app-job-detail>'})
+import { MessageService } from '../../../../app/core/services/index';
+import { StatusReducer } from '../../../status/store/status.reducer';
+
+@Component({selector: 'test-cmp', template: '<app-job-edit></app-job-edit>'})
 class TestComponent {}
 
 @Directive({selector: '[routerLink]'})
-export class RouterLinkStubDirective {}
+class RouterLinkStubDirective {}
+var message=''
 class MessageServiceStub {
-    addMessage(message : any) {
+    addMessage(data : any) {
+        message = data.detail
         return;
     }
 }
@@ -38,8 +42,23 @@ class AuthServiceStub {
 class OccurenceBookServiceStub {
   getObs(searchQuery?:any,pageNum?:any,pageSize?:any,areaId?:any) {
      return new Observable<any>((observer:any) => {
+       observer.next({});
+     });
+  }
+  getOb(id){
+    return new Observable<any>((observer:any) => {
        observer.next(testData);
      });
+  }
+  updateOfficer(payload){
+    return new Observable<any>((observer:any) => {
+       observer.next(true);
+     });
+  }
+  addReview(payload){
+    return new Observable<any>((observer:any) => {
+       observer.next(true);
+    });
   }
 }
 
@@ -48,24 +67,28 @@ describe('Component: OB Detail Component', () => {
         TestBed.configureTestingModule({
             imports: [
                 EffectsModule.run(OccurenceBookEffects),
-                StoreModule.provideStore({occurenceBook:OccurenceBookReducer}),
+                StoreModule.provideStore({occurenceBook:OccurenceBookReducer,status:StatusReducer}),
                 SharedModule,RouterTestingModule, CommonModule,
                 FormsModule, ReactiveFormsModule
             ],
             schemas: [NO_ERRORS_SCHEMA],
             declarations: [
-                OccurenceDetailComponent, TestComponent, RouterLinkStubDirective
+                OccurenceEditComponent, TestComponent, RouterLinkStubDirective
             ],
             providers: [
                {
-                    provide: AuthService,
-                    useClass: AuthServiceStub
+                    provide: MessageService,
+                    useClass: MessageServiceStub
                 },
                 {
                     provide: OccurenceBookService,
                     useClass: OccurenceBookServiceStub
                 },
-                
+                 {
+                    provide: AuthService,
+                    useClass: AuthServiceStub
+                },
+                 { provide: ActivatedRoute, useValue: { 'queryParams': Observable.from([{ 'OccurenceBookID': 232 }]) } }
             ]
         });
     });
@@ -78,52 +101,19 @@ describe('Component: OB Detail Component', () => {
                 expect(TestComponent).toBeDefined();
             });
     }));
-    it('checking ui', async(() => {
-        TestBed.compileComponents()
-            .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
-                fixture.detectChanges();
-                let element = fixture.nativeElement;
-                expect(element.querySelector('.searchIcon').innerText).toEqual('search');
-            });
-    }));
-
     it('check component init', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                let fixture = TestBed.createComponent(OccurenceEditComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
-                expect(componentInstance.jobPageNum).toBe(2);
-                expect(componentInstance.stopScroll).toBe(false);
-                expect(componentInstance.obs.length).toBe(1);
+                expect(componentInstance.obId).toBe(232);;
             });
     }));
-    it('it should check onKeyup method', async(() => {
+      it('it should check applyPriority method', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
-                fixture.detectChanges();
-                let componentInstance = fixture.componentInstance;
-                componentInstance.onKey({target:{value:'test'}});
-                expect(componentInstance.queryString).toBe('test');
-            });
-    }));
-    it('it should check getJobs method', async(() => {
-        TestBed.compileComponents()
-            .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
-                fixture.detectChanges();
-                let componentInstance = fixture.componentInstance;
-                componentInstance.getJobs();
-                expect(componentInstance.jobPageNum).toBe(3);
-                 expect(componentInstance.obs.length).toBe(2);
-            });
-    }));
-    it('it should check applyPriority method', async(() => {
-        TestBed.compileComponents()
-            .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                let fixture = TestBed.createComponent(OccurenceEditComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
                 let result=componentInstance.applyPriority('test');
@@ -135,7 +125,7 @@ describe('Component: OB Detail Component', () => {
     it('it should check applyIcon method', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                let fixture = TestBed.createComponent(OccurenceEditComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
                 let result=componentInstance.applyIcon('test');
@@ -144,23 +134,35 @@ describe('Component: OB Detail Component', () => {
                 expect(result2).toBe("/assets/styles/images/red.svg");
             });
     }));
-    it('it should check applyStatus method', async(() => {
+    it('it should check status and selected OB', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(OccurenceDetailComponent);
+                let fixture = TestBed.createComponent(OccurenceEditComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
-                let result=componentInstance.applyStatus('test');
-                expect(result).toBe('statusOpen');
-                let result2=componentInstance.applyStatus('Assigned');
-                expect(result2).toBe("statusAssigned");
+                expect(componentInstance.status.length).toBe(0);
+                expect(componentInstance.selectedStatus).toBe(testData.statusID);
+            });
+    }));
+    it('it should check onSubmit method', async(() => {
+        TestBed.compileComponents()
+            .then(() => {
+                let fixture = TestBed.createComponent(OccurenceEditComponent);
+                fixture.detectChanges();
+                let componentInstance = fixture.componentInstance;
+                componentInstance.comment='';
+                componentInstance.onSubmit();
+                expect(message).toBe('Status updated');
+                componentInstance.comment='test';
+                componentInstance.onSubmit();
+                expect(message).toBe('Comment saved');
             });
     }));
 });
 
 
-var testData=[
-  {
+
+var testData = {
     "obid": "411bfab2-0d44-4fb9-8835-184db90f5678",
     "areaID": "89234f93-6a6a-4960-a7d3-20f98f2760a8",
     "obTypeID": "758b1995-7f92-4d87-9588-b90800abf222",
@@ -329,4 +331,4 @@ var testData=[
     },
     "priority": "Minor",
     "createdOn": "2017-05-15T07:49:14.6962064",
-  }]
+  }
