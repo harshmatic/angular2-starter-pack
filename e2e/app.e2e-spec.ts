@@ -12,8 +12,5 @@ describe('great-big-angular2-example App', function () {
     page = new GreatBigAngular2ExamplePage();
   });
 
-  it('should display message saying Login', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Login');
-  });
+  
 });
