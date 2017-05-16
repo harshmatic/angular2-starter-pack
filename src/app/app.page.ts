@@ -18,6 +18,7 @@ export class AppPage implements OnInit {
     { 'Name': 'Occurrence Book', 'Routerlink': '/ob/occurenceDetails', 'Authorize': ['OB.R'] },
     { 'Name': 'Officer Management', 'Routerlink': '/employee/officerList', 'Authorize': ['EP.R'] },
     { 'Name': 'Inventory', 'Routerlink': '#', 'Authorize': [] },
+    { 'Name': 'Admin', 'Routerlink': '/admin/users', 'Authorize': [] },
     { 'Name': 'Reports', 'Routerlink': '/reports', 'Authorize': [] }];
     public cssClass: any = 'mainCSS';
     msgs: Message[] = [];

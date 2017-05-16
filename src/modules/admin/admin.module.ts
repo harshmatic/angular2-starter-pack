@@ -1,0 +1,27 @@
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { EffectsModule } from '@ngrx/effects';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { AdminRouting } from './admin.routing';
+import { SharedModule } from '../../app/shared/shared.module';
+import { UserListComponent } from './components/user/user-list/user-list.component';
+import { UserRoleComponent } from './components/user/user-role/user-role.component';
+import { UserEffects } from './store/user/user.effects';
+import { UserService } from './services/user.service';
+import { RoleEffects } from './store/role/role.effects';
+import { RoleService } from './services/role.service';
+@NgModule({
+  imports: [
+    SharedModule,
+    ReactiveFormsModule,
+    AdminRouting,
+    EffectsModule.run(UserEffects),
+    EffectsModule.run(RoleEffects)
+  ],
+  declarations: [
+    UserListComponent,UserRoleComponent
+  ],
+  providers:[UserService,RoleService]
+})
+export class AdminModule { }

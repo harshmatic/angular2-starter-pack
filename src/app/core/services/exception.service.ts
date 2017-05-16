@@ -10,7 +10,13 @@ export class GlobalErrorHandler implements ErrorHandler {
         this.notificationService = notificationService;
     }
     handleError(error: any): void {
-        var errorObj = JSON.parse(error.rejection.message);
+        try {
+            var errorObj = JSON.parse(error.rejection.message);
+        } 
+        catch (e) {
+            throw new Error(error)
+        }
+        
         var stack = "";
         if (errorObj.stacktrace) {
             stack = error.rejection.stack;

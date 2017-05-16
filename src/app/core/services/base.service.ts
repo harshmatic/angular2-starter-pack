@@ -141,8 +141,11 @@ export class BaseService implements HttpServices {
      * @input id : ID of the object to be deleted
      * @isSecured : Optional Parameter : Parameter to tell base service if security headers nedds to be included
      */
-    delete$(url:string, isSecured?: boolean) {
+    delete$(url:string, isSecured?: boolean,payload?:any) {
         this.getHeaders(isSecured);
+        if(payload){
+            this.options.body=payload
+        }
         return this.httpService.delete(this.baseUrl + url, this.options)
         .map(data => {
             return data;
