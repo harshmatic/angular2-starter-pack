@@ -41,9 +41,9 @@ import { CoreModule } from './core/core.module';
 
     AgmCoreModule
   ],
-  providers:[
+  providers:[ { provide: ErrorHandler, useClass: GlobalErrorHandler },
      Location, {provide: LocationStrategy, useClass: HashLocationStrategy},
-     { provide: ErrorHandler, useClass: GlobalErrorHandler }
+    
    
   ]
 })

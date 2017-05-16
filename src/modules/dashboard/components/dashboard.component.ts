@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   locations: any;
   constructor(private store: Store<Dashboard>, private authService: AuthService) { }
   ngOnInit() {
+    
     this.userDetail = this.authService.getCurrentUser();
     this.officers = []
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "", pageNum: 1, pageSize: 5, areaId: this.userDetail.areaID } });
@@ -64,11 +65,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.store.dispatch({ type: REPORTS_ACTIONS.GET_CASE_LIST });
     this.asyncCaseReport = this.store.select('reports')
     this.asyncCaseReport.subscribe((res: any) => {
-      this.caseReport = res;
+
+        this.caseReport = res;
+
+      
     });
+    throw JSON.stringify({message:'Demo',level:'low',type:'error'});
+     
 
-
-
+    
   }
   ngOnDestroy() {
     this.store.dispatch({ type: OB_ACTIONS.CLEAR });

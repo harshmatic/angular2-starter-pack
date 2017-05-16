@@ -28,6 +28,7 @@ export class AppPage implements OnInit {
 
     }
     ngOnInit() {
+        
         this.isLoggedIn = this.authService.isAuthenticated();
         this.messageService.getMessages()
             .subscribe((value: Object) => {
@@ -40,6 +41,7 @@ export class AppPage implements OnInit {
                 this.getUser();
             })
         this.getUser();
+        //throw "hell app";
     }
     getUser() {
         if (this.isLoggedIn) {

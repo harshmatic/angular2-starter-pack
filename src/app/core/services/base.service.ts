@@ -2,7 +2,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { MessageService } from './message.service';
 import { Router } from '@angular/router';
-import { GlobalErrorHandler } from './exception.service';
+
 import { LogService } from './log.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -28,17 +28,14 @@ export class BaseService implements HttpServices {
     private httpService: Http;
     private requestUrl: string;
     private messageService:MessageService;
-    private errorHandle:GlobalErrorHandler;
     private router:Router;
     /** Base Service constructor : Accepts Analytics Service, Http Service, Context path, Log service */
-    constructor(_httpService: Http, _context: string, router?:Router, messageService?: MessageService,errorHandle?:GlobalErrorHandler,log?:LogService) {
+    constructor(_httpService: Http, _context: string, router?:Router, messageService?: MessageService,log?:LogService) {
         this.httpService = _httpService;
         //this.requestUrl = this.baseUrl.concat(_context);
         this.messageService = messageService;
-        this.errorHandle = errorHandle;
         this.log = log;
         this.router = router;
-        debugger;
     }
 
     _window(): any {
@@ -50,15 +47,14 @@ export class BaseService implements HttpServices {
      * @input id :  of the object for which you need a data
      * @input isSecured : Optional Parameter : Parameter to tell base service if security headers needs to be included
      */
-    get$(url:string, isSecured?: boolean): Observable<Response> {
+    get$(url:string, isSecured?: boolean): any {
         this.getHeaders(isSecured);
         return this.httpService.get(this.baseUrl + url, this.options)
         .map(data => {
             return data;
         })
         .catch(err => {
-            this.log.error(err);
-            return this.handleError(err);
+             return err;
         });
     }
     /**
@@ -74,7 +70,8 @@ export class BaseService implements HttpServices {
             return data;
         })
         .catch(err => {
-            return this.handleError(err);
+            throw new Error("asda");
+             //return err;
         });
     }
     /**

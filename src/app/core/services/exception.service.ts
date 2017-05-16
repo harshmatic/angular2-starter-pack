@@ -1,28 +1,93 @@
-import { ErrorHandler, Injectable, Injector } from '@angular/core';
+import { ErrorHandler, Injectable, Injector, Inject } from '@angular/core';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { LogService } from './log.service';
 import * as StackTrace from 'stacktrace-js';
-@Injectable()
+import { MessageService } from './message.service';
+
 export class GlobalErrorHandler implements ErrorHandler {
-constructor(private injector: Injector) { debugger;}
-handleError(error) {
-    console.log("error");
-  //   const loggingService = this.injector.get(LogService);
-  //   const location = this.injector.get(LocationStrategy);
-  //   const message = error.message ? error.message : error.toString();
-  //   const url = location instanceof PathLocationStrategy
-  //     ? location.path() : '';
-  //  //get the stack trace, lets grab the last 10 stacks only
-  //   StackTrace.fromError(error).then(stackframes => {
-  //     const stackString = stackframes
-  //       .splice(0, 20)
-  //       .map(function(sf) {
-  //         return sf.toString();
-  //       }).join('\n');
-  //     loggingService.error({ message, url, stack: stackString });
-  //   });
-   
-throw error;
-  }
-  
+    private notificationService: MessageService;
+    constructor( @Inject(MessageService) notificationService: MessageService) {
+        this.notificationService = notificationService;
+    }
+    handleError(error: any): void {
+        var errorObj = JSON.parse(error.rejection.message);
+        var stack = "";
+        if (errorObj.stacktrace) {
+            stack = error.rejection.stack;
+        }
+        if (errorObj && errorObj.level ) {
+            switch (errorObj.level) {
+                case "high":
+                    break;
+                case "medium":
+                    alert("Your code has error:" + errorObj.message + "  " + stack + ". Please resolve to continue");
+                    break;
+                case "low":
+                    if (errorObj.type) {
+                        switch (errorObj.type) {
+                            case "warn":
+                                this.notificationService.addMessage(
+                                    {
+                                        severity: 'warn',
+                                        summary: 'Wanring',
+                                        detail: errorObj.message + stack
+                                    }
+                                );
+                                break;
+                            case "info":
+                                this.notificationService.addMessage(
+                                    {
+                                        severity: 'info',
+                                        summary: 'Info',
+                                        detail: errorObj.message + stack
+                                    }
+                                );
+                                break;
+                            case "error":
+                                this.notificationService.addMessage(
+                                    {
+                                        severity: 'error',
+                                        summary: 'error',
+                                        detail: errorObj.message + stack
+                                    }
+                                );
+                                break;
+                            default:
+                                this.notificationService.addMessage(
+                                    {
+                                        severity: 'error',
+                                        summary: 'error',
+                                        detail: errorObj.message + stack
+                                    }
+                                );
+                        }
+                    } else {
+                        this.notificationService.addMessage(
+                            {
+                                severity: 'error',
+                                summary: 'error',
+                                detail: errorObj.message + stack
+                            }
+                        );
+
+                    }
+            }
+        } else {
+            console.group("Error Log");
+            console.dir("Error Object Incorrect");
+            console.groupEnd();
+        }
+        this.showErrorInConsole(errorObj.message, stack);
+
+
+    }
+
+    private showErrorInConsole(error: any, stack: any): void {
+        if (console && console.group && console.error) {
+            console.group("Error Log");
+            console.log(error + "  " + stack);
+            console.groupEnd();
+        }
+    }
+
 }

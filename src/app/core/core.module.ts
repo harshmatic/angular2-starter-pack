@@ -7,7 +7,8 @@ import {
   ModuleWithProviders,
   NgModule,
   Optional,
-  SkipSelf
+  SkipSelf,
+  ErrorHandler
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
@@ -17,7 +18,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-
 
 
 import {
