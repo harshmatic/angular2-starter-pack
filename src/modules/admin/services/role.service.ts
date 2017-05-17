@@ -23,13 +23,19 @@ export class RoleService extends BaseService {
     getUserByID(userId:string){
         return this.getList$(CONTEXT+userId, 0, 0, true).map(res => res.json());
     }
-    getUserRoles(userID: string) {
-        return this.getList$(CONTEXT+userID+'/roles', 0, 0, true).map(res => res.json());
+    getRolePermissions(id: string) {
+        return this.getList$(CONTEXT+id+'/permissions', 0, 0, true).map(res => res.json());
     }
-    addUserRole(userID: string,payload:any) {
-        return this.post$(CONTEXT +userID+'/roles',payload,true).map(res => res.json());
+    addPermissionToRole(roleID: string,payload:any) {
+        return this.post$(CONTEXT +roleID+'/permissions',payload,true).map(res => res);
     }
-    deleteUserRole(userID: string,payload:any) {
-        return this.delete$(CONTEXT +userID+'/roles',payload).map(res => res.json());
+    deleteRolePermission(id: string,payload:any) {
+        return this.delete$(CONTEXT +id+'/permissions',true,payload).map(res => res);
+    }
+    deleteRole(userID: string) {
+        return this.delete$(CONTEXT+userID,true).map(res => res.json());
+    }
+    addRole(payload:any){
+        return this.post$(CONTEXT,payload,true).map(res => res.json());
     }
 }

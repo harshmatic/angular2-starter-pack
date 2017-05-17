@@ -13,6 +13,7 @@ import { ReportsReducer } from './reports/store/reports.reducer';
 import { ActivityReducer } from './activity/store/activity.reducer';
 import { UserReducer } from './admin/store/user/user.reducer';
 import { RoleReducer } from './admin/store/role/role.reducer';
+import { AppModuleReducer } from './admin/store/appModule/appModule.reducer';
 
 export const routing = [
 
@@ -34,8 +35,8 @@ export const routing = [
 ];
 
 //export const ApiBase ="http://192.168.101.21:6058/api/";
-
-export const ApiBase = "http://192.168.100.103:6070/api/";
+export const ApiBase ="http://192.168.101.162:6058/api/"
+//export const ApiBase = "http://192.168.100.103:6070/api/";
 
 export const ApiBaseAuthUrl = "auth/token";
 
@@ -65,5 +66,6 @@ export const moduleReducers = {
   reports: ReportsReducer,
   activity: ActivityReducer,
   user:UserReducer,
-  role:RoleReducer
+  role:RoleReducer,
+  appModule:AppModuleReducer
 }

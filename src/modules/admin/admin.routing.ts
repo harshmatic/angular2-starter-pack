@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { UserRoleComponent } from './components/user/user-role/user-role.component';
+import { RoleListComponent } from './components/roles/role-list/role-list.component';
+
 import { AuthGuard } from '../../app/core/index'
 
 const routes: Routes = [
@@ -25,6 +27,15 @@ const routes: Routes = [
       permissions: []
     },
      canActivate: [AuthGuard],
+  },
+  {
+    path: 'roles',
+    component: RoleListComponent,
+    data: {
+      permissions: []
+    },
+     canActivate: [AuthGuard],
+    
   }
 ];
 

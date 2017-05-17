@@ -1,9 +1,9 @@
-export const CONTEXT: string = 'ROLE';
+export const CONTEXT: string = 'APPMODULE';
 
 /**
  * USERAction  Interface
  */
-interface IRoleActions {
+interface IAppModuleActions {
     INIT: string;
     INITIALIZED: string;
     INIT_FAILED: string;
@@ -18,14 +18,12 @@ interface IRoleActions {
     UPDATE:string;
     GET: string;
     GET_SUCCESS: string;
-    GET_ROLE_PERMISSION_LIST:string;
-    GET_ROLE_PERMISSION_LIST_SUCCESS:string;
 }
 
 /**
  * User Actions List
  */
-export const ROLE_ACTIONS: IRoleActions = {
+export const APPMODULE_ACTIONS: IAppModuleActions = {
     INIT: `${CONTEXT}_INIT`,
     INITIALIZED: `${CONTEXT}_INITIALIZED`,
     INIT_FAILED: `${CONTEXT}_INIT_FAILED`,
@@ -40,6 +38,4 @@ export const ROLE_ACTIONS: IRoleActions = {
     ON_FAILED: `${CONTEXT}_ON_FAILED`,
     GET: `${CONTEXT}_GET`,
     GET_SUCCESS: `${CONTEXT}_GET_SUCCESS`,
-    GET_ROLE_PERMISSION_LIST: `${CONTEXT}_GET`,
-    GET_ROLE_PERMISSION_LIST_SUCCESS: `${CONTEXT}_GET_SUCCESS`,
 };

@@ -20,6 +20,16 @@ export class RoleEffects{
         })
         .catch(() => Observable.of({ type: ROLE_ACTIONS.ON_FAILED  }))
       );
+  @Effect({ dispatch: false })
+  private getRolePermission$ = this.actions$
+    .ofType(ROLE_ACTIONS.GET_ROLE_PERMISSION_LIST)
+   .switchMap(action => 
+       this.roleService.getRolePermissions(action.payload.roleId)
+        .map(res =>{
+          this.store.dispatch({ type: ROLE_ACTIONS.GET_ROLE_PERMISSION_LIST_SUCCESS, payload: res})
+        })
+        .catch(() => Observable.of({ type: ROLE_ACTIONS.ON_FAILED  }))
+      );
   constructor(
     private store: Store<any>,
     private actions$: Actions,
