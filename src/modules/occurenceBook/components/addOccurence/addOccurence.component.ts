@@ -167,7 +167,7 @@ export class AddOccurenceComponent implements OnInit {
       }
 
       this.occurenceBookService.addJob(payload).subscribe(res => {
-        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occurence Book Saved' });
+        this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occurence Saved' });
         this.router.navigate(['/ob/occurenceDetails']);
       })
     }
