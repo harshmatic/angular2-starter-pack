@@ -16,28 +16,28 @@ const CONTEXT = 'shifts/';
 @Injectable()
 export class ShiftService extends BaseService {
 
-    constructor(public http: Http, router: Router,messageService: MessageService) {
-        super(http,CONTEXT, router,messageService);
+    constructor(public http: Http, router: Router, messageService: MessageService) {
+        super(http, CONTEXT, router, messageService);
     }
     // Get All
-    getShifts() {        
-        return this.getList$(CONTEXT).map(res => res.json());    
+    getShifts() {
+        return this.getList$(CONTEXT, 0, 0, true).map(res => res);
     }
     // Add One
-    addShift(shift:any) {        
-        return this.post$(CONTEXT,shift).map(res => res.json());    
+    addShift(shift: any) {
+        return this.post$(CONTEXT, shift, true).map(res => res.json());
     }
     //Update One
-    saveShift(id:any,shift:any) {        
-        return this.put$(CONTEXT+id,shift, true).map(res => res.json());    
+    saveShift(id: any, shift: any) {
+        return this.put$(CONTEXT + id, shift, true).map(res => res.json());
     }
     // Delete One
-    deleteShift(id:any) {        
-        return this.delete$(CONTEXT+id).map(res => res.json());    
+    deleteShift(id: any) {
+        return this.delete$(CONTEXT + id,true).map(res => res.json());
     }
     // Get One
-    getShift(id:any) {        
-        return this.get$(CONTEXT+id).map(res => res.json());    
+    getShift(id: any) {
+        return this.get$(CONTEXT + id).map(res => res.json());
     }
 
 }
