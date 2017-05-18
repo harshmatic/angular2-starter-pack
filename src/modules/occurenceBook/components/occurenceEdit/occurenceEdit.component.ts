@@ -30,7 +30,7 @@ export class OccurenceEditComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
   private sub: Subscription = new Subscription();
   queryString = '';
-  constructor(private store: Store<OccurenceBook>, private route: ActivatedRoute, private router: Router,
+  constructor(private store: Store<any>, private route: ActivatedRoute, private router: Router,
     private formBuilder: FormBuilder,
     private occurenceBookService: OccurenceBookService,
     private messageService: MessageService) { }

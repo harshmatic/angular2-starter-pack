@@ -70,8 +70,7 @@ export class BaseService implements HttpServices {
             return data;
         })
         .catch(err => {
-            throw new Error("asda");
-             //return err;
+             return err;
         });
     }
     /**
