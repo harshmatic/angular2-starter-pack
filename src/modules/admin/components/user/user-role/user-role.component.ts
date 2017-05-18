@@ -5,11 +5,13 @@ import { USER_ACTIONS } from '../../../store/user/user.actions';
 import { ROLE_ACTIONS } from '../../../store/role/role.actions';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {  UserService } from '../../../services/user.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   moduleId: module.id,
   selector: 'user-role',
   templateUrl: 'user-role.component.html',
+  styleUrls: ['user-role.component.css']
 })
 export class UserRoleComponent implements OnInit {
   user:any;
@@ -18,17 +20,28 @@ export class UserRoleComponent implements OnInit {
   roleList:any=[]
   roleDropdown:any=[]
   selectedRole: any=null;
+  userForm: FormGroup;
   constructor(
     private store: Store<any>,
     private route: ActivatedRoute,
     private router: Router,
-     private userService: UserService){}
+    private formBuilder: FormBuilder,
+    private userService: UserService){}
 
   ngOnInit() {
+    this.userForm = this.formBuilder.group({
+            id:[0],
+            userName: ['', [Validators.required]],
+            firstName: ['', [Validators.required]],
+            lastName: ['', [Validators.required]],
+            email: ['', [Validators.required]],
+    });
     this.route.params.forEach((params: Params) => {
             this.params =params['userId'];
-            this.getAllRoles();
-            this.getUser();
+            if(this.params){
+               this.getAllRoles();
+               this.getUser();
+            }
       });
   }
   getAllRoles(){
@@ -41,8 +54,22 @@ export class UserRoleComponent implements OnInit {
   getUser(){
     this.store.dispatch({ type: USER_ACTIONS.GET,payload:{id:this.params} });
     this.store.select('user').subscribe((res:any) => {
-       this.user = res.user;
+      this.user = res.user;
+      this.userForm = this.formBuilder.group({
+            id:this.user.id,
+            userName: this.user.userName,
+            firstName: this.user.firstName,
+            lastName: this.user.lastName,
+            email: this.user.email,
      });
+    });
+  }
+  onSubmit({ value, valid }: { value: any, valid: boolean }) {
+      this.userService.addUser(value)
+                .subscribe(
+                results => {
+                    this.router.navigate(['/admin/users']);
+                });
   }
   getUserRole() {
     this.store.dispatch({ type: USER_ACTIONS.GET_USER_ROLE,payload:{id:this.params} });

@@ -32,4 +32,10 @@ export class UserService extends BaseService {
     deleteUserRole(userID: string,payload:any) {
         return this.delete$(CONTEXT +userID+'/roles',true,payload).map(res => res);
     }
+    addUser(payload:any) {
+        return this.post$(CONTEXT,payload,true).map(res => res);
+    }
+    editUser(payload:any) {
+        return this.put$(CONTEXT,payload,true).map(res => res);
+    }
 }

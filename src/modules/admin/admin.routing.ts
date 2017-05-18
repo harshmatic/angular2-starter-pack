@@ -19,6 +19,13 @@ const routes: Routes = [
       permissions: []
     },
      canActivate: [AuthGuard],
+  },{
+    path: 'user/new',
+    component: UserRoleComponent,
+    data: {
+      permissions: []
+    },
+     canActivate: [AuthGuard],
   },
    {
     path: 'user-role/:userId',
