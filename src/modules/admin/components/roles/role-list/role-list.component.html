@@ -1,0 +1,61 @@
+<div class="main-container container">
+  <div class="row inner-container">
+    <div class="col-md-6">
+      <form class="form-horizontal" role="form" novalidate (ngSubmit)="onSubmit(roleForm)" [formGroup]="roleForm">
+        <div class="form-group">
+          <label class="col-md-2 control-label">Name</label>
+          <div class="col-md-10">
+            <input type="text" formControlName="name" name="roleName" class="form-control">
+            <div class="alert alert-danger" *ngIf="roleForm.get('name').hasError('required') && roleForm.get('name').touched">
+              Please enter Role Name
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+            <button class="btn" type="submit" [disabled]="roleForm.invalid">Save</button>
+          </div>
+        </div>
+      </form>
+      <p-dataTable [value]="roleList" [responsive]="true" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+        <p-column field="name" header="Role Name" [sortable]="true"></p-column>
+        <p-column header="Permission">
+          <template let-role="rowData" pTemplate="body">
+            <a class="hand-cursor" (click)="managePermission(role)">Manage Permissions</a>
+          </template>
+        </p-column>
+        <p-column header="Delete">
+          <template let-role="rowData" pTemplate="body">
+            <button class="btn btn-danger" (click)="onDelete(role)"><i class="fa fa-trash"></i></button>
+          </template>
+        </p-column>
+      </p-dataTable>
+    </div>
+    <div class="col-md-offset-1 col-md-5" *ngIf="selectedRole && selectedRole!=null">
+      <div class="form-group">
+        <label class="col-md-10 control-label">Role:&nbsp; <strong>{{selectedRole.name}}</strong></label>
+      </div>
+      <div class="form-group">
+        <div class="col-md-10">
+          <label class="control-label">Search</label>
+          <p-autoComplete  [(ngModel)]="selectedPermission" [suggestions]="filteredPermissionList" (completeMethod)="filterPermission($event)"
+            field="text" [minLength]="1"></p-autoComplete>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-default" (click)="onAddPermission();" [disabled]="this.selectedPermission==null || this.selectedPermission==''"> ADD </button>
+        </div>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <p-dataTable [value]="rolePermissionsList " [responsive]="true" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+        <p-column field="text" header="Permissions" [sortable]="true"></p-column>
+        <p-column header="Revoke">
+          <template pTemplate="body" let-permission="rowData">
+            <a (click)="onRevokePermission(permission)">Revoke</a>
+          </template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
+</div>
