@@ -18,6 +18,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { GlobalErrorHandler } from './services/exception.service';
 
 
 import {
@@ -109,7 +110,7 @@ interface ICoreModuleOptions {
     PlatformDirective
   ],
   providers: [
-    CORE_PROVIDERS
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },CORE_PROVIDERS
   ]
 
 })

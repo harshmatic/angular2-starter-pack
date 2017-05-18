@@ -39,6 +39,7 @@ export class LoginPageComponent implements OnInit {
     //If Input parameter is tokenBase 
     if (this.authenticationType === 'tokenBase') {
       if (evt.username !== '' && evt.password !== '') {
+        
         this.authService.login({ userName: evt.username, password: evt.password }).subscribe(
           results => {
             this.getLoggedInUserPermission();

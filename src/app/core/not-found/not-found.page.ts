@@ -15,7 +15,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   //     </md-card-actions>
   //   </md-card>
   // `,
-  template: `Not found`,
+  template: `<h1>404: Not Found</h1>`,
   styles: [`
     :host {
       text-align: center;

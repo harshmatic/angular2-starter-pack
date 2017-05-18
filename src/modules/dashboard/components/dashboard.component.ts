@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
       
     });
-    throw JSON.stringify({message:'Demo',level:'low',type:'error'});
+    //throw JSON.stringify({message:'Demo',level:'low',type:'error'});
      
 
     

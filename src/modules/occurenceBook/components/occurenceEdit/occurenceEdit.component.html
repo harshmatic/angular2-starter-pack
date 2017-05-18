@@ -18,7 +18,7 @@
 				<!-- Status Dropdown -->
 				<div class="row">
 					<div class="col-xs-8 col-md-3">
-						<select [ifAuthorizeDisable]="['OB.U']" class="form-control detailDropdown" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
+						<select [ifAuthorizeDisable]="['OB.U']" class="form-control detailDropdown" name="status" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
 
 							<option *ngFor="let option of asyncStatus | async" [value]="option.statusID">{{option.statusName}}</option>
 							<!--<option [value]="">Solved</option>-->
@@ -146,7 +146,7 @@
 						<div class="col-xs-12">
 							<h6 class="crimeUnitTimeSpan">Comment <i class="material-icons commentIcon">comment</i></h6>
 							<h4 class="crimeUnitDescr">								
-								<textarea [ifAuthorizeDisable]="['OB.U']" class="form-control description" [(ngModel)]="comment" id="exampleTextarea" rows="3" ></textarea>
+								<textarea [ifAuthorizeDisable]="['OB.U']" class="form-control description" [(ngModel)]="comment" name="comment" id="exampleTextarea" rows="3" ></textarea>
 							</h4>	
 						</div>			
 					</div>
@@ -160,6 +160,6 @@
 <!-- Main Container End here -->
 <!-- Add new officer -->
 <div class="bottomContainer" [ifAuthorize]="['OB.U']">
-	<button class="bottomEditBtn" (click)="onSubmit()">Save</button>
-	<button class="bottomAssignBtn" (click)="OnAssignOfficer()">Assign Unit</button>
+	<button class="bottomEditBtn" name="submit" (click)="onSubmit()">Save</button>
+	<button class="bottomAssignBtn" name="assign" (click)="OnAssignOfficer()">Assign Unit</button>
 </div>

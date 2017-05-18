@@ -1,4 +1,4 @@
-  <form  (ngSubmit)="handleSubmit(authForm)" [formGroup]="authForm">
+  <form  name ="login" (ngSubmit)="handleSubmit(authForm)" [formGroup]="authForm">
            
 			<div class="loginMain {{mainCSS}}">
 				
@@ -9,19 +9,19 @@
 				<div class="loginPanel">
 					<label class="loginLabel">Username</label>
 					<img src="assets/styles/images/user.png" class="loginTextImg"/>
-					<input formControlName="username" type="text" class="form-control loginText" placeholder="enter username"/>
+					<input name="username" formControlName="username" type="text" class="form-control loginText" placeholder="enter username"/>
 				</div>
 				
 				<div class="loginPanel">
 					<label class="loginLabel">Password</label>
 					<img src="assets/styles/images/password.png" class="loginTextImg"/>
-					<input type="password" formControlName="password" class="form-control loginText" placeholder="enter password"/>
+					<input name ="password" type="password" formControlName="password" class="form-control loginText" placeholder="enter password"/>
 				</div>
 				<div class="loginPanel">
 					<p-checkbox  binary="true" label="Remember me"></p-checkbox>
 					<a href="#/forgot" id="forgotPwd">Forgot password ?</a>
 				</div>
-				<button class="loginBtn" type="submit" (click)='handleSubmit(authForm)'>Sign In</button>
+				<button class="loginBtn" name="submit" type="submit" (click)='handleSubmit(authForm)'>Sign In</button>
 				<h6 class="loginFooter">Copyrights &copy; 2017. All rights reserved.</h6>
 			</div>
 		</form>

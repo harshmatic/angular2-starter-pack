@@ -168,9 +168,11 @@ export class BaseService implements HttpServices {
             const err = error.text() || error.json()||'';
             //const err = body.error_description ||  body.error || body.Message || JSON.stringify(body);
             errMsg = err;
+            this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: err });
             //this.errorHandle.handleError(error);
         } else {
             errMsg = error.message ? error.message : error.toString();
+            this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: errMsg });
         }
     
         return Observable.throw(errMsg);
@@ -191,7 +193,9 @@ export class BaseService implements HttpServices {
     private onUnAuthorized() {
         localStorage.clear();
         if(location.hash!=='#/login') {
+        this.messageService.addMessage({ severity: 'error', summary: '401', detail: "Unauthorised" });
             this.router.navigate(['/login']);
+
            // this.messageService.setSessionTimeOutMessage(true);
         }
     }
