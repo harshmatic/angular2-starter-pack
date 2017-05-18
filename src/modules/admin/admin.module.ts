@@ -8,6 +8,7 @@ import { SharedModule } from '../../app/shared/shared.module';
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { RoleListComponent } from './components/roles/role-list/role-list.component';
 import { UserRoleComponent } from './components/user/user-role/user-role.component';
+import { AppModuleComponent } from './components/appModule/appModule.component';
 import { UserEffects } from './store/user/user.effects';
 import { UserService } from './services/user.service';
 import { RoleEffects } from './store/role/role.effects';
@@ -25,7 +26,7 @@ import { AppModuleService } from './services/appModule.service';
     EffectsModule.run(AppModuleEffects),
   ],
   declarations: [
-    UserListComponent,UserRoleComponent,RoleListComponent
+    UserListComponent,UserRoleComponent,RoleListComponent,AppModuleComponent
   ],
   providers:[UserService,RoleService,AppModuleService]
 })
