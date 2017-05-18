@@ -16,28 +16,28 @@ const CONTEXT = 'occurrencetype/';
 @Injectable()
 export class OccurenceTypeService extends BaseService {
 
-    constructor(public http: Http, router: Router,messageService: MessageService) {
-        super(http,CONTEXT, router,messageService);
+    constructor(public http: Http, router: Router, messageService: MessageService) {
+        super(http, CONTEXT, router, messageService);
     }
     // Get All
-    getOts() {        
-        return this.getList$(CONTEXT,0,0,true).map(res => res.json());    
+    getOts() {
+        return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
     }
     // Add One
-    addOt(ot:any) {        
-        return this.post$(CONTEXT,ot).map(res => res.json());    
+    addOt(ot: any) {
+        return this.post$(CONTEXT, ot, true).map(res => res.json());
     }
     //Update One
-    saveOt(id:any,ot:any) {        
-        return this.put$(CONTEXT+id,ot, true).map(res => res.json());    
+    saveOt(id: any, ot: any) {
+        return this.put$(CONTEXT + id, ot, true).map(res => res.json());
     }
     // Delete One
-    deleteOt(id:any) {        
-        return this.delete$(CONTEXT+id).map(res => res.json());    
+    deleteOt(id: any) {
+        return this.delete$(CONTEXT + id, true).map(res => res.json());
     }
     // Get One
-    getOt(id:any) {        
-        return this.get$(CONTEXT+id).map(res => res.json());    
+    getOt(id: any) {
+        return this.get$(CONTEXT + id).map(res => res.json());
     }
 
 }

@@ -1,4 +1,50 @@
-<div>
-  <h1>Shift</h1>
+<div class="main-container container">
+  <div class="pageName">
+  </div>
+  <form class="form-horizontal" role="form" novalidate (ngSubmit)="onSubmit(shiftForm)" [formGroup]="shiftForm">
+    <div class="form-group">
+      <label class="col-md-2 control-label">Shift Name</label>
+      <div class="col-md-10">
+        <input type="text" formControlName="shiftName" name="shiftName" class="form-control">
+        <div class="alert alert-danger" *ngIf="shiftForm.get('shiftName').hasError('required') && shiftForm.get('shiftName').touched">
+          Please enter Shift Name
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 col-sm-2 control-label">Start Time</label>
+      <div class="col-md-4 col-sm-4">
+        <p-calendar formControlName="startTime" name="startTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" *ngIf="shiftForm.get('startTime').hasError('required') && shiftForm.get('startTime').touched">
+          Please enter start time
+        </div>
+      </div>
+      <label class="col-md-2 col-sm-2 control-label">End Time</label>
+      <div class="col-md-4 col-sm-4">
+        <p-calendar formControlName="endTime" name="endTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" *ngIf="shiftForm.get('endTime').hasError('required') && shiftForm.get('endTime').touched">
+          Please enter end time
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <button class="btn btn-info" type="submit" [disabled]="shiftForm.invalid">Save</button>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <p-dataTable [value]="shift" [responsive]="true" [rows]="3" [paginator]="true" [pageLinks]="2" [rowsPerPageOptions]="[5,10,20]">
+      <p-column field="shiftName" header="Shift Name" [sortable]="true"></p-column>
+      <p-column field="startTime" header="Start Time" [sortable]="true"></p-column>
+      <p-column field="endTime" header="End Time" [sortable]="true"></p-column>
+      <p-column header="Action">
+        <template let-shift="rowData" pTemplate type="body">
+          <button class="btn btn-info" (click)="onEdit(shift)"><i class="fa fa-edit"></i></button>
+          <button class="btn btn-danger" (click)="onDelete(shift)"><i class="fa fa-trash"></i></button>
+        </template>
+      </p-column>
+    </p-dataTable>
+  </div>
 </div>
-<div [ifAuthorize]="['SHIFT']">You have permission to see this</div>

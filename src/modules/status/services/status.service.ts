@@ -16,8 +16,8 @@ const CONTEXT = 'statuses/';
 @Injectable()
 export class StatusService extends BaseService {
 
-    constructor(public http: Http, router: Router,messageService: MessageService) {
-        super(http,CONTEXT, router,messageService);
+    constructor(public http: Http, router: Router, messageService: MessageService) {
+        super(http, CONTEXT, router, messageService);
     }
     // Get All
     getStatusAll() {
@@ -25,7 +25,7 @@ export class StatusService extends BaseService {
     }
     // Add One
     addStatus(st: any) {
-        return this.post$(CONTEXT, st).map(res => res.json());
+        return this.post$(CONTEXT, st, true).map(res => res.json());
     }
     //Update One
     saveStatus(id: any, st: any) {
@@ -33,7 +33,7 @@ export class StatusService extends BaseService {
     }
     // Delete One
     deleteStatus(id: any) {
-        return this.delete$(CONTEXT + id).map(res => res.json());
+        return this.delete$(CONTEXT + id, true).map(res => res.json());
     }
     // Get One
     getStatus(id: any) {
