@@ -20,4 +20,10 @@ export class AppModuleService extends BaseService {
     getModules() {
         return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
     }
+    addModules(payload){
+        return this.post$(CONTEXT,payload,true).map(res => res.json());
+    }
+    deleteModules(id:string){
+        return this.delete$(CONTEXT+id,true).map(res => res.json());
+    }
 }
