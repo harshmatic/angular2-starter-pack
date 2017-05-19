@@ -29,10 +29,10 @@
         <p-column field="departmentName" header="Name" [sortable]="true"></p-column>
         <p-column field="departmentDespcription" header="Despcription" [sortable]="true"></p-column>
         <p-column header="Actions">
-          <template let-item="rowData" pTemplate type="body">
+          <ng-template let-item="rowData" pTemplate type="body">
             <button class="btn btn-danger" (click)="onDelete(item)"><i class="fa fa-trash"></i></button>
             <button class="btn btn-danger" (click)="onEdit(item)"><i class="fa fa-edit"></i></button>
-          </template>
+          </ng-template>
         </p-column>
       </p-dataTable>
     </div>

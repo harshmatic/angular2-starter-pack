@@ -22,7 +22,7 @@ export class ShiftEffects extends BaseService {
    .switchMap(action => 
        this.ShiftService.getShifts()
         .map(res =>{
-          this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+          this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_SUCCESS, payload: res })
         })
         .catch(() => Observable.of({ type: SHIFT_ACTIONS.ON_FAILED  }))
       );

@@ -1,0 +1,156 @@
+<h2 align="center">Add New Employee</h2>
+
+<div class="main-container container">
+  <div class="row inner-container">
+    <div class="col-md-12">
+      <form class="form-horizontal" role="form" novalidate (ngSubmit)="onSubmit(employeeForm)" [formGroup]="employeeForm">
+        <div class="form-group">
+          <div class="col-md-3">
+            <input type="text" placeholder="First Name" formControlName="firstName" name="firstName" class="form-control">
+            <div class="alert alert-danger" *ngIf="employeeForm.get('firstName').hasError('required') && employeeForm.get('firstName').touched">
+              Please enter First Name
+            </div>
+          </div>
+          <div class="col-md-3">
+            <input type="text" placeholder="Last Name" formControlName="lastName" name="lastName" class="form-control">
+            <div class="alert alert-danger" *ngIf="employeeForm.get('lastName').hasError('required') && employeeForm.get('lastName').touched">
+              Please enter Last Name
+            </div>
+          </div>
+          <div class="col-md-3">
+            <p-calendar placeholder="DOB" formControlName="dateOfBirth" name="dateOfBirth" class="form-control " [showIcon]="true"></p-calendar>
+            <div class="alert alert-danger" *ngIf="employeeForm.get('dateOfBirth').hasError('required') && employeeForm.get('dateOfBirth').touched">
+              Please enter DOB
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label><input type="radio"  formControlName="gender" name="gender" value="Male" >Male</label>
+            <label><input type="radio"  formControlName="gender" name="gender" value="Female">Female</label>
+            <div class="alert alert-danger" *ngIf="employeeForm.get('gender').hasError('required') && employeeForm.get('gender').touched">
+              Please enter Gender
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-3">
+            <input type="text" placeholder="Mobile" formControlName="mobile" name="mobile" class="form-control">
+            <div class="alert alert-danger" *ngIf="employeeForm.get('mobile').hasError('required') && employeeForm.get('mobile').touched">
+              Please enter Mobile Number
+            </div>
+          </div>
+          <div class="col-md-3">
+            <input type="text" placeholder="E-Mail" formControlName="email" name="email" class="form-control">
+            <div class="alert alert-danger" *ngIf="employeeForm.get('email').hasError('required') && employeeForm.get('email').touched">
+              Please enter Email
+            </div>
+          </div>
+          <div class="col-md-3">
+            <p-calendar formControlName="serviceJoiningDate" name="serviceJoiningDate" class="form-control " [showIcon]="true"></p-calendar>
+            <div class="alert alert-danger" *ngIf="employeeForm.get('serviceJoiningDate').hasError('required') && employeeForm.get('serviceJoiningDate').touched">
+              Please enter Service Join Date
+            </div>
+          </div>
+          <div class="col-md-3 ui-g-12 ui-md-4">
+            <p-calendar placeholder="Organisation Join Date" formControlName="organizationJoiningDate" name="organizationJoiningDate"
+              class="form-control " [showIcon]="true"></p-calendar>
+            <div class="alert alert-danger" *ngIf="employeeForm.get('organizationJoiningDate').hasError('required') && employeeForm.get('organizationJoiningDate').touched">
+              Please enter Organisation Join Date
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-md-3">
+            <textarea name="address1" placeholder="Enter address1" formControlName="address1" class="form-control">
+              Enter text here
+              </textarea>
+
+            <div class="alert alert-danger" *ngIf="employeeForm.get('address1').hasError('required') && employeeForm.get('address1').touched">
+              Please enter Address 1
+            </div>
+          </div>
+          <div class="col-md-3">
+            <textarea name="address2" placeholder="Enter address2" formControlName="address2" class="form-control">
+              Enter text here
+              </textarea>
+            <div class="alert alert-danger" *ngIf="employeeForm.get('address2').hasError('required') && employeeForm.get('address2').touched">
+              Please enter Address 2
+            </div>
+          </div>
+          <div class="col-md-3">
+            <input type="text" placeholder="Resident Phone" formControlName="residencePhone1" name="residencePhone1" class="form-control">
+            <div class="alert alert-danger" *ngIf="employeeForm.get('residencePhone1').hasError('required') && employeeForm.get('residencePhone1').touched">
+              Please enter Resident Phone
+            </div>
+          </div>
+          <div class="col-md-3">
+            <input type="text" placeholder="Employee Code" formControlName="employeeCode" name="employeeCode" class="form-control">
+            <div class="alert alert-danger" *ngIf="employeeForm.get('employeeCode').hasError('required') && employeeForm.get('employeeCode').touched">
+              Please enter Employee Code
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-3">
+            <select placeholde="Area" formControlName="areaID" name="areaID" class="form-control" id="area">  
+                    <option value="" disabled selected>Select Area</option>
+                    <option *ngFor="let option of areaList" [value]="option.areaID">{{option.areaName}}</option>
+                </select>
+
+            <div class="alert alert-danger" *ngIf="employeeForm.get('areaID').hasError('required') && employeeForm.get('areaID').touched">
+              Please select Area
+            </div>
+          </div>
+          <div class="col-md-3">
+            <select placeholde="Designation" formControlName="designationID" name="designationID" class="form-control" id="desig">  
+                    <option value="" disabled selected>Select Designation</option>
+                    <option *ngFor="let option of designationList" [value]="option.designationID">{{option.designationName}}</option>
+                </select>
+
+            <div class="alert alert-danger" *ngIf="employeeForm.get('designationID').hasError('required') && employeeForm.get('designationID').touched">
+              Please select Designation
+            </div>
+          </div>
+          <div class="col-md-3">
+            <select placeholde="Department" formControlName="departmentID" name="departmentID" class="form-control" id="dept">  
+                    <option value="" disabled selected>Select Department</option>
+                    <option *ngFor="let option of departmentList" [value]="option.departmentID">{{option.departmentName}}</option>
+                </select>
+
+            <div class="alert alert-danger" *ngIf="employeeForm.get('departmentID').hasError('required') && employeeForm.get('departmentID').touched">
+              Please select Department
+            </div>
+          </div>
+          <div class="col-md-3">
+            <select placeholde="Shift" formControlName="shiftID" name="shiftID" class="form-control" id="shift">  
+                    <option value="" disabled selected>Select Shift</option>
+                    <option *ngFor="let option of shiftList" [value]="option.shiftID">{{option.shiftName}}</option>
+                </select>
+
+            <div class="alert alert-danger" *ngIf="employeeForm.get('shiftID').hasError('required') && employeeForm.get('shiftID').touched">
+              Please select Shift
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-3">
+            <select placeholde="Assign User" formControlName="userID" name="userID" class="form-control" id="area">  
+                    <option value="" disabled selected>Select User</option>
+                    <option *ngFor="let option of userList" [value]="option.id">{{option.userName}}</option>
+                </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-5 col-md-12">
+            <button class="btn" type="submit">Save</button>
+            <!--[disabled]="employeeForm.invalid"-->
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

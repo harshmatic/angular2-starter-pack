@@ -11,6 +11,8 @@ export function EmployeeReducer(state: any[] = [], action: Action) {
   switch (action.type) {
     case EMPLOYEE_ACTIONS.GET_LIST_SUCCESS:
         return action.payload;
+    case EMPLOYEE_ACTIONS.GET_LIST_SUCCESS_BY_ID:
+        return action.payload;
     case EMPLOYEE_ACTIONS.ON_FAILED:
         return state;
     case EMPLOYEE_ACTIONS.ADD_SUCCESS:

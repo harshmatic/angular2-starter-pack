@@ -20,14 +20,14 @@
       <p-dataTable [value]="roleList" [responsive]="true" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
         <p-column field="name" header="Role Name" [sortable]="true"></p-column>
         <p-column header="Permission">
-          <template let-role="rowData" pTemplate="body">
+          <ng-template let-role="rowData" pTemplate="body">
             <a class="hand-cursor" (click)="managePermission(role)">Manage Permissions</a>
-          </template>
+          </ng-template>
         </p-column>
         <p-column header="Delete">
-          <template let-role="rowData" pTemplate="body">
+          <ng-template let-role="rowData" pTemplate="body">
             <button class="btn btn-danger" (click)="onDelete(role)"><i class="fa fa-trash"></i></button>
-          </template>
+          </ng-template>
         </p-column>
       </p-dataTable>
     </div>
@@ -51,9 +51,9 @@
       <p-dataTable [value]="rolePermissionsList " [responsive]="true" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
         <p-column field="text" header="Permissions" [sortable]="true"></p-column>
         <p-column header="Revoke">
-          <template pTemplate="body" let-permission="rowData">
+          <ng-template pTemplate="body" let-permission="rowData">
             <a (click)="onRevokePermission(permission)">Revoke</a>
-          </template>
+          </ng-template>
         </p-column>
       </p-dataTable>
     </div>

@@ -32,19 +32,20 @@ export class EmployeeService extends BaseService {
     }
     // Add One
     addEmployee(employee:any) {        
-        return this.post$(CONTEXT,employee).map(res => res.json());    
+        return this.post$(CONTEXT,employee,true).map(res => res.json());    
     }
     //Update One
     saveEmployee(id:any,employee:any) {        
-        return this.put$(CONTEXT+id,employee, true).map(res => res.json());    
+        return this.post$(CONTEXT+id,employee, true).map(res => res.json());    
     }
     // Delete One
     deleteEmployee(id:any) {        
-        return this.delete$(CONTEXT+id).map(res => res.json());    
+        return this.delete$(CONTEXT+id,true).map(res => res.json());    
     }
     // Get One
-    getEmployee(id:any) {        
-        return this.get$(CONTEXT+id).map(res => res.json());    
+    getEmployee(id:any) { 
+        debugger       
+        return this.get$(CONTEXT+id,true).map(res => res.json());    
     }
 
 }

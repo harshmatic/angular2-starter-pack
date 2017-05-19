@@ -25,7 +25,7 @@ export class DesignationService extends BaseService {
     }
     // Add One
     addDesignation(designation: any) {
-        return this.post$(CONTEXT, designation).map(res => res.json());
+        return this.post$(CONTEXT, designation,true).map(res => res.json());
     }
     //Update One
     saveDesignation(id: any, designation: any) {
@@ -33,7 +33,7 @@ export class DesignationService extends BaseService {
     }
     // Delete One
     deleteDesignation(id: any) {
-        return this.delete$(CONTEXT + id).map(res => res.json());
+        return this.delete$(CONTEXT + id,true).map(res => res.json());
     }
     // Get One
     getDesignation(id: any) {

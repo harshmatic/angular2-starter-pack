@@ -21,10 +21,10 @@
     <p-dataTable [value]="status" [responsive]="true" [rows]="5" [paginator]="true" [pageLinks]="2" [rowsPerPageOptions]="[5,10,20]">
       <p-column field="statusName" header="Status Name" [sortable]="true"></p-column>
       <p-column header="Action">
-        <template let-status="rowData" pTemplate type="body">
+        <ng-template let-status="rowData" pTemplate type="body">
           <button class="btn btn-info" (click)="onEdit(status)"><i class="fa fa-edit"></i></button>
           <button class="btn btn-danger" (click)="onDelete(status)"><i class="fa fa-trash"></i></button>
-        </template>
+        </ng-template>
       </p-column>
     </p-dataTable>
   </div>

@@ -13,6 +13,8 @@ import { UserEffects } from './store/user/user.effects';
 import { UserService } from './services/user.service';
 import { RoleEffects } from './store/role/role.effects';
 import { RoleService } from './services/role.service';
+import { EmployeeEffects } from './../employee/store/employee.effects';
+import { EmployeeService } from './../employee/services/employee.service';
 import { AppModuleEffects } from './store/appModule/appModule.effects';
 import { AppModuleService } from './services/appModule.service';
 @NgModule({
@@ -23,11 +25,11 @@ import { AppModuleService } from './services/appModule.service';
     EffectsModule.run(UserEffects),
     EffectsModule.run(RoleEffects),
     EffectsModule.run(AppModuleEffects),
-    EffectsModule.run(AppModuleEffects),
+    EffectsModule.run(EmployeeEffects),
   ],
   declarations: [
     UserListComponent,UserRoleComponent,RoleListComponent,AppModuleComponent
   ],
-  providers:[UserService,RoleService,AppModuleService]
+  providers:[EmployeeService,UserService,RoleService,AppModuleService]
 })
 export class AdminModule { }

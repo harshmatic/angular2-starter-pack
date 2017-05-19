@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { OccurenceBook } from '../../../occurenceBook/store/occurenceBook.model';
 import { OB_ACTIONS } from '../../../occurenceBook/store/occurenceBook.actions';
 import { STATUS_ACTIONS } from '../../../status/store/status.actions';
 import { Subscription } from 'rxjs/Subscription';
