@@ -1,32 +1,59 @@
 <div class="main-container container">
-  <div class="pageName">
+  <div class="pageName ">
   </div>
-  <div class="row">
+  <div class="row inner-container">
     <div class="col-md-6">
       <div>
+        <fieldset [disabled]='params'>
+      <form class="form-horizontal" role="form" novalidate (ngSubmit)="onSubmit(userForm)" [formGroup]="userForm">
         <div class="form-group">
-          <div class="row">
-            <label class="col-md-3 control-label">User Name </label>
-            <label class="col-md-6 control-label">{{user.userName}} </label>
-          </div>
-          <div class="row">
-            <label class="col-md-3 control-label">First Name </label>
-            <label class="col-md-6 control-label">{{user.firstName}} </label>
-          </div>
-          <div class="row">
-            <label class="col-md-3 control-label">Last Name </label>
-            <label class="col-md-6 control-label">{{user.lastName}} </label>
-          </div>
-          <div class="row">
-            <label class="col-md-3 control-label">Email </label>
-            <label class="col-md-6 control-label">{{user.email}} </label>
+          <label class="col-md-3 control-label">User Name </label>
+          <div class="col-md-9">
+            <input type="text" formControlName="userName" name="userName" class="form-control">
+            <div class="alert alert-danger" *ngIf="userForm.get('userName').hasError('required') && userForm.get('userName').touched">
+              Please enter User Name
+            </div>
           </div>
         </div>
-       
+        <div class="form-group">
+          <label class="col-md-3 control-label">First Name </label>
+          <div class="col-md-9">
+            <input type="text" formControlName="firstName" name="firstName" class="form-control">
+            <div class="alert alert-danger" *ngIf="userForm.get('firstName').hasError('required') && userForm.get('firstName').touched">
+              Please enter User Name
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Last Name </label>
+          <div class="col-md-9">
+            <input type="text" formControlName="lastName" name="lastName" class="form-control">
+            <div class="alert alert-danger" *ngIf="userForm.get('lastName').hasError('required') && userForm.get('lastName').touched">
+              Please enter User Name
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Email</label>
+          <div class="col-md-9">
+            <input type="text" formControlName="email" name="email" class="form-control">
+            <div class="alert alert-danger" *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched">
+              Please enter User Name
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-success"   *ngIf='!params' type="submit" [disabled]="userForm.invalid">Save</button>
+            <button class="btn btn-warning" routerLink='/admin/users'>Cancel</button>
+          </div>
+        </div>
+      </form>
+        </fieldset>
       </div>
       <!-- END PAGE BASE CONTENT -->
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf='params'>
        <div class="form-group">
           <div class="row">
             <label class="col-md-3 control-label">Select Role</label>

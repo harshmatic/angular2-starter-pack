@@ -1,4 +1,31 @@
-<div>
-  <h1>Occurence Type</h1>
+<div class="main-container container">
+  <div class="pageName">
+  </div>
+  <form class="form-horizontal" role="form" novalidate (ngSubmit)="onSubmit(otForm)" [formGroup]="otForm">
+        <div class="form-group">
+          <label class="col-md-2 control-label">Occurence Type</label>
+          <div class="col-md-10">
+            <input type="text" formControlName="ot" name="ot" class="form-control">
+            <div class="alert alert-danger" *ngIf="otForm.get('ot').hasError('required') && otForm.get('ot').touched">
+              Please enter occurence type
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-info" type="submit" [disabled]="otForm.invalid">Save</button>
+          </div>
+        </div>
+  </form>
+  <div class="row">
+    <p-dataTable [value]="occurenceType" [responsive]="true" [rows]="5" [paginator]="true" [pageLinks]="2" [rowsPerPageOptions]="[5,10,20]">
+      <p-column field="obTypeName" header="Occurence Type" [sortable]="true"></p-column>
+      <p-column header="Action">
+        <template let-ot="rowData" pTemplate type="body">
+          <button class="btn btn-info" (click)="onEdit(ot)"><i class="fa fa-edit"></i></button>
+          <button class="btn btn-danger" (click)="onDelete(ot)"><i class="fa fa-trash"></i></button>
+        </template>
+      </p-column>
+    </p-dataTable>
+  </div>
 </div>
-<div [ifAuthorize]="['EMPLOYEE_READ']">You have permission to see this</div>

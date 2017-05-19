@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { UserRoleComponent } from './components/user/user-role/user-role.component';
 import { RoleListComponent } from './components/roles/role-list/role-list.component';
+import { AppModuleComponent } from './components/appModule/appModule.component';
 
 import { AuthGuard } from '../../app/core/index'
 
@@ -19,10 +20,25 @@ const routes: Routes = [
       permissions: []
     },
      canActivate: [AuthGuard],
+  },{
+    path: 'user/new',
+    component: UserRoleComponent,
+    data: {
+      permissions: []
+    },
+     canActivate: [AuthGuard],
   },
    {
     path: 'user-role/:userId',
     component: UserRoleComponent,
+    data: {
+      permissions: []
+    },
+     canActivate: [AuthGuard],
+  },
+   {
+    path: 'app-modules',
+    component: AppModuleComponent,
     data: {
       permissions: []
     },

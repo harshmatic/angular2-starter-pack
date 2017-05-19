@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { StatusRouting } from './status.routing';
 import { SharedModule } from '../../app/shared/shared.module';
-import { StatusComponent } from './components/status.component';
+import { StatusComponent } from './components/statusList/status.component';
 import { StatusEffects } from './store/status.effects';
 import { StatusService } from './services/status.service';
 

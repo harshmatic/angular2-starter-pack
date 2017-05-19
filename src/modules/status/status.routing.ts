@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { StatusComponent } from './components/status.component';
+import { StatusComponent } from './components/statusList/status.component';
 import { AuthGuard } from '../../app/core/index'
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'status-list',
+  },
+  {
+    path: 'status-list',
     component: StatusComponent,
     data: {
       //permissions: ['EMPLOYEE_READ']
