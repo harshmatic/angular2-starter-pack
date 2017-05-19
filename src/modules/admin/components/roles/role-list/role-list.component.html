@@ -24,11 +24,11 @@
             <a class="hand-cursor" (click)="managePermission(role)">Manage Permissions</a>
           </template>
         </p-column>
-        <p-column header="Delete">
+        <!--<p-column header="Delete">
           <template let-role="rowData" pTemplate="body">
             <button class="btn btn-danger" (click)="onDelete(role)"><i class="fa fa-trash"></i></button>
           </template>
-        </p-column>
+        </p-column>-->
       </p-dataTable>
     </div>
     <div class="col-md-offset-1 col-md-5" *ngIf="selectedRole && selectedRole!=null">
