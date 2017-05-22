@@ -53,7 +53,7 @@ describe('Service: ShiftService ', () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
         service.getShifts().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+          expect(res.json().data.length).toBe(0);
         });
   }));
    it('it should check addShift method',

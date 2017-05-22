@@ -19,6 +19,7 @@ export class OccurenceTypeComponent implements OnInit {
   otForm: FormGroup;
   isEdited: boolean = false;
   otID: any;
+  otError: boolean = false;
   constructor(private store: Store<any>,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
@@ -80,22 +81,32 @@ export class OccurenceTypeComponent implements OnInit {
     this.occurenceTypeObj = {
       "obTypeName": value.ot
     };
-    if (this.isEdited) {
-      this.occurenceTypeService.saveOt(this.otID, this.occurenceTypeObj)
-        .subscribe((result: any) => {
-          this.isEdited = false;
-          this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occurence type updated' });
-          this.resetForm();
-          this.getOtList();
-        });
+    if (!this.validate(value)) {
+      if (this.isEdited) {
+        this.occurenceTypeService.saveOt(this.otID, this.occurenceTypeObj)
+          .subscribe((result: any) => {
+            this.isEdited = false;
+            this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occurence type updated' });
+            this.resetForm();
+            this.getOtList();
+          });
+      }
+      if (!this.isEdited) {
+        this.occurenceTypeService.addOt(this.occurenceTypeObj)
+          .subscribe((result: any) => {
+            this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occurence type added' });
+            this.resetForm();
+            this.getOtList();
+          });
+      }
     }
-    if (!this.isEdited) {
-      this.occurenceTypeService.addOt(this.occurenceTypeObj)
-        .subscribe((result: any) => {
-          this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occurence type added' });
-          this.resetForm();
-          this.getOtList();
-        });
-    }
+  }
+  validate(value: any) {
+    let submitFlag = false;
+    if (value.ot === "" || value.ot === undefined) {
+      submitFlag = true;
+      this.otError = true;
+    } else { this.otError = false; }
+    return submitFlag;
   }
 }
