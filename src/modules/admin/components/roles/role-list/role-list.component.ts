@@ -81,14 +81,13 @@ export class RoleListComponent implements OnInit {
         this.selectedRole = role;
         this.getRolePermission()
     }
-    onDelete(role: any) {
-        this.roleService.deleteRole(role.id)
-            .subscribe((results:any) => {
-                this.selectedRole=null
-                this.getRole();
-                //this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Record Deleted' });
-            });
-    }
+    // onDelete(role: any) {
+    //     this.roleService.deleteRole(role.id)
+    //         .subscribe((results:any) => {
+    //             this.selectedRole=null
+    //             this.getRole();
+    //         });
+    // }
     onSubmit({ value, valid }: { value: any, valid: boolean }) {
         this.roleService.addRole(value)
                 .subscribe(
@@ -111,8 +110,8 @@ export class RoleListComponent implements OnInit {
         this.roleService.addPermissionToRole(this.selectedRole.id,this.selectedPermission)
             .subscribe(
             results => {
+                this.selectedPermission=null;
                 this.getRolePermission();
-                
                // this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Permission Added' });
             });
     }
@@ -120,6 +119,7 @@ export class RoleListComponent implements OnInit {
         this.roleService.deleteRolePermission(this.selectedRole.id,item)
             .subscribe(
             results => {
+                this.selectedPermission=null;
                 this.getRolePermission();
                // this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Permission Added' });
             });
