@@ -55,7 +55,7 @@ export class StatusComponent implements OnInit {
   getStatusList() {
     this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST });
     this.store.select('status').subscribe((res: any) => {
-      this.status = res;
+        this.status = res;
     });
   }
   resetForm() {
@@ -89,8 +89,7 @@ export class StatusComponent implements OnInit {
             this.resetForm();
             this.getStatusList();
           });
-      }
-      if (!this.isEdited) {
+      }else if (!this.isEdited) {
         this.statusService.addStatus(this.statusObj)
           .subscribe((result: any) => {
             this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Added' });
