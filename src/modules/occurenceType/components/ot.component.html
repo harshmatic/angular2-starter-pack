@@ -6,14 +6,14 @@
           <label class="col-md-2 control-label">Occurence Type</label>
           <div class="col-md-10">
             <input type="text" formControlName="ot" name="ot" class="form-control">
-            <div class="alert alert-danger" *ngIf="otForm.get('ot').hasError('required') && otForm.get('ot').touched">
+            <div class="alert alert-danger" name="otError" *ngIf="otError">
               Please enter occurence type
             </div>
           </div>
         </div>
         <div class="form-group">
           <div class="col-md-offset-2 col-md-10">
-            <button class="btn btn-info" type="submit" [disabled]="otForm.invalid">Save</button>
+            <button class="btn btn-info" name="submit" type="submit">Save</button>
           </div>
         </div>
   </form>

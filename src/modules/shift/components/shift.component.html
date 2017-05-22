@@ -6,7 +6,7 @@
       <label class="col-md-2 control-label">Shift Name</label>
       <div class="col-md-10">
         <input type="text" formControlName="shiftName" name="shiftName" class="form-control">
-        <div class="alert alert-danger" *ngIf="shiftForm.get('shiftName').hasError('required') && shiftForm.get('shiftName').touched">
+        <div class="alert alert-danger" name="shiftError" *ngIf="shiftError">
           Please enter Shift Name
         </div>
       </div>
@@ -15,14 +15,14 @@
       <label class="col-md-2 col-sm-2 control-label">Start Time</label>
       <div class="col-md-4 col-sm-4">
         <p-calendar formControlName="startTime" name="startTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
-        <div class="alert alert-danger" *ngIf="shiftForm.get('startTime').hasError('required') && shiftForm.get('startTime').touched">
+        <div class="alert alert-danger" name="startTimeError" *ngIf="startTimeError">
           Please enter start time
         </div>
       </div>
       <label class="col-md-2 col-sm-2 control-label">End Time</label>
       <div class="col-md-4 col-sm-4">
         <p-calendar formControlName="endTime" name="endTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
-        <div class="alert alert-danger" *ngIf="shiftForm.get('endTime').hasError('required') && shiftForm.get('endTime').touched">
+        <div class="alert alert-danger" name="endTimeError" *ngIf="endTimeError">
           Please enter end time
         </div>
       </div>
@@ -30,7 +30,7 @@
     
     <div class="form-group">
       <div class="col-md-offset-2 col-md-10">
-        <button class="btn btn-info" type="submit" [disabled]="shiftForm.invalid">Save</button>
+        <button class="btn btn-info" name="submit" type="submit">Save</button>
       </div>
     </div>
   </form>

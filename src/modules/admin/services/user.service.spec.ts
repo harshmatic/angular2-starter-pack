@@ -19,7 +19,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 
-import { ShiftService } from './shift.service';
+import { UserService } from './user.service';
 import { MessageService } from '../../../app/core/services/index';
 
 class MessageServiceStub {
@@ -29,13 +29,13 @@ class MessageServiceStub {
 }
 
 ////////  Tests  /////////////
-describe('Service: ShiftService ', () => {
+describe('Service: UserService ', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule,RouterTestingModule],
       providers: [
-        ShiftService,
+        UserService,
         { provide: XHRBackend, useClass: MockBackend },
         { provide: MessageService, useClass: MessageServiceStub},
       ]
@@ -43,49 +43,63 @@ describe('Service: ShiftService ', () => {
       .compileComponents();
   }));
   it('can instantiate service when inject service',
-     inject([ShiftService], (service: ShiftService) => {
-         expect(service instanceof ShiftService).toBe(true);
+     inject([UserService], (service: UserService) => {
+         expect(service instanceof UserService).toBe(true);
   }));
-
-
-  it('it should check getShifts method',
-    inject([ShiftService, XHRBackend], (service, mockBackend) => {
+  it('it should check getUsers method',
+    inject([UserService, XHRBackend], (service, mockBackend) => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-        service.getShifts().subscribe((res) => {
+        service.getUsers().subscribe((res) => {
+          expect(res.data.length).toBe(0);
+        });
+  }));
+  it('it should check getUserByID method',
+    inject([UserService, XHRBackend], (service, mockBackend) => {
+        let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
+        mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+        service.getUserByID().subscribe((res) => {
+          expect(res.data.length).toBe(0);
+        });
+  }));
+  it('it should check getUserRoles method',
+    inject([UserService, XHRBackend], (service, mockBackend) => {
+        let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
+        mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+        service.getUserRoles().subscribe((res) => {
+          expect(res.data.length).toBe(0);
+        });
+  }));
+  it('it should check addUserRole method',
+    inject([UserService, XHRBackend], (service, mockBackend) => {
+        let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
+        mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+        service.addUserRole().subscribe((res) => {
           expect(res.json().data.length).toBe(0);
         });
   }));
-   it('it should check addShift method',
-    inject([ShiftService, XHRBackend], (service, mockBackend) => {
+  it('it should check deleteUserRole method',
+    inject([UserService, XHRBackend], (service, mockBackend) => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-        service.addShift().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+        service.deleteUserRole().subscribe((res) => {
+          expect(res.json().data.length).toBe(0);
         });
   }));
-   it('it should check saveShift method',
-    inject([ShiftService, XHRBackend], (service, mockBackend) => {
+  it('it should check addUser method',
+    inject([UserService, XHRBackend], (service, mockBackend) => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-        service.saveShift().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+        service.addUser().subscribe((res) => {
+          expect(res.json().data.length).toBe(0);
         });
   }));
-   it('it should check deleteShift method',
-    inject([ShiftService, XHRBackend], (service, mockBackend) => {
+    it('it should check editUser method',
+    inject([UserService, XHRBackend], (service, mockBackend) => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-        service.deleteShift().subscribe((res) => {
-          expect(res.data.length).toBe(0);
-        });
-  }));
-   it('it should check getShift method',
-    inject([ShiftService, XHRBackend], (service, mockBackend) => {
-        let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
-        mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-        service.getShift().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+        service.editUser().subscribe((res) => {
+          expect(res.json().data.length).toBe(0);
         });
   }));
 });

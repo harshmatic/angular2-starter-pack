@@ -29,13 +29,13 @@ export class EmployeeListComponent implements OnInit {
         private router: Router) {
     }
     ngOnInit() {
-        this.getEmployee();
+        this.getEmployees();
         this.store.select('employee').subscribe((res:any) => {
            this.employeeList = res;
         });
     }
 
-    getEmployee() {
+    getEmployees() {
         this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
     }
 
@@ -43,7 +43,7 @@ export class EmployeeListComponent implements OnInit {
         this.employeeService.deleteEmployee(id)
             .subscribe((results:any) => {
                 this.selectedEmployee=null
-                this.getEmployee();
+                this.getEmployees();
                 //this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Record Deleted' });
             });
     }

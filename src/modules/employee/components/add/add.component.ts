@@ -32,7 +32,7 @@ export class EmployeeSaveComponent implements OnInit {
     designationList: any[];
     departmentList: any[];
     shiftList: any[];
-    emp: any[];
+    emp: any;
     empId:any;
     userList: any[];
     appModuleList: any = []
@@ -87,17 +87,19 @@ export class EmployeeSaveComponent implements OnInit {
         });
         this.store.select('employee').subscribe((res:any) => {
            this.emp = res;
+           this.setEmployee(this.emp);
         });
-        
-        // if (this.empId) {
-        //     this.setEmployee(this.emp);
-        // }
+ 
 
 
     }
     
     setEmployee(emp:any){
         console.log(emp)
+        debugger;
+         this.employeeForm.controls['shiftID'].setValue(emp.shiftID);
+         //this.employeeForm.controls['organizationJoiningDate'].setValue(emp.serviceJoiningDate);
+        this.employeeForm.get('dateOfBirth').setValue(emp.dateOfBirth);
         this.employeeForm = this.formBuilder.group({
             firstName: emp.firstName,
             lastName: emp.lastName,
@@ -112,6 +114,7 @@ export class EmployeeSaveComponent implements OnInit {
             departmentID:emp.departmentID,
             areaID:emp.areaID,
             designationID:emp.designationID,
+           
             shiftID:emp.shiftID,
              userID:emp.userID,
             residencePhone1:emp.residencePhone1,

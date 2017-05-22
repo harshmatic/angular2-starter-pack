@@ -19,6 +19,9 @@ export class ShiftComponent implements OnInit {
   shiftForm: FormGroup;
   isEdited: boolean = false;
   shiftID: any;
+  shiftError: boolean = false;
+  startTimeError: boolean = false;
+  endTimeError: boolean = false;
   public date4: Date;
   constructor(private store: Store<any>,
     private formBuilder: FormBuilder,
@@ -65,8 +68,8 @@ export class ShiftComponent implements OnInit {
   }
   onEdit(shift: any) {
     this.shiftForm.controls['shiftName'].setValue(shift.shiftName);
-    this.shiftForm.controls['startTime'].setValue(new Date("2017-05-18T"+shift.startTime));
-    this.shiftForm.controls['endTime'].setValue(new Date("2017-05-18T"+shift.endTime));
+    this.shiftForm.controls['startTime'].setValue(new Date("2017-05-18T" + shift.startTime));
+    this.shiftForm.controls['endTime'].setValue(new Date("2017-05-18T" + shift.endTime));
     this.isEdited = true;
     this.shiftID = shift.shiftID;
   }
@@ -81,25 +84,43 @@ export class ShiftComponent implements OnInit {
   onSubmit({ value, valid }: { value: any, valid: boolean }) {
     this.shiftObj = {
       "shiftName": value.shiftName,
-      "startTime": value.startTime.getHours() + ":" + value.startTime.getMinutes() + ":" + value.startTime.getSeconds(),
-      "endTime": value.endTime.getHours() + ":" + value.endTime.getMinutes() + ":" + value.endTime.getSeconds(),
+      "startTime": value.startTime !== '' ? value.startTime.getHours() + ":" + value.startTime.getMinutes() + ":" + value.startTime.getSeconds() : value.startTime,
+      "endTime": value.endTime !== '' ? value.endTime.getHours() + ":" + value.endTime.getMinutes() + ":" + value.endTime.getSeconds() : value.endTime,
     }
-    if (this.isEdited) {
-      this.shiftService.saveShift(this.shiftID, this.shiftObj)
-        .subscribe((result: any) => {
-          this.isEdited = false;
-          this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Shift Updated' });
-          this.resetForm();
-          this.getShiftList();
-        });
+    if (!this.validate(value)) {
+      if (this.isEdited) {
+        this.shiftService.saveShift(this.shiftID, this.shiftObj)
+          .subscribe((result: any) => {
+            this.isEdited = false;
+            this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Shift Updated' });
+            this.resetForm();
+            this.getShiftList();
+          });
+      }
+      if (!this.isEdited) {
+        this.shiftService.addShift(this.shiftObj)
+          .subscribe((result: any) => {
+            this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Shift Added' });
+            this.resetForm();
+            this.getShiftList();
+          });
+      }
     }
-    if (!this.isEdited) {
-      this.shiftService.addShift(this.shiftObj)
-        .subscribe((result: any) => {
-          this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Shift Added' });
-          this.resetForm();
-          this.getShiftList();
-        });
-    }
+  }
+  validate(value: any) {
+    let submitFlag = false;
+    if (value.shiftName === "" || value.shiftName === undefined) {
+      submitFlag = true;
+      this.shiftError = true;
+    } else { this.shiftError = false; }
+    if (value.startTime === "" || value.startTime === undefined) {
+      submitFlag = true;
+      this.startTimeError = true;
+    } else { this.startTimeError = false; }
+    if (value.endTime === "" || value.endTime === undefined) {
+      submitFlag = true;
+      this.endTimeError = true;
+    } else { this.endTimeError = false; }
+    return submitFlag;
   }
 }

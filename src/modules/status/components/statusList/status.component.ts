@@ -19,6 +19,7 @@ export class StatusComponent implements OnInit {
   statusForm: FormGroup;
   isEdited: boolean = false;
   statusID: any;
+  statusError: boolean = false;
   constructor(private store: Store<any>,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
@@ -79,22 +80,32 @@ export class StatusComponent implements OnInit {
     this.statusObj = {
       "statusName": value.statusName,
     };
-    if (this.isEdited) {
-      this.statusService.saveStatus(this.statusID, this.statusObj)
-        .subscribe((result: any) => {
-          this.isEdited = false;
-          this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Updated' });
-          this.resetForm();
-          this.getStatusList();
-        });
+    if (!this.validate(value)) {
+      if (this.isEdited) {
+        this.statusService.saveStatus(this.statusID, this.statusObj)
+          .subscribe((result: any) => {
+            this.isEdited = false;
+            this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Updated' });
+            this.resetForm();
+            this.getStatusList();
+          });
+      }
+      if (!this.isEdited) {
+        this.statusService.addStatus(this.statusObj)
+          .subscribe((result: any) => {
+            this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Added' });
+            this.resetForm();
+            this.getStatusList();
+          });
+      }
     }
-    if (!this.isEdited) {
-      this.statusService.addStatus(this.statusObj)
-        .subscribe((result: any) => {
-          this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Added' });
-          this.resetForm();
-          this.getStatusList();
-        });
-    }
+  }
+  validate(value: any) {
+    let submitFlag = false;
+    if (value.statusName === "" || value.statusName === undefined) {
+      submitFlag = true;
+      this.statusError = true;
+    } else { this.statusError = false; }
+    return submitFlag;
   }
 }

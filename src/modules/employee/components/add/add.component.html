@@ -18,7 +18,7 @@
             </div>
           </div>
           <div class="col-md-3">
-            <p-calendar placeholder="DOB" formControlName="dateOfBirth" name="dateOfBirth" class="form-control " [showIcon]="true"></p-calendar>
+            <p-calendar placeholder="DOB" [(ngModel)]="emp.dateOfBirth" formControlName="dateOfBirth" name="dateOfBirth" class="form-control " [showIcon]="true"></p-calendar>
             <div class="alert alert-danger" *ngIf="employeeForm.get('dateOfBirth').hasError('required') && employeeForm.get('dateOfBirth').touched">
               Please enter DOB
             </div>

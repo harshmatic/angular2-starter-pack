@@ -20,9 +20,6 @@ export class RoleService extends BaseService {
     getRoles() {
         return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
     }
-    getUserByID(userId:string){
-        return this.getList$(CONTEXT+userId, 0, 0, true).map(res => res.json());
-    }
     getRolePermissions(id: string) {
         return this.getList$(CONTEXT+id+'/permissions', 0, 0, true).map(res => res.json());
     }
