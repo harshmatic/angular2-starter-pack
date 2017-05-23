@@ -25,7 +25,7 @@ export class DepartmentService extends BaseService {
     }
     // Add One
     addDepartment(department: any) {
-        return this.post$(CONTEXT, department).map(res => res.json());
+        return this.post$(CONTEXT, department,true).map(res => res.json());
     }
     //Update One
     saveDepartment(id: any, department: any) {
@@ -33,7 +33,7 @@ export class DepartmentService extends BaseService {
     }
     // Delete One
     deleteDepartment(id: any) {
-        return this.delete$(CONTEXT + id).map(res => res.json());
+        return this.delete$(CONTEXT + id,true).map(res => res.json());
     }
     // Get One
     getDepartment(id: any) {

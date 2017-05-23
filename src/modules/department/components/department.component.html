@@ -1,4 +1,41 @@
-<div>
-  <h1>Department</h1>
+<div class="main-container container">
+  <div class="pageName">
+  </div>
+  <div class="row inner-container">
+    <form class="form-horizontal"  novalidate (ngSubmit)="onSubmit(departmentForm)" [formGroup]="departmentForm">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label class="col-md-2 control-label">Name</label>
+            <div class="col-md-10">
+              <input type="text" formControlName="departmentName" name="departmentName" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label class="col-md-4 control-label">Description</label>
+            <div class="col-md-8">
+              <textarea formControlName="departmentDespcription" name="departmentDespcription" class="form-control"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+              <button class="btn btn-success" type="submit" [disabled]="departmentForm.invalid">Save</button>
+              <button class="btn btn-success" type="button" (click)='resetForm()'>Clear</button>
+        </div>
+      </form>
+    <div class="col-md-12">
+      
+      <p-dataTable [value]="departmentList" [responsive]="true" [rows]="5" [paginator]="true" [pageLinks]="3">
+        <p-column field="departmentName" header="Name" [sortable]="true"></p-column>
+        <p-column field="departmentDespcription" header="Despcription" [sortable]="true"></p-column>
+        <p-column header="Actions">
+          <template let-item="rowData" pTemplate type="body">
+            <button class="btn btn-danger" (click)="onDelete(item)"><i class="fa fa-trash"></i></button>
+            <button class="btn btn-danger" (click)="onEdit(item)"><i class="fa fa-edit"></i></button>
+          </template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
 </div>
-<div [ifAuthorize]="['DEPARTMENT']">You have permission to see this</div>

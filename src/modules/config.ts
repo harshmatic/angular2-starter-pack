@@ -11,9 +11,11 @@ import { StatusReducer } from './status/store/status.reducer';
 import { EmployeeReducer } from './employee/store/employee.reducer';
 import { ReportsReducer } from './reports/store/reports.reducer';
 import { ActivityReducer } from './activity/store/activity.reducer';
+import { UserReducer } from './admin/store/user/user.reducer';
+import { RoleReducer } from './admin/store/role/role.reducer';
+import { AppModuleReducer } from './admin/store/appModule/appModule.reducer';
 
 export const routing = [
-
 
   { path: 'ob', loadChildren: 'modules/occurenceBook/occurenceBook.module#OccurenceBookModule' },
   { path: 'area', loadChildren: 'modules/area/area.module#AreaModule' },
@@ -26,13 +28,14 @@ export const routing = [
   { path: 'employee', loadChildren: 'modules/employee/employee.module#EmployeeModule' },
   { path: 'reports', loadChildren: 'modules/reports/reports.module#ReportModule' },
   { path: 'activity', loadChildren: 'modules/activity/activity.module#ActivityModule' },
+  { path: 'admin', loadChildren: 'modules/admin/admin.module#AdminModule' },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' }
 
 ];
 
-export const ApiBase ="http://localhost:6058/api/";
-
+//export const ApiBase ="http://192.168.101.21:6058/api/";
+export const ApiBase ="http://192.168.101.162:6058/api/"
 //export const ApiBase = "http://192.168.100.103:6070/api/";
 
 export const ApiBaseAuthUrl = "auth/token";
@@ -61,7 +64,8 @@ export const moduleReducers = {
   status: StatusReducer,
   employee: EmployeeReducer,
   reports: ReportsReducer,
-  activity: ActivityReducer
-
-
+  activity: ActivityReducer,
+  user:UserReducer,
+  role:RoleReducer,
+  appModule:AppModuleReducer
 }

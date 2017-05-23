@@ -18,43 +18,43 @@
                 <div class="row col-md-6 noMobilePadding noDesktopLeftPadding">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Department<span class="required"> * </span></label>
-                        <select formControlName="departmentID" class="form-control" id="exampleSelect1" [(ngModel)]="selectedDept" [class.invalid]="!assignOfficerForm.controls.departmentID.valid"  (change)="selectDept(assignOfficerForm)"> 
+                        <select formControlName="departmentID" name="dept" class="form-control" id="exampleSelect1" [(ngModel)]="selectedDept" [class.invalid]="!assignOfficerForm.controls.departmentID.valid"  (change)="selectDept(assignOfficerForm)"> 
                             <option value="" disabled selected>Select Department</option>
                             <option *ngFor="let option of asyncdepartment | async" [value]="option.departmentID">{{option.departmentName}}</option>
                         </select>
                     </div>
                 </div>
-                <p *ngIf="depError" class="alert alert-danger">Please select department</p>
+                <p *ngIf="depError" id="deptError" class="alert alert-danger">Please select department</p>
                 <div class="row col-md-6 noMobilePadding noDesktopRightPadding">
                     <div class="form-group col-xs-12">
                         <label for="area">Area<span class="required"> * </span></label>
-                        <select disabled='true' formControlName="areaID" class="form-control" id="area" [class.invalid]="!assignOfficerForm.controls.areaID.valid" [(ngModel)]="selectedArea" (change)="selectDept(assignOfficerForm)"> 
+                        <select disabled='true' formControlName="areaID" name="areaName" class="form-control" id="area" [class.invalid]="!assignOfficerForm.controls.areaID.valid" [(ngModel)]="selectedArea" (change)="selectDept(assignOfficerForm)"> 
                             <option value="" disabled selected>select Area</option>
                             <option *ngFor="let option of asyncArea | async" [value]="option.areaID">{{option.areaName}}</option>
                         </select>
                     </div>
                 </div>
-                <p *ngIf="areaError" class="alert alert-danger">Please select area</p>
+                <p *ngIf="areaError" id="areaError" class="alert alert-danger">Please select area</p>
                 <div class="row col-md-6 noMobilePadding noDesktopLeftPadding">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Select Rank<span class="required"> * </span></label>
-                        <select formControlName="rankID" class="form-control" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.rankID.valid" [(ngModel)]="selectedRank" (change)="selectDept(assignOfficerForm)">
+                        <select formControlName="rankID" class="form-control" name="rank" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.rankID.valid" [(ngModel)]="selectedRank" (change)="selectDept(assignOfficerForm)">
                             <option value="" disabled selected>Select Rank</option>
                             <option *ngFor="let option of asyncRank | async" [value]="option.designationID">{{option.designationName}}</option>
                         </select>
                     </div>
                 </div>
-                    <p *ngIf="rankError" class="alert alert-danger">Please select Rank</p>
+                    <p *ngIf="rankError" id="rankError" class="alert alert-danger">Please select Rank</p>
                 <div class="row col-md-6 noMobilePadding noDesktopRightPadding">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Select Officer<span class="required"> * </span></label>
-                        <select formControlName="officerID" class="form-control" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.officerID.valid" [(ngModel)]="selectedOfficer"> 
+                        <select formControlName="officerID" class="form-control" name="officer" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.officerID.valid" [(ngModel)]="selectedOfficer"> 
                             <option value="" disabled selected>Select Officer</option>
                             <option *ngFor="let option of asyncOfficer | async" [value]="option.employeeID">{{option.firstName +" "+ option.lastName}}</option>
                         </select>
                     </div>
                 </div>
-                    <p *ngIf="offError" class="alert alert-danger">Please select officer</p>
+                    <p *ngIf="offError" id="offError" class="alert alert-danger">Please select officer</p>
                 <div class="row col-md-6 noMobilePadding noDesktopLeftPadding">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Vehicles Allotment</label>
@@ -167,8 +167,8 @@
                 <div class="row">
                     <div class="form-group col-xs-12 descrFormGroup">
                         <label for="exampleTextarea">Remarks | Comments<span class="required"> * </span></label>
-                        <textarea formControlName="remark" class="form-control description" id="exampleTextarea" [(ngModel)]="remark" rows="5" [class.invalid]="!assignOfficerForm.controls.remark.valid"></textarea>
-                        <p *ngIf="RemarkError" class="alert alert-danger" style="margin-bottom: 30px;">Please enter remark</p>
+                        <textarea formControlName="remark" class="form-control description" name="remark" id="exampleTextarea" [(ngModel)]="remark" rows="5" [class.invalid]="!assignOfficerForm.controls.remark.valid"></textarea>
+                        <p *ngIf="RemarkError" id="remarkError" class="alert alert-danger" style="margin-bottom: 30px;">Please enter remark</p>
                     </div>
                     
                 </div>
@@ -176,6 +176,6 @@
         </div><!-- Main Container End here -->
         <!-- Add new officer -->
 		<div class="bottomContainer">
-			<button type="submit" (click)="onSubmit(assignOfficerForm)">Assign Officer</button>
+			<button type="submit" name="submit" (click)="onSubmit(assignOfficerForm)">Assign Officer</button>
 		</div>
 		<!-- Add new officer Ends -->

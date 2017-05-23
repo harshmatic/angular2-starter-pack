@@ -30,7 +30,7 @@ import {MomentModule} from 'angular2-moment';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import {
      SharedModule as PrimSharedModule, CalendarModule,
-     GrowlModule,CheckboxModule,ButtonModule
+     GrowlModule,CheckboxModule,ButtonModule,DataTableModule,AutoCompleteModule
 } from 'primeng/primeng';
 
 
@@ -73,6 +73,8 @@ export const components = [
     ReactiveFormsModule,
     InfiniteScrollModule,
     PrimSharedModule,
+    DataTableModule,
+    AutoCompleteModule,
     CalendarModule,
     GrowlModule,
     MomentModule,

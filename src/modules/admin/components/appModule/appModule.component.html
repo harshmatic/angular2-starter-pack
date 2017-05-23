@@ -1,0 +1,52 @@
+<div class="main-container container">
+  <div class="pageName">
+  </div>
+  <div class="row inner-container">
+     <form class="form-horizontal" role="form" novalidate (ngSubmit)="onSubmit(appModuleForm)" [formGroup]="appModuleForm">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label class="col-md-2 control-label">Name</label>
+            <div class="col-md-10">
+              <input type="text" formControlName="name" name="name" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label class="col-md-4 control-label">Menu Text</label>
+            <div class="col-md-8">
+              <input type="text" formControlName="menuText" name="menuText" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+         <div class="form-group">
+            <label class="col-md-5 control-label">Short Name</label>
+            <div class="col-md-7">
+              <input type="text" formControlName="shortName" name="shortName" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 pull-right">
+              <button class="btn btn-success" type="submit" [disabled]="appModuleForm.invalid">ADD</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    <div class="col-md-12">
+     
+      <p-dataTable [value]="appModuleList" [responsive]="true" [rows]="5" [paginator]="true" [pageLinks]="3">
+        <p-column field="name" header="Name" [sortable]="true"></p-column>
+        <p-column field="menuText" header="Menu Text" [sortable]="true"></p-column>
+        <p-column field="shortName" header="Short Name" [sortable]="true"></p-column>
+        <p-column header="Delete">
+          <template let-item="rowData" pTemplate type="body">
+            <button class="btn btn-danger" (click)="onDelete(item)"><i class="fa fa-trash"></i></button>
+          </template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
+</div>

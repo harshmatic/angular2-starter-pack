@@ -11,14 +11,35 @@
                 <!--<a class="navbar-brand" href="#">Kenya Police</a>-->
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav" *ngFor="let navData of navbarData">
-                    <li *ngIf="navData.Authorize.length > 0" [ifAuthorize]="navData.Authorize" routerLinkActive="active"><a routerLink="{{navData.Routerlink}}">{{navData.Name}}</a></li>
-                    <li *ngIf="navData.Authorize.length === 0" routerLinkActive="active"><a routerLink="{{navData.Routerlink}}">{{navData.Name}}</a></li>
-                    <!--<li  routerLinkActive="active"><a routerLink="/dashboard">Dashboard</a></li>
-                    <li [ifAuthorize]="['OB.R']"  routerLinkActive="active"><a routerLink="/jobs">Occurrence Book</a></li>
-                    <li [ifAuthorize]="['EP.R']"  routerLinkActive="active"><a routerLink="/officers">Officer Management</a></li>
+                <ul class="nav navbar-nav">
+                    <!--<li *ngIf="navData.Authorize.length > 0" [ifAuthorize]="navData.Authorize" routerLinkActive="active"><a routerLink="{{navData.Routerlink}}">{{navData.Name}}</a></li>
+                    <li *ngIf="navData.Authorize.length === 0" routerLinkActive="active"><a routerLink="{{navData.Routerlink}}">{{navData.Name}}</a></li>-->
+                    <li  routerLinkActive="active"><a routerLink="/dashboard">Dashboard</a></li>
+                    <li [ifAuthorize]="['OB.R']"  routerLinkActive="active"><a routerLink="/ob/occurenceDetails">Occurrence Book</a></li>
+                    <li [ifAuthorize]="['EP.R']"  routerLinkActive="active"><a routerLink="/employee/officerList">Officer Management</a></li>
                     <li><a href="#">Inventory</a></li>
-                    <li  routerLinkActive="active"><a routerLink="/reports">Reports</a></li>-->
+                    <li  routerLinkActive="active"><a routerLink="/reports">Reports</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active"><a routerLink="/admin/users">User</a></li>
+                            <li routerLinkActive="active"><a routerLink="/admin/roles">Roles</a></li>
+
+                            <li routerLinkActive="active"><a routerLink="/admin/app-modules">App Modules</a></li>
+                            <li routerLinkActive="active"><a routerLink="/department">Department</a></li>
+                            
+
+                            <li routerLinkActive="active"><a routerLink="/status/status-list">Status</a></li>
+                            <li routerLinkActive="active"><a routerLink="/shift">Shift</a></li>
+                            <li routerLinkActive="active"><a routerLink="/ot">Occurence Type</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                   
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">

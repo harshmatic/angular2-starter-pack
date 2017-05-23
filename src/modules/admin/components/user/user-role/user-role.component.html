@@ -1,0 +1,91 @@
+<div class="main-container container">
+  <div class="pageName ">
+  </div>
+  <div class="row inner-container">
+    <div class="col-md-6">
+      <div>
+        <fieldset [disabled]='params'>
+      <form class="form-horizontal" role="form" novalidate (ngSubmit)="onSubmit(userForm)" [formGroup]="userForm">
+        <div class="form-group">
+          <label class="col-md-3 control-label">User Name </label>
+          <div class="col-md-9">
+            <input type="text" formControlName="userName" name="userName" class="form-control">
+            <div class="alert alert-danger" *ngIf="userForm.get('userName').hasError('required') && userForm.get('userName').touched">
+              Please enter User Name
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">First Name </label>
+          <div class="col-md-9">
+            <input type="text" formControlName="firstName" name="firstName" class="form-control">
+            <div class="alert alert-danger" *ngIf="userForm.get('firstName').hasError('required') && userForm.get('firstName').touched">
+              Please enter User Name
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Last Name </label>
+          <div class="col-md-9">
+            <input type="text" formControlName="lastName" name="lastName" class="form-control">
+            <div class="alert alert-danger" *ngIf="userForm.get('lastName').hasError('required') && userForm.get('lastName').touched">
+              Please enter User Name
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Email</label>
+          <div class="col-md-9">
+            <input type="text" formControlName="email" name="email" class="form-control">
+            <div class="alert alert-danger" *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched">
+              Please enter User Name
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-success"   *ngIf='!params' type="submit" [disabled]="userForm.invalid">Save</button>
+            <button class="btn btn-warning" routerLink='/admin/users'>Cancel</button>
+          </div>
+        </div>
+      </form>
+        </fieldset>
+      </div>
+      <!-- END PAGE BASE CONTENT -->
+    </div>
+    <div class="col-md-6" *ngIf='params'>
+       <div class="form-group">
+          <div class="row">
+            <label class="col-md-3 control-label">Select Role</label>
+            <div class="col-md-6">
+                <select class="form-control" [(ngModel)]="selectedRole">
+                      <option [ngValue]="null" >Select</option>
+                      <option *ngFor="let role of roleDropdown" [ngValue]="role">{{role.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+              <button class="btn" (click)="onAssignRole()">
+                      Assign
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="table table-bordered table-striped">
+          <tbody>
+            <tr>
+              <th> # </th>
+              <th>Role</th>
+              <th>Revoke</th>
+            </tr>
+            <tr *ngFor="let item of userRoles; let index = index">
+              <td>{{index+1}} </td>
+              <td>{{item}}</td>
+              <td>
+                <a (click)="onRevokeRole(item)" title="Revoke Permission">Revoke</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
