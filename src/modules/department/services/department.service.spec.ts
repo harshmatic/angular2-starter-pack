@@ -86,5 +86,14 @@ describe('Service: DepartmentService ', () => {
           expect(res.data.length).toBe(0);
         });
   }));
+   it('it should check getDepartmentPagination method',
+    inject([DepartmentService, XHRBackend], (service, mockBackend) => {
+        let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
+        mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+        service.getDepartmentPagination().subscribe((res) => {
+          expect(res.json().data.length).toBe(0);
+        });
+  }));
+  
 });
 

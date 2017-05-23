@@ -51,7 +51,7 @@ describe('Service: UserService ', () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
         service.getUsers().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+          expect(res.json().data.length).toBe(0);
         });
   }));
   it('it should check getUserByID method',
