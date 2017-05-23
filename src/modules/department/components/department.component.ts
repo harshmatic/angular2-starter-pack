@@ -15,20 +15,32 @@ import { DepartmentService } from '../services/department.service';
 })
 export class DepartmentComponent  implements OnInit {
   departmentList:any=[]
+  tableRows: number = 10;
+  totalRecords: any;
   departmentForm: FormGroup;
   constructor(private store: Store<any>, 
    private formBuilder: FormBuilder,
    private departmentService:DepartmentService ){}
 
   ngOnInit() {
-    this.getList()
+    this.getList({pageNumber:1,pageSize:10})
     this.resetForm()
     this.store.select('department').subscribe((res:any) => {
-       this.departmentList = res;
+        if (res.departmentList && res.departmentList.length > 0) {
+           this.departmentList = res.departmentList;
+           this.totalRecords = res.pagination.totalCount;
+        }
      });
   }
-  getList(){
-     this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST });
+  getList(pageOptions){
+     this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_PAGINATION, payload:pageOptions });
+  }
+  loadLazy(event: any) {
+    let pageOptions: any = {};
+    pageOptions.pageNumber = event.first == 0 ? 1 : Math.ceil(parseFloat((event.first / event.rows).toString())) + 1
+    pageOptions.pageSize = event.rows;
+    this.tableRows=event.rows;
+    this.getList(pageOptions)
   }
   onEdit(department){
      this.departmentForm = this.formBuilder.group({
@@ -48,13 +60,13 @@ export class DepartmentComponent  implements OnInit {
     if(value.departmentID!==0 && value.departmentID!=null){
       this.departmentService.saveDepartment(value.id,value).subscribe(
                 results=> {
-                    this.getList()
+                    this.getList({pageNumber:1,pageSize:10})
                     this.resetForm()
                 });
       } else {
            this.departmentService.addDepartment(value).subscribe(
                 results=> {
-                    this.getList()
+                    this.getList({pageNumber:1,pageSize:10})
                     this.resetForm()
                 });
     }
@@ -63,7 +75,7 @@ export class DepartmentComponent  implements OnInit {
         this.departmentService.deleteDepartment(dept.departmentID).subscribe(
             results => {
                     this.resetForm();
-                    this.getList()
+                    this.getList({pageNumber:1,pageSize:10})
               });
   }
 }

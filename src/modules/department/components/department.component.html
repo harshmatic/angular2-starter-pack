@@ -26,7 +26,8 @@
       </form>
     <div class="col-md-12">
       
-      <p-dataTable [value]="departmentList" [responsive]="true" [rows]="5" [paginator]="true" [pageLinks]="3">
+      <p-dataTable [value]="departmentList" [responsive]="true" [rows]="tableRows" [lazy]="true" 
+    [totalRecords]="totalRecords" (onLazyLoad)="loadLazy($event)" [rowsPerPageOptions]="[5,10,20]" [paginator]="true" [pageLinks]="3">
         <p-column field="departmentName" header="Name" [sortable]="true"></p-column>
         <p-column field="departmentDespcription" header="Despcription" [sortable]="true"></p-column>
         <p-column header="Actions">
