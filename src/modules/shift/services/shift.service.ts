@@ -23,6 +23,10 @@ export class ShiftService extends BaseService {
     getShifts() {
         return this.getList$(CONTEXT, 0, 0, true).map(res => res);
     }
+    // Get All By Pagination
+    getShiftsByPagination(payload){
+         return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
+    }
     // Add One
     addShift(shift: any) {
         return this.post$(CONTEXT, shift, true).map(res => res.json());

@@ -12,15 +12,15 @@
       </div>
     </div>
     <div class="form-group">
-      <label class="col-md-2 col-sm-2 control-label">Start Time</label>
-      <div class="col-md-4 col-sm-4">
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">Start Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
         <p-calendar formControlName="startTime" name="startTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
         <div class="alert alert-danger" name="startTimeError" *ngIf="startTimeError">
           Please enter start time
         </div>
       </div>
-      <label class="col-md-2 col-sm-2 control-label">End Time</label>
-      <div class="col-md-4 col-sm-4">
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">End Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
         <p-calendar formControlName="endTime" name="endTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
         <div class="alert alert-danger" name="endTimeError" *ngIf="endTimeError">
           Please enter end time
@@ -35,7 +35,8 @@
     </div>
   </form>
   <div class="row">
-    <p-dataTable [value]="shift" [responsive]="true" [rows]="3" [paginator]="true" [pageLinks]="2" [rowsPerPageOptions]="[5,10,20]">
+    <p-dataTable [value]="shift" [responsive]="true" [rows]="5" [lazy]="true" [paginator]="true" pageLinkSize="2"
+    [totalRecords]="this.totalRecords" (onLazyLoad)="loadLazy($event)" [pageLinks]="2" [rowsPerPageOptions]="[5,10,20]">
       <p-column field="shiftName" header="Shift Name" [sortable]="true"></p-column>
       <p-column field="startTime" header="Start Time" [sortable]="true"></p-column>
       <p-column field="endTime" header="End Time" [sortable]="true"></p-column>

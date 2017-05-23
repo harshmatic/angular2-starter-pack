@@ -20,6 +20,9 @@ export class OccurenceTypeComponent implements OnInit {
   isEdited: boolean = false;
   otID: any;
   otError: boolean = false;
+  tableRows: number = 5;
+  totalRecords: any = 0;
+  public pageOptions: any = {pageNumber:1,pageSize:5};
   constructor(private store: Store<any>,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
@@ -27,36 +30,19 @@ export class OccurenceTypeComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();
-    this.occurenceTypeObj = {
-      "obTypeID": "758b1995-7f92-4d87-9588-b90800abf111",
-      "obTypeName": "Occurrence Type 1 - After Update",
-      "createdOn": "2017-04-21T19:13:44.8223999",
-      "createdBy": "00000000-0000-0000-0000-000000000000",
-      "updatedOn": "0001-01-01T00:00:00",
-      "updatedBy": "00000000-0000-0000-0000-000000000000",
-      "isDelete": false
-    }
     this.patchReq.push({
       "op": "replace",
       "path": "/obTypeName",
       "value": "test after patch"
     });
-
-    // //Create
-    // this.store.dispatch({ type: OT_ACTIONS.ADD,payload:this.occurenceTypeObj });
-    // //Delete
-    //this.store.dispatch({ type: OT_ACTIONS.DELETE,payload:"758b1995-7f92-4d87-9588-b90800abf111" });
-    // //Update (PUT)
-    //this.store.dispatch({ type: OT_ACTIONS.UPDATE,payload:{id:"758b1995-7f92-4d87-9588-b90800abf111",updates:this.occurenceTypeObj}});
-    // //Update (PATCH)
-
-    // this.store.dispatch({ type: OT_ACTIONS.UPDATE,payload:{id:"758b1995-7f92-4d87-9588-b90800abf111",updates:this.patchReq}});
     this.getOtList();
   }
   getOtList() {
-    this.store.dispatch({ type: OT_ACTIONS.GET_LIST });
     this.store.select('occurenceType').subscribe((res: any) => {
-      this.occurenceType = res;
+      if (res.ot && res.ot.length > 0) {
+        this.occurenceType = res.ot;
+        this.totalRecords = res.pagination.totalCount;
+      }
     });
   }
   onEdit(OT: any) {
@@ -74,6 +60,7 @@ export class OccurenceTypeComponent implements OnInit {
       .subscribe((results: any) => {
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occcurence type deleted' });
         this.resetForm();
+        this.store.dispatch({ type: OT_ACTIONS.GET_LIST_BY_PAGINATION, payload: this.pageOptions });
         this.getOtList();
       });
   }
@@ -88,6 +75,7 @@ export class OccurenceTypeComponent implements OnInit {
             this.isEdited = false;
             this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occurence type updated' });
             this.resetForm();
+            this.store.dispatch({ type: OT_ACTIONS.GET_LIST_BY_PAGINATION, payload: this.pageOptions });
             this.getOtList();
           });
       }else if (!this.isEdited) {
@@ -95,6 +83,7 @@ export class OccurenceTypeComponent implements OnInit {
           .subscribe((result: any) => {
             this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occurence type added' });
             this.resetForm();
+            this.store.dispatch({ type: OT_ACTIONS.GET_LIST_BY_PAGINATION, payload: this.pageOptions });
             this.getOtList();
           });
       }
@@ -107,5 +96,12 @@ export class OccurenceTypeComponent implements OnInit {
       this.otError = true;
     } else { this.otError = false; }
     return submitFlag;
+  }
+  loadLazy(event: any) {
+    let pageOptions: any = {};
+    pageOptions.pageNumber = event.first == 0 ? 1 : Math.ceil(parseFloat((event.first / event.rows).toString())) + 1
+    pageOptions.pageSize = event.rows;
+    this.store.dispatch({ type: OT_ACTIONS.GET_LIST_BY_PAGINATION, payload: pageOptions });
+
   }
 }

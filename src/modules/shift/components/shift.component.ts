@@ -23,6 +23,9 @@ export class ShiftComponent implements OnInit {
   startTimeError: boolean = false;
   endTimeError: boolean = false;
   public date4: Date;
+  tableRows: number = 5;
+  totalRecords: any = 0;
+  public pageOptions: any = { pageNumber: 1, pageSize: 5 };
   constructor(private store: Store<any>,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
@@ -30,31 +33,19 @@ export class ShiftComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();
-    // this.shiftObj = {
-    //   "shiftID": "318dc4df-684a-444f-9e5a-18bb5eed1123",
-    //   "shiftName": "Shift1 - Updated",
-    //   "startTime": "00:01:20",
-    //   "endTime": "00:01:05",
-    // }
     this.patchReq.push({
       "op": "replace",
       "path": "/shiftName",
       "value": "test after patch"
     });
-    // //Create
-    // this.store.dispatch({ type: SHIFT_ACTIONS.ADD,payload:this.shiftObj });
-    // //Delete
-    //this.store.dispatch({ type: SHIFT_ACTIONS.DELETE,payload:"318dc4df-684a-444f-9e5a-18bb5eed1123" });
-    // //Update (PUT)
-    // this.store.dispatch({ type: SHIFT_ACTIONS.UPDATE,payload:{id:"318dc4df-684a-444f-9e5a-18bb5eed1123",updates:this.shiftObj}});
-    // //Update (PATCH)
-    // this.store.dispatch({ type: SHIFT_ACTIONS.UPDATE,payload:{id:"88f50d32-bb51-4835-90e9-1b02c8109ab2",updates:this.patchReq}});
     this.getShiftList();
   }
   getShiftList() {
-    this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST });
     this.store.select('shift').subscribe((res: any) => {
-        this.shift = res;
+      if (res.shift && res.shift.length > 0) {
+        this.shift = res.shift;
+        this.totalRecords = res.pagination.totalCount;
+      }
     });
   }
   resetForm() {
@@ -76,6 +67,7 @@ export class ShiftComponent implements OnInit {
       .subscribe((results: any) => {
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Shift Deleted' });
         this.resetForm();
+        this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_BY_PAGINATION, payload: this.pageOptions });
         this.getShiftList();
       });
   }
@@ -92,6 +84,7 @@ export class ShiftComponent implements OnInit {
             this.isEdited = false;
             this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Shift Updated' });
             this.resetForm();
+            this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_BY_PAGINATION, payload: this.pageOptions });
             this.getShiftList();
           });
       } else if (!this.isEdited) {
@@ -99,6 +92,7 @@ export class ShiftComponent implements OnInit {
           .subscribe((result: any) => {
             this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Shift Added' });
             this.resetForm();
+            this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_BY_PAGINATION, payload: this.pageOptions });
             this.getShiftList();
           });
       }
@@ -119,5 +113,11 @@ export class ShiftComponent implements OnInit {
       this.endTimeError = true;
     } else { this.endTimeError = false; }
     return submitFlag;
+  }
+  loadLazy(event: any) {
+    let pageOptions: any = {};
+    pageOptions.pageNumber = event.first == 0 ? 1 : Math.ceil(parseFloat((event.first / event.rows).toString())) + 1
+    pageOptions.pageSize = event.rows;
+    this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_BY_PAGINATION, payload: pageOptions });
   }
 }

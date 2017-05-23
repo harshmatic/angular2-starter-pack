@@ -5,7 +5,7 @@ import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
 import { OccurenceType, initialOccurenceType } from './occurenceType.model';
 import { OT_ACTIONS } from './occurenceType.actions';
-import {  OccurenceTypeService } from '../services/occurenceType.service';
+import { OccurenceTypeService } from '../services/occurenceType.service';
 import { BaseService } from '../../../app/core/services/index';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
@@ -19,49 +19,59 @@ export class OccurenceTypeEffects extends BaseService {
   @Effect({ dispatch: false })
   private getListOt$ = this.actions$
     .ofType(OT_ACTIONS.GET_LIST)
-   .switchMap(action => 
-       this.occurenceTypeService.getOts()
-        .map(res =>{
+    .switchMap(action =>
+      this.occurenceTypeService.getOts()
+        .map(res => {
           this.store.dispatch({ type: OT_ACTIONS.GET_LIST_SUCCESS, payload: res })
         })
-        .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED  }))
-      );
- @Effect({ dispatch: false })
+        .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED }))
+    );
+  @Effect({ dispatch: false })
+  private getListOtByPagination$ = this.actions$
+    .ofType(OT_ACTIONS.GET_LIST_BY_PAGINATION)
+    .switchMap(action =>
+      this.occurenceTypeService.getOtsByPagination(action.payload)
+        .map(res => {
+          this.store.dispatch({ type: OT_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: {ot:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
+        })
+        .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED }))
+    );
+  @Effect({ dispatch: false })
   private addOt$ = this.actions$
     .ofType(OT_ACTIONS.ADD)
-   .switchMap(action => {
-    return this.occurenceTypeService.addOt(action.payload)
-        .map(res =>{
+    .switchMap(action => {
+      return this.occurenceTypeService.addOt(action.payload)
+        .map(res => {
           this.store.dispatch({ type: OT_ACTIONS.ADD_SUCCESS, payload: res.json() })
         })
-        .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED  }))
-   }
-       
-      );
+        .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED }))
+    }
+
+    );
   @Effect({ dispatch: false })
   private updateOt$ = this.actions$
     .ofType(OT_ACTIONS.UPDATE)
-   .switchMap(action => 
-        this.occurenceTypeService.saveOt(action.payload.id,action.payload.updates)
-        .map(res =>{
+    .switchMap(action =>
+      this.occurenceTypeService.saveOt(action.payload.id, action.payload.updates)
+        .map(res => {
           this.store.dispatch({ type: OT_ACTIONS.UPDATE_SUCCESS, payload: res.json() })
         })
-        .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED  }))
-      );
+        .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED }))
+    );
   @Effect({ dispatch: false })
   private deleteOt$ = this.actions$
     .ofType(OT_ACTIONS.DELETE)
-   .switchMap(action => 
-       this.occurenceTypeService.deleteOt(action.payload)
-        .map(res =>{
+    .switchMap(action =>
+      this.occurenceTypeService.deleteOt(action.payload)
+        .map(res => {
           this.store.dispatch({ type: OT_ACTIONS.DELETE_SUCCESS, payload: res.json() })
         })
-        .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED  }))
-      );
+        .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED }))
+    );
   constructor(
     private store: Store<OccurenceType>,
     private actions$: Actions,
     private occurenceTypeService: OccurenceTypeService,
     public http: Http
-  ) {super(http,CONTEXT); }
+  ) { super(http, CONTEXT); }
 }
