@@ -20,42 +20,30 @@ export class StatusComponent implements OnInit {
   isEdited: boolean = false;
   statusID: any;
   statusError: boolean = false;
+  tableRows: number = 5;
+  totalRecords: any = 0;
   constructor(private store: Store<any>,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
     private statusService: StatusService) { }
 
   ngOnInit() {
+
     this.resetForm();
-    // this.statusObj = {
-    //   "statusID": "ebeed096-ea34-43e2-948e-32bb98f31401",
-    //   "statusName": "Assigned - Updated",
-    //   "createdOn": "2017-04-21T19:13:44.9224057",
-    //   "createdBy": "00000000-0000-0000-0000-000000000000",
-    //   "updatedOn": "0001-01-01T00:00:00",
-    //   "updatedBy": "00000000-0000-0000-0000-000000000000",
-    //   "isDelete": false
-    // }
     this.patchReq.push({
       "op": "replace",
       "path": "/statusName",
       "value": "statusName after patch"
     });
-
-    // //Create
-    // this.store.dispatch({ type: STATUS_ACTIONS.ADD,payload:this.statusObj });
-    // //Delete
-    // this.store.dispatch({ type: STATUS_ACTIONS.DELETE,payload:"ebeed096-ea34-43e2-948e-32bb98f31401" });
-    // //Update (PUT)
-    //this.store.dispatch({ type: STATUS_ACTIONS.UPDATE,payload:{id:"ebeed096-ea34-43e2-948e-32bb98f31401",updates:this.statusObj}});
-    // //Update (PATCH)
-    // this.store.dispatch({ type: STATUS_ACTIONS.UPDATE,payload:{id:"88f50d32-bb51-4835-90e9-1b02c8109ab2",updates:this.patchReq}});
     this.getStatusList();
+
   }
   getStatusList() {
-    this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST });
     this.store.select('status').subscribe((res: any) => {
-        this.status = res;
+      if (res.status && res.status.length > 0) {
+        this.status = res.status;
+        this.totalRecords = res.pagination.totalCount;
+      }
     });
   }
   resetForm() {
@@ -89,7 +77,7 @@ export class StatusComponent implements OnInit {
             this.resetForm();
             this.getStatusList();
           });
-      }else if (!this.isEdited) {
+      } else if (!this.isEdited) {
         this.statusService.addStatus(this.statusObj)
           .subscribe((result: any) => {
             this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Added' });
@@ -106,5 +94,12 @@ export class StatusComponent implements OnInit {
       this.statusError = true;
     } else { this.statusError = false; }
     return submitFlag;
+  }
+  loadLazy(event: any) {
+    let pageOptions: any = {};
+    pageOptions.pageNumber = event.first == 0 ? 1 : Math.ceil(parseFloat((event.first / event.rows).toString())) + 1
+    pageOptions.pageSize = event.rows;
+    this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_BY_PAGINATION, payload: pageOptions });
+
   }
 }

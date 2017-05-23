@@ -18,7 +18,8 @@
     </div>
   </form>
   <div class="row">
-    <p-dataTable [value]="status" [responsive]="true" [rows]="5" [paginator]="true" [pageLinks]="2" [rowsPerPageOptions]="[5,10,20]">
+    <p-dataTable [value]="status" [responsive]="true" [rows]="tableRows" [lazy]="true" [paginator]="true" [pageLinks]="2" 
+      [totalRecords]="this.totalRecords" (onLazyLoad)="loadLazy($event)" [rowsPerPageOptions]="[5,10,20]">
       <p-column field="statusName" header="Status Name" [sortable]="true"></p-column>
       <p-column header="Action">
         <template let-status="rowData" pTemplate type="body">
