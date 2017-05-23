@@ -90,8 +90,7 @@ export class OccurenceTypeComponent implements OnInit {
             this.resetForm();
             this.getOtList();
           });
-      }
-      if (!this.isEdited) {
+      }else if (!this.isEdited) {
         this.occurenceTypeService.addOt(this.occurenceTypeObj)
           .subscribe((result: any) => {
             this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Occurence type added' });

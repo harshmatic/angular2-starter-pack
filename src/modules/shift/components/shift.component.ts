@@ -54,9 +54,7 @@ export class ShiftComponent implements OnInit {
   getShiftList() {
     this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST });
     this.store.select('shift').subscribe((res: any) => {
-      if (res.length > 0) {
         this.shift = res;
-      }
     });
   }
   resetForm() {
@@ -96,8 +94,7 @@ export class ShiftComponent implements OnInit {
             this.resetForm();
             this.getShiftList();
           });
-      }
-      if (!this.isEdited) {
+      } else if (!this.isEdited) {
         this.shiftService.addShift(this.shiftObj)
           .subscribe((result: any) => {
             this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Shift Added' });
