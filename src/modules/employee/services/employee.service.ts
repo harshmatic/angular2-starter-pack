@@ -36,15 +36,14 @@ export class EmployeeService extends BaseService {
     }
     //Update One
     saveEmployee(id:any,employee:any) {        
-        return this.post$(CONTEXT+id,employee, true).map(res => res.json());    
+        return this.put$(CONTEXT+id,employee, true).map(res => res.json());    
     }
     // Delete One
     deleteEmployee(id:any) {        
         return this.delete$(CONTEXT+id,true).map(res => res.json());    
     }
     // Get One
-    getEmployee(id:any) { 
-        debugger       
+    getEmployee(id:any) {        
         return this.get$(CONTEXT+id,true).map(res => res.json());    
     }
 
