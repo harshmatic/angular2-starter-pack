@@ -25,7 +25,7 @@ export class EmployeeEffects {
     );
 
   @Effect({ dispatch: false })
-  private getListEmployees$ = this.actions$
+  private getListEmployeesByDept$ = this.actions$
     .ofType(EMPLOYEE_ACTIONS.GET_LIST_BY_DEPT)
     .switchMap(action =>
       this.EmployeeService.getEmployeesByDept(action.payload.id)
@@ -56,6 +56,20 @@ export class EmployeeEffects {
         })
         .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED }))
     );
+
+      @Effect({ dispatch: false })
+  private getEmployeeById$ = this.actions$
+    .ofType(EMPLOYEE_ACTIONS.GET_LIST_BY_ID)
+    .switchMap(action =>
+      this.EmployeeService.getEmployee(action.payload.id)
+        .map(res => {
+          
+          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_SUCCESS_BY_ID, payload: res })
+        })
+        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED }))
+    );
+
+
   @Effect({ dispatch: false })
   private deleteEmployee$ = this.actions$
     .ofType(EMPLOYEE_ACTIONS.DELETE)

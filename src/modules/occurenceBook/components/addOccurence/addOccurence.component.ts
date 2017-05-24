@@ -15,7 +15,7 @@ import { MessageService } from '../../../../app/core/services/index';
 declare var $: any;
 @Component({
   moduleId: module.id,
-  selector: 'app-job-detail',
+  selector: 'add-job-detail',
   templateUrl: 'addOccurence.component.html',
   styleUrls: ['addOccurence.component.css']
 })

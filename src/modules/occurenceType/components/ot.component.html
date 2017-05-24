@@ -21,10 +21,10 @@
     <p-dataTable [value]="occurenceType" [responsive]="true" [rows]="5" [paginator]="true" [pageLinks]="2" [rowsPerPageOptions]="[5,10,20]">
       <p-column field="obTypeName" header="Occurence Type" [sortable]="true"></p-column>
       <p-column header="Action">
-        <template let-ot="rowData" pTemplate type="body">
-          <button class="btn btn-info" name="edit" (click)="onEdit(ot)"><i class="fa fa-edit"></i></button>
-          <button class="btn btn-danger" name="delete" (click)="onDelete(ot)"><i class="fa fa-trash"></i></button>
-        </template>
+        <ng-template let-ot="rowData" pTemplate type="body">
+          <button class="btn btn-info" (click)="onEdit(ot)"><i class="fa fa-edit"></i></button>
+          <button class="btn btn-danger" (click)="onDelete(ot)"><i class="fa fa-trash"></i></button>
+        </ng-template>
       </p-column>
     </p-dataTable>
   </div>

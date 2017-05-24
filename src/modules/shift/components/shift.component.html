@@ -40,10 +40,10 @@
       <p-column field="startTime" header="Start Time" [sortable]="true"></p-column>
       <p-column field="endTime" header="End Time" [sortable]="true"></p-column>
       <p-column header="Action">
-        <template let-shift="rowData" pTemplate type="body">
-          <button class="btn btn-info" name="edit" (click)="onEdit(shift)"><i class="fa fa-edit"></i></button>
-          <button class="btn btn-danger" name="delete" (click)="onDelete(shift)"><i class="fa fa-trash"></i></button>
-        </template>
+        <ng-template let-shift="rowData" pTemplate type="body">
+          <button class="btn btn-info" (click)="onEdit(shift)"><i class="fa fa-edit"></i></button>
+          <button class="btn btn-danger" (click)="onDelete(shift)"><i class="fa fa-trash"></i></button>
+        </ng-template>
       </p-column>
     </p-dataTable>
   </div>

@@ -3,20 +3,21 @@ import {By} from '@angular/platform-browser';
 import {async, inject, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CommonModule} from '@angular/common';
+import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SharedModule } from '../../../../app/shared/shared.module';
-import {AssignedComponent} from './assigned.component';
+import {ActivityFeedComponent} from './activityFeed.component';
 import { AuthService } from '../../../../app/core/index';
-import { OccurenceBookEffects } from '../../store/occurenceBook.effects';
-import { OccurenceBookService } from '../../services/occurenceBook.service';
-import { OccurenceBookReducer } from '../../../occurenceBook/store/occurenceBook.reducer';
+import { ActivityEffects } from '../../../activity/store/activity.effects';
+import { ActivityService } from '../../../activity/services/activity.service';
+import { ActivityReducer } from '../../../activity/store/activity.reducer';
 import { Priority } from '../../../config';
 import { Status } from '../../../config';
 import {Router} from "@angular/router";
-@Component({selector: 'test-cmp', template: '<app-assigned></app-assigned>'})
+@Component({selector: 'test-cmp', template: '<app-activity-feed></app-activity-feed>'})
 class TestComponent {}
 
 @Directive({selector: '[routerLink]'})
@@ -30,39 +31,36 @@ class AuthServiceStub {
      getCurrentUser() {
        return {areaID:'1234'}
     }
-  onAuthStatusChanged$ () {
-     return new Observable<any>((observer:any) => {
-       observer.next(true);
-     });
-  }
+
 }
-class OccurenceBookServiceStub {
-  getObs(searchQuery?:any,pageNum?:any,pageSize?:any,areaId?:any) {
+class ActivityServiceStub {
+  getActivity(pageNum?:any,pageSize?:any) {
      return new Observable<any>((observer:any) => {
        observer.next(testData);
      });
   }
-  getObsOff(searchQuery?:any,pageNum?:any,pageSize?:any,areaId?:any) {
+  getActivityByOB(pageNum?:any,pageSize?:any,id?:any){
      return new Observable<any>((observer:any) => {
        observer.next(testData);
      });
   }
 }
-
-
-
-describe('Component: Assigned Component', () => {
-    beforeEach(() => {
+let router;
+describe('Component: Activity Component', () => {
+    beforeEach(async(() => {
+//       router = {
+//   navigate: jasmine.createSpy('navigate'),routerState: {}
+// }
         TestBed.configureTestingModule({
             imports: [
-                EffectsModule.run(OccurenceBookEffects),
-                StoreModule.provideStore({occurenceBook:OccurenceBookReducer}),
+                EffectsModule.run(ActivityEffects),
+                StoreModule.provideStore({activity:ActivityReducer}),
                 SharedModule,RouterTestingModule, CommonModule,
-                FormsModule, ReactiveFormsModule
+                FormsModule, ReactiveFormsModule,HttpModule
             ],
             schemas: [NO_ERRORS_SCHEMA],
             declarations: [
-                AssignedComponent, TestComponent, RouterLinkStubDirective
+                ActivityFeedComponent, TestComponent, RouterLinkStubDirective
             ],
             providers: [
                {
@@ -70,13 +68,14 @@ describe('Component: Assigned Component', () => {
                     useClass: AuthServiceStub
                 },
                 {
-                    provide: OccurenceBookService,
-                    useClass: OccurenceBookServiceStub
-                }
+                    provide: ActivityService,
+                    useClass: ActivityServiceStub
+                },
+                //{ provide: Router, useValue: router }
                 
             ]
         });
-    });
+    }));
     it('should have a defined component', async(() => {
         TestBed.compileComponents()
             .then(() => {
@@ -89,72 +88,38 @@ describe('Component: Assigned Component', () => {
     it('check component init', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(AssignedComponent);
+                let fixture = TestBed.createComponent(ActivityFeedComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
-                expect(componentInstance.jobPageNum).toBe(2);
+                expect(componentInstance.pageNum).toBe(2);
                 expect(componentInstance.stopScroll).toBe(false);
-                expect(componentInstance.obs.length).toBe(1);
+                expect(componentInstance.activities.length).toBe(1);
             });
     }));
-        it('it should check onKeyup method', async(() => {
+
+    it('it should check getActivities method', async(() => {
         TestBed.compileComponents()
             .then(() => {
-                let fixture = TestBed.createComponent(AssignedComponent);
+                let fixture = TestBed.createComponent(ActivityFeedComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
-                componentInstance.onKey({target:{value:'test'}});
-                expect(componentInstance.queryString).toBe('test');
+                componentInstance.getActivities();
+                expect(componentInstance.pageNum).toBe(3);
+                expect(componentInstance.activities.length).toBe(2);
             });
     }));
-    it('it should check getJobs method', async(() => {
-        TestBed.compileComponents()
-            .then(() => {
-                let fixture = TestBed.createComponent(AssignedComponent);
-                fixture.detectChanges();
-                let componentInstance = fixture.componentInstance;
-                componentInstance.getJobs();
-                expect(componentInstance.jobPageNum).toBe(2);
-                expect(componentInstance.obs.length).toBe(1);
-            });
-    }));
-    it('it should check applyPriority method', async(() => {
-        TestBed.compileComponents()
-            .then(() => {
-                let fixture = TestBed.createComponent(AssignedComponent);
-                fixture.detectChanges();
-                let componentInstance = fixture.componentInstance;
-                let result=componentInstance.applyPriority('test');
-                expect(result).toBe('blue');
-                let result2=componentInstance.applyPriority('Critical');
-                expect(result2).toBe('red');
-            });
-    }));
-    it('it should check applyIcon method', async(() => {
-        TestBed.compileComponents()
-            .then(() => {
-                let fixture = TestBed.createComponent(AssignedComponent);
-                fixture.detectChanges();
-                let componentInstance = fixture.componentInstance;
-                let result=componentInstance.applyIcon('test');
-                expect(result).toBe("/assets/styles/images/blue.svg");
-                let result2=componentInstance.applyIcon('Critical');
-                expect(result2).toBe("/assets/styles/images/red.svg");
-            });
-    }));
-    it('it should check applyStatus method', async(() => {
-        TestBed.compileComponents()
-            .then(() => {
-                let fixture = TestBed.createComponent(AssignedComponent);
-                fixture.detectChanges();
-                let componentInstance = fixture.componentInstance;
-                let result=componentInstance.applyStatus('test');
-                expect(result).toBe('statusOpen');
-                let result2=componentInstance.applyStatus('Assigned');
-                expect(result2).toBe("statusAssigned");
-            });
-    }));
-    
+
+    // it('it should check the ObClicked method', async(() => {
+    //     TestBed.compileComponents()
+    //         .then(() => {
+    //             let fixture = TestBed.createComponent(ActivityFeedComponent);
+    //             fixture.detectChanges();
+    //             let componentInstance = fixture.componentInstance;
+    //             componentInstance.onOBClick(123);
+    //            expect(router.navigate).toHaveBeenCalledWith(['/ob/occurenceEdit'], { queryParams: { OccurenceBookID: 123 } });
+    //         });
+    // }));
+
 });
 
 

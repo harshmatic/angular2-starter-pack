@@ -6,16 +6,17 @@ import { OfficerListComponent } from './components/officerList/officerList.compo
 import { ActivityFeedComponent } from './components/activityFeed/activityFeed.component';
 import { AssignOfficerComponent } from './components/assignOfficer/assignOfficer.component';
 import { AuthGuard } from '../../app/core/index';
-
+import { EmployeeListComponent } from './components/list/list.component';
+import { EmployeeSaveComponent } from './components/add/add.component';
 const routes: Routes = [
-  {
-    path: '',
-    component: EmployeeComponent,
-    data: {
-      //permissions: ['EMPLOYEE_READ']
-    },
-    canActivate: [AuthGuard],
-  },
+  // {
+  //   path: '',
+  //   component: EmployeeComponent,
+  //   data: {
+  //     //permissions: ['EMPLOYEE_READ']
+  //   },
+  //   canActivate: [AuthGuard],
+  // },
   {
     path: 'officerList',
     component: OfficerListComponent,
@@ -38,6 +39,33 @@ const routes: Routes = [
       permissions: ['OB.U']
     },
     canActivate: [AuthGuard],
+  },
+    {
+    path: '',
+    component: EmployeeListComponent,
+    data: {
+      permissions: []
+    },
+     canActivate: [AuthGuard],
+    
+  },
+  {
+    path: 'save',
+    component: EmployeeSaveComponent,
+    data: {
+      permissions: []
+    },
+     canActivate: [AuthGuard],
+    
+  },
+  {
+    path: 'save/:employeeID',
+    component: EmployeeSaveComponent,
+    data: {
+      permissions: []
+    },
+     canActivate: [AuthGuard],
+    
   },
 ];
 

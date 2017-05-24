@@ -21,7 +21,8 @@ export class ShiftService extends BaseService {
     }
     // Get All
     getShifts() {
-        return this.getList$(CONTEXT, 0, 0, true).map(res => res);
+        return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
+
     }
     // Add One
     addShift(shift: any) {
