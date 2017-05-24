@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="col-md-2">
-              <button class="btn btn-success" type="submit" [disabled]="departmentForm.invalid">Save</button>
+              <button class="btn btn-success" name="submitBtn" type="submit" [disabled]="departmentForm.invalid">Save</button>
               <button class="btn btn-success" type="button" (click)='resetForm()'>Clear</button>
         </div>
       </form>
@@ -32,8 +32,8 @@
         <p-column field="departmentDespcription" header="Despcription" [sortable]="true"></p-column>
         <p-column header="Actions">
           <template let-item="rowData" pTemplate type="body">
-            <button class="btn btn-danger" (click)="onDelete(item)"><i class="fa fa-trash"></i></button>
-            <button class="btn btn-danger" (click)="onEdit(item)"><i class="fa fa-edit"></i></button>
+            <button class="btn btn-danger" name='delete' (click)="onDelete(item)"><i class="fa fa-trash"></i></button>
+            <button class="btn btn-danger" name='edit' (click)="onEdit(item)"><i class="fa fa-edit"></i></button>
           </template>
         </p-column>
       </p-dataTable>

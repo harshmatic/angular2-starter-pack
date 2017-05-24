@@ -19,12 +19,24 @@ describe('Department', function () {
         var EC = protractor.ExpectedConditions;
         element(by.name('departmentName')).sendKeys("test");
         element(by.name('departmentDespcription')).sendKeys("test");
-        element(by.name('submit')).click();
+        element(by.name('submitBtn')).click();
         browser.sleep(500);
         browser.ignoreSynchronization = true;
         expect<any>(element(by.name('departmentName')).getText()).toEqual('');
         browser.sleep(500);
         browser.ignoreSynchronization = false;
 
+    });
+     it('should update department', () => {
+        var EC = protractor.ExpectedConditions;
+        element.all(by.name('edit')).first().click();
+        element(by.name('departmentName')).sendKeys("test");
+        element(by.name('departmentDespcription')).sendKeys("test");
+        element(by.name('submitBtn')).click();
+        browser.sleep(5000);
+        browser.ignoreSynchronization = true;
+        expect<any>(element(by.name('departmentName')).getText()).toEqual('');
+        browser.sleep(5000);
+        browser.ignoreSynchronization = false;
     });
 });

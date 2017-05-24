@@ -14,7 +14,7 @@
       <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
       <p-column header="Manage Role">
         <template let-role="rowData" pTemplate type="body">
-          <a (click)="onManageRoleClick(role)">Manage Role</a>
+          <a name="edit" (click)="onManageRoleClick(role)">Manage Role</a>
         </template>
       </p-column>
     </p-dataTable>

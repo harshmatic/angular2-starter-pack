@@ -5,6 +5,8 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { APPMODULE_ACTIONS } from '../../store/appModule/appModule.actions';
 import { AppModuleService } from '../../services/appModule.service';
+import { MessageService } from '../../../../app/core/services/index';
+
 @Component({
   moduleId: module.id,
   selector: 'app-module-list',
@@ -16,6 +18,7 @@ export class AppModuleComponent  implements OnInit {
   appModuleForm: FormGroup;
   constructor(private store: Store<any>,private router: Router,
   private  appModuleService:AppModuleService,
+  private messageService: MessageService,
    private formBuilder: FormBuilder){}
 
   ngOnInit() {
@@ -39,12 +42,14 @@ export class AppModuleComponent  implements OnInit {
         this.appModuleService.addModules(value).subscribe(
             results => {
                     this.resetForm();
+                    this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'AppModule Saved' });
                     this.getModuleList();
               });
   }
   onDelete(appModule:any) {
         this.appModuleService.deleteModules(appModule.id).subscribe(
             results => {
+                    this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'AppModule Deleted' });
                     this.resetForm();
                     this.getModuleList();
               });

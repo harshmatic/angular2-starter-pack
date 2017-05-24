@@ -6,6 +6,7 @@ import { DEPARTMENT_ACTIONS } from '../store/department.actions';
 import { Patch } from '../../patchReq.model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { DepartmentService } from '../services/department.service';
+import { MessageService } from '../../../app/core/services/index';
 
 @Component({
   moduleId: module.id,
@@ -20,6 +21,7 @@ export class DepartmentComponent  implements OnInit {
   departmentForm: FormGroup;
   constructor(private store: Store<any>, 
    private formBuilder: FormBuilder,
+   private messageService: MessageService,
    private departmentService:DepartmentService ){}
 
   ngOnInit() {
@@ -58,14 +60,16 @@ export class DepartmentComponent  implements OnInit {
   }
   onSubmit({ value, valid }: { value: any, valid: boolean }) {
     if(value.departmentID!==0 && value.departmentID!=null){
-      this.departmentService.saveDepartment(value.id,value).subscribe(
+      this.departmentService.saveDepartment(value.departmentID,value).subscribe(
                 results=> {
+                    this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Department Updated' });
                     this.getList({pageNumber:1,pageSize:10})
                     this.resetForm()
                 });
       } else {
            this.departmentService.addDepartment(value).subscribe(
                 results=> {
+                    this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Department Saved' });
                     this.getList({pageNumber:1,pageSize:10})
                     this.resetForm()
                 });
@@ -74,6 +78,7 @@ export class DepartmentComponent  implements OnInit {
   onDelete(dept:any) {
         this.departmentService.deleteDepartment(dept.departmentID).subscribe(
             results => {
+                    this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Department Deleted' });
                     this.resetForm();
                     this.getList({pageNumber:1,pageSize:10})
               });

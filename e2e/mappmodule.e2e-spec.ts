@@ -15,17 +15,16 @@ describe('AppModule', function () {
         var EC = protractor.ExpectedConditions;
         expect<any>(element(by.name('name')).getText()).toEqual('');
     });
-    it('should add department', () => {
+    it('should add appmodule', () => {
         var EC = protractor.ExpectedConditions;
         element(by.name('name')).sendKeys("test");
         element(by.name('menuText')).sendKeys("test");
         element(by.name('shortName')).sendKeys("TM");
-        element(by.name('submit')).click();
+        element(by.name('submitBtn')).click();
         browser.sleep(500);
         browser.ignoreSynchronization = true;
         expect<any>(element(by.name('name')).getText()).toEqual('');
         browser.sleep(500);
         browser.ignoreSynchronization = false;
-
     });
 });

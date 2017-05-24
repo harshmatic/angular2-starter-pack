@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
           <div class="col-md-offset-2 col-md-10">
-            <button class="btn" type="submit" [disabled]="roleForm.invalid">Save</button>
+            <button class="btn" name="submitBtn" type="submit" [disabled]="roleForm.invalid">Save</button>
           </div>
         </div>
       </form>
@@ -21,7 +21,7 @@
         <p-column field="name" header="Role Name" [sortable]="true"></p-column>
         <p-column header="Permission">
           <template let-role="rowData" pTemplate="body">
-            <a class="hand-cursor" (click)="managePermission(role)">Manage Permissions</a>
+            <a class="hand-cursor" name="manageRole" (click)="managePermission(role)">Manage Permissions</a>
           </template>
         </p-column>
         <!--<p-column header="Delete">
@@ -31,7 +31,7 @@
         </p-column>-->
       </p-dataTable>
     </div>
-    <div class="col-md-offset-1 col-md-5" *ngIf="selectedRole && selectedRole!=null">
+    <div class="col-md-offset-1 col-md-5" name='rolePermission' *ngIf="selectedRole && selectedRole!=null">
       <div class="form-group">
         <label class="col-md-10 control-label">Role:&nbsp; <strong>{{selectedRole.name}}</strong></label>
       </div>

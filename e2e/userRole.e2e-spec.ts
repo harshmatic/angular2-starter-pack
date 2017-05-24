@@ -15,18 +15,29 @@ describe('User Role Component', function () {
         var EC = protractor.ExpectedConditions;
         expect<any>(element(by.name('userName')).getText()).toEqual('');
     });
-    it('should add department', () => {
+    it('should add a new user', () => {
         var EC = protractor.ExpectedConditions;
         element(by.name('userName')).sendKeys("test");
         element(by.name('firstName')).sendKeys("test");
         element(by.name('lastName')).sendKeys("test");
         element(by.name('email')).sendKeys("test");
-        element(by.name('submit')).click();
+        element(by.name('submitBtn')).click();
         browser.sleep(500);
         browser.ignoreSynchronization = true;
-        expect<any>(element(by.name('userName')).getText()).toEqual('');
+        browser.getCurrentUrl().then(function(url:string){
+            url = url.split("#/")[1];
+            expect<any>(url).toBe('admin/users');
+        });
         browser.sleep(500);
         browser.ignoreSynchronization = false;
 
+    });
+    it('should check cancel btn', () => {
+        var EC = protractor.ExpectedConditions;
+        element(by.name('cancelBtn')).click();
+         browser.getCurrentUrl().then(function(url:string){
+            url = url.split("#/")[1];
+            expect<any>(url).toBe('admin/users');
+        });
     });
 });
