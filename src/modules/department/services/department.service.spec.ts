@@ -90,7 +90,7 @@ describe('Service: DepartmentService ', () => {
     inject([DepartmentService, XHRBackend], (service, mockBackend) => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-        service.getDepartmentPagination().subscribe((res) => {
+        service.getDepartmentPagination({pageNumber:1,pageSize:10}).subscribe((res) => {
           expect(res.json().data.length).toBe(0);
         });
   }));

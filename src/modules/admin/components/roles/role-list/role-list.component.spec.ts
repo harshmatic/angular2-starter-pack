@@ -15,12 +15,21 @@ import { AppModuleService } from '../../../services/appModule.service';
 import { RoleService } from '../../../services/role.service';
 import { AppModuleReducer } from '../../../store/appModule/appModule.reducer';
 import { RoleReducer } from '../../../store/role/role.reducer';
+import { MessageService } from '../../../../../app/core/services/index';
 
 @Component({selector: 'test-cmp', template: '<app-module-list></app-module-list>'})
 class TestComponent {}
 
 @Directive({selector: '[routerLink]'})
 export class RouterLinkStubDirective {}
+
+var message=''
+class MessageServiceStub {
+    addMessage(data : any) {
+        message = data.detail
+        return;
+    }
+}
 
 class AppModuleServiceStub {
     getModules() {
@@ -80,6 +89,10 @@ describe('Component: RoleListComponent ', () => {
                 {
                     provide: RoleService,
                     useClass: RoleServiceStub
+                },
+                {
+                    provide: MessageService,
+                    useClass: MessageServiceStub
                 },
             ]
         });
