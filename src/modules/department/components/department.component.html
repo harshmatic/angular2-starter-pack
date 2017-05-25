@@ -3,7 +3,7 @@
   </div>
   <div class="row inner-container">
     <form class="form-horizontal"  novalidate (ngSubmit)="onSubmit(departmentForm)" [formGroup]="departmentForm">
-        <div class="col-md-5">
+        <div class="col-md-4">
           <div class="form-group">
             <label class="col-md-2 control-label">Name</label>
             <div class="col-md-10">
@@ -11,11 +11,19 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-4">
           <div class="form-group">
             <label class="col-md-4 control-label">Description</label>
             <div class="col-md-8">
               <textarea formControlName="departmentDespcription" name="departmentDespcription" class="form-control"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label class="col-md-4 control-label">Code</label>
+            <div class="col-md-8">
+              <input formControlName="departmentCode" name="departmentCode" class="form-control" />
             </div>
           </div>
         </div>

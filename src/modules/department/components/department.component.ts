@@ -49,13 +49,15 @@ export class DepartmentComponent  implements OnInit {
             departmentID:department.departmentID,
             departmentName: department.departmentName,
             departmentDespcription: department.departmentDespcription,
+            departmentCode: department.departmentCode
       });
   }
   resetForm(){
       this.departmentForm = this.formBuilder.group({
             departmentID:[0],
             departmentName: ['', [Validators.required]],
-            departmentDespcription: ['', [Validators.required]]
+            departmentDespcription: ['', [Validators.required]],
+            departmentCode: ['', [Validators.required]]
       });
   }
   onSubmit({ value, valid }: { value: any, valid: boolean }) {

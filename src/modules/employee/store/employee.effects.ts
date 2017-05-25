@@ -23,7 +23,16 @@ export class EmployeeEffects {
         })
         .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED }))
     );
-
+ @Effect({ dispatch: false })
+  private getListPagintaion$ = this.actions$
+    .ofType(EMPLOYEE_ACTIONS.GET_LIST_PAGINATION)
+    .switchMap(action =>
+      this.EmployeeService.getEmployeePagination(action.payload)
+        .map(res => {
+          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_PAGINATION_SUCCESS,payload: {employees:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))}})
+        })
+        .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED }))
+    );
   @Effect({ dispatch: false })
   private getListEmployeesByDept$ = this.actions$
     .ofType(EMPLOYEE_ACTIONS.GET_LIST_BY_DEPT)

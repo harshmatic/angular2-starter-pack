@@ -36,6 +36,11 @@ class EmployeeServiceStub {
            observer.next(testEmployeeList);
       });
     }
+    getEmployeePagination(payload) {
+         return new Observable<any>((observer:any) => {
+           observer.next(testEmployeeList);
+         });
+    }
     deleteEmployee(id: any) {
         return new Observable<any>((observer:any) => {
            observer.next(true);
@@ -79,7 +84,17 @@ describe('Component: EmployeeListComponent Component', () => {
                 let fixture = TestBed.createComponent(EmployeeListComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
-                expect(componentInstance.employeeList.length).toBe(1);
+                expect(componentInstance.employeeList.length).toBe(0);
+            });
+    }));
+    it('check lazy load', async(() => {
+        TestBed.compileComponents()
+            .then(() => {
+                let fixture = TestBed.createComponent(EmployeeListComponent);
+                fixture.detectChanges();
+                let componentInstance = fixture.componentInstance;
+                componentInstance.loadLazy({first:1,rows:10})
+                expect(componentInstance.tableRows).toBe(10);
             });
     }));
 });

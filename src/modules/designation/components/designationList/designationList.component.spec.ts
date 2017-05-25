@@ -36,6 +36,11 @@ class DesignationServiceStub {
            observer.next(testDesignationList);
       });
     }
+    getDesignationsPagination(payload) {
+         return new Observable<any>((observer:any) => {
+           observer.next(testDesignationList);
+         });
+    }
     addDesignation(department: any) {
       return new Observable<any>((observer:any) => {
            observer.next(true);
@@ -93,7 +98,7 @@ describe('Component: DesignationList Component', () => {
                 let fixture = TestBed.createComponent(DesignationListComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
-                expect(componentInstance.designationList.length).toBe(3);
+                expect(componentInstance.designationList.length).toBe(0);
             });
     }));
     it('check onEdit method', async(() => {
@@ -138,6 +143,16 @@ describe('Component: DesignationList Component', () => {
                 let valid=true
                 componentInstance.onSubmit({value,valid})
                 expect(componentInstance.designationForm.value.designationName).toBe('');
+            });
+    }));
+    it('check lazy load', async(() => {
+        TestBed.compileComponents()
+            .then(() => {
+                let fixture = TestBed.createComponent(DesignationListComponent);
+                fixture.detectChanges();
+                let componentInstance = fixture.componentInstance;
+                componentInstance.loadLazy({first:1,rows:10})
+                expect(componentInstance.tableRows).toBe(10);
             });
     }));
 });

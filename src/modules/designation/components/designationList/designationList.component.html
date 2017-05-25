@@ -27,7 +27,8 @@
           </div>
         </div>
       </form>
-      <p-dataTable [value]="designationList" [responsive]="true" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+      <p-dataTable [value]="designationList" [rows]="tableRows" [lazy]="true" 
+         [totalRecords]="totalRecords" (onLazyLoad)="loadLazy($event)" [rowsPerPageOptions]="[5,10,20]" [paginator]="true" [pageLinks]="3">
         <p-column field="designationName" header="Designation Name" [sortable]="true"></p-column>
         <p-column field="designationCode" header="Designation Code" [sortable]="true"></p-column>
         <p-column field="designationID" [hidden]="true" ></p-column>

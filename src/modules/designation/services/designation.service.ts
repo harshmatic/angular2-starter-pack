@@ -23,6 +23,9 @@ export class DesignationService extends BaseService {
     getDesignations() {
         return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
     }
+    getDesignationsPagination(payload) {
+        return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
+    }
     // Add One
     addDesignation(designation: any) {
         return this.post$(CONTEXT, designation,true).map(res => res.json());
