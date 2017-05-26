@@ -63,22 +63,16 @@ export class BaseService implements HttpServices {
      * @input pageSize : Optional Parameter,
      * @isSecured : Optional Parameter : Parameter to tell base service if security headers nedds to be included
      */
-    getList$(url:string,pageNum?: number, pageSize?: number, isSecured?: boolean): Observable<Response> {
-        this.getHeaders(isSecured);
+    getList$(url:string,pageNum?: number, pageSize?: number, isSecured?: boolean,etag?:string): Observable<Response> {
+        this.getHeaders(isSecured,etag);
         //console.log(url,this.httpService.get(this.baseUrl+url, this.options).subscribe(res => { return res.statusText}));
         return this.httpService.get(this.baseUrl+url, this.options)
         .map((response) => {
             return response;
         })
-        // .catch(err => {
-        //     if (err.status==304) {
-        //         debugger
-        //         return Error("304");
-        //     } else {
-        //         return err;
-        //     }
-             
-        // });
+        .catch(err => {
+            return this.handleError(err);
+        });
     }
     
     /**
@@ -168,34 +162,40 @@ export class BaseService implements HttpServices {
     protected handleError(error: Response | any): Observable<any> {
         // In a real world app, we might use a remote logging infrastructure
         let errMsg: string;
-        if (error instanceof Response) {
-            if(error.status===401) {
-                this.onUnAuthorized();
+        if(error.status>=400){
+            if (error instanceof Response) {
+                if(error.status===401) {
+                  this.onUnAuthorized();
+                 }
+                  const err = error.text() || error.json()||'';
+                 //const err = body.error_description ||  body.error || body.Message || JSON.stringify(body);
+                    errMsg = err;
+                 this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: err });
+                    //this.errorHandle.handleError(error);
+            } else {
+                errMsg = error.message ? error.message : error.toString();
+                this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: errMsg });
             }
-            const err = error.text() || error.json()||'';
-            //const err = body.error_description ||  body.error || body.Message || JSON.stringify(body);
-            errMsg = err;
-            this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: err });
-            //this.errorHandle.handleError(error);
+            return Observable.throw(errMsg);
         } else {
-            errMsg = error.message ? error.message : error.toString();
-            this.messageService.addMessage({ severity: 'error', summary: 'Invalid login', detail: errMsg });
-        }
-    
-        return Observable.throw(errMsg);
+            return Observable.throw(error);
+        } 
+        
     }
     /**
      * Method for Including Headers
      */
-    private getHeaders(isSecured?: boolean): void {
+    private getHeaders(isSecured?: boolean,etag?:string): void {
         let headers = new Headers({});
         if (isSecured) {
             headers.append('Authorization', 'Bearer ' + localStorage.getItem('accessToken'));
         }
-       // headers.append("Cache-Control", "no-cache, no-store, must-revalidate")
+        headers.append("Cache-Control", "no-cache, no-store, must-revalidate")
         headers.append('Content-Type', 'application/json');
         headers.append('Accept', 'application/json');
-        //headers.append('If-None-Match', '311E65BA0EA74741F8A028EA84D3B400q');
+        if(etag){
+            headers.append('If-None-Match', etag);
+        }
         this.options = new RequestOptions({ headers: headers });
     }
     private onUnAuthorized() {

@@ -18,23 +18,11 @@ export class OccurenceBookEffects {
    .switchMap(action => 
        this.occurenceBookService.getObs(action.payload.search,action.payload.pageNum,action.payload.pageSize,action.payload.areaId)
         .map(res =>{
-          this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload:{data:res.json(),etag:res.headers.get('etag')} })
+          this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload:res })
         })
         .catch((err):any=> {
-          if (err.status==304) {
-            this.handle304();
-            return Observable.of({ type: OB_ACTIONS.ON_FAILED })
-          } else {
-            return Observable.of({ type: OB_ACTIONS.ON_FAILED })
-          }
-
-        }
-           
-           
-        
-          
-        
-        )
+          this.store.dispatch({type: OB_ACTIONS.GET_LIST_SUCCESS, payload:err.cacheData })
+        })
     );
     @Effect({ dispatch: false })
   private getListObOff$ = this.actions$

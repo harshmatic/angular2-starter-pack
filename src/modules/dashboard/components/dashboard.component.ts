@@ -47,8 +47,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "", pageNum: 1, pageSize: 5, areaId: this.userDetail.areaID } });
     this.asyncOb = this.store.select('occurenceBook')
     this.subscriptions = this.asyncOb.subscribe((res: any) => {
-      if (res.data.length > 0) {
-        this.obs = res.data;
+      if (res && res.length > 0) {
+        this.obs = res;
       }
 
       //console.log("Occurence=>",res);

@@ -10,7 +10,7 @@ let initialState={employeeList:[],pagination:{}}
 export function EmployeeReducer(state: any = initialState, action: Action) {
   switch (action.type) {
     case EMPLOYEE_ACTIONS.GET_LIST_SUCCESS:
-         return Object.assign({},state,{employeeList:action.payload.departments});
+         return Object.assign({},state,{employeeList:action.payload});
     case EMPLOYEE_ACTIONS.GET_LIST_PAGINATION_SUCCESS:
         return Object.assign({},state,{employeeList:action.payload.employees,pagination:action.payload.pagination});
     case EMPLOYEE_ACTIONS.GET_LIST_SUCCESS_BY_ID:

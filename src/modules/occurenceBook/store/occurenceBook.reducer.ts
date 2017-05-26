@@ -5,14 +5,10 @@ import { Observable } from 'rxjs/Observable';
 import { ActionReducer, Action,Store } from '@ngrx/store';
 import { OB_ACTIONS } from './occurenceBook.actions';
 
-export function OccurenceBookReducer(state: any = {data:[],etag:''}, action: Action) {
+export function OccurenceBookReducer(state: any = [], action: Action) {
   switch (action.type) {
     case OB_ACTIONS.GET_LIST_SUCCESS:
-        let ob=Object.assign({data:[],etag:''},state)
-        let stateOB:any = {data:[],etag:''};
-        stateOB.data=ob.data.concat(action.payload.data);
-        stateOB.etag=action.payload.etag;
-        return Object.assign({},state,stateOB);
+        return action.payload;
     case OB_ACTIONS.GET_LIST_SUCCESS_BY_OFFICER:
         return action.payload;
     case OB_ACTIONS.GET_OB_SUCCESS:
