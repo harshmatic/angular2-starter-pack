@@ -19,6 +19,16 @@ export class UserEffects{
         })
         .catch(() => Observable.of({ type: USER_ACTIONS.ON_FAILED  }))
       );
+      @Effect({ dispatch: false })
+  private getListUserAll$ = this.actions$
+    .ofType(USER_ACTIONS.GET_LIST_USER)
+   .switchMap(action => 
+       this.userService.getUsersList()
+        .map(res =>{
+          this.store.dispatch({ type: USER_ACTIONS.GET_LIST_SUCCESS,  payload: {users:res.json()}})
+        })
+        .catch(() => Observable.of({ type: USER_ACTIONS.ON_FAILED  }))
+      );
   @Effect({ dispatch: false })
   private getUserById$ = this.actions$
     .ofType(USER_ACTIONS.GET)
