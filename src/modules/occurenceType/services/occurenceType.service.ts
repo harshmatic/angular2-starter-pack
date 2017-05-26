@@ -23,6 +23,10 @@ export class OccurenceTypeService extends BaseService {
     getOts() {
         return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
     }
+    // Get All by pagination
+    getOtsByPagination(payload) {
+        return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
+    }
     // Add One
     addOt(ot: any) {
         return this.post$(CONTEXT, ot, true).map(res => res.json());

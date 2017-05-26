@@ -11,7 +11,7 @@ export function StatusReducer(state: any = initialState, action: Action) {
     switch (action.type) {
         case STATUS_ACTIONS.GET_LIST_SUCCESS:
             return action.payload;
-        case STATUS_ACTIONS.GET_LIST_BY_PAGINATION:
+        case STATUS_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS:
             return Object.assign({},state,{status:action.payload.status,pagination:action.payload.pagination});
         case STATUS_ACTIONS.ON_FAILED:
             return state;

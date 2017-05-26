@@ -22,6 +22,7 @@ export class StatusComponent implements OnInit {
   statusError: boolean = false;
   tableRows: number = 5;
   totalRecords: any = 0;
+  public pageOptions: any = {pageNumber:1,pageSize:5};
   constructor(private store: Store<any>,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
@@ -36,7 +37,6 @@ export class StatusComponent implements OnInit {
       "value": "statusName after patch"
     });
     this.getStatusList();
-
   }
   getStatusList() {
     this.store.select('status').subscribe((res: any) => {
@@ -61,6 +61,7 @@ export class StatusComponent implements OnInit {
       .subscribe((results: any) => {
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Deleted' });
         this.resetForm();
+        this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_BY_PAGINATION, payload: this.pageOptions });
         this.getStatusList();
       });
   }
@@ -75,6 +76,7 @@ export class StatusComponent implements OnInit {
             this.isEdited = false;
             this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Updated' });
             this.resetForm();
+            this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_BY_PAGINATION, payload: this.pageOptions });
             this.getStatusList();
           });
       } else if (!this.isEdited) {
@@ -82,6 +84,7 @@ export class StatusComponent implements OnInit {
           .subscribe((result: any) => {
             this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status Added' });
             this.resetForm();
+            this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_BY_PAGINATION, payload: this.pageOptions });
             this.getStatusList();
           });
       }

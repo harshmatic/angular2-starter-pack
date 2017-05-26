@@ -1,0 +1,161 @@
+<div class="main-container container">
+  <div class="pageName">
+  </div>
+  <form class="form-horizontal" role="form" novalidate (ngSubmit)="onSubmit(shiftForm)" [formGroup]="shiftForm">
+    <div class="form-group">
+      <label class="col-md-2 control-label">Shift Name</label>
+      <div class="col-md-10">
+        <input type="text" formControlName="shiftName" name="shiftName" class="form-control">
+        <div class="alert alert-danger" name="shiftError" *ngIf="shiftError">
+          Please enter Shift Name
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 control-label">Monday</label>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">Start Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="monStartTime" name="monStartTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="startTimeError" *ngIf="startTimeError">
+          Please enter start time
+        </div>
+      </div>
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">End Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="monEndTime" name="monEndTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="endTimeError" *ngIf="endTimeError">
+          Please enter end time
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 control-label">Tuesday</label>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">Start Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="tueStartTime" name="tueStartTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="startTimeError" *ngIf="startTimeError">
+          Please enter start time
+        </div>
+      </div>
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">End Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="tueEndTime" name="tueEndTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="endTimeError" *ngIf="endTimeError">
+          Please enter end time
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 control-label">Wednesday</label>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">Start Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="wedStartTime" name="wedStartTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="startTimeError" *ngIf="startTimeError">
+          Please enter start time
+        </div>
+      </div>
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">End Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="wedEndTime" name="wedEndTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="endTimeError" *ngIf="endTimeError">
+          Please enter end time
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 control-label">Thusday</label>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">Start Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="thuStartTime" name="thuStartTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="startTimeError" *ngIf="startTimeError">
+          Please enter start time
+        </div>
+      </div>
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">End Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="thuEndTime" name="thuEndTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="endTimeError" *ngIf="endTimeError">
+          Please enter end time
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 control-label">Friday</label>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">Start Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="friStartTime" name="friStartTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="startTimeError" *ngIf="startTimeError">
+          Please enter start time
+        </div>
+      </div>
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">End Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="friEndTime" name="friEndTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="endTimeError" *ngIf="endTimeError">
+          Please enter end time
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 control-label">Saturday</label>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">Start Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="satStartTime" name="satStartTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="startTimeError" *ngIf="startTimeError">
+          Please enter start time
+        </div>
+      </div>
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">End Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="satEndTime" name="satEndTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="endTimeError" *ngIf="endTimeError">
+          Please enter end time
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 control-label">Sunday</label>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">Start Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="sunStartTime" name="sunStartTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="startTimeError" *ngIf="startTimeError">
+          Please enter start time
+        </div>
+      </div>
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">End Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="sunEndTime" name="sunEndTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="endTimeError" *ngIf="endTimeError">
+          Please enter end time
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <button class="btn btn-info" name="submit" type="submit">Save</button>
+        <a class="btn btn-success" [routerLink]="['/shift/shift-list']">Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>

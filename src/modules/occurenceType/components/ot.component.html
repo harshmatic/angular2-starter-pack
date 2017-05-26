@@ -18,7 +18,8 @@
         </div>
   </form>
   <div class="row">
-    <p-dataTable [value]="occurenceType" [responsive]="true" [rows]="5" [paginator]="true" [pageLinks]="2" [rowsPerPageOptions]="[5,10,20]">
+    <p-dataTable [value]="occurenceType" [responsive]="true" [rows]="5" [lazy]="true" [paginator]="true" 
+    [totalRecords]="this.totalRecords" (onLazyLoad)="loadLazy($event)" [pageLinks]="2" [rowsPerPageOptions]="[5,10,20]">
       <p-column field="obTypeName" header="Occurence Type" [sortable]="true"></p-column>
       <p-column header="Action">
         <ng-template let-ot="rowData" pTemplate type="body">
