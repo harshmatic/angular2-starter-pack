@@ -10,18 +10,21 @@ import { BaseService } from '../../../app/core/services/index';
 import { MessageService } from '../../../app/core/services/index';
 /** Context for service calls */
 const CONTEXT = 'occurrencebook/';
-
+import { Store } from '@ngrx/store';
 /** Service Definition */
 @Injectable()
 export class OccurenceBookService extends BaseService {
 
-    constructor(public http: Http, router: Router,messageService: MessageService) {
+    private Etag:any ='';
+    constructor(public http: Http, router: Router,messageService: MessageService,private store:Store<any>) {
         super(http,CONTEXT,router,messageService);
     }
     // Get All
     getObs(searchQuery?:any,pageNum?:any,pageSize?:any,areaId?:any) {
-                
-    return this.getList$(CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&areaId='+areaId+'&orderBy=obTime'+' '+'desc',0,0,true).map(res => res.json());    
+        
+    var etag = this.store.select('occurenceBook').subscribe(res=> res);
+    console.log(etag);
+    return this.getList$(CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&areaId='+areaId+'&orderBy=obTime'+' '+'desc',0,0,true).map(res => res);    
   
          
     }

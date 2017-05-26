@@ -2,13 +2,13 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { MessageService } from './message.service';
 import { Router } from '@angular/router';
-
 import { LogService } from './log.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 //CONFIGESPL
 import {ApiBase} from '../../../modules/config'
+
 
 /** HttpService interface Definition*/
 interface HttpServices {
@@ -21,7 +21,7 @@ interface HttpServices {
 
 /** Base Service Definition */
 export class BaseService implements HttpServices {
-
+    
     private baseUrl: string = ApiBase;
     private options: RequestOptions;
     private log:LogService;
@@ -65,13 +65,20 @@ export class BaseService implements HttpServices {
      */
     getList$(url:string,pageNum?: number, pageSize?: number, isSecured?: boolean): Observable<Response> {
         this.getHeaders(isSecured);
+        //console.log(url,this.httpService.get(this.baseUrl+url, this.options).subscribe(res => { return res.statusText}));
         return this.httpService.get(this.baseUrl+url, this.options)
-        .map(data => {
-            return data;
+        .map((response) => {
+            return response;
         })
-        .catch(err => {
-             return err;
-        });
+        // .catch(err => {
+        //     if (err.status==304) {
+        //         debugger
+        //         return Error("304");
+        //     } else {
+        //         return err;
+        //     }
+             
+        // });
     }
     
     /**
@@ -185,9 +192,10 @@ export class BaseService implements HttpServices {
         if (isSecured) {
             headers.append('Authorization', 'Bearer ' + localStorage.getItem('accessToken'));
         }
-        headers.append("Cache-Control", "no-cache, no-store, must-revalidate")
+       // headers.append("Cache-Control", "no-cache, no-store, must-revalidate")
         headers.append('Content-Type', 'application/json');
         headers.append('Accept', 'application/json');
+        //headers.append('If-None-Match', '311E65BA0EA74741F8A028EA84D3B400q');
         this.options = new RequestOptions({ headers: headers });
     }
     private onUnAuthorized() {

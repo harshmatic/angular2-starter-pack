@@ -8,6 +8,7 @@ interface IUserActions {
     INITIALIZED: string;
     INIT_FAILED: string;
     GET_LIST: string;
+    GET_LIST_USER: string;
     GET_LIST_SUCCESS: string;
     ON_FAILED: string;
     ADD_SUCCESS:string;
@@ -30,6 +31,7 @@ export const USER_ACTIONS: IUserActions = {
     INITIALIZED: `${CONTEXT}_INITIALIZED`,
     INIT_FAILED: `${CONTEXT}_INIT_FAILED`,
     GET_LIST: `${CONTEXT}GET_LIST`,
+    GET_LIST_USER: `${CONTEXT}GET_LIST_USER`,
     GET_LIST_SUCCESS: `${CONTEXT}GET_LIST_SUCCESS`,
     ADD_SUCCESS: `${CONTEXT}ADD_SUCCESS`,
     ADD: `${CONTEXT}ADD`,
