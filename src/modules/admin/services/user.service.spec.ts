@@ -50,8 +50,8 @@ describe('Service: UserService ', () => {
     inject([UserService, XHRBackend], (service, mockBackend) => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-        service.getUsers().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+        service.getUsers({pageNumber:1,pageSize:10}).subscribe((res) => {
+          expect(res.json().data.length).toBe(0);
         });
   }));
   it('it should check getUserByID method',

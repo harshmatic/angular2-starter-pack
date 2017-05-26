@@ -6,15 +6,16 @@
     <a class="btn btn-success" [routerLink]="['/admin/user/new']">New User</a>
     <br/>
     <br/>
-    <p-dataTable [value]="userList" [responsive]="true" [rows]="5" [paginator]="true" [pageLinks]="3">
+    <p-dataTable [value]="userList" [responsive]="true" [rows]="tableRows" [lazy]="true" 
+    [totalRecords]="totalRecords" (onLazyLoad)="loadLazy($event)" [rowsPerPageOptions]="[5,10,20]" [paginator]="true" [pageLinks]="3">
       <p-column field="userName" header="User Name" [sortable]="true"></p-column>
       <p-column field="email" header="Email" [sortable]="true"></p-column>
       <p-column field="firstName" header="First Name" [sortable]="true"></p-column>
       <p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
       <p-column header="Manage Role">
-        <ng-template let-role="rowData" pTemplate type="body">
-          <a (click)="onManageRoleClick(role)">Manage Role</a>
-        </ng-template>
+        <template let-role="rowData" pTemplate type="body">
+          <a name="edit" (click)="onManageRoleClick(role)">Manage Role</a>
+        </template>
       </p-column>
     </p-dataTable>
   </div>

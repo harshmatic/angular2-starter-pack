@@ -16,12 +16,21 @@ import { RoleEffects } from '../../../store/role/role.effects';
 import { RoleService } from '../../../services/role.service';
 import { RoleReducer } from '../../../store/role/role.reducer';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { MessageService } from '../../../../../app/core/services/index';
 
 @Component({selector: 'test-cmp', template: '<user-role></user-role>'})
 class TestComponent {}
 
 @Directive({selector: '[routerLink]'})
 export class RouterLinkStubDirective {}
+
+var message=''
+class MessageServiceStub {
+    addMessage(data : any) {
+        message = data.detail
+        return;
+    }
+}
 
 class UserServiceStub {
     getUserByID(userId:string){
@@ -86,7 +95,11 @@ describe('Component: UserRoleComponent Component', () => {
                 {
                     provide: RoleService,
                     useClass: RoleServiceStub
-                }, 
+                },
+                {
+                    provide: MessageService,
+                    useClass: MessageServiceStub
+                },
                 { provide: ActivatedRoute, useValue: { 'params': Observable.from([{ 'userId': 232 }]) } }
             ]
         });

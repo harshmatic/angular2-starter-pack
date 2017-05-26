@@ -13,13 +13,20 @@ import { AuthService } from '../../../../app/core/index';
 import { AppModuleEffects } from '../../store/appModule/appModule.effects';
 import { AppModuleService } from '../../services/appModule.service';
 import { AppModuleReducer } from '../../store/appModule/appModule.reducer';
+import { MessageService } from '../../../../app/core/services/index';
 
 @Component({selector: 'test-cmp', template: '<app-module-list></app-module-list>'})
 class TestComponent {}
 
 @Directive({selector: '[routerLink]'})
 export class RouterLinkStubDirective {}
-
+var message=''
+class MessageServiceStub {
+    addMessage(data : any) {
+        message = data.detail
+        return;
+    }
+}
 class AppModuleServiceStub {
     getModules() {
       return new Observable<any>((observer:any) => {
@@ -55,10 +62,13 @@ describe('Component: AppModule Component', () => {
             ],
             providers: [
                 {
+                    provide: MessageService,
+                    useClass: MessageServiceStub
+                },
+                 {
                     provide: AppModuleService,
                     useClass: AppModuleServiceStub
                 },
-                
             ]
         });
     });

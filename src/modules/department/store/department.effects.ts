@@ -24,6 +24,16 @@ export class DepartmentEffects {
         .catch(() => Observable.of({ type: DEPARTMENT_ACTIONS.ON_FAILED }))
     );
   @Effect({ dispatch: false })
+  private getListPagintaion$ = this.actions$
+    .ofType(DEPARTMENT_ACTIONS.GET_LIST_PAGINATION)
+    .switchMap(action =>
+      this.DepartmentService.getDepartmentPagination(action.payload)
+        .map(res => {
+          this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_PAGINATION_SUCCESS,payload: {departments:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))}})
+        })
+        .catch(() => Observable.of({ type: DEPARTMENT_ACTIONS.ON_FAILED }))
+    );
+  @Effect({ dispatch: false })
   private addOb$ = this.actions$
     .ofType(DEPARTMENT_ACTIONS.ADD)
     .switchMap(action => {

@@ -6,20 +6,22 @@ import { ActionReducer, Action } from '@ngrx/store';
 import { Status, initialStatus } from './status.model';
 import { STATUS_ACTIONS } from './status.actions';
 
-
-export function StatusReducer(state: any[] = [], action: Action) {
-  switch (action.type) {
-    case STATUS_ACTIONS.GET_LIST_SUCCESS:
-        return action.payload;
-    case STATUS_ACTIONS.ON_FAILED:
-        return state;
-    case STATUS_ACTIONS.ADD_SUCCESS:
-        return action.payload;
-    case STATUS_ACTIONS.UPDATE_SUCCESS:
-        return action.payload;
-    case STATUS_ACTIONS.DELETE_SUCCESS:
-        return action.payload;
-    default:
-        return state;
-  }
+let initialState={status:[],pagination:{}}
+export function StatusReducer(state: any = initialState, action: Action) {
+    switch (action.type) {
+        case STATUS_ACTIONS.GET_LIST_SUCCESS:
+            return action.payload;
+        case STATUS_ACTIONS.GET_LIST_BY_PAGINATION:
+            return Object.assign({},state,{status:action.payload.status,pagination:action.payload.pagination});
+        case STATUS_ACTIONS.ON_FAILED:
+            return state;
+        case STATUS_ACTIONS.ADD_SUCCESS:
+            return action.payload;
+        case STATUS_ACTIONS.UPDATE_SUCCESS:
+            return action.payload;
+        case STATUS_ACTIONS.DELETE_SUCCESS:
+            return action.payload;
+        default:
+            return state;
+    }
 }

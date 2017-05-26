@@ -6,11 +6,13 @@ import { ActionReducer, Action } from '@ngrx/store';
 import { Employee, initialEmployee } from './employee.model';
 import { EMPLOYEE_ACTIONS } from './employee.actions';
 
-
-export function EmployeeReducer(state: any[] = [], action: Action) {
+let initialState={employeeList:[],pagination:{}}
+export function EmployeeReducer(state: any = initialState, action: Action) {
   switch (action.type) {
     case EMPLOYEE_ACTIONS.GET_LIST_SUCCESS:
-        return action.payload;
+         return Object.assign({},state,{employeeList:action.payload.departments});
+    case EMPLOYEE_ACTIONS.GET_LIST_PAGINATION_SUCCESS:
+        return Object.assign({},state,{employeeList:action.payload.employees,pagination:action.payload.pagination});
     case EMPLOYEE_ACTIONS.GET_LIST_SUCCESS_BY_ID:
         return action.payload;
     case EMPLOYEE_ACTIONS.ON_FAILED:
@@ -24,11 +26,11 @@ export function EmployeeReducer(state: any[] = [], action: Action) {
     case EMPLOYEE_ACTIONS.GET_LIST_BY_DEPT_SUCCESS:
         return action.payload;
     case EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE_SUCCESS:
-        let emp=Object.assign([],state)
+        let emp=Object.assign([],state.employeeList)
         let stateEmp=emp.concat(action.payload)
-        return Object.assign([],state,stateEmp);
+        return Object.assign({},state,{employeeList:stateEmp});
     case EMPLOYEE_ACTIONS.CLEAR:
-        return [];
+        return initialState;
     default:
         return state;
   }

@@ -18,10 +18,11 @@ import { DESIGNATION_ACTIONS } from '../../store/designation.actions';
 })
 
 export class DesignationListComponent implements OnInit {
-    designationList:any;
-    appModuleList:any=[]
+    designationList:any=[];
     designationForm: FormGroup;
     selectedDesignation:any;
+    tableRows: number = 10;
+    totalRecords: any;
     constructor(
         private store: Store<any>,
         private formBuilder: FormBuilder,
@@ -29,13 +30,21 @@ export class DesignationListComponent implements OnInit {
         private router: Router) {
     }
     ngOnInit() {
-        this.getDesignation();
+        this.getDesignation({pageNumber:1,pageSize:10});
         this.resetForm()
         this.store.select('designation').subscribe((res:any) => {
-           this.designationList = res;
+            if (res.designationList && res.designationList.length > 0) {
+               this.designationList = res;
+               this.totalRecords = res.pagination.totalCount;
+            }
         });
-        
-       
+    }
+    loadLazy(event: any) {
+        let pageOptions: any = {};
+        pageOptions.pageNumber = event.first == 0 ? 1 : Math.ceil(parseFloat((event.first / event.rows).toString())) + 1
+        pageOptions.pageSize = event.rows;
+        this.tableRows=event.rows;
+        this.getDesignation(pageOptions)
     }
     resetForm(){
         this.designationForm = this.formBuilder.group({
@@ -46,15 +55,15 @@ export class DesignationListComponent implements OnInit {
     }
 
 
-    getDesignation() {
-        this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST });
+    getDesignation(pageOptions) {
+        this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_PAGINATION, payload:pageOptions  });
     }
 
     onDelete(designation: any) {
         this.designationService.deleteDesignation(designation.designationID)
             .subscribe((results:any) => {
                 this.selectedDesignation=null
-                this.getDesignation();
+                this.getDesignation({pageNumber:1,pageSize:10});
                 //this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Record Deleted' });
             });
     }
@@ -64,14 +73,14 @@ export class DesignationListComponent implements OnInit {
                 .subscribe(
                 results => {
                     this.resetForm();
-                    this.getDesignation();
+                    this.getDesignation({pageNumber:1,pageSize:10});
                 });
         } else {
             this.designationService.saveDesignation(value.designationID,value)
                 .subscribe(
                 results => {
                     this.resetForm();
-                    this.getDesignation();
+                    this.getDesignation({pageNumber:1,pageSize:10});
                 });
         }
         

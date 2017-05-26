@@ -6,11 +6,14 @@ import { ActionReducer, Action } from '@ngrx/store';
 import { Designation, initialDesignation } from './designation.model';
 import { DESIGNATION_ACTIONS } from './designation.actions';
 
-
-export function DesignationReducer(state: any[] = [], action: Action) {
+let initialState={designationList:[],pagination:{}}
+export function DesignationReducer(state: any = initialState, action: Action) {
   switch (action.type) {
+   
     case DESIGNATION_ACTIONS.GET_LIST_SUCCESS:
-        return action.payload;
+         return Object.assign({},state,{designationList:action.payload.departments});
+    case DESIGNATION_ACTIONS.GET_LIST_PAGINATION_SUCCESS:
+        return Object.assign({},state,{designationList:action.payload.designations,pagination:action.payload.pagination});
     case DESIGNATION_ACTIONS.ON_FAILED:
         return state;
     case DESIGNATION_ACTIONS.ADD_SUCCESS:

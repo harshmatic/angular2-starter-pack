@@ -26,6 +26,16 @@ export class DesignationEffects extends BaseService {
         })
         .catch(() => Observable.of({ type: DESIGNATION_ACTIONS.ON_FAILED  }))
       );
+  @Effect({ dispatch: false })
+  private getListPagintaion$ = this.actions$
+    .ofType(DESIGNATION_ACTIONS.GET_LIST_PAGINATION)
+    .switchMap(action =>
+      this.DesignationService.getDesignationsPagination(action.payload)
+        .map(res => {
+          this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_PAGINATION_SUCCESS,payload: {designations:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))}})
+        })
+        .catch(() => Observable.of({ type: DESIGNATION_ACTIONS.ON_FAILED }))
+    );
  @Effect({ dispatch: false })
   private addDesignation$ = this.actions$
     .ofType(DESIGNATION_ACTIONS.ADD)

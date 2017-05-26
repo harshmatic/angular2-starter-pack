@@ -52,7 +52,7 @@
 
                 <!-- Main List Box -->
                 <div class="mainListBox" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="getOfficer()">
-                    <div class="row" *ngFor="let ob of asyncOfficer|async"></div>
+                    <div class="row" *ngFor="let ob of asyncOfficer.employeeList|async"></div>
                     <div *ngIf="officers.length==0">No Record Found</div>
                     <div *ngFor="let item of officers">
                         <div class="listSubBox">

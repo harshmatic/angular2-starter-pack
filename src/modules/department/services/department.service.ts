@@ -23,6 +23,9 @@ export class DepartmentService extends BaseService {
     getDepartments() {
         return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
     }
+    getDepartmentPagination(payload) {
+        return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
+    }
     // Add One
     addDepartment(department: any) {
         return this.post$(CONTEXT, department,true).map(res => res.json());

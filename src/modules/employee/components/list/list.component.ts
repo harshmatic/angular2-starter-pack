@@ -18,10 +18,12 @@ import { EMPLOYEE_ACTIONS } from '../../store/employee.actions';
 })
 
 export class EmployeeListComponent implements OnInit {
-    employeeList:any;
+    employeeList:any=[];
     appModuleList:any=[]
     employeeForm: FormGroup;
     selectedEmployee:any;
+    tableRows: number = 10;
+    totalRecords: any;
     constructor(
         private store: Store<any>,
         private formBuilder: FormBuilder,
@@ -29,21 +31,30 @@ export class EmployeeListComponent implements OnInit {
         private router: Router) {
     }
     ngOnInit() {
-        this.getEmployees();
+        this.getEmployees({pageNumber:1,pageSize:10});
         this.store.select('employee').subscribe((res:any) => {
-           this.employeeList = res;
+            if (res.employeeList && res.employeeList.length > 0) {
+                this.employeeList = res.employeeList;
+                this.totalRecords = res.pagination.totalCount;
+            }
         });
     }
-
-    getEmployees() {
-        this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
+    loadLazy(event: any) {
+        let pageOptions: any = {};
+        pageOptions.pageNumber = event.first == 0 ? 1 : Math.ceil(parseFloat((event.first / event.rows).toString())) + 1
+        pageOptions.pageSize = event.rows;
+        this.tableRows=event.rows;
+        this.getEmployees(pageOptions)
+    }
+    getEmployees(pageOptions) {
+        this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_PAGINATION, payload:pageOptions  });
     }
 
     onDelete(id: any) {
         this.employeeService.deleteEmployee(id)
             .subscribe((results:any) => {
                 this.selectedEmployee=null
-                this.getEmployees();
+                this.getEmployees({pageNumber:1,pageSize:10});
                 //this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Record Deleted' });
             });
     }

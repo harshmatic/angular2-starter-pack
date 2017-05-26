@@ -17,8 +17,8 @@ export class UserService extends BaseService {
     constructor(public http: Http, router: Router,messageService: MessageService) {
         super(http,CONTEXT, router,messageService);
     }
-    getUsers() {
-        return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
+    getUsers(payload) {
+        return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
     }
     getUserByID(userId:string){
         return this.getList$(CONTEXT+userId, 0, 0, true).map(res => res.json());

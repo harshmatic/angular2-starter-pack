@@ -64,7 +64,17 @@ describe('Component: UserListComponent Component', () => {
                 let fixture = TestBed.createComponent(UserListComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
-                expect(componentInstance.userList.length).toBe(2);
+                expect(componentInstance.userList.length).toBe(0);
+            });
+    }));
+    it('check lazy load', async(() => {
+        TestBed.compileComponents()
+            .then(() => {
+                let fixture = TestBed.createComponent(UserListComponent);
+                fixture.detectChanges();
+                let componentInstance = fixture.componentInstance;
+                componentInstance.loadLazy({first:1,rows:10})
+                expect(componentInstance.tableRows).toBe(10);
             });
     }));
 });

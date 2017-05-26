@@ -15,13 +15,19 @@ const CONTEXT = 'statuses/';
 /** Service Definition */
 @Injectable()
 export class StatusService extends BaseService {
-
+    public statusData:any=[];
     constructor(public http: Http, router: Router, messageService: MessageService) {
         super(http, CONTEXT, router, messageService);
     }
     // Get All
     getStatusAll() {
-        return this.getList$(CONTEXT, 0, 0, true).map(res => res);
+        return this.getList$(CONTEXT, 0, 0, true).map(res =>  res);
+    }
+    // Get All by pagination
+    getStatusAllByPagination(payload) {
+        return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => {
+             return res;
+            });
     }
     // Add One
     addStatus(st: any) {
