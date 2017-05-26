@@ -1,0 +1,98 @@
+<div class="main-container container">
+  <div class="pageName">
+  </div>
+  <a class="btn btn-success" [routerLink]="['/shift/shift-AddEdit']">New Shift</a>
+    <br/>
+    <br/>
+  <!--<form class="form-horizontal" role="form" novalidate (ngSubmit)="onSubmit(shiftForm)" [formGroup]="shiftForm">
+    <div class="form-group">
+      <label class="col-md-2 control-label">Shift Name</label>
+      <div class="col-md-10">
+        <input type="text" formControlName="shiftName" name="shiftName" class="form-control">
+        <div class="alert alert-danger" name="shiftError" *ngIf="shiftError">
+          Please enter Shift Name
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">Start Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="startTime" name="startTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="startTimeError" *ngIf="startTimeError">
+          Please enter start time
+        </div>
+      </div>
+      <label class="col-md-2 col-sm-2 col-xs-4 control-label">End Time</label>
+      <div class="col-md-4 col-sm-4 col-xs-6">
+        <p-calendar formControlName="endTime" name="endTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
+        <div class="alert alert-danger" name="endTimeError" *ngIf="endTimeError">
+          Please enter end time
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <button class="btn btn-info" name="submit" type="submit">Save</button>
+      </div>
+    </div>
+  </form>-->
+  <div class="row">
+    <p-dataTable [value]="shift" [responsive]="true" [rows]="5" [lazy]="true" [paginator]="true" pageLinkSize="2"
+    [totalRecords]="this.totalRecords" (onLazyLoad)="loadLazy($event)" [pageLinks]="2" [rowsPerPageOptions]="[5,10,20]">
+    <p-headerColumnGroup>
+        <p-row>
+            <p-column header="Shift Name" rowspan="3"></p-column>
+            <p-column header="Days" colspan="14"></p-column>
+            <p-column header="Action" rowspan="3"></p-column>
+        </p-row>
+        <p-row>
+            <p-column header="Monday" colspan="2"></p-column>
+            <p-column header="Tuesday" colspan="2"></p-column>
+            <p-column header="Wednesday" colspan="2"></p-column>
+            <p-column header="Thusday" colspan="2"></p-column>
+            <p-column header="Friday" colspan="2"></p-column>
+            <p-column header="Saturday" colspan="2"></p-column>
+            <p-column header="Sunday" colspan="2"></p-column>
+        </p-row>
+        <p-row>
+            <p-column header="Start Time"></p-column>
+            <p-column header="End Time"></p-column>
+            <p-column header="Start Time"></p-column>
+            <p-column header="End Time"></p-column>
+            <p-column header="Start Time"></p-column>
+            <p-column header="End Time"></p-column>
+            <p-column header="Start Time"></p-column>
+            <p-column header="End Time"></p-column>   
+            <p-column header="Start Time"></p-column>
+            <p-column header="End Time"></p-column>
+            <p-column header="Start Time"></p-column>
+            <p-column header="End Time"></p-column>
+            <p-column header="Start Time"></p-column>
+            <p-column header="End Time"></p-column>
+        </p-row>
+    </p-headerColumnGroup>
+      <p-column field="shiftName" header="Shift Name" [sortable]="true"></p-column>
+      <p-column field="mondayStartTime" header="Mon Start Time" [sortable]="true"></p-column>
+      <p-column field="mondayEndTime" header="Mon End Time" [sortable]="true"></p-column>
+      <p-column field="tuesdayStartTime" header="Tue Start Time" [sortable]="true"></p-column>
+      <p-column field="tuesdayEndTime" header="Tue End Time" [sortable]="true"></p-column>
+      <p-column field="wednesdayStartTime" header="Wed Start Time" [sortable]="true"></p-column>
+      <p-column field="wednesdayEndTime" header="Wed End Time" [sortable]="true"></p-column>
+      <p-column field="thursdayStartTime" header="Thu Start Time" [sortable]="true"></p-column>
+      <p-column field="thursdayEndTime" header="Thu End Time" [sortable]="true"></p-column>
+      <p-column field="fridayStartTime" header="Fri Start Time" [sortable]="true"></p-column>
+      <p-column field="fridayEndTime" header="Fri End Time" [sortable]="true"></p-column>
+      <p-column field="saturdayStartTime" header="Sat Start Time" [sortable]="true"></p-column>
+      <p-column field="saturdayEndTime" header="Sat End Time" [sortable]="true"></p-column>
+      <p-column field="sundayStartTime" header="Sun Start Time" [sortable]="true"></p-column>
+      <p-column field="sundayEndTime" header="Sun End Time" [sortable]="true"></p-column>
+      <p-column header="Action">
+        <template let-shift="rowData" pTemplate type="body">
+          <button class="btn btn-info" name="edit" (click)="onEdit(shift)"><i class="fa fa-edit"></i></button>
+          <button class="btn btn-danger" name="delete" (click)="onDelete(shift)"><i class="fa fa-trash"></i></button>
+        </template>
+      </p-column>
+    </p-dataTable>
+  </div>
+</div>

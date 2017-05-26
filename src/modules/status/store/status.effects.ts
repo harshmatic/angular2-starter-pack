@@ -32,7 +32,7 @@ export class StatusEffects extends BaseService {
     .switchMap(action =>
       this.statusService.getStatusAllByPagination(action.payload)
         .map(res => {
-          this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_SUCCESS, payload: {status:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
+          this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: {status:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
         })
         .catch(() => Observable.of({ type: STATUS_ACTIONS.ON_FAILED }))
     );
