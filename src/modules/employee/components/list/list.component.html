@@ -1,0 +1,28 @@
+<div class="main-container container">
+  <div class="row inner-container">
+    <div class="col-md-12">
+      <p-dataTable [value]="employeeList" [rows]="tableRows" [lazy]="true" 
+         [totalRecords]="totalRecords" (onLazyLoad)="loadLazy($event)" [rowsPerPageOptions]="[5,10,20]" [paginator]="true" [pageLinks]="3">
+        <p-column header="Name" [sortable]="true">
+          <ng-template let-employee="rowData" pTemplate="body" >
+            {{employee.firstName}} {{employee.lastName}}
+          </ng-template>
+        </p-column>
+        
+        <p-column field="mstArea.areaName" header="Area" [sortable]="true"></p-column>
+        <p-column field="mstDepartment.departmentName" header="Department" [sortable]="true"></p-column>
+        <p-column field="mstDesignation.designationName" header="Designation" [sortable]="true"></p-column>
+        <p-column field="mstShift.shiftName" header="Shift" [sortable]="true"></p-column>
+         <p-column field="email" header="Email" [sortable]="true"></p-column>
+          <p-column field="mobile" header="Mobile" [sortable]="true"></p-column>
+        <p-column header="Actions" >
+          <ng-template let-employee="rowData" pTemplate="body" >
+            <button class="btn btn-primary" (click)="onEdit(employee.employeeID)"><i class="fa fa-pencil-square-o"></i></button>
+            <button class="btn btn-danger" (click)="onDelete(employee.employeeID)"><i class="fa fa-trash"></i></button>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+                  <button class="btn btn-success" style =" position: fixed; bottom: 20px; right: 20px;" (click)="onClickAdd()">Add New Employee</button>
+    </div>
+  </div>
+</div>

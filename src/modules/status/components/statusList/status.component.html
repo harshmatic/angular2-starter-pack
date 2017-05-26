@@ -22,10 +22,10 @@
       [totalRecords]="this.totalRecords" (onLazyLoad)="loadLazy($event)" [rowsPerPageOptions]="[5,10,20]">
       <p-column field="statusName" header="Status Name" [sortable]="true"></p-column>
       <p-column header="Action">
-        <template let-status="rowData" pTemplate type="body">
-          <button class="btn btn-info" name="edit" (click)="onEdit(status)"><i class="fa fa-edit"></i></button>
-          <button class="btn btn-danger" name="delete" (click)="onDelete(status)"><i class="fa fa-trash"></i></button>
-        </template>
+        <ng-template let-status="rowData" pTemplate type="body">
+          <button class="btn btn-info" (click)="onEdit(status)"><i class="fa fa-edit"></i></button>
+          <button class="btn btn-danger" (click)="onDelete(status)"><i class="fa fa-trash"></i></button>
+        </ng-template>
       </p-column>
     </p-dataTable>
   </div>

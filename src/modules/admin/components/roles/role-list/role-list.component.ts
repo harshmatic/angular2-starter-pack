@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 import { RoleService } from '../../../services/role.service';
 import { ROLE_ACTIONS } from '../../../store/role/role.actions';
 import { APPMODULE_ACTIONS } from '../../../store/appModule/appModule.actions';
-
+import { MessageService } from '../../../../../app/core/services/index';
 /** Component Declaration */
 @Component({
     moduleId: module.id,
@@ -32,6 +32,7 @@ export class RoleListComponent implements OnInit {
         private store: Store<any>,
         private formBuilder: FormBuilder,
         private roleService: RoleService,
+        private messageService: MessageService,
         private router: Router) {
     }
     ngOnInit() {
@@ -93,6 +94,7 @@ export class RoleListComponent implements OnInit {
                 .subscribe(
                 results => {
                     this.resetForm();
+                    this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Role Created' });
                     this.getRole();
                 });
     }
@@ -112,7 +114,7 @@ export class RoleListComponent implements OnInit {
             results => {
                 this.selectedPermission=null;
                 this.getRolePermission();
-               // this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Permission Added' });
+                this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Permission Added' });
             });
     }
     onRevokePermission(item) {
@@ -121,7 +123,7 @@ export class RoleListComponent implements OnInit {
             results => {
                 this.selectedPermission=null;
                 this.getRolePermission();
-               // this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Permission Added' });
+                this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Permission Revoked' });
             });
     }
     private createPermissions(){

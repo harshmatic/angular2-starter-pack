@@ -9,11 +9,9 @@ import { BaseService } from '../../../app/core/services/index';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 
-/// Define the appi endpoint here
-const CONTEXT = 'area';
 
 @Injectable()
-export class ActivityEffects extends BaseService {
+export class ActivityEffects{
 
   @Effect({ dispatch: false })
   private getActivity$ = this.actions$
@@ -39,7 +37,6 @@ export class ActivityEffects extends BaseService {
   constructor(
     private store: Store<any>,
     private actions$: Actions,
-    private activityService: ActivityService,
-    public http: Http
-  ) { super(http, CONTEXT); }
+    private activityService: ActivityService
+  ) {  }
 }

@@ -15,6 +15,7 @@ import { OccurenceBookService } from '../../services/occurenceBook.service';
 import { OccurenceBookReducer } from '../../../occurenceBook/store/occurenceBook.reducer';
 import { Priority } from '../../../config';
 import { Status } from '../../../config';
+import {Router} from "@angular/router";
 @Component({selector: 'test-cmp', template: '<app-assigned></app-assigned>'})
 class TestComponent {}
 
@@ -48,6 +49,8 @@ class OccurenceBookServiceStub {
   }
 }
 
+
+
 describe('Component: Assigned Component', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -69,7 +72,7 @@ describe('Component: Assigned Component', () => {
                 {
                     provide: OccurenceBookService,
                     useClass: OccurenceBookServiceStub
-                },
+                }
                 
             ]
         });
@@ -151,6 +154,7 @@ describe('Component: Assigned Component', () => {
                 expect(result2).toBe("statusAssigned");
             });
     }));
+    
 });
 
 

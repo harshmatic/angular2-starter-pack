@@ -6,6 +6,7 @@ import { ROLE_ACTIONS } from '../../../store/role/role.actions';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {  UserService } from '../../../services/user.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { MessageService } from '../../../../../app/core/services/index';
 
 @Component({
   moduleId: module.id,
@@ -25,6 +26,7 @@ export class UserRoleComponent implements OnInit {
     private store: Store<any>,
     private route: ActivatedRoute,
     private router: Router,
+    private messageService: MessageService,
     private formBuilder: FormBuilder,
     private userService: UserService){}
 
@@ -68,6 +70,7 @@ export class UserRoleComponent implements OnInit {
       this.userService.addUser(value)
                 .subscribe(
                 results => {
+                    this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'User Created' });
                     this.router.navigate(['/admin/users']);
                 });
   }
@@ -88,6 +91,7 @@ export class UserRoleComponent implements OnInit {
     }
     this.userService.deleteUserRole(this.params,{"RoleId" :selectedRoleID})
       .subscribe(results=> {
+             this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Role Revoked' });
              this.getUserRole();
       });
   }
@@ -98,6 +102,7 @@ export class UserRoleComponent implements OnInit {
                 .subscribe(
                 results=> {
                     this.selectedRole = null;
+                    this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Role Assigned' });
                     this.getUserRole();
                 });
         }

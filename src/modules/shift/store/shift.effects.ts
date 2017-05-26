@@ -19,10 +19,10 @@ export class ShiftEffects extends BaseService {
   @Effect({ dispatch: false })
   private getListShift$ = this.actions$
     .ofType(SHIFT_ACTIONS.GET_LIST)
-    .switchMap(action =>
-      this.ShiftService.getShifts()
-        .map(res => {
-          this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+   .switchMap(action => 
+       this.ShiftService.getShifts()
+        .map(res =>{
+          this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_SUCCESS, payload: res })
         })
         .catch(() => Observable.of({ type: SHIFT_ACTIONS.ON_FAILED }))
     );

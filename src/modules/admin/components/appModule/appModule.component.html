@@ -30,7 +30,7 @@
         <div class="col-md-1">
           <div class="form-group">
             <div class="col-md-offset-2 col-md-10 pull-right">
-              <button class="btn btn-success" type="submit" [disabled]="appModuleForm.invalid">ADD</button>
+              <button class="btn btn-success" name='submitBtn' type="submit" [disabled]="appModuleForm.invalid">ADD</button>
             </div>
           </div>
         </div>
@@ -42,9 +42,9 @@
         <p-column field="menuText" header="Menu Text" [sortable]="true"></p-column>
         <p-column field="shortName" header="Short Name" [sortable]="true"></p-column>
         <p-column header="Delete">
-          <template let-item="rowData" pTemplate type="body">
+          <ng-template let-item="rowData" pTemplate type="body">
             <button class="btn btn-danger" (click)="onDelete(item)"><i class="fa fa-trash"></i></button>
-          </template>
+          </ng-template>
         </p-column>
       </p-dataTable>
     </div>

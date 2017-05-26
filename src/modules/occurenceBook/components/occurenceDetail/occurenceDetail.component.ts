@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { OccurenceBook } from '../../../occurenceBook/store/occurenceBook.model';
 import { OB_ACTIONS } from '../../../occurenceBook/store/occurenceBook.actions';
 import { Pipe, ChangeDetectorRef, PipeTransform } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
@@ -25,7 +24,7 @@ export class OccurenceDetailComponent implements OnInit, OnDestroy {
   showTab: boolean = true;
   private subscriptions: Subscription;
   queryString = '';
-  constructor(private store: Store<OccurenceBook>, private route: ActivatedRoute,
+  constructor(private store: Store<any>, private route: ActivatedRoute,
     private router: Router, private authService: AuthService) { }
 
 

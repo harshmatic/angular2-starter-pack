@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
     this.asyncOfficer = this.store.select('employee')
     this.asyncOfficer.subscribe((res: any) => {
-      this.officers = res
+      this.officers = res.employeeList
     });
     this.store.dispatch({ type: REPORTS_ACTIONS.GET_CASE_LIST });
     this.asyncCaseReport = this.store.select('reports')

@@ -13,9 +13,9 @@ export class UserEffects{
   private getListUser$ = this.actions$
     .ofType(USER_ACTIONS.GET_LIST)
    .switchMap(action => 
-       this.userService.getUsers()
+       this.userService.getUsers(action.payload)
         .map(res =>{
-          this.store.dispatch({ type: USER_ACTIONS.GET_LIST_SUCCESS, payload: res})
+          this.store.dispatch({ type: USER_ACTIONS.GET_LIST_SUCCESS,  payload: {users:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))}})
         })
         .catch(() => Observable.of({ type: USER_ACTIONS.ON_FAILED  }))
       );

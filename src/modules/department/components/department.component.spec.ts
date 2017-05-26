@@ -12,12 +12,21 @@ import {DepartmentComponent} from './department.component';
 import { DepartmentEffects } from '../store/department.effects';
 import { DepartmentService } from '../services/department.service';
 import { DepartmentReducer } from '../store/department.reducer';;
+import { MessageService } from '../../../app/core/services/index';
 
 @Component({selector: 'test-cmp', template: '<user-role></user-role>'})
 class TestComponent {}
 
 @Directive({selector: '[routerLink]'})
 export class RouterLinkStubDirective {}
+
+var message=''
+class MessageServiceStub {
+    addMessage(data : any) {
+        message = data.detail
+        return;
+    }
+}
 
 class DepartmentServiceStub {
     getDepartments() {
@@ -40,6 +49,11 @@ class DepartmentServiceStub {
            observer.next(true);
       });
     }
+    getDepartmentPagination(payload:any){
+        return new Observable<any>((observer:any) => {
+           observer.next(testDepartmentList);
+        });  
+    }
 }
 
 describe('Component: DepartmentComponent Component', () => {
@@ -60,7 +74,10 @@ describe('Component: DepartmentComponent Component', () => {
                     provide: DepartmentService,
                     useClass: DepartmentServiceStub
                 },
-                
+                {
+                    provide: MessageService,
+                    useClass: MessageServiceStub
+                }
             ]
         });
     });
@@ -79,7 +96,7 @@ describe('Component: DepartmentComponent Component', () => {
                 let fixture = TestBed.createComponent(DepartmentComponent);
                 fixture.detectChanges();
                 let componentInstance = fixture.componentInstance;
-                expect(componentInstance.departmentList.length).toBe(2);
+                expect(componentInstance.departmentList.length).toBe(0);
             });
     }));
     it('check onEdit method', async(() => {
@@ -124,6 +141,16 @@ describe('Component: DepartmentComponent Component', () => {
                 let valid=true
                 componentInstance.onSubmit({value,valid})
                 expect(componentInstance.departmentForm.value.departmentName).toBe('');
+            });
+    }));
+     it('check lazy load', async(() => {
+        TestBed.compileComponents()
+            .then(() => {
+                let fixture = TestBed.createComponent(DepartmentComponent);
+                fixture.detectChanges();
+                let componentInstance = fixture.componentInstance;
+                componentInstance.loadLazy({first:1,rows:10})
+                expect(componentInstance.tableRows).toBe(10);
             });
     }));
 });
