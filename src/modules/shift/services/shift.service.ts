@@ -42,7 +42,7 @@ export class ShiftService extends BaseService {
     }
     // Get One
     getShift(id: any) {
-        return this.get$(CONTEXT + id).map(res => res.json());
+        return this.get$(CONTEXT + id,true).map(res => res.json());
     }
 
 }
