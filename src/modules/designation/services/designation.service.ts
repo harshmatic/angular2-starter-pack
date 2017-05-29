@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 /** Third Party Dependencies */
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-/** Module Level Dependencies */                        
+
+/** Module Level Dependencies */                   
 import { BaseService, EtagService } from '../../../app/core/services/index';
 import { MessageService } from '../../../app/core/services/index';
 /** Context for service calls */

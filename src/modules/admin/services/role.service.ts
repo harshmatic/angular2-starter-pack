@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
-import { BaseService } from '../../../app/core/services/index';
+import { BaseService, EtagService } from '../../../app/core/services/index';
 import { MessageService } from '../../../app/core/services/index';
 /** Context for service calls */
 const CONTEXT = 'roles/';
@@ -14,14 +14,18 @@ const CONTEXT = 'roles/';
 /** Service Definition */
 @Injectable()
 export class RoleService extends BaseService {
-    constructor(public http: Http, router: Router,messageService: MessageService) {
+    constructor(public http: Http, router: Router,messageService: MessageService, public etagService:EtagService) {
         super(http,CONTEXT, router,messageService);
     }
     getRoles() {
-        return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
+        let url = CONTEXT;
+        return  this.etagService.getListWithEtag(url)
+        //return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
     }
     getRolePermissions(id: string) {
-        return this.getList$(CONTEXT+id+'/permissions', 0, 0, true).map(res => res.json());
+        let url = CONTEXT+id+'/permissions';
+        return  this.etagService.getListWithEtag(url)
+       // return this.getList$(CONTEXT+id+'/permissions', 0, 0, true).map(res => res.json());
     }
     addPermissionToRole(roleID: string,payload:any) {
         return this.post$(CONTEXT +roleID+'/permissions',payload,true).map(res => res);
