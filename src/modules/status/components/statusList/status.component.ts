@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Status } from '../../store/status.model';
 import { STATUS_ACTIONS } from '../../store/status.actions';
 import { Patch } from '../../../patchReq.model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -13,7 +12,7 @@ import { StatusService } from '../../services/status.service';
   templateUrl: 'status.component.html',
 })
 export class StatusComponent implements OnInit {
-  status: Status[];
+  status: any[];
   statusObj: any = {};
   patchReq: Patch[] = [];
   statusForm: FormGroup;

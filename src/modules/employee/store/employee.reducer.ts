@@ -3,7 +3,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/let';
 import { Observable } from 'rxjs/Observable';
 import { ActionReducer, Action } from '@ngrx/store';
-import { Employee, initialEmployee } from './employee.model';
 import { EMPLOYEE_ACTIONS } from './employee.actions';
 
 let initialState={employeeList:[],pagination:{}}
