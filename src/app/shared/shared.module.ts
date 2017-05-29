@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CacheService, CacheStorageAbstract, CacheLocalStorage } from 'ng2-cache/ng2-cache';
 
 import { Draggable } from './draggable/draggable.directive';
 import { EsplAlertComponent } from './alert/alert.component';
@@ -84,7 +85,9 @@ export const components = [
     ...components
   ],
   providers: [
-    TwainService
+    TwainService,
+    CacheService,
+    { provide: CacheStorageAbstract, useClass: CacheLocalStorage }
   ]
 })
 

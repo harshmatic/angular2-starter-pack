@@ -20,6 +20,9 @@ export class UserService extends BaseService {
     getUsers(payload) {
         return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
     }
+    getUsersList() {
+        return this.getList$(CONTEXT, 0, 0, true).map(res => res);
+    }
     getUserByID(userId:string){
         return this.getList$(CONTEXT+userId, 0, 0, true).map(res => res.json());
     }

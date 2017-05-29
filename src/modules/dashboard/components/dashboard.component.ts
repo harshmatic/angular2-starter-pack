@@ -31,8 +31,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   date: any;
   time: any;
   asyncOfficer: Observable<any>
-  offReport: any;
-  caseReport: any;
+  offReport: any = [];
+  caseReport: any =[];
   asyncCaseReport: Observable<any>;
   asyncOfficerReport: Observable<any>;
   obs: any[] = [];
@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.store.dispatch({ type: OB_ACTIONS.GET_LIST, payload: { search: "", pageNum: 1, pageSize: 5, areaId: this.userDetail.areaID } });
     this.asyncOb = this.store.select('occurenceBook')
     this.subscriptions = this.asyncOb.subscribe((res: any) => {
-      if (res.length > 0) {
+      if (res && res.length > 0) {
         this.obs = res;
       }
 

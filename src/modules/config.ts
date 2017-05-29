@@ -35,7 +35,7 @@ export const routing = [
 ];
 
 //export const ApiBase ="http://192.168.101.21:6058/api/";
-export const ApiBase ="http://192.168.100.49:6058/api/"
+export const ApiBase ="http://192.168.101.162:6058/api/"
 //export const ApiBase = "http://192.168.100.103:6070/api/";
 
 export const ApiBaseAuthUrl = "auth/token";

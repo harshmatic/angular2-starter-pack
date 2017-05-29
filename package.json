@@ -99,6 +99,7 @@
     "lodash": "4.17.4",
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
+    "ng2-cache": "^0.1.11",
     "ngrx-store-localstorage": "^0.1.6",
     "ngx-infinite-scroll": "^0.5.1",
     "nodemon": "^1.9.2",
