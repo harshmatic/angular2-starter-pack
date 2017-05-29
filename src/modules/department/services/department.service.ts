@@ -22,11 +22,11 @@ export class DepartmentService extends BaseService {
     // Get All
     getDepartments() {
         let url = CONTEXT;
-        return  this.etagService.getListWithEtag(url,'getDepartments')
+        return  this.etagService.getListWithEtag(url)
     }
     getDepartmentPagination(payload) {
         let url = CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize;
-        return  this.etagService.getListWithEtag(url,'getDepartmentPagination')
+        return  this.etagService.getListWithEtag(url)
         //return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
     }
     // Add One

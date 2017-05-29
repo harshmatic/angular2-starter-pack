@@ -22,12 +22,12 @@ export class DesignationService extends BaseService {
     // Get All
     getDesignations() {
         let url = CONTEXT;
-        return  this.etagService.getListWithEtag(url,'getDesignations')
+        return  this.etagService.getListWithEtag(url)
         //return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
     }
     getDesignationsPagination(payload) {
         let url = CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize;
-        return  this.etagService.getListWithEtag(url,'getDesignationsPagination')
+        return  this.etagService.getListWithEtag(url)
         //return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
     }
     // Add One
