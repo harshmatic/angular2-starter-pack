@@ -5,9 +5,8 @@ import { Router } from '@angular/router';
 /** Third Party Dependencies */
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-/** Module Level Dependencies */
-import { Designation } from '../store/designation.model';
-import { BaseService } from '../../../app/core/services/index';
+/** Module Level Dependencies */                        
+import { BaseService, EtagService } from '../../../app/core/services/index';
 import { MessageService } from '../../../app/core/services/index';
 /** Context for service calls */
 const CONTEXT = 'designations/';
@@ -16,15 +15,19 @@ const CONTEXT = 'designations/';
 @Injectable()
 export class DesignationService extends BaseService {
 
-    constructor(public http: Http, router: Router,messageService: MessageService) {
+    constructor(public http: Http, router: Router,messageService: MessageService, public etagService:EtagService) {
         super(http,CONTEXT, router,messageService);
     }
     // Get All
     getDesignations() {
-        return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
+        let url = CONTEXT;
+        return  this.etagService.getListWithEtag(url)
+        //return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
     }
     getDesignationsPagination(payload) {
-        return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
+        let url = CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize;
+        return  this.etagService.getListWithEtag(url)
+        //return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
     }
     // Add One
     addDesignation(designation: any) {

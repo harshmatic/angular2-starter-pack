@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
-import { Dashboard } from '../store/dashboard.model';
 import { BaseService } from '../../../app/core/services/index';
 import { MessageService } from '../../../app/core/services/index';
 

@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
-import { Department } from '../store/department.model';
-import { BaseService } from '../../../app/core/services/index';
+import { BaseService, EtagService  } from '../../../app/core/services/index';
 import { MessageService } from '../../../app/core/services/index';
 /** Context for service calls */
 const CONTEXT = 'departments/';
@@ -16,15 +15,18 @@ const CONTEXT = 'departments/';
 @Injectable()
 export class DepartmentService extends BaseService {
 
-    constructor(public http: Http, router: Router,messageService: MessageService) {
+    constructor(public http: Http, router: Router,messageService: MessageService, public etagService:EtagService) {
         super(http,CONTEXT, router,messageService);
     }
     // Get All
     getDepartments() {
-        return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
+        let url = CONTEXT;
+        return  this.etagService.getListWithEtag(url)
     }
     getDepartmentPagination(payload) {
-        return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
+        let url = CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize;
+        return  this.etagService.getListWithEtag(url)
+        //return this.getList$(CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize, 0, 0, true).map(res => res);
     }
     // Add One
     addDepartment(department: any) {

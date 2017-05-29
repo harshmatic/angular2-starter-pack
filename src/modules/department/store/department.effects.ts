@@ -3,7 +3,6 @@ import { Store, Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
-import { Department, initialDepartment } from './department.model';
 import { DEPARTMENT_ACTIONS } from './department.actions';
 import { DepartmentService } from '../services/department.service';
 import { BaseService } from '../../../app/core/services/index';
@@ -18,8 +17,12 @@ export class DepartmentEffects {
     .ofType(DEPARTMENT_ACTIONS.GET_LIST)
     .switchMap(action =>
       this.DepartmentService.getDepartments()
-        .map(res => {
-          this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_SUCCESS, payload: res })
+        .map((res:any)  => {
+           if (res.status==304) {
+              this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_SUCCESS, payload:res.json() })
+           }
         })
         .catch(() => Observable.of({ type: DEPARTMENT_ACTIONS.ON_FAILED }))
     );
@@ -28,8 +31,12 @@ export class DepartmentEffects {
     .ofType(DEPARTMENT_ACTIONS.GET_LIST_PAGINATION)
     .switchMap(action =>
       this.DepartmentService.getDepartmentPagination(action.payload)
-        .map(res => {
-          this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_PAGINATION_SUCCESS,payload: {departments:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))}})
+        .map((res:any) => {
+           if (res.status==304) {
+              this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_SUCCESS,  payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_PAGINATION_SUCCESS, payload:{departments:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
+           }
         })
         .catch(() => Observable.of({ type: DEPARTMENT_ACTIONS.ON_FAILED }))
     );
@@ -66,7 +73,7 @@ export class DepartmentEffects {
         .catch(() => Observable.of({ type: DEPARTMENT_ACTIONS.ON_FAILED }))
     );
   constructor(
-    private store: Store<Department>,
+    private store: Store<any>,
     private actions$: Actions,
     private DepartmentService: DepartmentService,
   ) {  }

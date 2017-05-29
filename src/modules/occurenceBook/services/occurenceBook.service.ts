@@ -20,10 +20,12 @@ export class OccurenceBookService extends BaseService {
     // Get All
     getObs(searchQuery?:any,pageNum?:any,pageSize?:any,areaId?:any) {
         let url = CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&areaId='+areaId+'&orderBy=obTime'+' '+'desc'
-        return  this.etagService.getListWithEtag(url,'getOccurrenceBook')
+        return  this.etagService.getListWithEtag(url)
     }
     getObsOff(searchQuery?:any,pageNum?:any,pageSize?:any,assignedTo?:any) {
-        return this.getList$(CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&assignedTo='+assignedTo,0,0,true).map(res => res.json());    
+        let url = CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&assignedTo='+assignedTo;
+        return  this.etagService.getListWithEtag(url)
+        //return this.getList$(CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&assignedTo='+assignedTo,0,0,true).map(res => res.json());    
     }
     // Add One
     addOb(ob: any) {

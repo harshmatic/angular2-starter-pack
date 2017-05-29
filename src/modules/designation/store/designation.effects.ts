@@ -3,7 +3,6 @@ import { Store, Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
-import { Designation, initialDesignation } from './designation.model';
 import { DESIGNATION_ACTIONS } from './designation.actions';
 import {  DesignationService } from '../services/designation.service';
 import { BaseService } from '../../../app/core/services/index';
@@ -21,8 +20,12 @@ export class DesignationEffects extends BaseService {
     .ofType(DESIGNATION_ACTIONS.GET_LIST)
    .switchMap(action => 
        this.DesignationService.getDesignations()
-        .map(res =>{
-          this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_SUCCESS, payload: res})
+        .map((res:any) =>{
+          if (res.status==304) {
+              this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_SUCCESS, payload:res.json() })
+           }
         })
         .catch(() => Observable.of({ type: DESIGNATION_ACTIONS.ON_FAILED  }))
       );
@@ -31,8 +34,12 @@ export class DesignationEffects extends BaseService {
     .ofType(DESIGNATION_ACTIONS.GET_LIST_PAGINATION)
     .switchMap(action =>
       this.DesignationService.getDesignationsPagination(action.payload)
-        .map(res => {
-          this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_PAGINATION_SUCCESS,payload: {designations:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))}})
+        .map((res:any) => {
+           if (res.status==304) {
+              this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_PAGINATION_SUCCESS, payload:{designations:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
+           }
         })
         .catch(() => Observable.of({ type: DESIGNATION_ACTIONS.ON_FAILED }))
     );
@@ -69,7 +76,7 @@ export class DesignationEffects extends BaseService {
         .catch(() => Observable.of({ type: DESIGNATION_ACTIONS.ON_FAILED  }))
       );
   constructor(
-    private store: Store<Designation>,
+    private store: Store<any>,
     private actions$: Actions,
     private DesignationService: DesignationService,
     public http: Http
