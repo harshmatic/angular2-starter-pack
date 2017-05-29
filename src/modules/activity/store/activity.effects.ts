@@ -19,7 +19,11 @@ export class ActivityEffects{
     .switchMap(action =>
       this.activityService.getActivity(action.payload.pageNum, action.payload.pageSize)
         .map(res => {
-          this.store.dispatch({ type: ACTIVITY_ACTIONS.GET_LIST_SUCCESS, payload: res })
+           if (res.status==304) {
+              this.store.dispatch({ type: ACTIVITY_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: ACTIVITY_ACTIONS.GET_LIST_SUCCESS, payload:res })
+           }
         })
         .catch(() => Observable.of({ type: ACTIVITY_ACTIONS.ON_FAILED }))
     );
@@ -29,7 +33,11 @@ export class ActivityEffects{
     .switchMap(action =>
       this.activityService.getActivityByOB(action.payload.pageNum, action.payload.pageSize,action.payload.obID)
         .map(res => {
-          this.store.dispatch({ type: ACTIVITY_ACTIONS.GET_LIST_BY_OB_SUCCESS, payload: res })
+           if (res.status==304) {
+              this.store.dispatch({ type: ACTIVITY_ACTIONS.GET_LIST_BY_OB_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: ACTIVITY_ACTIONS.GET_LIST_BY_OB_SUCCESS, payload:res })
+           }
         })
         .catch(() => Observable.of({ type: ACTIVITY_ACTIONS.ON_FAILED }))
     );

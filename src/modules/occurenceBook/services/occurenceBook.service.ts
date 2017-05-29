@@ -5,11 +5,8 @@ import { Router } from '@angular/router';
 /** Third Party Dependencies */
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-import { CacheService } from 'ng2-cache/ng2-cache';
-
 /** Module Level Dependencies */
-import { BaseService } from '../../../app/core/services/index';
-import { MessageService } from '../../../app/core/services/index';
+import { MessageService ,BaseService, EtagService  } from '../../../app/core/services/index';
 /** Context for service calls */
 const CONTEXT = 'occurrencebook/';
 import { Store } from '@ngrx/store';
@@ -17,37 +14,15 @@ import { Store } from '@ngrx/store';
 @Injectable()
 export class OccurenceBookService extends BaseService {
 
-    constructor(public http: Http, router: Router,messageService: MessageService, private _cacheService: CacheService) {
+    constructor(public http: Http, router: Router,messageService: MessageService, public etagService:EtagService) {
         super(http,CONTEXT,router,messageService);
     }
     // Get All
     getObs(searchQuery?:any,pageNum?:any,pageSize?:any,areaId?:any) {
-       
-        if (this._cacheService.exists('getOccurrenceBook')) {
-            let cacheData:any= this._cacheService.get('getOccurrenceBook')
-             return this.getList$(CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&areaId='+areaId+'&orderBy=obTime'+' '+'desc',0,0,true,cacheData.etag)
-                .map(res => {
-                    this._cacheService.set('getOccurrenceBook',{etag:res.headers.get('etag'), data:res.json()}, { maxAge: 60 * 60 });
-                    return res.json();
-                })
-                 .catch(err=> {
-                     if (err.status==304) {
-                         err.cacheData=cacheData.data
-                        return Observable.of(err);
-                     }else {
-                         return err;
-                     }
-                }); 
-        } else {
-            return this.getList$(CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&areaId='+areaId+'&orderBy=obTime'+' '+'desc',0,0,true)
-                .map(res => {
-                    this._cacheService.set('getOccurrenceBook',{etag:res.headers.get('etag'), data:res.json()}, { maxAge: 60 * 60 });
-                    return res.json();
-                })   
-        }
+        let url = CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&areaId='+areaId+'&orderBy=obTime'+' '+'desc'
+        return  this.etagService.getListWithEtag(url,'getOccurrenceBook')
     }
     getObsOff(searchQuery?:any,pageNum?:any,pageSize?:any,assignedTo?:any) {
-        
         return this.getList$(CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&assignedTo='+assignedTo,0,0,true).map(res => res.json());    
     }
     // Add One

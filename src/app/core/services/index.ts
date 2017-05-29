@@ -6,6 +6,7 @@ import { WindowService } from './window.service';
 import { AppService } from './app.service';
 import { UserService } from './user.service';
 import {MessageService} from './message.service';
+import {EtagService} from './etag.service';
 import {NotifyService} from './notify.service'
 export const CORE_PROVIDERS: any[] = [
   AppService,
@@ -15,7 +16,8 @@ export const CORE_PROVIDERS: any[] = [
   WindowService,
   UserService,
   MessageService,
-  NotifyService
+  NotifyService,
+  EtagService
 ];
 
 export * from './app.service';
@@ -25,4 +27,5 @@ export * from './router-extensions.service';
 export * from './window.service';
 export * from './base.service';
 export * from './message.service';
+export * from './etag.service';
 export * from './notify.service';

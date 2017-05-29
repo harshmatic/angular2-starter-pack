@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
 import { BaseService } from '../../../app/core/services/index';
-import { MessageService } from '../../../app/core/services/index';
+import { MessageService, EtagService  } from '../../../app/core/services/index';
 /** Context for service calls */
 const CONTEXT = 'occurrencebook/GetOccurrenceBookActivity/';
 
@@ -15,16 +15,20 @@ const CONTEXT = 'occurrencebook/GetOccurrenceBookActivity/';
 @Injectable()
 export class ActivityService extends BaseService {
 
-    constructor(public http: Http, router: Router,messageService: MessageService) {
+    constructor(public http: Http, router: Router,messageService: MessageService, public etagService:EtagService) {
         super(http,CONTEXT, router,messageService);
     }
     // Get All
     getActivity(pageNum?:any,pageSize?:any) {
-        return this.getList$(CONTEXT+'?&pageNumber='+pageNum+'&pageSize='+pageSize, 0, 0, true).map(res => res.json());
+        let url =CONTEXT+'?&pageNumber='+pageNum+'&pageSize='+pageSize
+        return  this.etagService.getListWithEtag(url,'getActivity')
+        //return this.getList$(CONTEXT+'?&pageNumber='+pageNum+'&pageSize='+pageSize, 0, 0, true).map(res => res.json());
     }
 
     getActivityByOB(pageNum?:any,pageSize?:any,id?:any){
-        return this.getList$(CONTEXT+'?&pageNumber='+pageNum+'&pageSize='+pageSize+'&obID='+id, 0, 0, true).map(res => res.json());
+        let url = CONTEXT+'?&pageNumber='+pageNum+'&pageSize='+pageSize+'&obID='+id
+        return this.etagService.getListWithEtag(url,'getActivityByOB')
+        //return this.getList$(CONTEXT+'?&pageNumber='+pageNum+'&pageSize='+pageSize+'&obID='+id, 0, 0, true).map(res => res.json());
     }
 
 
