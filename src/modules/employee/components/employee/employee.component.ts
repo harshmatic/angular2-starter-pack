@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Employee } from '../../store/employee.model';
 import { EMPLOYEE_ACTIONS } from '../../store/employee.actions';
-import { Patch } from '../../../patchReq.model';
 @Component({
   moduleId: module.id,
   selector: 'app-employee',
   templateUrl: 'employee.component.html',
 })
 export class EmployeeComponent  implements OnInit {
-  employee:Employee[];
-  dynamicData:Employee[];
+  employee:any[];
+  dynamicData:any[];
   employeeObj:any = {};
-  patchReq:Patch[]=[];
   constructor(private store: Store<any>){}
 
   ngOnInit() {
@@ -40,11 +37,7 @@ export class EmployeeComponent  implements OnInit {
         "address2":null,
         "userID":null
   }
-  this.patchReq.push({
-    "op":"replace",
-    "path":"/firstName",
-    "value":"test after patch"
-  });
+
   //  this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST });
     // //Create
 //this.store.dispatch({ type: EMPLOYEE_ACTIONS.ADD,payload:this.employeeObj });

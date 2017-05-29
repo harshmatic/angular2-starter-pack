@@ -3,7 +3,6 @@ import { Store, Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
-import { Designation, initialDesignation } from './designation.model';
 import { DESIGNATION_ACTIONS } from './designation.actions';
 import {  DesignationService } from '../services/designation.service';
 import { BaseService } from '../../../app/core/services/index';
@@ -77,7 +76,7 @@ export class DesignationEffects extends BaseService {
         .catch(() => Observable.of({ type: DESIGNATION_ACTIONS.ON_FAILED  }))
       );
   constructor(
-    private store: Store<Designation>,
+    private store: Store<any>,
     private actions$: Actions,
     private DesignationService: DesignationService,
     public http: Http

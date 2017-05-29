@@ -3,7 +3,6 @@ import { Store, Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
-import { Department, initialDepartment } from './department.model';
 import { DEPARTMENT_ACTIONS } from './department.actions';
 import { DepartmentService } from '../services/department.service';
 import { BaseService } from '../../../app/core/services/index';
@@ -74,7 +73,7 @@ export class DepartmentEffects {
         .catch(() => Observable.of({ type: DEPARTMENT_ACTIONS.ON_FAILED }))
     );
   constructor(
-    private store: Store<Department>,
+    private store: Store<any>,
     private actions$: Actions,
     private DepartmentService: DepartmentService,
   ) {  }

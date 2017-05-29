@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Department } from '../store/department.model';
 import { DEPARTMENT_ACTIONS } from '../store/department.actions';
-import { Patch } from '../../patchReq.model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { DepartmentService } from '../services/department.service';
 import { MessageService } from '../../../app/core/services/index';

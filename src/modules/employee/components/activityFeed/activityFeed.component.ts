@@ -1,7 +1,6 @@
 import { Component, OnInit,AfterViewInit,OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Employee } from '../../../employee/store/employee.model';
 import { ACTIVITY_ACTIONS } from '../../../activity/store/activity.actions';
 import { ActivatedRoute, Router } from '@angular/router';
 declare var $:any;
