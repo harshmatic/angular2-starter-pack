@@ -81,10 +81,10 @@ export class EmployeeSaveComponent implements OnInit {
             this.shiftList = res;
         });
         this.store.select('designation').subscribe((res: any) => {
-            this.designationList = res;
+            this.designationList = res.designationList;
         });
         this.store.select('department').subscribe((res: any) => {
-            this.departmentList = res;
+            this.departmentList = res.departmentList;
         });
         this.store.select('user').subscribe((res: any) => {
             this.userList = res.userList;
@@ -92,7 +92,7 @@ export class EmployeeSaveComponent implements OnInit {
         if (this.empId !== "") {
             this.store.select('employee').subscribe((res: any) => {
                 this.emp = res;
-                //this.setEmployee(this.emp);
+                this.setEmployee(this.emp);
             });
         }
 
@@ -123,25 +123,25 @@ export class EmployeeSaveComponent implements OnInit {
         });
     }
 
-    // setEmployee(emp: any) {
-    //     this.employeeForm.controls['shiftID'].setValue(emp.shiftID);
-    //     this.employeeForm.controls['firstName'].setValue(emp.firstName);
-    //     this.employeeForm.controls['lastName'].setValue(emp.lastName);
-    //     this.employeeForm.controls['gender'].setValue(emp.gender);
-    //     this.employeeForm.controls['mobile'].setValue(emp.mobile);
-    //     this.employeeForm.controls['address1'].setValue(emp.address1);
-    //     this.employeeForm.controls['address2'].setValue(emp.address2);
-    //     this.employeeForm.controls['residencePhone1'].setValue(emp.residencePhone1);
-    //     this.employeeForm.controls['email'].setValue(emp.email);
-    //     this.employeeForm.controls['employeeCode'].setValue(emp.employeeCode);
-    //     this.employeeForm.controls['areaID'].setValue(emp.areaID);
-    //     this.employeeForm.controls['designationID'].setValue(emp.designationID);
-    //     this.employeeForm.controls['departmentID'].setValue(emp.departmentID);
-    //     this.employeeForm.controls['userID'].setValue(emp.userID);
-    //     this.employeeForm.controls['organizationJoiningDate'].setValue(new Date(emp.organizationJoiningDate));
-    //     this.employeeForm.controls['serviceJoiningDate'].setValue(new Date(emp.serviceJoiningDate));
-    //     this.employeeForm.controls['dateofBirth'].setValue(new Date(emp.dateofBirth));
-    // }
+    setEmployee(emp: any) {
+        this.employeeForm.controls['shiftID'].setValue(emp.shiftID);
+        this.employeeForm.controls['firstName'].setValue(emp.firstName);
+        this.employeeForm.controls['lastName'].setValue(emp.lastName);
+        this.employeeForm.controls['gender'].setValue(emp.gender);
+        this.employeeForm.controls['mobile'].setValue(emp.mobile);
+        this.employeeForm.controls['address1'].setValue(emp.address1);
+        this.employeeForm.controls['address2'].setValue(emp.address2);
+        this.employeeForm.controls['residencePhone1'].setValue(emp.residencePhone1);
+        this.employeeForm.controls['email'].setValue(emp.email);
+        this.employeeForm.controls['employeeCode'].setValue(emp.employeeCode);
+        this.employeeForm.controls['areaID'].setValue(emp.areaID);
+        this.employeeForm.controls['designationID'].setValue(emp.designationID);
+        this.employeeForm.controls['departmentID'].setValue(emp.departmentID);
+        this.employeeForm.controls['userID'].setValue(emp.userID);
+        this.employeeForm.controls['organizationJoiningDate'].setValue(new Date(emp.organizationJoiningDate));
+        this.employeeForm.controls['serviceJoiningDate'].setValue(new Date(emp.serviceJoiningDate));
+        this.employeeForm.controls['dateofBirth'].setValue(new Date(emp.dateofBirth));
+    }
    
 
 

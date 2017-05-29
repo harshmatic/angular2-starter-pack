@@ -10,7 +10,7 @@ let initialState={departmentList:[],pagination:{}}
 export function DepartmentReducer(state: any = initialState, action: Action) {
   switch (action.type) {
     case DEPARTMENT_ACTIONS.GET_LIST_SUCCESS:
-        return Object.assign({},state,{departmentList:action.payload.departments});
+        return Object.assign({},state,{departmentList:action.payload});
     case DEPARTMENT_ACTIONS.GET_LIST_PAGINATION_SUCCESS:
         return Object.assign({},state,{departmentList:action.payload.departments,pagination:action.payload.pagination});
     case DEPARTMENT_ACTIONS.ON_FAILED:
