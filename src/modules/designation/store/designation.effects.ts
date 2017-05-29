@@ -21,8 +21,12 @@ export class DesignationEffects extends BaseService {
     .ofType(DESIGNATION_ACTIONS.GET_LIST)
    .switchMap(action => 
        this.DesignationService.getDesignations()
-        .map(res =>{
-          this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_SUCCESS, payload: res})
+        .map((res:any) =>{
+          if (res.status==304) {
+              this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_SUCCESS, payload:res.json() })
+           }
         })
         .catch(() => Observable.of({ type: DESIGNATION_ACTIONS.ON_FAILED  }))
       );
@@ -31,8 +35,12 @@ export class DesignationEffects extends BaseService {
     .ofType(DESIGNATION_ACTIONS.GET_LIST_PAGINATION)
     .switchMap(action =>
       this.DesignationService.getDesignationsPagination(action.payload)
-        .map(res => {
-          this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_PAGINATION_SUCCESS,payload: {designations:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))}})
+        .map((res:any) => {
+           if (res.status==304) {
+              this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST_PAGINATION_SUCCESS, payload:{designations:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
+           }
         })
         .catch(() => Observable.of({ type: DESIGNATION_ACTIONS.ON_FAILED }))
     );

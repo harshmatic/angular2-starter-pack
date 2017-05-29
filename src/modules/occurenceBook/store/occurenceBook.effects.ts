@@ -17,11 +17,11 @@ export class OccurenceBookEffects {
     .ofType(OB_ACTIONS.GET_LIST)
    .switchMap(action => 
        this.occurenceBookService.getObs(action.payload.search,action.payload.pageNum,action.payload.pageSize,action.payload.areaId)
-        .map(res =>{
+        .map((res:any) =>{
            if (res.status==304) {
               this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
            }else{
-              this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload:res })
+              this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload:res.json() })
            }
         })
     );
@@ -31,8 +31,12 @@ export class OccurenceBookEffects {
    .switchMap(action => 
    
        this.occurenceBookService.getObsOff(action.payload.search,action.payload.pageNum,action.payload.pageSize,action.payload.assignedTo)
-        .map(res =>{
-          this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS_BY_OFFICER, payload: res })
+        .map((res:any) =>{
+          if (res.status==304) {
+              this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS_BY_OFFICER, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS_BY_OFFICER, payload:res.json() })
+           }
         })
         .catch((err) => 
         Observable.of({ type: OB_ACTIONS.ON_FAILED }))

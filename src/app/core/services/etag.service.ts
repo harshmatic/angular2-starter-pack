@@ -20,7 +20,7 @@ export class EtagService extends BaseService {
              return this.getList$(url,0,0,true,cacheData.etag)
                 .map(res => {
                     this._cacheService.set(cacheName,{etag:res.headers.get('etag'), data:res.json()}, { maxAge: 60 * 60*60 });
-                    return res.json();
+                    return res;
                 })
                  .catch(err=> {
                      if (err.status==304) {
@@ -34,7 +34,7 @@ export class EtagService extends BaseService {
             return this.getList$(url,0,0,true)
                 .map(res => {
                     this._cacheService.set(cacheName,{etag:res.headers.get('etag'), data:res.json()}, { maxAge: 60 * 60 });
-                    return res.json();
+                    return res;
                 })   
         }
   }
