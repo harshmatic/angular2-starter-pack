@@ -34,7 +34,7 @@ export class DesignationListComponent implements OnInit {
         this.resetForm()
         this.store.select('designation').subscribe((res:any) => {
             if (res.designationList && res.designationList.length > 0) {
-               this.designationList = res;
+               this.designationList = res.designationList;
                this.totalRecords = res.pagination.totalCount;
             }
         });

@@ -18,8 +18,12 @@ export class DepartmentEffects {
     .ofType(DEPARTMENT_ACTIONS.GET_LIST)
     .switchMap(action =>
       this.DepartmentService.getDepartments()
-        .map(res => {
-          this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_SUCCESS, payload: res })
+        .map((res:any)  => {
+           if (res.status==304) {
+              this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_SUCCESS, payload:res.json() })
+           }
         })
         .catch(() => Observable.of({ type: DEPARTMENT_ACTIONS.ON_FAILED }))
     );
@@ -28,8 +32,12 @@ export class DepartmentEffects {
     .ofType(DEPARTMENT_ACTIONS.GET_LIST_PAGINATION)
     .switchMap(action =>
       this.DepartmentService.getDepartmentPagination(action.payload)
-        .map(res => {
-          this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_PAGINATION_SUCCESS,payload: {departments:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))}})
+        .map((res:any) => {
+           if (res.status==304) {
+              this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_SUCCESS,  payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST_PAGINATION_SUCCESS, payload:{departments:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
+           }
         })
         .catch(() => Observable.of({ type: DEPARTMENT_ACTIONS.ON_FAILED }))
     );

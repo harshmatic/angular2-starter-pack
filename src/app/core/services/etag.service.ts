@@ -14,13 +14,13 @@ export class EtagService extends BaseService {
      super(http,CONTEXT,router,messageService);
   }
 
-  getListWithEtag(url:string,cacheName:string) {
-    if (this._cacheService.exists(cacheName)) {
-            let cacheData:any= this._cacheService.get(cacheName)
+  getListWithEtag(url:string) {
+    if (this._cacheService.exists(url)) {
+            let cacheData:any= this._cacheService.get(url)
              return this.getList$(url,0,0,true,cacheData.etag)
                 .map(res => {
-                    this._cacheService.set(cacheName,{etag:res.headers.get('etag'), data:res.json()}, { maxAge: 60 * 60*60 });
-                    return res.json();
+                    this._cacheService.set(url,{etag:res.headers.get('etag'), data:res.json()}, { maxAge: 60 * 60*60 });
+                    return res;
                 })
                  .catch(err=> {
                      if (err.status==304) {
@@ -33,8 +33,8 @@ export class EtagService extends BaseService {
         } else {
             return this.getList$(url,0,0,true)
                 .map(res => {
-                    this._cacheService.set(cacheName,{etag:res.headers.get('etag'), data:res.json()}, { maxAge: 60 * 60 });
-                    return res.json();
+                    this._cacheService.set(url,{etag:res.headers.get('etag'), data:res.json()}, { maxAge: 60 * 60 });
+                    return res;
                 })   
         }
   }
