@@ -8,7 +8,12 @@ import { OB_ACTIONS } from './occurenceBook.actions';
 export function OccurenceBookReducer(state: any = [], action: Action) {
   switch (action.type) {
     case OB_ACTIONS.GET_LIST_SUCCESS:
-        return action.payload;
+    if (action.payload.status==304) {
+         return action.payload.cacheData;
+    } else {    
+         return action.payload;
+    }
+       
     case OB_ACTIONS.GET_LIST_SUCCESS_BY_OFFICER:
         return action.payload;
     case OB_ACTIONS.GET_OB_SUCCESS:
