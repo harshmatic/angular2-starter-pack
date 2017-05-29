@@ -33,7 +33,7 @@ export class OccurenceBookService extends BaseService {
                  .catch(err=> {
                      if (err.status==304) {
                          err.cacheData=cacheData.data
-                        return Observable.throw(err);
+                        return Observable.of(err);
                      }else {
                          return err;
                      }
