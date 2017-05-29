@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Shift } from '../../store/shift.model';
 import { SHIFT_ACTIONS } from '../../store/shift.actions';
 import { Patch } from '../../../patchReq.model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -14,7 +13,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
   templateUrl: 'shiftAddEdit.component.html',
 })
 export class ShiftAddEditComponent implements OnInit {
-  shift: Shift[];
+  shift: any[];
   shiftObj: any = {};
   patchReq: Patch[] = [];
   shiftForm: FormGroup;

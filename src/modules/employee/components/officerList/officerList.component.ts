@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit,OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Employee } from '../../../employee/store/employee.model';
 import { EMPLOYEE_ACTIONS } from '../../../employee/store/employee.actions';
 import { AuthService } from '../../../../app/core/index';
 import { Status } from '../../../config';
@@ -19,7 +18,7 @@ export class OfficerListComponent implements OnInit,OnDestroy {
   showTab: boolean = true;
   queryString = '';
   stopScroll: boolean = false;
-  constructor(private store: Store<Employee>, private authService: AuthService) { }
+  constructor(private store: Store<any>, private authService: AuthService) { }
 
   ngAfterViewInit(){
     $(document).ready(function () {

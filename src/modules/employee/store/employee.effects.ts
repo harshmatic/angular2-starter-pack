@@ -3,7 +3,6 @@ import { Store, Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
-import { Employee, initialEmployee } from './employee.model';
 import { EMPLOYEE_ACTIONS } from './employee.actions';
 import { EmployeeService } from '../services/employee.service';
 import { BaseService } from '../../../app/core/services/index';
@@ -18,8 +17,13 @@ export class EmployeeEffects {
     .ofType(EMPLOYEE_ACTIONS.GET_LIST)
     .switchMap(action =>
       this.EmployeeService.getEmployees()
-        .map(res => {
-          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_SUCCESS, payload: res })
+        .map((res:any) => {
+          if (res.status==304) {
+              this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_SUCCESS, payload: res.cacheData })
+           }else{
+              this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+           }
+          
         })
         .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED }))
     );
@@ -28,8 +32,13 @@ export class EmployeeEffects {
     .ofType(EMPLOYEE_ACTIONS.GET_LIST_PAGINATION)
     .switchMap(action =>
       this.EmployeeService.getEmployeePagination(action.payload)
-        .map(res => {
-          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_PAGINATION_SUCCESS,payload: {employees:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))}})
+        .map((res:any) => {
+          if (res.status==304) {
+              this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_PAGINATION_SUCCESS, payload: res.cacheData })
+           }else{
+              this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_PAGINATION_SUCCESS, payload: res.json() })
+           }
+          
         })
         .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED }))
     );
@@ -94,13 +103,18 @@ export class EmployeeEffects {
     .ofType(EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE)
    .switchMap(action => 
        this.EmployeeService.getEmployeesByPage(action.payload.search,action.payload.pageNum,action.payload.pageSize,action.payload.areaId)
-        .map(res =>{
-          this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE_SUCCESS, payload: res })
+        .map((res:any) =>{
+          if (res.status==304) {
+              this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE_SUCCESS, payload: res.cacheData })
+           }else{
+              this.store.dispatch({ type: EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE_SUCCESS, payload: res.json() })
+           }
+          
         })
         .catch(() => Observable.of({ type: EMPLOYEE_ACTIONS.ON_FAILED  }))
       );
   constructor(
-    private store: Store<Employee>,
+    private store: Store<any>,
     private actions$: Actions,
     private EmployeeService: EmployeeService,
     public http: Http

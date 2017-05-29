@@ -3,7 +3,6 @@ import { Store, Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
-import { Status, initialStatus } from './status.model';
 import { STATUS_ACTIONS } from './status.actions';
 import { StatusService } from '../services/status.service';
 import { BaseService } from '../../../app/core/services/index';
@@ -21,8 +20,13 @@ export class StatusEffects extends BaseService {
     .ofType(STATUS_ACTIONS.GET_LIST)
     .switchMap(action =>
       this.statusService.getStatusAll()
-        .map(res => {
-          this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+        .map((res:any) => {
+          if (res.status==304) {
+              this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_SUCCESS, payload: res.cacheData })
+           }else{
+              this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+           }
+      //this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
         })
         .catch(() => Observable.of({ type: STATUS_ACTIONS.ON_FAILED }))
     );
@@ -31,8 +35,12 @@ export class StatusEffects extends BaseService {
     .ofType(STATUS_ACTIONS.GET_LIST_BY_PAGINATION)
     .switchMap(action =>
       this.statusService.getStatusAllByPagination(action.payload)
-        .map(res => {
-          this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: {status:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
+        .map((res:any) => {
+         if (res.status==304) {
+              this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: res.cacheData })
+           }else{
+              this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: res.json() })
+           }
         })
         .catch(() => Observable.of({ type: STATUS_ACTIONS.ON_FAILED }))
     );
@@ -69,7 +77,7 @@ export class StatusEffects extends BaseService {
         .catch(() => Observable.of({ type: STATUS_ACTIONS.ON_FAILED }))
     );
   constructor(
-    private store: Store<Status>,
+    private store: Store<any>,
     private actions$: Actions,
     private statusService: StatusService,
     public http: Http

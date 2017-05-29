@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { OccurenceType } from '../store/occurenceType.model';
 import { OT_ACTIONS } from '../store/occurenceType.actions';
 import { Patch } from '../../patchReq.model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -13,7 +12,7 @@ import { OccurenceTypeService } from '../services/occurenceType.service';
   templateUrl: 'ot.component.html',
 })
 export class OccurenceTypeComponent implements OnInit {
-  occurenceType: OccurenceType[];
+  occurenceType: any[];
   occurenceTypeObj: any = {};
   patchReq: Patch[] = [];
   otForm: FormGroup;

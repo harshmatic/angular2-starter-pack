@@ -3,7 +3,6 @@ import { Store, Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
-import { Shift, initialShift } from './shift.model';
 import { SHIFT_ACTIONS } from './shift.actions';
 import { ShiftService } from '../services/shift.service';
 import { BaseService } from '../../../app/core/services/index';
@@ -21,8 +20,13 @@ export class ShiftEffects extends BaseService {
     .ofType(SHIFT_ACTIONS.GET_LIST)
    .switchMap(action => 
        this.ShiftService.getShifts()
-        .map(res =>{
-          this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_SUCCESS, payload: res })
+        .map((res:any) =>{
+          if (res.status==304) {
+              this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_SUCCESS, payload: res.cacheData })
+           }else{
+              this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+           }
+          //this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_SUCCESS, payload: res })
         })
         .catch(() => Observable.of({ type: SHIFT_ACTIONS.ON_FAILED }))
     );
@@ -31,8 +35,13 @@ export class ShiftEffects extends BaseService {
     .ofType(SHIFT_ACTIONS.GET_LIST_BY_PAGINATION)
     .switchMap(action =>
       this.ShiftService.getShiftsByPagination(action.payload)
-        .map(res => {
-          this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: {shift:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
+        .map((res:any) => {
+          if (res.status==304) {
+              this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: res.cacheData })
+           }else{
+              this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: res.json() })
+           }
+          //this.store.dispatch({ type: SHIFT_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: {shift:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
         })
         .catch(() => Observable.of({ type: SHIFT_ACTIONS.ON_FAILED }))
     );
@@ -69,7 +78,7 @@ export class ShiftEffects extends BaseService {
         .catch(() => Observable.of({ type: SHIFT_ACTIONS.ON_FAILED }))
     );
   constructor(
-    private store: Store<Shift>,
+    private store: Store<any>,
     private actions$: Actions,
     private ShiftService: ShiftService,
     public http: Http
