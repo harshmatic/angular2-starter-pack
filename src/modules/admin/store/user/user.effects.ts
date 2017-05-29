@@ -14,8 +14,12 @@ export class UserEffects{
     .ofType(USER_ACTIONS.GET_LIST)
    .switchMap(action => 
        this.userService.getUsers(action.payload)
-        .map(res =>{
-          this.store.dispatch({ type: USER_ACTIONS.GET_LIST_SUCCESS,  payload: {users:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))}})
+        .map((res:any)  => {
+           if (res.status==304) {
+              this.store.dispatch({ type: USER_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: USER_ACTIONS.GET_LIST_SUCCESS, payload: {users:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
+           }
         })
         .catch(() => Observable.of({ type: USER_ACTIONS.ON_FAILED  }))
       );
@@ -24,8 +28,12 @@ export class UserEffects{
     .ofType(USER_ACTIONS.GET_LIST_USER)
    .switchMap(action => 
        this.userService.getUsersList()
-        .map(res =>{
-          this.store.dispatch({ type: USER_ACTIONS.GET_LIST_SUCCESS,  payload: {users:res.json()}})
+        .map((res:any)  => {
+           if (res.status==304) {
+              this.store.dispatch({ type: USER_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: USER_ACTIONS.GET_LIST_SUCCESS, payload: {users:res.json()} })
+           }
         })
         .catch(() => Observable.of({ type: USER_ACTIONS.ON_FAILED  }))
       );
@@ -34,8 +42,13 @@ export class UserEffects{
     .ofType(USER_ACTIONS.GET)
    .switchMap(action => 
        this.userService.getUserByID(action.payload.id)
-        .map(res =>{
-          this.store.dispatch({ type: USER_ACTIONS.GET_SUCCESS, payload: res})
+        .map((res:any)  => {
+           if (res.status==304) {
+              this.store.dispatch({ type: USER_ACTIONS.GET_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: USER_ACTIONS.GET_SUCCESS, payload: res.json() })
+           }
+          //this.store.dispatch({ type: USER_ACTIONS.GET_SUCCESS, payload: res})
         })
         .catch(() => Observable.of({ type: USER_ACTIONS.ON_FAILED  }))
       );
@@ -45,8 +58,12 @@ export class UserEffects{
     .ofType(USER_ACTIONS.GET_USER_ROLE)
    .switchMap(action => 
        this.userService.getUserRoles(action.payload.id)
-        .map(res =>{
-          this.store.dispatch({ type: USER_ACTIONS.GET_USER_ROLE_SUCCESS, payload: res})
+        .map((res:any)  => {
+           if (res.status==304) {
+              this.store.dispatch({ type: USER_ACTIONS.GET_USER_ROLE_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: USER_ACTIONS.GET_USER_ROLE_SUCCESS, payload: res.json() })
+           }
         })
         .catch(() => Observable.of({ type: USER_ACTIONS.ON_FAILED  }))
       );
