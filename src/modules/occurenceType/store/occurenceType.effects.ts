@@ -3,7 +3,6 @@ import { Store, Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
-import { OccurenceType, initialOccurenceType } from './occurenceType.model';
 import { OT_ACTIONS } from './occurenceType.actions';
 import { OccurenceTypeService } from '../services/occurenceType.service';
 import { BaseService } from '../../../app/core/services/index';
@@ -21,8 +20,12 @@ export class OccurenceTypeEffects extends BaseService {
     .ofType(OT_ACTIONS.GET_LIST)
     .switchMap(action =>
       this.occurenceTypeService.getOts()
-        .map(res => {
-          this.store.dispatch({ type: OT_ACTIONS.GET_LIST_SUCCESS, payload: res })
+        .map((res:any) => {
+          if (res.status==304) {
+              this.store.dispatch({ type: OT_ACTIONS.GET_LIST_SUCCESS, payload: res.cacheData })
+           }else{
+              this.store.dispatch({ type: OT_ACTIONS.GET_LIST_SUCCESS, payload: res.json() })
+           }
         })
         .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED }))
     );
@@ -31,8 +34,13 @@ export class OccurenceTypeEffects extends BaseService {
     .ofType(OT_ACTIONS.GET_LIST_BY_PAGINATION)
     .switchMap(action =>
       this.occurenceTypeService.getOtsByPagination(action.payload)
-        .map(res => {
-          this.store.dispatch({ type: OT_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: {ot:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
+        .map((res:any) => {
+          if (res.status==304) {
+              this.store.dispatch({ type: OT_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: res.cacheData })
+           }else{
+              this.store.dispatch({ type: OT_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: res.json() })
+           }
+          //this.store.dispatch({ type: OT_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS, payload: {ot:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
         })
         .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED }))
     );
@@ -69,7 +77,7 @@ export class OccurenceTypeEffects extends BaseService {
         .catch(() => Observable.of({ type: OT_ACTIONS.ON_FAILED }))
     );
   constructor(
-    private store: Store<OccurenceType>,
+    private store: Store<any>,
     private actions$: Actions,
     private occurenceTypeService: OccurenceTypeService,
     public http: Http

@@ -12,7 +12,7 @@ export function EmployeeReducer(state: any = initialState, action: Action) {
     case EMPLOYEE_ACTIONS.GET_LIST_SUCCESS:
          return Object.assign({},state,{employeeList:action.payload});
     case EMPLOYEE_ACTIONS.GET_LIST_PAGINATION_SUCCESS:
-        return Object.assign({},state,{employeeList:action.payload.employees,pagination:action.payload.pagination});
+        return Object.assign({},state,{employeeList:action.payload,pagination:action.payload.pagination});
     case EMPLOYEE_ACTIONS.GET_LIST_SUCCESS_BY_ID:
         return action.payload;
     case EMPLOYEE_ACTIONS.ON_FAILED:
