@@ -3,7 +3,6 @@ import { Store, Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
-import { Dashboard, initialCounter } from './dashboard.model';
 import { DASHBOARD_ACTIONS } from './dashboard.actions';
 import { DashboardService } from '../services/dashboard.service';
 import { BaseService } from '../../../app/core/services/index';
@@ -39,7 +38,7 @@ export class DashboardEffects extends BaseService {
   //     );
 
   constructor(
-    private store: Store<Dashboard>,
+    private store: Store<any>,
     private actions$: Actions,
     private dashboardService: DashboardService,
     public http: Http

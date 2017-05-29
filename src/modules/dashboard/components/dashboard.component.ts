@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Dashboard } from '../store/dashboard.model';
 import { DASHBOARD_ACTIONS } from '../store/dashboard.actions';
 import { EMPLOYEE_ACTIONS } from '../../employee/store/employee.actions';
 import { OB_ACTIONS } from '../../occurenceBook/store/occurenceBook.actions';
@@ -26,7 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   userDetail: any
   isValid = true;
   officerPageNum: number = 0;
-  dashboard: Dashboard[];
+  dashboard: any[];
   officers: any[] = [];
   date: any;
   time: any;
@@ -39,7 +38,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   asyncOb: Observable<any>;
   private subscriptions: Subscription;
   locations: any;
-  constructor(private store: Store<Dashboard>, private authService: AuthService) { }
+  constructor(private store: Store<any>, private authService: AuthService) { }
   ngOnInit() {
     
     this.userDetail = this.authService.getCurrentUser();

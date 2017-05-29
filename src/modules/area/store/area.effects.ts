@@ -3,7 +3,6 @@ import { Store, Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { empty } from 'rxjs/observable/empty';
 import { Observable } from 'rxjs/Observable';
-import { Area, initialArea } from './area.model';
 import { AREA_ACTIONS } from './area.actions';
 import {  AreaService } from '../services/area.service';
 import { BaseService } from '../../../app/core/services/index';
@@ -59,7 +58,7 @@ export class AreaEffects extends BaseService {
         .catch(() => Observable.of({ type: AREA_ACTIONS.ON_FAILED  }))
       );
   constructor(
-    private store: Store<Area>,
+    private store: Store<any>,
     private actions$: Actions,
     private areaService: AreaService,
     public http: Http

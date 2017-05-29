@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Employee } from '../../../employee/store/employee.model';
 import { EMPLOYEE_ACTIONS } from '../../../employee/store/employee.actions';
 import { DEPARTMENT_ACTIONS } from '../../../department/store/department.actions';
 import { OccurenceBookService } from '../../../occurenceBook/services/occurenceBook.service';
@@ -53,7 +52,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
   public obId; any;
   private sub: Subscription = new Subscription();
   private subscriptions: Subscription = new Subscription();
-  constructor(private store: Store<Employee>, private formBuilder: FormBuilder,
+  constructor(private store: Store<any>, private formBuilder: FormBuilder,
     private occurenceBookService: OccurenceBookService,
     private router: Router, private route: ActivatedRoute,
     private messageService: MessageService) { }
