@@ -11,7 +11,7 @@ export function DesignationReducer(state: any = initialState, action: Action) {
   switch (action.type) {
    
     case DESIGNATION_ACTIONS.GET_LIST_SUCCESS:
-         return Object.assign({},state,{designationList:action.payload.departments});
+         return Object.assign({},state,{designationList:action.payload});
     case DESIGNATION_ACTIONS.GET_LIST_PAGINATION_SUCCESS:
         return Object.assign({},state,{designationList:action.payload.designations,pagination:action.payload.pagination});
     case DESIGNATION_ACTIONS.ON_FAILED:
