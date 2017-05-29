@@ -18,10 +18,11 @@ export class OccurenceBookEffects {
    .switchMap(action => 
        this.occurenceBookService.getObs(action.payload.search,action.payload.pageNum,action.payload.pageSize,action.payload.areaId)
         .map(res =>{
-          this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload:res })
-        })
-        .catch((err):any=> {
-          this.store.dispatch({type: OB_ACTIONS.GET_LIST_SUCCESS, payload:err.cacheData })
+           if (res.status==304) {
+              this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: OB_ACTIONS.GET_LIST_SUCCESS, payload:res })
+           }
         })
     );
     @Effect({ dispatch: false })
