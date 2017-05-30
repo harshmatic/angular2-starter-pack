@@ -20,14 +20,20 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 
 import { ShiftService } from './shift.service';
-import { MessageService } from '../../../app/core/services/index';
+import { MessageService,EtagService } from '../../../app/core/services/index';
 
 class MessageServiceStub {
     addMessage(message : any) {
         return;
     }
 }
-
+class EtagServiceStub {
+    getListWithEtag(url:string) { 
+      return new Observable<any>((observer:any) => {
+           observer.next([]);
+      });
+    }
+}
 ////////  Tests  /////////////
 describe('Service: ShiftService ', () => {
 
@@ -37,7 +43,8 @@ describe('Service: ShiftService ', () => {
       providers: [
         ShiftService,
         { provide: XHRBackend, useClass: MockBackend },
-        { provide: MessageService, useClass: MessageServiceStub},
+        { provide: MessageService, useClass: MessageServiceStub}, 
+        { provide: EtagService, useClass: EtagServiceStub}
       ]
     })
       .compileComponents();
@@ -53,7 +60,7 @@ describe('Service: ShiftService ', () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
         service.getShifts().subscribe((res) => {
-          expect(res.json().data.length).toBe(0);
+          expect(res.length).toBe(0);
         });
   }));
    it('it should check addShift method',

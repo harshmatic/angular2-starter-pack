@@ -20,14 +20,20 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 
 import { StatusService } from './status.service';
-import { MessageService } from '../../../app/core/services/index';
+import { MessageService,EtagService } from '../../../app/core/services/index';
 
 class MessageServiceStub {
     addMessage(message : any) {
         return;
     }
 }
-
+class EtagServiceStub {
+    getListWithEtag(url:string) { 
+      return new Observable<any>((observer:any) => {
+           observer.next([]);
+      });
+    }
+}
 ////////  Tests  /////////////
 describe('Service: StatusService ', () => {
 
@@ -37,7 +43,8 @@ describe('Service: StatusService ', () => {
       providers: [
         StatusService,
         { provide: XHRBackend, useClass: MockBackend },
-        { provide: MessageService, useClass: MessageServiceStub},
+        { provide: MessageService, useClass: MessageServiceStub}, 
+        { provide: EtagService, useClass: EtagServiceStub}
       ]
     })
       .compileComponents();

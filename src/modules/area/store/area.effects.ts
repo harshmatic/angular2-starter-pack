@@ -8,59 +8,40 @@ import {  AreaService } from '../services/area.service';
 import { BaseService } from '../../../app/core/services/index';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
-
-/// Define the appi endpoint here
-const CONTEXT = 'area';
-
 @Injectable()
-export class AreaEffects extends BaseService {
+export class AreaEffects {
 
   @Effect({ dispatch: false })
   private getListArea$ = this.actions$
     .ofType(AREA_ACTIONS.GET_LIST)
    .switchMap(action => 
        this.areaService.getAreas()
-        .map(res =>{
-          this.store.dispatch({ type: AREA_ACTIONS.GET_LIST_SUCCESS, payload: res})
+        .map((res:any)  => {
+           if (res.status==304) {
+              this.store.dispatch({ type: AREA_ACTIONS.GET_LIST_SUCCESS, payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: AREA_ACTIONS.GET_LIST_SUCCESS, payload:res.json() })
+           }
         })
         .catch(() => Observable.of({ type: AREA_ACTIONS.ON_FAILED  }))
       );
- @Effect({ dispatch: false })
-  private addArea$ = this.actions$
-    .ofType(AREA_ACTIONS.ADD)
-   .switchMap(action => {
-    return this.areaService.addArea(action.payload)
-        .map(res =>{
-          this.store.dispatch({ type: AREA_ACTIONS.ADD_SUCCESS, payload: res.json() })
+   @Effect({ dispatch: false })
+  private getListPagintaion$ = this.actions$
+    .ofType(AREA_ACTIONS.GET_LIST_PAGINATION)
+    .switchMap(action =>
+      this.areaService.getAreaPagination(action.payload)
+        .map((res:any) => {
+           if (res.status==304) {
+              this.store.dispatch({ type: AREA_ACTIONS.GET_LIST_SUCCESS,  payload:res.cacheData })
+           }else{
+              this.store.dispatch({ type: AREA_ACTIONS.GET_LIST_PAGINATION_SUCCESS, payload:{areaList:res.json(),pagination:JSON.parse(res.headers.get('X-Pagination'))} })
+           }
         })
-        .catch(() => Observable.of({ type: AREA_ACTIONS.ON_FAILED  }))
-   }
-       
-      );
-  @Effect({ dispatch: false })
-  private updateArea$ = this.actions$
-    .ofType(AREA_ACTIONS.UPDATE)
-   .switchMap(action => 
-        this.areaService.saveArea(action.payload.id,action.payload.updates)
-        .map(res =>{
-          this.store.dispatch({ type: AREA_ACTIONS.UPDATE_SUCCESS, payload: res.json() })
-        })
-        .catch(() => Observable.of({ type: AREA_ACTIONS.ON_FAILED  }))
-      );
-  @Effect({ dispatch: false })
-  private deleteArea$ = this.actions$
-    .ofType(AREA_ACTIONS.DELETE)
-   .switchMap(action => 
-       this.areaService.deleteArea(action.payload)
-        .map(res =>{
-          this.store.dispatch({ type: AREA_ACTIONS.DELETE_SUCCESS, payload: res.json() })
-        })
-        .catch(() => Observable.of({ type: AREA_ACTIONS.ON_FAILED  }))
-      );
+        .catch(() => Observable.of({ type: AREA_ACTIONS.ON_FAILED }))
+    );
   constructor(
     private store: Store<any>,
     private actions$: Actions,
     private areaService: AreaService,
-    public http: Http
-  ) {super(http,CONTEXT); }
+  ) { }
 }

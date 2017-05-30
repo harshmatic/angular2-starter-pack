@@ -104,7 +104,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
     this.store.dispatch({ type: AREA_ACTIONS.GET_LIST });
     this.asyncArea = this.store.select('area');
     this.asyncArea.subscribe((res: any) => {
-      this.areas = res;
+      this.areas = res.areaList;
     });
 
     this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST });

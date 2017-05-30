@@ -73,9 +73,8 @@ export class EmployeeSaveComponent implements OnInit {
 
         }
 
-
         this.store.select('area').subscribe((res: any) => {
-            this.areaList = res;
+            this.areaList = res.areaList;
         });
         this.store.select('shift').subscribe((res: any) => {
             this.shiftList = res;

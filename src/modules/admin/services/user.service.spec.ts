@@ -20,14 +20,20 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 
 import { UserService } from './user.service';
-import { MessageService } from '../../../app/core/services/index';
+import { MessageService,EtagService } from '../../../app/core/services/index';
 
 class MessageServiceStub {
     addMessage(message : any) {
         return;
     }
 }
-
+class EtagServiceStub {
+    getListWithEtag(url:string) { 
+      return new Observable<any>((observer:any) => {
+           observer.next([]);
+      });
+    }
+}
 ////////  Tests  /////////////
 describe('Service: UserService ', () => {
 
@@ -38,6 +44,7 @@ describe('Service: UserService ', () => {
         UserService,
         { provide: XHRBackend, useClass: MockBackend },
         { provide: MessageService, useClass: MessageServiceStub},
+        { provide: EtagService, useClass: EtagServiceStub},
       ]
     })
       .compileComponents();
@@ -51,7 +58,7 @@ describe('Service: UserService ', () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
         service.getUsers({pageNumber:1,pageSize:10}).subscribe((res) => {
-          expect(res.json().data.length).toBe(0);
+          expect(res.length).toBe(0);
         });
   }));
   it('it should check getUserByID method',
@@ -59,7 +66,7 @@ describe('Service: UserService ', () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
         service.getUserByID().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+          expect(res.length).toBe(0);
         });
   }));
   it('it should check getUserRoles method',
@@ -67,7 +74,7 @@ describe('Service: UserService ', () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
         service.getUserRoles().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+          expect(res.length).toBe(0);
         });
   }));
   it('it should check addUserRole method',

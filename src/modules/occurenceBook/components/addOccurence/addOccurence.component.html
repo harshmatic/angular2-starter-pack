@@ -33,7 +33,7 @@
                 <label for="exampleSelect1">Area<span class="required"> * </span></label>
                 <select formControlName="areaID" name="areaName" class="form-control" id="exampleSelect1" [class.invalid]="!jobForm.controls.areaID.valid"> 
                     <option value="" disabled selected>Select Area</option>
-                    <option *ngFor="let option of asyncArea | async" [value]="option.areaID">{{option.areaName}}</option>
+                    <option *ngFor="let option of area" [value]="option.areaID">{{option.areaName}}</option>
                 </select>
             </div>
         </div>

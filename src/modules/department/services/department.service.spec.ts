@@ -20,14 +20,20 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 
 import { DepartmentService } from './department.service';
-import { MessageService } from '../../../app/core/services/index';
+import { MessageService,EtagService } from '../../../app/core/services/index';
 
 class MessageServiceStub {
     addMessage(message : any) {
         return;
     }
 }
-
+class EtagServiceStub {
+    getListWithEtag(url:string) { 
+      return new Observable<any>((observer:any) => {
+           observer.next(true);
+      });
+    }
+}
 ////////  Tests  /////////////
 describe('Service: DepartmentService ', () => {
 
@@ -37,7 +43,9 @@ describe('Service: DepartmentService ', () => {
       providers: [
         DepartmentService,
         { provide: XHRBackend, useClass: MockBackend },
-        { provide: MessageService, useClass: MessageServiceStub},
+        { provide: MessageService, useClass: MessageServiceStub},  
+        { provide: EtagService, useClass: EtagServiceStub},
+
       ]
     })
       .compileComponents();
@@ -51,7 +59,7 @@ describe('Service: DepartmentService ', () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
         service.getDepartments().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+          expect(res.length).toBe(0);
         });
   }));
   it('it should check addDepartment method',
@@ -91,7 +99,7 @@ describe('Service: DepartmentService ', () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
         service.getDepartmentPagination({pageNumber:1,pageSize:10}).subscribe((res) => {
-          expect(res.json().data.length).toBe(0);
+          expect(res.length).toBe(0);
         });
   }));
   

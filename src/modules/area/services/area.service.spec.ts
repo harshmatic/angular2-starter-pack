@@ -20,14 +20,20 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 
 import { AreaService } from './area.service';
-import { MessageService } from '../../../app/core/services/index';
+import { MessageService,EtagService } from '../../../app/core/services/index';
 
 class MessageServiceStub {
     addMessage(message : any) {
         return;
     }
 }
-
+class EtagServiceStub {
+    getListWithEtag(url:string) { 
+      return new Observable<any>((observer:any) => {
+           observer.next([]);
+      });
+    }
+}
 ////////  Tests  /////////////
 describe('Service: AreaService ', () => {
 
@@ -38,6 +44,7 @@ describe('Service: AreaService ', () => {
         AreaService,
         { provide: XHRBackend, useClass: MockBackend },
         { provide: MessageService, useClass: MessageServiceStub},
+        { provide: EtagService, useClass: EtagServiceStub},
       ]
     })
       .compileComponents();
@@ -51,7 +58,7 @@ describe('Service: AreaService ', () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
         service.getAreas().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+          expect(res.length).toBe(0);
         });
   }));
   it('it should check addArea method',

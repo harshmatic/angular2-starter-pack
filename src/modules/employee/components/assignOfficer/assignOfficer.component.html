@@ -30,7 +30,7 @@
                         <label for="area">Area<span class="required"> * </span></label>
                         <select disabled='true' formControlName="areaID" name="areaName" class="form-control" id="area" [class.invalid]="!assignOfficerForm.controls.areaID.valid" [(ngModel)]="selectedArea" (change)="selectDept(assignOfficerForm)"> 
                             <option value="" disabled selected>select Area</option>
-                            <option *ngFor="let option of asyncArea | async" [value]="option.areaID">{{option.areaName}}</option>
+                            <option *ngFor="let option of areas" [value]="option.areaID">{{option.areaName}}</option>
                         </select>
                     </div>
                 </div>

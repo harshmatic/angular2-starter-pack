@@ -20,14 +20,20 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 
 import { ActivityService } from './activity.service';
-import { MessageService } from '../../../app/core/services/index';
+import { MessageService,EtagService } from '../../../app/core/services/index';
 
 class MessageServiceStub {
     addMessage(message : any) {
         return;
     }
 }
-
+class EtagServiceStub {
+    getListWithEtag(url:string) { 
+      return new Observable<any>((observer:any) => {
+           observer.next([]);
+      });
+    }
+}
 ////////  Tests  /////////////
 describe('Service: ActivityService ', () => {
 
@@ -38,6 +44,7 @@ describe('Service: ActivityService ', () => {
         ActivityService,
         { provide: XHRBackend, useClass: MockBackend },
         { provide: MessageService, useClass: MessageServiceStub},
+        { provide: EtagService, useClass: EtagServiceStub},
       ]
     })
       .compileComponents();
@@ -51,7 +58,7 @@ describe('Service: ActivityService ', () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
         service.getActivity().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+          expect(res.length).toBe(0);
         });
   }));
   it('it should check getActivityByOB method',
@@ -59,7 +66,7 @@ describe('Service: ActivityService ', () => {
         let resp = new Response(new ResponseOptions({ status: 200, body: { data: [] } }));
         mockBackend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
         service.getActivityByOB().subscribe((res) => {
-          expect(res.data.length).toBe(0);
+          expect(res.length).toBe(0);
         });
   }));
 });

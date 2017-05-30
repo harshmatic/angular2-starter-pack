@@ -79,7 +79,7 @@ export class AddOccurenceComponent implements OnInit {
 
     this.asyncArea = this.store.select('area');
     this.asyncArea.subscribe((res: any) => {
-      this.area = res;
+      this.area = res.areaList;
     });
     this.asyncdepartment = this.store.select('department');
     this.asyncdepartment.subscribe((res: any) => {

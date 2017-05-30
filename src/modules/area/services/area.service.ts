@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 /** Module Level Dependencies */
-import { BaseService } from '../../../app/core/services/index';
-import { MessageService } from '../../../app/core/services/index';
+import { BaseService,MessageService, EtagService } from '../../../app/core/services/index';
 /** Context for service calls */
 const CONTEXT = 'areas/';
 
@@ -15,16 +14,21 @@ const CONTEXT = 'areas/';
 @Injectable()
 export class AreaService extends BaseService {
 
-    constructor(public http: Http, router: Router,messageService: MessageService) {
+    constructor(public http: Http, router: Router,messageService: MessageService, public etagService:EtagService) {
         super(http,CONTEXT, router,messageService);
     }
     // Get All
     getAreas() {
-        return this.getList$(CONTEXT, 0, 0, true).map(res => res.json());
+        let url = CONTEXT;
+        return  this.etagService.getListWithEtag(url)
+    }
+    getAreaPagination(payload) {
+        let url = CONTEXT+"?pageNumber="+payload.pageNumber+"&pageSize="+payload.pageSize;
+        return  this.etagService.getListWithEtag(url)
     }
     // Add One
     addArea(area: any) {
-        return this.post$(CONTEXT, area).map(res => res.json());
+        return this.post$(CONTEXT, area, true).map(res => res.json());
     }
     //Update One
     saveArea(id: any, area: any) {
@@ -32,11 +36,11 @@ export class AreaService extends BaseService {
     }
     // Delete One
     deleteArea(id: any) {
-        return this.delete$(CONTEXT + id).map(res => res.json());
+        return this.delete$(CONTEXT + id,true).map(res => res.json());
     }
     // Get One
     getArea(id: any) {
-        return this.get$(CONTEXT + id).map(res => res.json());
+        return this.get$(CONTEXT + id,true).map(res => res.json());
     }
 
 }
