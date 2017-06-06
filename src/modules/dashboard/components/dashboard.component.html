@@ -136,67 +136,9 @@
     <!--Stat cards ends here-->
 
 
-    <!-------------------- Jobs in Progress ------------------------>
-    <div class="row cards col-md-7 noMobilePadding noDesktopLeftPadding">
-                <div class="col-xs-12 mapCard noDesktopPadding">
-            <h4>Jobs in Progress</h4>
-            <!--Map Card-->
-            <div class="mapJobs">
-            <!--<div class="mapJobs">
-                <div class="jobMarkers">
-                    <span class="criticalJob marker"></span>
-                    <span class="criticalJob marker"></span>
-                    <span class="criticalJob marker"></span>
-                    <span class="majorJob marker"></span>
-                    <span class="majorJob marker"></span>
-                    <span class="majorJob marker"></span>
-                    <span class="minorJob marker"></span>
-                    <span class="minorJob marker"></span>
-                    <span class="minorJob marker"></span>
-                    <span class="majorJob marker"></span>
-                </div>
-                <div class="row jobContentCard">
-                    <div class="col-xs-8">
-                        <h3>Armed Robbery In Progress</h3>
-                        <span>Nanyuki-Rumuruti Rd, Nanyuki, Kenya</span>
-                        <div><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Robert Downey
-                            Jr
-                        </div>
-                    </div>
-                    <div class="col-xs-4">
-                        <h3>03:12</h3>
-                        <span>Duty Hours</span>
-                    </div>
-                </div>
-                <div class="closeBtn jobContentCard"><i class="material-icons">&#xE5CD;</i></div>
-            </div>-->
-            <!--<agm-map [latitude]="locations.lattitude" [longitude]="locations.longitude" [zoom]="locations.mapZoomLevel">-->
-            <agm-map [latitude]="18.550335" [longitude]="73.809956" [zoom]="11">
-                <agm-marker *ngFor="let location of obs" [latitude]="location.lattitude" [longitude]="location.longitude" [iconUrl]="applyIcon(location.priority)">
-                    <agm-info-window [disableAutoPan]="true" >
-                        <div class="row jobContentCard" style="display:block;">
-                                    <div class="col-xs-8">
-                                        <h3>{{location.natureOfOccurrence}}</h3>
-                                        <span>{{location.location}}</span>
-                                        <div><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">Robert
-                                            {{location.mstEmployee?location.mstEmployee.firstName + " " + location.mstEmployee.lastName : "Not Assigned"}}
-                                        </div>
-                                    </div>
-                                    <!--<div class="col-xs-4">
-                                        <h3>03:12</h3>
-                                        <span>Duty Hours</span>
-                                    </div>-->
-                                </div>
-                        
-                    </agm-info-window>
-                </agm-marker>
-            </agm-map>
-        </div>
-    </div>
-    </div>
-    <!--jobs in progress ends here-->
+   
 
-    <div class="row cards col-md-5 noMobilePadding noDesktopRightPadding">
+    <div class="row cards col-md-12 noMobilePadding noDesktopRightPadding">
         <div class="col-xs-12 noDesktopPadding">
             <h4>Active Jobs</h4>
             <div class="activeJobs ">

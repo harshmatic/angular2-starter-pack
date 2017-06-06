@@ -43,33 +43,7 @@
 					<i class="material-icons rightIcon">location_on</i>
 				</div>
 			</div>
-		</div>-->
-		<div class="whitePanel">
-			<div class="row">
-				<div class="col-xs-12">
-					<agm-map [latitude]="obs.lattitude" [longitude]="obs.longitude" [zoom]="11">
-						<agm-marker [latitude]="obs.lattitude" [longitude]="obs.longitude" [iconUrl]="applyIcon(obs.priority)">
-							<agm-info-window [disableAutoPan]="true" >
-                        <div class="row jobContentCard" style="display:block;">
-                                    <div class="col-xs-8">
-                                        <h3>{{obs.natureOfOccurrence}}</h3>
-                                        <span>{{obs.location}}</span>
-                                        <div><img class="img-responsive imgBadge" src="/assets/styles/images/badge.png" alt="badge">
-                                            {{obs.mstEmployee?obs.mstEmployee.firstName + " " + obs.mstEmployee.lastName : "Not Assigned"}}
-                                        </div>
-                                    </div>
-                                    <!--<div class="col-xs-4">
-                                        <h3>03:12</h3>
-                                        <span>Duty Hours</span>
-                                    </div>-->
-                                </div>
-                        
-                    </agm-info-window>
-						</agm-marker>
-					</agm-map>
-				</div>
-			</div>
-		</div>
+
 		<div class="whitePanel">
 			<div class="row">
 				<div class="col-xs-10">
@@ -82,7 +56,7 @@
 			</div>
 		</div>
 
-		<!--<div class="whitePanel noBottomPadding">
+		<div class="whitePanel noBottomPadding">
 			<div class="row">
 				<div class="col-xs-12 marginBottomDetail">
 					<h6 class="crimeUnitTimeSpan">Accused</h6>
