@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { Observable } from 'rxjs/Observable';
 import { combineLatest } from 'rxjs/observable/combineLatest';
 import * as fromRouter from '@ngrx/router-store';
-import { localStorageSync } from 'ngrx-store-localstorage';
+import { localStorageSync,LocalStorageConfig } from 'ngrx-store-localstorage';
 let uuid = require('uuid');
 import 'rxjs/add/operator/filter';
 
@@ -64,13 +64,13 @@ export interface RootState {
  */
 
 const reducers = moduleReducers;
-
+const localstorage1 : LocalStorageConfig={keys: ['session'],rehydrate:true};
 const developmentReducer = compose(
   storeFreeze,
-  localStorageSync(['session'], true),
+  localStorageSync(localstorage1),
   combineReducers)(reducers);
 const productionReducer = compose(
-  localStorageSync(['session'], true),
+  localStorageSync(localstorage1),
   combineReducers)(reducers);
 
 export function reducer(state: any, action: any) {

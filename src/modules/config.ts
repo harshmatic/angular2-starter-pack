@@ -36,7 +36,8 @@ export const routing = [
 
 ];
 
-export const ApiBase = "http://localhost:6058/api/";
+export const ApiBase = "http://192.168.101.21:6059/api/";
+//export const ApiBase = "/api/";
 export const ApiBaseAuthUrl = "auth/token";
 
 export interface RootState {
