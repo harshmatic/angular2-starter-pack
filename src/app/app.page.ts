@@ -17,8 +17,9 @@ export class AppPage implements OnInit {
     public navMenu: any = [{ 'Name': 'Dashboard', 'Routerlink': '/dashboard', 'Authorize': [] },
     { 'Name': 'Occurrence Book', 'Routerlink': '/jobs', 'Authorize': ['OB.R'] },
     { 'Name': 'Officer Management', 'Routerlink': '/officers', 'Authorize': ['EP.R'] },
-    { 'Name': 'Inventory', 'Routerlink': '#', 'Authorize': [] },
-    { 'Name': 'Reports', 'Routerlink': '/reports', 'Authorize': [] }];
+    //{ 'Name': 'Inventory', 'Routerlink': '#', 'Authorize': [] },
+    //{ 'Name': 'Reports', 'Routerlink': '/reports', 'Authorize': [] }
+    ];
     public cssClass: any = 'mainCSS';
     msgs: Message[] = [];
     userDetail: any;
