@@ -83,11 +83,11 @@ export class AddOccurenceComponent implements OnInit {
     });
     this.asyncdepartment = this.store.select('department');
     this.asyncdepartment.subscribe((res: any) => {
-      this.departments = res;
+      this.departments = res.departmentList;
     });
     this.asyncOT = this.store.select('occurenceType');
     this.asyncOT.subscribe((res: any) => {
-      this.occurrenceTypes = res;
+      this.occurrenceTypes = res.ot;
     });
 
 

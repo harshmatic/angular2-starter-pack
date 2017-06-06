@@ -20,7 +20,7 @@
 					<div class="col-xs-8 col-md-3">
 						<select [ifAuthorizeDisable]="['OB.U']" class="form-control detailDropdown" name="status" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
 
-							<option *ngFor="let option of asyncStatus | async" [value]="option.statusID">{{option.statusName}}</option>
+							<option *ngFor="let option of status" [value]="option.statusID">{{option.statusName}}</option>
 							<!--<option [value]="">Solved</option>-->
 						</select>
 				

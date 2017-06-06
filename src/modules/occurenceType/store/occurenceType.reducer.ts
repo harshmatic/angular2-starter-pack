@@ -9,7 +9,7 @@ let initialState = { ot: [], pagination: {} }
 export function OccurenceTypeReducer(state: any = initialState, action: Action) {
     switch (action.type) {
         case OT_ACTIONS.GET_LIST_SUCCESS:
-            return action.payload;
+        return Object.assign({}, state, { ot: action.payload });
         case OT_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS:
             return Object.assign({}, state, { ot: action.payload, pagination: action.payload.pagination });
         case OT_ACTIONS.ON_FAILED:

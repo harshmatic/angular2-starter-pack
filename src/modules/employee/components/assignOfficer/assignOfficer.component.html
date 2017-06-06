@@ -20,7 +20,7 @@
                         <label for="exampleSelect1">Department<span class="required"> * </span></label>
                         <select formControlName="departmentID" name="dept" class="form-control" id="exampleSelect1" [(ngModel)]="selectedDept" [class.invalid]="!assignOfficerForm.controls.departmentID.valid"  (change)="selectDept(assignOfficerForm)"> 
                             <option value="" disabled selected>Select Department</option>
-                            <option *ngFor="let option of asyncdepartment | async" [value]="option.departmentID">{{option.departmentName}}</option>
+                            <option *ngFor="let option of departments" [value]="option.departmentID">{{option.departmentName}}</option>
                         </select>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                         <label for="exampleSelect1">Select Rank<span class="required"> * </span></label>
                         <select formControlName="rankID" class="form-control" name="rank" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.rankID.valid" [(ngModel)]="selectedRank" (change)="selectDept(assignOfficerForm)">
                             <option value="" disabled selected>Select Rank</option>
-                            <option *ngFor="let option of asyncRank | async" [value]="option.designationID">{{option.designationName}}</option>
+                            <option *ngFor="let option of ranks" [value]="option.designationID">{{option.designationName}}</option>
                         </select>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                         <label for="exampleSelect1">Select Officer<span class="required"> * </span></label>
                         <select formControlName="officerID" class="form-control" name="officer" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.officerID.valid" [(ngModel)]="selectedOfficer"> 
                             <option value="" disabled selected>Select Officer</option>
-                            <option *ngFor="let option of asyncOfficer | async" [value]="option.employeeID">{{option.firstName +" "+ option.lastName}}</option>
+                            <option *ngFor="let option of officers" [value]="option.employeeID">{{option.firstName +" "+ option.lastName}}</option>
                         </select>
                     </div>
                 </div>

@@ -43,7 +43,7 @@
                 <label for="Category">Department<span class="required"> * </span></label>
                 <select formControlName="departmentID" name="dept" class="form-control" id="Category" [class.invalid]="!jobForm.controls.departmentID.valid">  
                     <option value="" disabled selected>Select Department</option>
-                    <option *ngFor="let option of asyncdepartment | async" [value]="option.departmentID">{{option.departmentName}}</option>
+                    <option *ngFor="let option of departments " [value]="option.departmentID">{{option.departmentName}}</option>
                 </select>
             </div>
         </div>
@@ -53,7 +53,7 @@
                 <label for="exampleSelect1">Category<span class="required"> * </span></label>
                 <select formControlName="obTypeID" name="occurenceType" class="form-control" id="exampleSelect1" [class.invalid]="!jobForm.controls.obTypeID.valid"> 
                     <option value="" disabled selected>Select Category</option>
-                    <option *ngFor="let option of asyncOT | async" [value]="option.obTypeID">{{option.obTypeName}}</option>
+                    <option *ngFor="let option of occurrenceTypes" [value]="option.obTypeID">{{option.obTypeName}}</option>
                 </select>
             </div>
         </div>

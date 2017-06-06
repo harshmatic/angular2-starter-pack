@@ -98,7 +98,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
     this.store.dispatch({ type: DEPARTMENT_ACTIONS.GET_LIST });
     this.asyncdepartment = this.store.select('department');
     this.asyncdepartment.subscribe((res: any) => {
-      this.departments = res;
+      this.departments = res.departmentList;
     });
 
     this.store.dispatch({ type: AREA_ACTIONS.GET_LIST });
@@ -110,7 +110,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
     this.store.dispatch({ type: DESIGNATION_ACTIONS.GET_LIST });
     this.asyncRank = this.store.select('designation');
     this.asyncRank.subscribe((res: any) => {
-      this.ranks = res;
+      this.ranks = res.designationList;
     });
   }
   getOfficer() {
@@ -123,7 +123,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
     this.asyncOfficer = this.store.select('employee');
     this.asyncOfficer.subscribe((res: any) => {
       if (Object.keys(res).length > 0) {
-        this.officers = res;
+        this.officers = res.employeeList;
       }
 
     });
@@ -138,7 +138,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       this.asyncOfficer = this.store.select('employee');
       this.asyncOfficer.subscribe((res: any) => {
         if (Object.keys(res).length > 0) {
-          this.officers = res;
+          this.officers = res.employeeList;
         }
 
       });

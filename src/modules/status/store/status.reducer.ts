@@ -9,9 +9,8 @@ let initialState={status:[],pagination:{}}
 export function StatusReducer(state: any = initialState, action: Action) {
     switch (action.type) {
         case STATUS_ACTIONS.GET_LIST_SUCCESS:
-            return action.payload;
+            return Object.assign({},state,{status:action.payload});
         case STATUS_ACTIONS.GET_LIST_BY_PAGINATION_SUCCESS:
-        debugger
             return Object.assign({},state,{status:action.payload,pagination:action.payload.pagination});
         case STATUS_ACTIONS.ON_FAILED:
             return state;

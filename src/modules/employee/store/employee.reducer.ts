@@ -23,7 +23,7 @@ export function EmployeeReducer(state: any = initialState, action: Action) {
     case EMPLOYEE_ACTIONS.DELETE_SUCCESS:
         return action.payload;
     case EMPLOYEE_ACTIONS.GET_LIST_BY_DEPT_SUCCESS:
-        return action.payload;
+        return Object.assign({},state,{employeeList:action.payload});
     case EMPLOYEE_ACTIONS.GET_LIST_BY_PAGE_SUCCESS:
         let emp=Object.assign([],state.employeeList)
         let stateEmp=emp.concat(action.payload)

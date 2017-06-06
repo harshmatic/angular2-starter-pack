@@ -54,7 +54,7 @@ export class OccurenceEditComponent implements OnInit, OnDestroy {
     this.store.dispatch({ type: STATUS_ACTIONS.GET_LIST });
     this.asyncStatus = this.store.select('status');
     this.subscriptions.add(this.asyncStatus.subscribe((res: any) => {
-      this.status = res;
+      this.status = res.status;
     })
     );
 
