@@ -42,7 +42,7 @@ export class JobDetailComponent implements OnInit,OnDestroy {
         this.obs.push(res[i]);
       }
       if (res.length > 0) {
-       // this.jobPageNum++;
+        this.jobPageNum++;
         this.stopScroll = false;
       } else {
         this.stopScroll = true;
