@@ -1024,7 +1024,11 @@ label{
     /************************************************** Assign Officer Page ***************************************************/
 /*}*/
 
-
+.error {
+    border: #BE1A21;
+    border-style: solid;
+    border-width: 2px;
+}
 
 /******* For job details screen - 28 april 2017 - by chaitanya *******/
 .detailDropdown{

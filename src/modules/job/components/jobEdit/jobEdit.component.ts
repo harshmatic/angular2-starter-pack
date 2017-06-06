@@ -82,7 +82,7 @@ export class JobEditComponent implements OnInit, OnDestroy {
 
   }
   onViewActivity(){
-    this.router.navigate(['/obs/viewActivity'], { queryParams: { OccurenceBookID: this.obId } });
+    this.router.navigate(['/jobs/viewActivity'], { queryParams: { OccurenceBookID: this.obId } });
   }
 
   ngOnDestroy() {
@@ -114,10 +114,12 @@ export class JobEditComponent implements OnInit, OnDestroy {
       this.jobService.updateOfficer(this.obs).subscribe(res => {
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Status and comment saved' });
         this.comment="";
+        this.router.navigate(['/jobs/jobDetails']);
       });
       this.occurenceBookService.addReview(payload).subscribe(res => {
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Comment saved' });
         this.comment="";
+        this.router.navigate(['/jobs/jobDetails']);
       });
     }
 

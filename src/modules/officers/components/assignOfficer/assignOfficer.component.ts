@@ -154,7 +154,7 @@ export class AssignOfficerComponent implements OnInit, OnDestroy {
       this.obs.assignedComments = value.remark;
       this.jobService.updateOfficer(this.obs).subscribe(res => {
         this.messageService.addMessage({ severity: 'success', summary: 'Success', detail: 'Officer assigned successfully' });
-        this.router.navigate(['/jobs/jobEdit'], { queryParams: { OccurenceBookID: this.obId } });
+        this.router.navigate(['/jobs/jobDetails']);
       })
     }
 
