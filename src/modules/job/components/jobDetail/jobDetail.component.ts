@@ -93,7 +93,8 @@ export class JobDetailComponent implements OnInit,OnDestroy {
   }
   getJobs() {
     if (!this.stopScroll && this.jobPageNum > 0) {
-      this.jobPageNum++;
+      //this.jobPageNum++;
+
       this.store.dispatch({
         type: OB_ACTIONS.GET_LIST,
         payload: { search: this.queryString, pageNum: this.jobPageNum, pageSize: 5, areaId: this.userDetail.areaID }

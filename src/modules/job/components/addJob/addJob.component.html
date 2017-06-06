@@ -4,9 +4,9 @@
 
        
     <form class="cards" novalidate (ngSubmit)="onSubmit(jobForm)" [formGroup]="jobForm">
-         <div class="row">
+         <!--<div class="row">
             <div class="col-xs-12">
-                <!--<button class="greyBtn"><i class="fa fa-map-marker" aria-hidden="true"></i>Location</button>-->
+                <button class="greyBtn"><i class="fa fa-map-marker" aria-hidden="true"></i>Location</button>
                  
                 <input placeholder="search for location *" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
                 style ="background: #C9C9C9!important;
@@ -17,12 +17,14 @@
     font-size: 1.3rem!important;font-weight: 500;" #search [formControl]="searchControl">
     <i class="material-icons searchIcon">search</i>
             </div>
-        </div>
+        </div>-->
         <br/>
+
+
         <p *ngIf="locationError" class="alert alert-danger">Please enter location</p>
-     
+
         <div class="row">
-            <div class="form-group col-xs-12">
+            <div class="form-group col-xs-12 ">
                 <label for="exampleSelect1">Area<span class="required"> * </span></label>
                 <select formControlName="areaID" name="areaName" class="form-control" id="exampleSelect1" [class.invalid]="!jobForm.controls.areaID.valid"> 
                     <option value="" disabled selected>Select Area</option>
@@ -70,7 +72,7 @@
         </div>
         <p *ngIf="reportError" class="alert alert-danger">Please enter report title</p>
         <div class="row">
-            <div class="form-group col-xs-6">
+            <div class="form-group col-xs-12">
                 <label for="exampleInputEmail1">Time of Crime<span class="required"> * </span></label>
                 <div class='input-group date'>
                     <p-calendar formControlName="obTime" name="obTime" [timeOnly]="true" readonlyInput="false"></p-calendar>
@@ -79,7 +81,7 @@
                     </span>
                 </div>
             </div>
-            <div class="form-group col-xs-6">
+            <!--<div class="form-group col-xs-6">
                 <label for="accused">No Of Accused</label>
                 <div class="input-group spinner">
                     <input type="number" class="form-control" value="00" min="0" max="500">
@@ -110,10 +112,10 @@
                         <button class="btn btn-default greyBtn" type="button"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <p *ngIf="timeError" class="alert alert-danger">Please enter crime time</p>
-        <div class="row">
+        <!--<div class="row">
             <div class="form-group col-xs-12">
                 <label for="exampleSelect1">Weapons (if any)</label>
                 <select class="form-control" id="exampleSelect1">
@@ -140,8 +142,8 @@
                             </optgroup>
                         </select>
             </div>
-        </div>
-        <div class="row">
+        </div>-->
+        <!--<div class="row">
             <div class="form-group col-xs-12">
                 <label for="exampleSelect1">Vehicles (if any)</label>
                 <select class="form-control" id="exampleSelect1">
@@ -163,7 +165,7 @@
                             </optgroup>
                         </select>
             </div>
-        </div>
+        </div>-->
         <div class="row">
             <div class="form-group col-xs-12 descrFormGroup">
                 <label for="exampleTextarea">Description<span class="required"> * </span></label>

@@ -55,7 +55,7 @@
                     </div>
                 </div>
                     <p *ngIf="offError" class="alert alert-danger">Please select officer</p>
-                <div class="row col-md-6 noMobilePadding noDesktopLeftPadding">
+                <!--<div class="row col-md-6 noMobilePadding noDesktopLeftPadding">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Vehicles Allotment</label>
                         <select formControlName="VehicleID" class="form-control" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.VehicleID.valid">
@@ -77,36 +77,36 @@
                             </optgroup>
                         </select>
                     </div>
-                </div>
+                </div>-->
                 <!--<p *ngIf="vehAllotmentError" class="alert alert-danger">Please select vehicle allotment</p>-->
-                <div class="row col-md-6 noMobilePadding noDesktopRightPadding">
+                <!--<div class="row col-md-6 noMobilePadding noDesktopRightPadding">
 
                     <div class="form-group col-xs-6">
                         <label for="exampleInputEmail1">Vehicle Start Time</label>
                         <div class='input-group date' id='VehicleStartTime'>
-                            <!--<input type='time' formControlName="startTime" class="form-control" value="00" [class.invalid]="!assignOfficerForm.controls.startTime.valid"/>-->
+                            
                             <label>12:00:AM</label>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-time"></span>
                             </span>
-                            <!--<p-calendar [(ngModel)]="vehStartTime" [timeOnly]="true"></p-calendar>-->
+                            
                         </div>
-                        <!--<p *ngIf="startTimeError" class="alert alert-danger">Please select vehicle start time</p>-->
+                        
                     </div>
                     <div class="form-group col-xs-6">
                         <label for="accused">Possession Time Period</label>
                         <div class="input-group spinner">
-                            <!--<input type="text" formControlName="endTime" class="form-control" value="00" min="0" max="500" [class.invalid]="!assignOfficerForm.controls.endTime.valid">-->
+                            
                             <label>5</label>
                             <div class="input-group-btn-vertical">
                                 <button class="btn btn-default greyBtn" type="button"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
                                 <button class="btn btn-default greyBtn" type="button"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
                             </div>
                         </div>
-                        <!--<p *ngIf="posError" class="alert alert-danger">Please select possession time</p>-->
+                        
                     </div>
-                </div>
-                <div class="row col-md-6 noMobilePadding noDesktopLeftPadding">
+                </div>-->
+                <!--<div class="row col-md-6 noMobilePadding noDesktopLeftPadding">
                     <div class="form-group col-xs-12">
                         <label for="exampleSelect1">Weapon Allotment</label>
                         <select class="form-control" formControlName="WeaponAllotment" id="exampleSelect1" [class.invalid]="!assignOfficerForm.controls.WeaponAllotment.valid">
@@ -134,34 +134,10 @@
                         </select>
                     </div>
                     
-                </div>
+                </div>-->
 
                 <!--<p *ngIf="weaponError" class="alert alert-danger">Please select weapon allotment</p>-->
-                 <div class="row col-md-6 noMobilePadding noDesktopRightPadding">
-                    <div class="form-group col-xs-6">
-                        <label for="exampleInputEmail1">Collection Time</label>
-                        <div class='input-group date' id='datetimepicker3'>
-                            <!--<input type='time' formControlName="collectionTime" class="form-control" value="00" [class.invalid]="!assignOfficerForm.controls.collectionTime.valid"/>-->
-                            <label>12:00:AM</label>
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-time"></span>
-                            </span>
-                        </div>
-                        <!--<p *ngIf="collectionError" class="alert alert-danger">Please select collection time</p>-->
-                    </div>
-                    <div class="form-group col-xs-6">
-                        <label for="accused">Possession Time Period</label>
-                        <div class="input-group spinner">
-                            <label>10</label>
-                            <!--<input type="text" formControlName="PossessionTime" class="form-control" value="00" min="0" max="500" [class.invalid]="!assignOfficerForm.controls.PossessionTime.valid">-->
-                            <div class="input-group-btn-vertical">
-                                <button class="btn btn-default greyBtn" type="button"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
-                                <button class="btn btn-default greyBtn" type="button"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                        <!--<p *ngIf="posTimeError" class="alert alert-danger">Please select possession time</p>-->
-                    </div>
-                </div>
+                 
                 
                 
                 <div class="row">
