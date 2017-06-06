@@ -20,14 +20,7 @@
         </div>
         <br/>
         <p *ngIf="locationError" class="alert alert-danger">Please enter location</p>
-        <div class="row">
-            <div class="col-xs-12">
-                <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [usePanning]="true" [scaleControl]="true"
-                >
-                    <agm-marker [latitude]="latitude" [longitude]="longitude" [visible]="true" [markerDraggable]="true" (dragEnd)="markerDragEnd($event.coords.lat,$event.coords.lng)"></agm-marker>
-                </agm-map>
-            </div>
-        </div>
+     
         <div class="row">
             <div class="form-group col-xs-12">
                 <label for="exampleSelect1">Area<span class="required"> * </span></label>
