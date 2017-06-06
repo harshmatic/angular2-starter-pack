@@ -5,12 +5,12 @@
 
             <!---------------------- Activity Feed tab content -------------------------->
             <div>
-
+ 
 
                  <!--<a href="" class="goBackLink" (click)="back()">
 				<i class="material-icons">keyboard_arrow_left</i>
 			  </a>-->
-
+                <h5>Recent Activity</h5>
                 <!-- Main List Box -->
                 <div class="mainListBox" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="getActivities()">
 
@@ -18,6 +18,7 @@
                     <!-- Box 1 -->
                       <div class="listSubBox" *ngFor="let act of activities" >
                         <div class="">
+                            
                             <table class="table activityTable">
                                 <tbody>
                                     <tr >
@@ -52,7 +53,7 @@
 
                                             <div class="activityAction">
                                                 <!--<a href="">Officer Details</a>-->
-                                                <a href='' (click)="onOBClick(act.obid);">View Occurrence Details</a>
+                                                <a style="cursor:pointer" (click)="onOBClick(act.obid);">View Occurrence Details</a>
                                             </div>
 
                                         </td>
