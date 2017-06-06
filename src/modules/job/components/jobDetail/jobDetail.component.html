@@ -16,14 +16,14 @@
 
                 <!--  Search Box -->
                 <div class="row stickyRow">
-                    <div class="col-xs-8 col-md-10 noMobileRightPadding">
+                    <div class="col-xs-8 col-md-12 noMobileRightPadding">
 
                         <input (keyup)="onKey($event)" type="text" class="form-control searchBox" placeholder="Search Occurence Book" />
                         <i class="material-icons searchIcon">search</i>
                     </div>
 
-                    <div class="col-xs-4 col-md-2">
-                        <!--  Desktop Filter Box - Hidden in mobile -->
+                    <!--<div class="col-xs-4 col-md-2">
+                      Desktop Filter Box - Hidden in mobile
                         <div class="filterBox desktopFilterBox">
                             <div class="dropdown filterDropdown">
                                 <button class="btn btn-primary dropdown-toggle filterToggle" type="button" data-toggle="dropdown">Filter
@@ -35,7 +35,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <br/>
                 <!--  Search Box Ends -->
@@ -99,7 +99,8 @@
                             <h4>TODAY</h4>
                             <!--Job Row 1-->
                             <div *ngIf="obs.length==0">No Record Found</div>
-                            <div class="row" *ngFor="let ob of obs" (click)="onOBClick(ob.obid);">
+                            <div class="row" *ngFor="let ob of obs" (click)="onOBClick(ob.obid);"
+                            style="cursor:pointer">
 
                                 <h5 class="col-xs-12">
                                     <span class="priorityIcon" [ngClass]="applyPriority(ob.priority)"></span>{{ob.obNumber}} | {{ob.mstDepartment.departmentName}}

@@ -22,9 +22,13 @@ export class OccurenceBookService extends BaseService {
     // Get All
     getObs(searchQuery?:any,pageNum?:any,pageSize?:any,areaId?:any) {
         
+<<<<<<< Updated upstream
         return this.getList$(CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+
         //'&areaId='+areaId+
         '&orderBy=obTime'+' '+'desc',0,0,true).map(res => res.json());    
+=======
+        return this.getList$(CONTEXT+"?searchQuery="+searchQuery+'&pageNumber='+pageNum+'&pageSize='+pageSize+'&orderBy=obTime'+' '+'desc',0,0,true).map(res => res.json());    
+>>>>>>> Stashed changes
     }
     getObsOff(searchQuery?:any,pageNum?:any,pageSize?:any,assignedTo?:any) {
         
